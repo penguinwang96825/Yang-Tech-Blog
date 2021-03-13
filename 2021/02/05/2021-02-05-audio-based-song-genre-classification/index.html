@@ -29,7 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
 
 
 
@@ -505,7 +509,7 @@
 <div style="display: flex;justify-content: center;">
     <div class="ready-player-1">
         <audio crossorigin>
-            <source src="<a href="" title="" target="">&#x2F;assets&#x2F;img&#x2F;2021-02-05-audio-based-song-genre-classification&#x2F;Beyonce-Halo.mp3</a>" type="audio/mpeg">
+            <source src="<img src="/2021/02/05/2021-02-05-audio-based-song-genre-classification/Beyonce-Halo.mp3" class="">" type="audio/mpeg">
         </audio>
     </div>
 </div>
@@ -536,7 +540,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 <img src="/2021/02/05/2021-02-05-audio-based-song-genre-classification/sr.png" class="">
 
 <p>The default sampling rate used by Librosa is 22050, but you can pass in almost any sampling rate you like. Further, the higher sample rate technically leads to more measurements per second and a closer recreation of the original audio, so 48 kHz is often used in “professional audio” contexts more than music contexts.</p>
-<p>We can also indicate that sampling rate (Hz) is the inverse of the period $T$. Look at the figure below in detail, the higher the sample rate, the less the sampling error.</p>
+<p>We can also indicate that sampling rate (Hz) is the inverse of the period <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0" xmlns="http://www.w3.org/2000/svg" width="1.593ex" height="1.532ex" role="img" focusable="false" viewBox="0 -677 704 677" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-7-TEX-I-1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-7-TEX-I-1D447"></use></g></g></g></svg></mjx-container>. Look at the figure below in detail, the higher the sample rate, the less the sampling error.</p>
 <p>$$<br>s_r = \frac{1}{T}<br>$$</p>
 <img src="/2021/02/05/2021-02-05-audio-based-song-genre-classification/sampling-rate.png" class="">
 
@@ -549,7 +553,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </ul>
 <p>Formula for duration of a frame: </p>
 <p>$$d_f = \frac{1}{s_r} \cdot K$$</p>
-<p>where $d_f$ is duration of a frame, $s_r$ is sample rate, and $K$ is the frame size. </p>
+<p>where <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.667ex" xmlns="http://www.w3.org/2000/svg" width="2.169ex" height="2.237ex" role="img" focusable="false" viewBox="0 -694 958.9 989" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-7-TEX-I-1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path><path id="MJX-7-TEX-I-1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use xlink:href="#MJX-7-TEX-I-1D451"></use></g><g data-mml-node="mi" transform="translate(520, -150) scale(0.707)"><use xlink:href="#MJX-7-TEX-I-1D453"></use></g></g></g></g></svg></mjx-container> is duration of a frame, <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.357ex" xmlns="http://www.w3.org/2000/svg" width="1.896ex" height="1.357ex" role="img" focusable="false" viewBox="0 -442 837.9 599.8" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-7-TEX-I-1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path><path id="MJX-7-TEX-I-1D45F" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use xlink:href="#MJX-7-TEX-I-1D460"></use></g><g data-mml-node="mi" transform="translate(469, -150) scale(0.707)"><use xlink:href="#MJX-7-TEX-I-1D45F"></use></g></g></g></g></svg></mjx-container> is sample rate, and <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0" xmlns="http://www.w3.org/2000/svg" width="2.011ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 889 683" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-7-TEX-I-1D43E" d="M285 628Q285 635 228 637Q205 637 198 638T191 647Q191 649 193 661Q199 681 203 682Q205 683 214 683H219Q260 681 355 681Q389 681 418 681T463 682T483 682Q500 682 500 674Q500 669 497 660Q496 658 496 654T495 648T493 644T490 641T486 639T479 638T470 637T456 637Q416 636 405 634T387 623L306 305Q307 305 490 449T678 597Q692 611 692 620Q692 635 667 637Q651 637 651 648Q651 650 654 662T659 677Q662 682 676 682Q680 682 711 681T791 680Q814 680 839 681T869 682Q889 682 889 672Q889 650 881 642Q878 637 862 637Q787 632 726 586Q710 576 656 534T556 455L509 418L518 396Q527 374 546 329T581 244Q656 67 661 61Q663 59 666 57Q680 47 717 46H738Q744 38 744 37T741 19Q737 6 731 0H720Q680 3 625 3Q503 3 488 0H478Q472 6 472 9T474 27Q478 40 480 43T491 46H494Q544 46 544 71Q544 75 517 141T485 216L427 354L359 301L291 248L268 155Q245 63 245 58Q245 51 253 49T303 46H334Q340 37 340 35Q340 19 333 5Q328 0 317 0Q314 0 280 1T180 2Q118 2 85 2T49 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-7-TEX-I-1D43E"></use></g></g></g></svg></mjx-container> is the frame size. </p>
 <h2 id="Spectral-Leakage"><a href="#Spectral-Leakage" class="headerlink" title="Spectral Leakage"></a>Spectral Leakage</h2><ul>
 <li>Processed signal isn’t an integer number of periods.</li>
 <li>Endpoints are discontinuous.</li>
@@ -665,7 +669,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 
 <img src="/2021/02/05/2021-02-05-audio-based-song-genre-classification/spectrogram.png" class="">
 
-<h2 id="Mel-frequency-Cepstrum-MFCC"><a href="#Mel-frequency-Cepstrum-MFCC" class="headerlink" title="Mel-frequency Cepstrum (MFCC)"></a>Mel-frequency Cepstrum (MFCC)</h2><p>Mel-frequency cepstral coefficients (MFCCs) are coefficients that collectively make up an MFC. They are derived from a type of cepstral representation of the audio clip (a nonlinear “spectrum-of-a-spectrum”). The advantage of MFCC is that it is good in error reduction and able to produce a robust feature when the signal is affected by noise.</p>
+<h2 id="Mel-frequency-Cepstrum-Coefficients-MFCC"><a href="#Mel-frequency-Cepstrum-Coefficients-MFCC" class="headerlink" title="Mel-frequency Cepstrum Coefficients (MFCC)"></a>Mel-frequency Cepstrum Coefficients (MFCC)</h2><p>Mel-frequency cepstral coefficients (MFCCs) are coefficients that collectively make up an MFC. They are derived from a type of cepstral representation of the audio clip (a nonlinear “spectrum-of-a-spectrum”). The advantage of MFCC is that it is good in error reduction and able to produce a robust feature when the signal is affected by noise.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">mfcc <span class="token operator">=</span> librosa<span class="token punctuation">.</span>feature<span class="token punctuation">.</span>mfcc<span class="token punctuation">(</span>signal<span class="token punctuation">,</span> n_fft<span class="token operator">=</span>n_fft<span class="token punctuation">,</span> hop_length<span class="token operator">=</span>hop_length<span class="token punctuation">,</span> n_mfcc<span class="token operator">=</span><span class="token number">13</span><span class="token punctuation">)</span>
 librosa<span class="token punctuation">.</span>display<span class="token punctuation">.</span>specshow<span class="token punctuation">(</span>mfcc<span class="token punctuation">,</span> sr<span class="token operator">=</span>sr<span class="token punctuation">,</span> hop_length<span class="token operator">=</span>hop_length<span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>xlabel<span class="token punctuation">(</span><span class="token string">"Time"</span><span class="token punctuation">)</span>
@@ -1041,7 +1045,7 @@ model<span class="token punctuation">.</span>plot_history<span class="token punc
 
 <img src="/2021/02/05/2021-02-05-audio-based-song-genre-classification/history.png" class="">
 
-<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>In the end, we got a accuracy score of 50.7% on the test dataset. For your information, I only utilise 150 songs, which is not a large amount of data, but it achieves a higher score than most of the lyrics-based models (this <a href="/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/" title="[article]">[article]</a> I wrote before). In the future, I will investigate more different models to improve the performance for the audio-based classifier! Stay tuned!</p>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>In the end, we got a accuracy score of 50.7% on the test dataset. For your information, I only utilise 150 songs, which is not a large amount of data, but it achieves a higher score than most of the lyrics-based models (this <a href="/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/" title="article">article</a> I wrote before). In the future, I will investigate more different models to improve the performance for the audio-based classifier! Stay tuned!</p>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://github.community/t/is-it-possible-to-open-a-sound-file/10377/2">https://github.community/t/is-it-possible-to-open-a-sound-file/10377/2</a></li>
 <li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio</a></li>
@@ -1134,7 +1138,7 @@ model<span class="token punctuation">.</span>plot_history<span class="token punc
 <div id="article-share">
 
     
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>WeChat swipe to share！</p>"></div>
     <script src="/libs/share/js/social-share.min.js"></script>
     
 
@@ -1260,12 +1264,12 @@ model<span class="token punctuation">.</span>plot_history<span class="token punc
                         <span class="chip bg-color">Python</span>
                     </a>
                     
-                    <a href="/tags/Linear-Algebra/">
-                        <span class="chip bg-color">Linear Algebra</span>
-                    </a>
-                    
                     <a href="/tags/MATLAB/">
                         <span class="chip bg-color">MATLAB</span>
+                    </a>
+                    
+                    <a href="/tags/Linear-Algebra/">
+                        <span class="chip bg-color">Linear Algebra</span>
                     </a>
                     
                 </div>
@@ -1432,7 +1436,7 @@ model<span class="token punctuation">.</span>plot_history<span class="token punc
 </main>
 
 
-
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
     <footer class="page-footer bg-color">
     
@@ -1479,7 +1483,7 @@ model<span class="token punctuation">.</span>plot_history<span class="token punc
                    loop='all'
                    order='random'
                    preload='auto'
-                   volume='0.7'
+                   volume='0.3'
                    list-folded='true'
         >
         </meting-js>
@@ -1502,8 +1506,8 @@ model<span class="token punctuation">.</span>plot_history<span class="token punc
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
             
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">45.6k</span>&nbsp;字
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total site word count:&nbsp;<span
+                class="white-color">44.8k</span>&nbsp;words
             
             
             
@@ -1511,24 +1515,19 @@ model<span class="token punctuation">.</span>plot_history<span class="token punc
             
             
             <span id="busuanzi_container_site_pv">
-                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
-                    class="white-color"></span>&nbsp;次
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;Total number of visits:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;times
             </span>
             
             
-                <span id="busuanzi_container_site_pv" style='display:none'>
-                    <i class="fa fa-heart-o"></i>
-                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
-                </span>
-            
-            
-                <span id="busuanzi_container_site_uv" style='display:none'>
-                    人次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
-                </span>
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;Total number of visitors:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;people
+            </span>
             
             <br>
             
-            <span id="sitetime">载入运行时间...</span>
+            <span id="sitetime">Loading runtime...</span>
             <script>
                 function siteTime() {
                     var seconds = 1000;
@@ -1561,12 +1560,12 @@ model<span class="token punctuation">.</span>plot_history<span class="token punc
                         diffMinutes * minutes) / seconds);
                     if (startYear == todayYear) {
                         document.getElementById("year").innerHTML = todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
-                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                        document.getElementById("sitetime").innerHTML = "This site has been safely operated " + diffDays + " days " + diffHours +
+                            " hours " + diffMinutes + " minutes " + diffSeconds + " seconds";
                     } else {
                         document.getElementById("year").innerHTML = startYear + " - " + todayYear;
-                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
-                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                        document.getElementById("sitetime").innerHTML = "This site has been safely operated " + diffYears + " years " + diffDays +
+                            " days " + diffHours + " hours " + diffMinutes + " minutes " + diffSeconds + " seconds";
                     }
                 }
                 setInterval(siteTime, 1000);
@@ -1576,13 +1575,13 @@ model<span class="token punctuation">.</span>plot_history<span class="token punc
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/penguinwang96825" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <a href="https://github.com/penguinwang96825" class="tooltipped" target="_blank" data-tooltip="Visit my GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
 
 
 
-    <a href="mailto:penguinwang@smail.nchu.edu.tw" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <a href="mailto:penguinwang@smail.nchu.edu.tw" class="tooltipped" target="_blank" data-tooltip="Contact me by mail" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
     </a>
 
@@ -1603,62 +1602,6 @@ model<span class="token punctuation">.</span>plot_history<span class="token punc
 </footer>
 
 <div class="progress-bar"></div>
-
-<script>
-    $(document).ready(function () {
-
-        var int = setInterval(fixCount, 50);  // 50ms周期检测函数
-        var pvcountOffset = 80000;  // 初始化首次数据
-        var uvcountOffset = 20000;
-
-        function fixCount() {
-            if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
-                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + pvcountOffset);
-                clearInterval(int);
-            }
-            if ($("#busuanzi_container_site_pv").css("display") != "none") {
-                $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + uvcountOffset); // 加上初始数据 
-                clearInterval(int); // 停止检测
-            }
-        }
-    });
-</script>
-
-<script language=javascript>
-    function siteTime() {
-        window.setTimeout("siteTime()", 1000);
-        var seconds = 1000;
-        var minutes = seconds * 60;
-        var hours = minutes * 60;
-        var days = hours * 24;
-        var years = days * 365;
-        var today = new Date();
-        var todayYear = today.getFullYear();
-        var todayMonth = today.getMonth() + 1;
-        var todayDate = today.getDate();
-        var todayHour = today.getHours();
-        var todayMinute = today.getMinutes();
-        var todaySecond = today.getSeconds();
-        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
-        year - 作为date对象的年份，为4位年份值
-        month - 0-11之间的整数，做为date对象的月份
-        day - 1-31之间的整数，做为date对象的天数
-        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
-        minutes - 0-59之间的整数，做为date对象的分钟数
-        seconds - 0-59之间的整数，做为date对象的秒数
-        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
-        var t1 = Date.UTC(2017, 09, 11, 00, 00, 00); //北京时间2018-2-13 00:00:00
-        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
-        var diff = t2 - t1;
-        var diffYears = Math.floor(diff / years);
-        var diffDays = Math.floor((diff / days) - diffYears * 365);
-        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
-        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
-        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes * minutes) / seconds);
-        document.getElementById("sitetime").innerHTML = "本站已运行 " +diffYears+" 年 "+diffDays + " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
-    }/*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
-    siteTime();
-</script>
 
     <!-- 搜索遮罩框 -->
 <div id="searchModal" class="modal">
