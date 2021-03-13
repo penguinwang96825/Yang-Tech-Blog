@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/</loc>
+        <changefreq>daily</changefreq>
+        <priority>1</priority>
+    </url>
+
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/02/07/2021-02-07-twitter-hate-speech-detection/</loc>
+        <lastmod>2021-03-13T10:25:30.998Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/</loc>
+        <lastmod>2021-03-13T10:25:27.976Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/25/2021-01-25-weighted-word-embedding/</loc>
+        <lastmod>2021-03-13T03:20:10.266Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/29/2021-01-29-matrix-decomposition/</loc>
+        <lastmod>2021-03-13T03:15:34.659Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/02/05/2021-02-05-audio-based-song-genre-classification/</loc>
+        <lastmod>2021-03-13T02:57:29.076Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/03/12/2021-03-12-easiest-explanation-for-p-value/</loc>
+        <lastmod>2021-03-13T02:50:51.617Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/27/2021-01-27-missionaries-and-cannibals-problem/</loc>
+        <lastmod>2021-03-13T02:45:20.378Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/28/2021-01-28-laplace-expansion-and-chio-algorithm/</loc>
+        <lastmod>2021-03-13T02:27:45.108Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/26/2021-01-26-quality-of-search-engine/</loc>
+        <lastmod>2021-03-13T02:14:57.141Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/25/2021-01-25-simplest-way-to-build-web-crawler/</loc>
+        <lastmod>2021-03-13T00:43:57.816Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/22/2021-01-22-train-word2vec-on-wsl/</loc>
+        <lastmod>2021-03-13T00:37:33.860Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2020/11/28/2020-11-28-installation-for-tf2/</loc>
+        <lastmod>2021-03-13T00:34:13.536Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2020/11/27/2020-11-27-exploratory-data-analysis-for-predicting-insurance-claim/</loc>
+        <lastmod>2021-03-13T00:31:44.254Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2019/07/10/2019-07-10-sentiment-analysis-for-kkbox/</loc>
+        <lastmod>2021-03-13T00:30:11.469Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/25/2021-01-25-github-page-from-zero-to-hero/</loc>
+        <lastmod>2021-03-12T23:53:13.782Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/03/02/2021-03-02-train-word-embedding-vectos-on-custom-corpus/</loc>
+        <lastmod>2021-03-12T23:11:30.963Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/02/06/2021-02-06-ssh-into-google-colab/</loc>
+        <lastmod>2021-03-12T23:05:47.204Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/02/06/2021-02-06-prevent-colab-from-disconnecting/</loc>
+        <lastmod>2021-03-12T23:04:16.666Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2020/12/31/2020-12-31-conda-environment-setup/</loc>
+        <lastmod>2021-03-12T22:27:57.375Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2020/12/15/2020-12-15-integrate-atom-with-cmder/</loc>
+        <lastmod>2021-03-12T22:24:55.687Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2018/12/03/2018-12-03-this-is-how-the-journey-begins/</loc>
+        <lastmod>2021-03-12T21:31:55.987Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+</urlset>
+<!-- XML Sitemap generated by Hexo SEO Friendly Sitemap Generator -->
