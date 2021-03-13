@@ -9,16 +9,80 @@
 
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/02/07/2021-02-07-twitter-hate-speech-detection/</loc>
-        <lastmod>2021-03-13T10:25:30.998Z</lastmod>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/</loc>
+        <lastmod>2021-03-13T21:56:19.445Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/</loc>
-        <lastmod>2021-03-13T10:25:27.976Z</lastmod>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2020/11/27/2020-11-27-exploratory-data-analysis-for-predicting-insurance-claim/</loc>
+        <lastmod>2021-03-13T21:55:57.496Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/25/2021-01-25-simplest-way-to-build-web-crawler/</loc>
+        <lastmod>2021-03-13T21:55:33.274Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/26/2021-01-26-quality-of-search-engine/</loc>
+        <lastmod>2021-03-13T21:55:09.582Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/27/2021-01-27-missionaries-and-cannibals-problem/</loc>
+        <lastmod>2021-03-13T21:55:03.933Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/28/2021-01-28-laplace-expansion-and-chio-algorithm/</loc>
+        <lastmod>2021-03-13T21:54:58.638Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/29/2021-01-29-matrix-decomposition/</loc>
+        <lastmod>2021-03-13T21:54:48.548Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/02/05/2021-02-05-audio-based-song-genre-classification/</loc>
+        <lastmod>2021-03-13T21:54:26.726Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/25/2021-01-25-github-page-from-zero-to-hero/</loc>
+        <lastmod>2021-03-13T21:53:41.249Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/02/07/2021-02-07-twitter-hate-speech-detection/</loc>
+        <lastmod>2021-03-13T10:25:30.998Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -33,56 +97,8 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/29/2021-01-29-matrix-decomposition/</loc>
-        <lastmod>2021-03-13T03:15:34.659Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/02/05/2021-02-05-audio-based-song-genre-classification/</loc>
-        <lastmod>2021-03-13T02:57:29.076Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/03/12/2021-03-12-easiest-explanation-for-p-value/</loc>
         <lastmod>2021-03-13T02:50:51.617Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/27/2021-01-27-missionaries-and-cannibals-problem/</loc>
-        <lastmod>2021-03-13T02:45:20.378Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/28/2021-01-28-laplace-expansion-and-chio-algorithm/</loc>
-        <lastmod>2021-03-13T02:27:45.108Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/26/2021-01-26-quality-of-search-engine/</loc>
-        <lastmod>2021-03-13T02:14:57.141Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/25/2021-01-25-simplest-way-to-build-web-crawler/</loc>
-        <lastmod>2021-03-13T00:43:57.816Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -105,24 +121,8 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2020/11/27/2020-11-27-exploratory-data-analysis-for-predicting-insurance-claim/</loc>
-        <lastmod>2021-03-13T00:31:44.254Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://penguinwang96825.github.io/Hexo-Blog/2019/07/10/2019-07-10-sentiment-analysis-for-kkbox/</loc>
         <lastmod>2021-03-13T00:30:11.469Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/25/2021-01-25-github-page-from-zero-to-hero/</loc>
-        <lastmod>2021-03-12T23:53:13.782Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
