@@ -631,7 +631,17 @@ insert_into_table<span class="token punctuation">(</span><span class="token punc
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> crypto_price<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h1 id="Web-UI"><a href="#Web-UI" class="headerlink" title="Web UI"></a>Web UI</h1><p>In this section, I begin building a web frontend for the crypto coin price database. I cover the basics of <a target="_blank" rel="noopener" href="https://fastapi.tiangolo.com/">FastAPI</a>, a lightweight Python framework for buildings API’s and web applications. I use <a target="_blank" rel="noopener" href="https://semantic-ui.com/introduction/getting-started.html">Semantic UI</a> and <a target="_blank" rel="noopener" href="https://jinja.palletsprojects.com/en/2.11.x/">jinja2</a> templates to quickly create a simple, but nice looking UI for our database.</p>
-<h2 id="FastAPI"><a href="#FastAPI" class="headerlink" title="FastAPI"></a>FastAPI</h2><p>Create a file <code>app.py</code> with:</p>
+<h2 id="FastAPI"><a href="#FastAPI" class="headerlink" title="FastAPI"></a>FastAPI</h2><p>The current folder and files should look like this:</p>
+<pre class="line-numbers language-console" data-language="console"><code class="language-console">G:.
+|   app.py
+|   crypto.db
+|
++---templates
+|       crypto_detail.html
+|       index.html
+|       layout.html<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>Create a file <code>app.py</code> with:</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> sqlite3
 <span class="token keyword">from</span> fastapi <span class="token keyword">import</span> FastAPI<span class="token punctuation">,</span> Request
 <span class="token keyword">from</span> fastapi<span class="token punctuation">.</span>templating <span class="token keyword">import</span> Jinja2Templates 
@@ -1266,7 +1276,7 @@ templates <span class="token operator">=</span> Jinja2Templates<span class="toke
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total site word count:&nbsp;<span
-                class="white-color">48.6k</span>&nbsp;words
+                class="white-color">48.7k</span>&nbsp;words
             
             
             
