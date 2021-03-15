@@ -481,14 +481,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    1.3k
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    7 Min
+                    10 Min
                 </div>
                 
 
@@ -769,11 +769,80 @@ templates <span class="token operator">=</span> Jinja2Templates<span class="toke
 
 &#123;% endblock %&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>Open your browser at <code>http://127.0.0.1:8000</code>, then you can see the nice looking web UI.</p>
+<p>Type in <code>uvicorn app:app --reload</code>, and open your browser at <code>http://127.0.0.1:8000</code>, then you can see the nice looking web UI.</p>
 <img src="/Hexo-Blog/2021/03/15/2021-03-15-visualise-crypto-with-sql-and-fastapi/ui.jpg" class="">
 
 <p>If you click on any symbol under the ‘Coin’ column, you can get to its detailed page.</p>
 <img src="/Hexo-Blog/2021/03/15/2021-03-15-visualise-crypto-with-sql-and-fastapi/detail.jpg" class="">
+
+<h2 id="Add-Tradingview-Chart"><a href="#Add-Tradingview-Chart" class="headerlink" title="Add Tradingview Chart"></a>Add Tradingview Chart</h2><p>TradingView Advanced Chart Widget is a free and powerful charting solution that easily embeds into any website. Simply adjust the settings and click Apply to see a preview, then copy the embed code and paste it into your site code. You can personalize the chart by modifying the default symbol, watchlist, adding tools for technical analysis and a lot more. You can even add hotlists or an economic calendar to make the widget into an entire analytics platform.</p>
+<p>You can get the embedding code over <a target="_blank" rel="noopener" href="https://www.tradingview.com/widget/advanced-chart/">here</a>. Next, put this into <code>crypto_detail.html</code>.</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">&#123;% extends "layout.html" %&#125;
+
+&#123;% block content %&#125;
+
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+			Crypto 
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>angle double right icon<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>i</span><span class="token punctuation">></span></span>
+		&#123;&#123; row.cryptocurrency &#125;&#125; (&#123;&#123; row.symbol &#125;&#125;)
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+
+	<span class="token comment">&lt;!-- TradingView Widget BEGIN --></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tradingview-widget-container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tradingview_05834<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tradingview-widget-copyright<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://www.tradingview.com/symbols/NASDAQ-AAPL/<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>noopener<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>_blank<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>blue-text<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>AAPL Chart<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span> by TradingView<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://s3.tradingview.com/tv.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+	  <span class="token keyword">new</span> <span class="token class-name">TradingView<span class="token punctuation">.</span>widget</span><span class="token punctuation">(</span>
+	  <span class="token punctuation">&#123;</span>
+	  <span class="token string">"width"</span><span class="token operator">:</span> <span class="token string">"100%"</span><span class="token punctuation">,</span>
+	  <span class="token string">"height"</span><span class="token operator">:</span> <span class="token number">610</span><span class="token punctuation">,</span>
+	  <span class="token string">"symbol"</span><span class="token operator">:</span> <span class="token string">"&#123;&#123; ticker &#125;&#125;"</span><span class="token punctuation">,</span>
+	  <span class="token string">"interval"</span><span class="token operator">:</span> <span class="token string">"D"</span><span class="token punctuation">,</span>
+	  <span class="token string">"timezone"</span><span class="token operator">:</span> <span class="token string">"Europe/London"</span><span class="token punctuation">,</span>
+	  <span class="token string">"theme"</span><span class="token operator">:</span> <span class="token string">"light"</span><span class="token punctuation">,</span>
+	  <span class="token string">"style"</span><span class="token operator">:</span> <span class="token string">"1"</span><span class="token punctuation">,</span>
+	  <span class="token string">"locale"</span><span class="token operator">:</span> <span class="token string">"en"</span><span class="token punctuation">,</span>
+	  <span class="token string">"toolbar_bg"</span><span class="token operator">:</span> <span class="token string">"#f1f3f6"</span><span class="token punctuation">,</span>
+	  <span class="token string">"enable_publishing"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+	  <span class="token string">"allow_symbol_change"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+	  <span class="token string">"container_id"</span><span class="token operator">:</span> <span class="token string">"tradingview_05834"</span>
+	<span class="token punctuation">&#125;</span>
+	  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+	  </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+	<span class="token comment">&lt;!-- TradingView Widget END --></span>
+
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ui selectable striped table<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>thead</span><span class="token punctuation">></span></span>
+	    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
+	      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span>Date<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+	      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span>Open<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+	      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span>High<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+	      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span>Low<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+	      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span>Close<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+	      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span>Volume<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+	    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>thead</span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tbody</span><span class="token punctuation">></span></span>
+	  	&#123;% for bar in bars %&#125;
+		    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
+		      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>&#123;&#123; bar.date &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+		      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>&#123;&#123; bar.open &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+		      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>&#123;&#123; bar.high &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+		      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>&#123;&#123; bar.low &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+		      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>&#123;&#123; bar.close &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+		      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>&#123;&#123; bar.volume &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+		    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
+	    &#123;% endfor %&#125;
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tbody</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span>
+
+&#123;% endblock %&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/Hexo-Blog/2021/03/15/2021-03-15-visualise-crypto-with-sql-and-fastapi/tv.jpg" class="">
 
 <h1 id="Introduction-1"><a href="#Introduction-1" class="headerlink" title="Introduction"></a>Introduction</h1><p>I’ve done implementing a very simple crypto web app using FastAPI, so that we can check on it efficiently and effectively. Have fun!</p>
 
@@ -1276,7 +1345,7 @@ templates <span class="token operator">=</span> Jinja2Templates<span class="toke
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total site word count:&nbsp;<span
-                class="white-color">48.7k</span>&nbsp;words
+                class="white-color">49k</span>&nbsp;words
             
             
             
