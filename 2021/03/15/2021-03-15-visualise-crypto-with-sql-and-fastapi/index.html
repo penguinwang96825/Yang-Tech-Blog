@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Visualise Crypto with SQL and FastAPI, Yang&#39;s Blog">
+    <meta name="keywords" content="Visualise Crypto and Twitter with SQL and FastAPI, Yang&#39;s Blog">
     <meta name="description" content="CS Student / NLP Enthusiast / Tireless Coder">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Visualise Crypto with SQL and FastAPI | Yang&#39;s Blog</title>
+    <title>Visualise Crypto and Twitter with SQL and FastAPI | Yang&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/Hexo-Blog/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/Hexo-Blog/libs/awesome/css/all.css">
@@ -319,7 +319,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Visualise Crypto with SQL and FastAPI</h1>
+                    <h1 class="description center-align post-title">Visualise Crypto and Twitter with SQL and FastAPI</h1>
                 </div>
             </div>
         </div>
@@ -439,16 +439,16 @@
                                 <span class="chip bg-color">Python</span>
                             </a>
                         
+                            <a href="/Hexo-Blog/tags/Finance/">
+                                <span class="chip bg-color">Finance</span>
+                            </a>
+                        
                             <a href="/Hexo-Blog/tags/SQL/">
                                 <span class="chip bg-color">SQL</span>
                             </a>
                         
                             <a href="/Hexo-Blog/tags/FastAPI/">
                                 <span class="chip bg-color">FastAPI</span>
-                            </a>
-                        
-                            <a href="/Hexo-Blog/tags/Finance/">
-                                <span class="chip bg-color">Finance</span>
                             </a>
                         
                     </div>
@@ -481,14 +481,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    1.7k
+                    3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    10 Min
+                    18 Min
                 </div>
                 
 
@@ -511,8 +511,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>In this article, first, I’ll populate crypto database using Python and SQL. I retrieve the list of crypto coin assets, verify the data, and tackle any errors I encounter along the way. Second, I’ll talk about how to keep the database up to date with the latest prices, and retrieve daily data from the yahoo finance API. Finally, I’ll set up to build a web UI usin FastAPI.</p>
-<h1 id="Initialise-Database"><a href="#Initialise-Database" class="headerlink" title="Initialise Database"></a>Initialise Database</h1><p>At the very begining, I create a database file called “crypto.db”, by typing <code>touch crypto.db</code> in the command line. I want to crawl the crypto coin data on a daily basis, so I create a list which contains the crypto coin I want to keep up to date.</p>
+                <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>In this article, first, I’ll populate crypto database using Python and SQL. I retrieve the list of crypto coin assets, verify the data, and tackle any errors I encounter along the way. Second, I’ll talk about how to keep the database up to date with the latest prices, and retrieve daily data from the yahoo finance API. Third, a database for twitter data will be built as well. Finally, I’ll set up to build a web UI using FastAPI.</p>
+<h1 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h1><h2 id="Initialise-Database"><a href="#Initialise-Database" class="headerlink" title="Initialise Database"></a>Initialise Database</h2><p>At the very begining, I create a database file called “crypto.db”, by typing <code>touch crypto.db</code> in the command line. I want to crawl the crypto coin data on a daily basis, so I create a list which contains the crypto coin I want to keep up to date.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">symbols <span class="token operator">=</span> <span class="token punctuation">[</span>
 	<span class="token string">'BTC-USD'</span><span class="token punctuation">,</span> <span class="token string">'ETH-USD'</span><span class="token punctuation">,</span> <span class="token string">'BNB-USD'</span><span class="token punctuation">,</span> <span class="token string">'DOGE-USD'</span><span class="token punctuation">,</span> <span class="token string">'USDT-USD'</span><span class="token punctuation">,</span> 
 	<span class="token string">'LTC-USD'</span><span class="token punctuation">,</span> <span class="token string">'LINK-USD'</span><span class="token punctuation">,</span> <span class="token string">'USDC-USD'</span><span class="token punctuation">,</span> <span class="token string">'THETA-USD'</span><span class="token punctuation">,</span> <span class="token string">'XMR-USD'</span>
@@ -523,7 +523,7 @@ cryptocurrencies <span class="token operator">=</span> <span class="token punctu
 	<span class="token string">'Litecoin USD'</span><span class="token punctuation">,</span> <span class="token string">'Chainlink USD'</span><span class="token punctuation">,</span> <span class="token string">'USDCoin USD'</span><span class="token punctuation">,</span> <span class="token string">'ThETA USD'</span><span class="token punctuation">,</span> <span class="token string">'Monero USD'</span>
 <span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="Create-Table"><a href="#Create-Table" class="headerlink" title="Create Table"></a>Create Table</h2><p>Next, I will create two tables, one for symbol mapping to name of cryptocurrency, another for prices information.</p>
+<h3 id="Create-Table"><a href="#Create-Table" class="headerlink" title="Create Table"></a>Create Table</h3><p>Next, I will create two tables, one for symbol mapping to name of cryptocurrency, another for prices information.</p>
 <img src="/Hexo-Blog/2021/03/15/2021-03-15-visualise-crypto-with-sql-and-fastapi/database.png" class="">
 
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> sqlite3
@@ -555,7 +555,7 @@ cryptocurrencies <span class="token operator">=</span> <span class="token punctu
 
 create_table<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="Insert-Symbols-into-Table"><a href="#Insert-Symbols-into-Table" class="headerlink" title="Insert Symbols into Table"></a>Insert Symbols into Table</h2><p>After creating the two tables, I insert the symbol information into the table <code>crypto</code>.</p>
+<h3 id="Insert-Symbols-into-Table"><a href="#Insert-Symbols-into-Table" class="headerlink" title="Insert Symbols into Table"></a>Insert Symbols into Table</h3><p>After creating the two tables, I insert the symbol information into the table <code>crypto</code>.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">insert_into_table</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
 	connection <span class="token operator">=</span> sqlite3<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token string">'crypto.db'</span><span class="token punctuation">)</span>
 	cursor <span class="token operator">=</span> connection<span class="token punctuation">.</span>cursor<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -573,7 +573,7 @@ create_table<span class="token punctuation">(</span><span class="token punctuati
 
 insert_into_table<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="Drop-Table"><a href="#Drop-Table" class="headerlink" title="Drop Table"></a>Drop Table</h2><p>(Optional) If you want to drop the table and re-create a new list of different cryptocurrencies, then you can use the function below.</p>
+<h3 id="Drop-Table"><a href="#Drop-Table" class="headerlink" title="Drop Table"></a>Drop Table</h3><p>(Optional) If you want to drop the table and re-create a new list of different cryptocurrencies, then you can use the function below.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">drop_table</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
 	connection <span class="token operator">=</span> sqlite3<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token string">"crypto.db"</span><span class="token punctuation">)</span>
 	cursor <span class="token operator">=</span> connection<span class="token punctuation">.</span>cursor<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -585,8 +585,8 @@ insert_into_table<span class="token punctuation">(</span><span class="token punc
 	"""</span><span class="token punctuation">)</span>
 	connection<span class="token punctuation">.</span>commit<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="Populate-Prices"><a href="#Populate-Prices" class="headerlink" title="Populate Prices"></a>Populate Prices</h1><p>I will retrieve daily price data from yahoo finance API and populate it into the pre-build table <code>crypto_price</code> in the database. This sets up to begin building a web UI in the next part.</p>
-<h2 id="Insert-Prices-into-Table"><a href="#Insert-Prices-into-Table" class="headerlink" title="Insert Prices into Table"></a>Insert Prices into Table</h2><p>In this section, I insert the prices information, which I get it from yahoo finance API, into the table <code>crypto_price</code>.</p>
+<h2 id="Populate-Prices"><a href="#Populate-Prices" class="headerlink" title="Populate Prices"></a>Populate Prices</h2><p>I will retrieve daily price data from yahoo finance API and populate it into the pre-build table <code>crypto_price</code> in the database. This sets up to begin building a web UI in the next part.</p>
+<h3 id="Insert-Prices-into-Table"><a href="#Insert-Prices-into-Table" class="headerlink" title="Insert Prices into Table"></a>Insert Prices into Table</h3><p>In this section, I insert the prices information, which I get it from yahoo finance API, into the table <code>crypto_price</code>.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> yfinance <span class="token keyword">as</span> yf
 
 <span class="token keyword">def</span> <span class="token function">populate_prices</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -630,8 +630,8 @@ insert_into_table<span class="token punctuation">(</span><span class="token punc
 <p>Or input <code>sqlite3 crypto.db</code> in command line , and check it through some SQL command.</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> crypto_price<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h1 id="Web-UI"><a href="#Web-UI" class="headerlink" title="Web UI"></a>Web UI</h1><p>In this section, I begin building a web frontend for the crypto coin price database. I cover the basics of <a target="_blank" rel="noopener" href="https://fastapi.tiangolo.com/">FastAPI</a>, a lightweight Python framework for buildings API’s and web applications. I use <a target="_blank" rel="noopener" href="https://semantic-ui.com/introduction/getting-started.html">Semantic UI</a> and <a target="_blank" rel="noopener" href="https://jinja.palletsprojects.com/en/2.11.x/">jinja2</a> templates to quickly create a simple, but nice looking UI for our database.</p>
-<h2 id="FastAPI"><a href="#FastAPI" class="headerlink" title="FastAPI"></a>FastAPI</h2><p>The current folder and files should look like this:</p>
+<h2 id="Web-UI"><a href="#Web-UI" class="headerlink" title="Web UI"></a>Web UI</h2><p>In this section, I begin building a web frontend for the crypto coin price database. I cover the basics of <a target="_blank" rel="noopener" href="https://fastapi.tiangolo.com/">FastAPI</a>, a lightweight Python framework for buildings API’s and web applications. I use <a target="_blank" rel="noopener" href="https://semantic-ui.com/introduction/getting-started.html">Semantic UI</a> and <a target="_blank" rel="noopener" href="https://jinja.palletsprojects.com/en/2.11.x/">jinja2</a> templates to quickly create a simple, but nice looking UI for our database.</p>
+<h3 id="FastAPI"><a href="#FastAPI" class="headerlink" title="FastAPI"></a>FastAPI</h3><p>The current folder and files should look like this:</p>
 <pre class="line-numbers language-console" data-language="console"><code class="language-console">G:.
 |   app.py
 |   crypto.db
@@ -699,35 +699,27 @@ templates <span class="token operator">=</span> Jinja2Templates<span class="toke
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>and <code>index.html</code> is like the following</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>crypto<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ui container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Crypto List<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ui selectable striped table<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-		  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>thead</span><span class="token punctuation">></span></span>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">&#123;% extends "layout.html" %&#125;
+
+&#123;% block content %&#125;
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Crypto List<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ui selectable striped table<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>thead</span><span class="token punctuation">></span></span>
+	    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
+	      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span>Symbol<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+	      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span>Coin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+	    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>thead</span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tbody</span><span class="token punctuation">></span></span>
+	  	&#123;% for row in rows %&#125;
 		    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
-		      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span>Symbol<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
-		      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span>Coin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+		      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>&#123;&#123; row.symbol &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+		      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/crypto/&#123;&#123; row.symbol &#125;&#125;<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>&#123;&#123; row.cryptocurrency &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
 		    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
-		  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>thead</span><span class="token punctuation">></span></span>
-		  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tbody</span><span class="token punctuation">></span></span>
-		  	&#123;% for row in rows %&#125;
-			    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
-			      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>&#123;&#123; row.symbol &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
-			      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/crypto/&#123;&#123; row.symbol &#125;&#125;<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>&#123;&#123; row.cryptocurrency &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
-			    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
-		    &#123;% endfor %&#125;
-		  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tbody</span><span class="token punctuation">></span></span>
-		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span>
-	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	    &#123;% endfor %&#125;
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tbody</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span>
+&#123;% endblock %&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>and <code>crypto_detail.html</code> is like the following</p>
 <pre class="line-numbers language-html" data-language="html"><code class="language-html">&#123;% extends "layout.html" %&#125;
@@ -775,7 +767,7 @@ templates <span class="token operator">=</span> Jinja2Templates<span class="toke
 <p>If you click on any symbol under the ‘Coin’ column, you can get to its detailed page.</p>
 <img src="/Hexo-Blog/2021/03/15/2021-03-15-visualise-crypto-with-sql-and-fastapi/detail.jpg" class="">
 
-<h2 id="Add-Tradingview-Chart"><a href="#Add-Tradingview-Chart" class="headerlink" title="Add Tradingview Chart"></a>Add Tradingview Chart</h2><p>TradingView Advanced Chart Widget is a free and powerful charting solution that easily embeds into any website. Simply adjust the settings and click Apply to see a preview, then copy the embed code and paste it into your site code. You can personalize the chart by modifying the default symbol, watchlist, adding tools for technical analysis and a lot more. You can even add hotlists or an economic calendar to make the widget into an entire analytics platform.</p>
+<h3 id="Add-Tradingview-Chart"><a href="#Add-Tradingview-Chart" class="headerlink" title="Add Tradingview Chart"></a>Add Tradingview Chart</h3><p>TradingView Advanced Chart Widget is a free and powerful charting solution that easily embeds into any website. Simply adjust the settings and click Apply to see a preview, then copy the embed code and paste it into your site code. You can personalize the chart by modifying the default symbol, watchlist, adding tools for technical analysis and a lot more. You can even add hotlists or an economic calendar to make the widget into an entire analytics platform.</p>
 <p>You can get the embedding code over <a target="_blank" rel="noopener" href="https://www.tradingview.com/widget/advanced-chart/">here</a>. Next, put this into <code>crypto_detail.html</code>.</p>
 <pre class="line-numbers language-html" data-language="html"><code class="language-html">&#123;% extends "layout.html" %&#125;
 
@@ -843,6 +835,289 @@ templates <span class="token operator">=</span> Jinja2Templates<span class="toke
 &#123;% endblock %&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <img src="/Hexo-Blog/2021/03/15/2021-03-15-visualise-crypto-with-sql-and-fastapi/tv.jpg" class="">
+
+<h1 id="Twitter"><a href="#Twitter" class="headerlink" title="Twitter"></a>Twitter</h1><p>Twitter is many things. It is a special place to vent and share ideas in the form of memes and tweetstorms, diatribes and inquisitions. It contains a section to catch up on sports, worldwide events, breaking news — everything. So, I determine to scrape the data from the people to follow on crypto information on Twitter. Some user account I follow on is from this <a target="_blank" rel="noopener" href="https://consensys.net/blog/trending/i-read-crypto-twitter-for-hours-daily-here-are-the-40-accounts-that-really-matter/">website</a>.</p>
+<h2 id="Build-the-Index-Page"><a href="#Build-the-Index-Page" class="headerlink" title="Build the Index Page"></a>Build the Index Page</h2><p>There’ll be somewhere different in the home page, let’s change it a little bit in <code>layout.html</code>.</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>crypto<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+		<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'.ui .item'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">tab</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+	<span class="token function">$</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ready</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+	    <span class="token function">$</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span><span class="token string">'.dropdown .item'</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+	        <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'.ui .item'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">removeClass</span><span class="token punctuation">(</span><span class="token string">'active'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	        <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addClass</span><span class="token punctuation">(</span><span class="token string">'active'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ui secondary  menu<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+	    Crypto
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/twitter<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+	    Twitter
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/news<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+	    News
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>right menu<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+	    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+	      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ui icon input<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+	        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Search...<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+	        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>search link icon<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>i</span><span class="token punctuation">></span></span>
+	      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+	    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+	    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ui item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+	      Logout
+	    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ui container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+		&#123;% block content %&#125;
+		&#123;% endblock %&#125;
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Build-the-Database-Table"><a href="#Build-the-Database-Table" class="headerlink" title="Build the Database Table"></a>Build the Database Table</h2><p>Below is the list of people I want to keep in the database.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">usernames <span class="token operator">=</span> <span class="token punctuation">[</span>
+	<span class="token string">"binance"</span><span class="token punctuation">,</span> <span class="token string">"VitalikButerin"</span><span class="token punctuation">,</span> <span class="token string">"aantonop"</span><span class="token punctuation">,</span> <span class="token string">"ethereumJoseph"</span><span class="token punctuation">,</span> <span class="token string">"coinbase"</span><span class="token punctuation">,</span> 
+	<span class="token string">"naval"</span><span class="token punctuation">,</span> <span class="token string">"tayvano_"</span><span class="token punctuation">,</span> <span class="token string">"NickSzabo4"</span><span class="token punctuation">,</span> <span class="token string">"simondlr"</span><span class="token punctuation">,</span> <span class="token string">"cburniske"</span><span class="token punctuation">,</span> 
+	<span class="token string">"AmberBaldet"</span><span class="token punctuation">,</span> <span class="token string">"koeppelmann"</span><span class="token punctuation">,</span> <span class="token string">"jwolpert"</span><span class="token punctuation">,</span> <span class="token string">"iam_preethi"</span><span class="token punctuation">,</span> <span class="token string">"lrettig"</span><span class="token punctuation">,</span> 
+	<span class="token string">"ricburton"</span><span class="token punctuation">,</span> <span class="token string">"el33th4xor"</span><span class="token punctuation">,</span> <span class="token string">"bcrypt"</span><span class="token punctuation">,</span> <span class="token string">"evan_van_ness"</span><span class="token punctuation">,</span> <span class="token string">"mikeraymcdonald"</span><span class="token punctuation">,</span> 
+	<span class="token string">"FEhrsam"</span><span class="token punctuation">,</span> <span class="token string">"laurashin"</span><span class="token punctuation">,</span> <span class="token string">"AriDavidPaul"</span><span class="token punctuation">,</span> <span class="token string">"avsa"</span><span class="token punctuation">,</span> <span class="token string">"0xstark"</span><span class="token punctuation">,</span> 
+	<span class="token string">"JohnLilic"</span><span class="token punctuation">,</span> <span class="token string">"Disruptepreneur"</span><span class="token punctuation">,</span> <span class="token string">"wheatpond"</span><span class="token punctuation">,</span> <span class="token string">"leashless"</span><span class="token punctuation">,</span> <span class="token string">"ethereum"</span><span class="token punctuation">,</span> 
+	<span class="token string">"APompliano"</span><span class="token punctuation">,</span> <span class="token string">"twobitidiot"</span><span class="token punctuation">,</span> <span class="token string">"trentmc0"</span><span class="token punctuation">,</span> <span class="token string">"Melt_Dem"</span><span class="token punctuation">,</span> <span class="token string">"Bitcoin"</span><span class="token punctuation">,</span> 
+	<span class="token string">"brian_armstrong"</span><span class="token punctuation">,</span> <span class="token string">"nlw"</span><span class="token punctuation">,</span> <span class="token string">"elonmusk"</span><span class="token punctuation">,</span> <span class="token string">"DocumentingBTC"</span><span class="token punctuation">,</span> <span class="token string">"BTCTN"</span>
+<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>It’s basically the same to build a table for twitter data as previous.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">create_tweet_table</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+	connection <span class="token operator">=</span> sqlite3<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token string">'crypto.db'</span><span class="token punctuation">)</span>
+	cursor <span class="token operator">=</span> connection<span class="token punctuation">.</span>cursor<span class="token punctuation">(</span><span class="token punctuation">)</span>
+	cursor<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token triple-quoted-string string">"""
+		CREATE TABLE IF NOT EXISTS twitter (
+			id INTEGER PRIMARY KEY, 
+			username TEXT NOT NULL
+		);
+	"""</span><span class="token punctuation">)</span>
+	cursor<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token triple-quoted-string string">"""
+		CREATE TABLE IF NOT EXISTS twitter_tweet (
+			id INTEGER PRIMARY KEY, 
+			username_id INTEGER, 
+			date NOT NULL, 
+			tweet TEXT NOT NULL, 
+			username TEXT NOT NULL, 
+			replies_count INTEGER NOT NULL, 
+			retweets_count INTEGER NOT NULL, 
+			likes_count INTEGER NULL,  
+			FOREIGN KEY (username_id) REFERENCES twitter (id)
+		);
+	"""</span><span class="token punctuation">)</span>
+	connection<span class="token punctuation">.</span>commit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">insert_twitter_username_into_table</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+	connection <span class="token operator">=</span> sqlite3<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token string">'crypto.db'</span><span class="token punctuation">)</span>
+	cursor <span class="token operator">=</span> connection<span class="token punctuation">.</span>cursor<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+	<span class="token keyword">for</span> username <span class="token keyword">in</span> usernames<span class="token punctuation">:</span>
+		cursor<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token triple-quoted-string string">"""
+			INSERT INTO twitter (username)
+			SELECT ?
+			WHERE NOT EXISTS (
+				SELECT username FROM twitter WHERE username=?
+			);
+		"""</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>username<span class="token punctuation">,</span> username<span class="token punctuation">)</span><span class="token punctuation">)</span>
+	connection<span class="token punctuation">.</span>commit<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Twint"><a href="#Twint" class="headerlink" title="Twint"></a>Twint</h2><p>Twint is an advanced Twitter scraping tool written in Python that allows for scraping Tweets from Twitter profiles without using Twitter’s API.</p>
+<p>Twint utilizes Twitter’s search operators to let you scrape Tweets from specific users, scrape Tweets relating to certain topics, hashtags &amp; trends, or sort out sensitive information from Tweets like e-mail and phone numbers.</p>
+<h3 id="Set-up-and-Installation"><a href="#Set-up-and-Installation" class="headerlink" title="Set up and Installation"></a>Set up and Installation</h3><p>It must be some challenge installing <code>twint</code>, I will guide you through this.</p>
+<ol>
+<li><code>pip install --upgrade aiohttp_socks</code></li>
+<li><code>pip3 install --upgrade -e git+https://github.com/twintproject/twint.git@origin/master#egg=twint</code></li>
+<li>In orser to solve <code>OSError: [WinError 87] The parameter is incorrect.</code> please open <code>output.py</code> in <code>./src/twint/twint</code> first. Make the following changes to fixes this issue:</li>
+</ol>
+<ul>
+<li><p>Add (line#9):</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> string<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>Replace (line#123):</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">word <span class="token operator">=</span> <span class="token string">''</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> output<span class="token punctuation">:</span>
+	<span class="token keyword">if</span> i <span class="token keyword">in</span> string<span class="token punctuation">.</span>printable<span class="token punctuation">:</span>
+		word <span class="token operator">=</span> word <span class="token operator">+</span> i
+<span class="token keyword">print</span><span class="token punctuation">(</span>word<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">,</span> <span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h3 id="Populate-Tweets-into-Database"><a href="#Populate-Tweets-into-Database" class="headerlink" title="Populate Tweets into Database"></a>Populate Tweets into Database</h3><p>Let’s start scraping tweets using <code>twint</code>, this may take a large amount of time the first time. For your information, you have to set <code>initialise=True</code> in <code>insert_into_twitter_tweet_table()</code> the first time to fetch all the tweets from each user account. After this, every time you re-scrape the tweets, you only have to set the <code>delta</code> parameter depends on the time period you want to crawl the twitter data. If you’re a MacOS user, you can use <code>crontab</code> with setting schedule using this <a target="_blank" rel="noopener" href="https://crontab.guru/">website</a>, and if you’re a windows user, you can use the built-in <code>Task Scheduler</code>. If you don’t want to use <code>Task Scheduler</code>, you can use the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">Windows Subsystem for Linux</a> which will allow you to use cron jobs like on Linux.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">import</span> sqlite3
+<span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+<span class="token keyword">from</span> datetime <span class="token keyword">import</span> timedelta
+<span class="token keyword">from</span> datetime <span class="token keyword">import</span> date <span class="token keyword">as</span> dt
+
+
+<span class="token keyword">def</span> <span class="token function">scrape_tweet</span><span class="token punctuation">(</span>username<span class="token punctuation">,</span> since<span class="token operator">=</span><span class="token string">"2012-01-01"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+	os<span class="token punctuation">.</span>system<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"twint -u </span><span class="token interpolation"><span class="token punctuation">&#123;</span>username<span class="token punctuation">&#125;</span></span><span class="token string"> --since </span><span class="token interpolation"><span class="token punctuation">&#123;</span>since<span class="token punctuation">&#125;</span></span><span class="token string"> -o file.csv --csv"</span></span><span class="token punctuation">)</span>
+	df <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">"file.csv"</span><span class="token punctuation">,</span> sep<span class="token operator">=</span><span class="token string">"\t"</span><span class="token punctuation">)</span>
+	df <span class="token operator">=</span> df<span class="token punctuation">[</span><span class="token punctuation">[</span>
+		<span class="token string">"date"</span><span class="token punctuation">,</span> <span class="token string">"id"</span><span class="token punctuation">,</span> <span class="token string">"username"</span><span class="token punctuation">,</span> <span class="token string">"tweet"</span><span class="token punctuation">,</span> <span class="token string">"replies_count"</span><span class="token punctuation">,</span> 
+		<span class="token string">"retweets_count"</span><span class="token punctuation">,</span> <span class="token string">"likes_count"</span>
+	<span class="token punctuation">]</span><span class="token punctuation">]</span>
+	df<span class="token punctuation">.</span>columns <span class="token operator">=</span> <span class="token punctuation">[</span>
+		<span class="token string">"date"</span><span class="token punctuation">,</span> <span class="token string">"tweet_id"</span><span class="token punctuation">,</span> <span class="token string">"username"</span><span class="token punctuation">,</span> <span class="token string">"tweet"</span><span class="token punctuation">,</span> 
+		<span class="token string">"replies_count"</span><span class="token punctuation">,</span> <span class="token string">"retweets_count"</span><span class="token punctuation">,</span> <span class="token string">"likes_count"</span>
+	<span class="token punctuation">]</span>
+	os<span class="token punctuation">.</span>system<span class="token punctuation">(</span><span class="token string">"rm file.csv"</span><span class="token punctuation">)</span>
+	<span class="token keyword">return</span> df
+
+
+<span class="token keyword">def</span> <span class="token function">insert_into_twitter_tweet_table</span><span class="token punctuation">(</span>initialise<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> delta<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+	connection <span class="token operator">=</span> sqlite3<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token string">"crypto.db"</span><span class="token punctuation">)</span>
+	connection<span class="token punctuation">.</span>row_factory <span class="token operator">=</span> sqlite3<span class="token punctuation">.</span>Row
+	cursor <span class="token operator">=</span> connection<span class="token punctuation">.</span>cursor<span class="token punctuation">(</span><span class="token punctuation">)</span>
+	cursor<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token triple-quoted-string string">"""
+		SELECT * FROM twitter;
+	"""</span><span class="token punctuation">)</span>
+	rows <span class="token operator">=</span> cursor<span class="token punctuation">.</span>fetchall<span class="token punctuation">(</span><span class="token punctuation">)</span>
+	usernames <span class="token operator">=</span> <span class="token punctuation">[</span>row<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span> <span class="token keyword">for</span> row <span class="token keyword">in</span> rows<span class="token punctuation">]</span>
+	username_dict <span class="token operator">=</span> <span class="token punctuation">&#123;</span>row<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">:</span> row<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span> <span class="token keyword">for</span> row <span class="token keyword">in</span> rows<span class="token punctuation">&#125;</span>
+	<span class="token comment"># print(username_dict)</span>
+
+	<span class="token keyword">for</span> username <span class="token keyword">in</span> usernames<span class="token punctuation">:</span>
+		<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Processing </span><span class="token interpolation"><span class="token punctuation">&#123;</span>username<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+		<span class="token keyword">if</span> initialise<span class="token punctuation">:</span>
+			df <span class="token operator">=</span> scrape_tweet<span class="token punctuation">(</span>username<span class="token punctuation">)</span>
+			df <span class="token operator">=</span> df<span class="token punctuation">.</span>reset_index<span class="token punctuation">(</span>drop<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+			df<span class="token punctuation">.</span>columns <span class="token operator">=</span> df<span class="token punctuation">.</span>columns<span class="token punctuation">.</span><span class="token builtin">str</span><span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span>
+		<span class="token keyword">else</span><span class="token punctuation">:</span>
+			<span class="token keyword">try</span><span class="token punctuation">:</span> 
+				selected_date <span class="token operator">=</span> dt<span class="token punctuation">.</span>today<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> timedelta<span class="token punctuation">(</span>days<span class="token operator">=</span>delta<span class="token punctuation">)</span>
+				selected_date<span class="token punctuation">.</span>isoformat<span class="token punctuation">(</span><span class="token punctuation">)</span>
+				df <span class="token operator">=</span> scrape_tweet<span class="token punctuation">(</span>username<span class="token punctuation">,</span> since<span class="token operator">=</span>selected_date<span class="token punctuation">)</span>
+				df <span class="token operator">=</span> df<span class="token punctuation">.</span>reset_index<span class="token punctuation">(</span>drop<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+				df<span class="token punctuation">.</span>columns <span class="token operator">=</span> df<span class="token punctuation">.</span>columns<span class="token punctuation">.</span><span class="token builtin">str</span><span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span>
+			<span class="token keyword">except</span><span class="token punctuation">:</span>
+				<span class="token keyword">continue</span>
+		username_id <span class="token operator">=</span> username_dict<span class="token punctuation">[</span>username<span class="token punctuation">]</span>
+		<span class="token keyword">for</span> idx<span class="token punctuation">,</span> row <span class="token keyword">in</span> df<span class="token punctuation">.</span>iterrows<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+			i <span class="token operator">=</span> username_id
+			d <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>row<span class="token punctuation">[</span><span class="token string">"date"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+			tw <span class="token operator">=</span> row<span class="token punctuation">[</span><span class="token string">"tweet"</span><span class="token punctuation">]</span>
+			un <span class="token operator">=</span> row<span class="token punctuation">[</span><span class="token string">"username"</span><span class="token punctuation">]</span>
+			re <span class="token operator">=</span> row<span class="token punctuation">[</span><span class="token string">"replies_count"</span><span class="token punctuation">]</span>
+			rt <span class="token operator">=</span> row<span class="token punctuation">[</span><span class="token string">"retweets_count"</span><span class="token punctuation">]</span>
+			lc <span class="token operator">=</span> row<span class="token punctuation">[</span><span class="token string">'likes_count'</span><span class="token punctuation">]</span>
+			cursor<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token triple-quoted-string string">"""
+				INSERT INTO twitter_tweet (
+					username_id, date, tweet, username, 
+					replies_count, retweets_count, likes_count
+				)
+				SELECT ?, ?, ?, ?, ?, ?, ?
+				WHERE NOT EXISTS (
+					SELECT * FROM twitter_tweet
+					WHERE date=? AND tweet=?
+				);
+			"""</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>i<span class="token punctuation">,</span> d<span class="token punctuation">,</span> tw<span class="token punctuation">,</span> un<span class="token punctuation">,</span> re<span class="token punctuation">,</span> rt<span class="token punctuation">,</span> lc<span class="token punctuation">,</span> d<span class="token punctuation">,</span> tw<span class="token punctuation">)</span><span class="token punctuation">)</span>
+	connection<span class="token punctuation">.</span>commit<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Build-Font-end-Page"><a href="#Build-Font-end-Page" class="headerlink" title="Build Font-end Page"></a>Build Font-end Page</h2><p>Do the thing which we did in previous. Build the html page for twitter data related to each user account, and put these html file in <code>templates</code> folder.</p>
+<p>First, create a html file called <code>twitter_index</code>.</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">&#123;% extends "layout.html" %&#125;
+
+&#123;% block content %&#125;
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Twitter User List<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ui selectable striped table<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>thead</span><span class="token punctuation">></span></span>
+	    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
+	      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span>Username<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+	    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>thead</span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tbody</span><span class="token punctuation">></span></span>
+	  	&#123;% for row in rows %&#125;
+		    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
+		      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/twitter/&#123;&#123; row.username &#125;&#125;<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>&#123;&#123; row.username &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+		    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
+	    &#123;% endfor %&#125;
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tbody</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span>
+&#123;% endblock %&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>Next, create a html file called <code>twitter_detail</code>.</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">&#123;% extends "layout.html" %&#125;
+
+&#123;% block content %&#125;
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Twitter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ui selectable striped table<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>thead</span><span class="token punctuation">></span></span>
+	    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
+	      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span>Date<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+	      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span>Tweet<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+	      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span># of Replies<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+	      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span># of Retweets<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+	      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>th</span><span class="token punctuation">></span></span># of Likes<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>th</span><span class="token punctuation">></span></span>
+	    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>thead</span><span class="token punctuation">></span></span>
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tbody</span><span class="token punctuation">></span></span>
+	  	&#123;% for tweet in tweets %&#125;
+		    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>
+		      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>&#123;&#123; tweet.date &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+		      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>&#123;&#123; tweet.tweet &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+		      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>&#123;&#123; tweet.replies_count &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+		      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>&#123;&#123; tweet.retweets_count &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+		      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>&#123;&#123; tweet.likes_count &#125;&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>
+		    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
+	    &#123;% endfor %&#125;
+	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tbody</span><span class="token punctuation">></span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span>
+&#123;% endblock %&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>Finally, add <code>twitter_index()</code> and <code>twitter_detail()</code> in <code>app.py</code> file.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/twitter"</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">twitter_index</span><span class="token punctuation">(</span>request<span class="token punctuation">:</span> Request<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    connection <span class="token operator">=</span> sqlite3<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token string">"crypto.db"</span><span class="token punctuation">)</span>
+    connection<span class="token punctuation">.</span>row_factory <span class="token operator">=</span> sqlite3<span class="token punctuation">.</span>Row
+    cursor <span class="token operator">=</span> connection<span class="token punctuation">.</span>cursor<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    cursor<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token triple-quoted-string string">"""
+        SELECT * FROM twitter ORDER BY username;
+    """</span><span class="token punctuation">)</span>
+    rows <span class="token operator">=</span> cursor<span class="token punctuation">.</span>fetchall<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> templates<span class="token punctuation">.</span>TemplateResponse<span class="token punctuation">(</span>
+        <span class="token string">"twitter_index.html"</span><span class="token punctuation">,</span> 
+        <span class="token punctuation">&#123;</span><span class="token string">"request"</span><span class="token punctuation">:</span> request<span class="token punctuation">,</span> <span class="token string">"rows"</span><span class="token punctuation">:</span> rows<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>get</span><span class="token punctuation">(</span><span class="token string">"/twitter/&#123;name&#125;"</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">twitter_detail</span><span class="token punctuation">(</span>request<span class="token punctuation">:</span> Request<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    connection <span class="token operator">=</span> sqlite3<span class="token punctuation">.</span>connect<span class="token punctuation">(</span><span class="token string">"crypto.db"</span><span class="token punctuation">)</span>
+    connection<span class="token punctuation">.</span>row_factory <span class="token operator">=</span> sqlite3<span class="token punctuation">.</span>Row
+    cursor <span class="token operator">=</span> connection<span class="token punctuation">.</span>cursor<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span>
+    cursor<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token triple-quoted-string string">"""
+        SELECT * FROM twitter WHERE username=?;
+    """</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>name<span class="token punctuation">,</span> <span class="token punctuation">)</span><span class="token punctuation">)</span>
+    row <span class="token operator">=</span> cursor<span class="token punctuation">.</span>fetchone<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    cursor<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token triple-quoted-string string">"""
+        SELECT * FROM twitter_tweet WHERE username_id=? ORDER BY date DESC
+    """</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>row<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">)</span><span class="token punctuation">)</span>
+    tweets <span class="token operator">=</span> cursor<span class="token punctuation">.</span>fetchall<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> templates<span class="token punctuation">.</span>TemplateResponse<span class="token punctuation">(</span>
+        <span class="token string">"twitter_detail.html"</span><span class="token punctuation">,</span> 
+        <span class="token punctuation">&#123;</span><span class="token string">"request"</span><span class="token punctuation">:</span> request<span class="token punctuation">,</span> <span class="token string">"row"</span><span class="token punctuation">:</span> row<span class="token punctuation">,</span> <span class="token string">"tweets"</span><span class="token punctuation">:</span> tweets<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
+    <iframe src="https://www.youtube.com/embed/JpBqxEXKW4s" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%;height: 100%; left: 0; top: 0;"> 
+    </iframe>
+</div>
 
 <h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>I’ve done implementing a very simple crypto web app using FastAPI, so that we can check on it efficiently and effectively. Have fun!</p>
 
@@ -913,16 +1188,16 @@ templates <span class="token operator">=</span> Jinja2Templates<span class="toke
                                     <span class="chip bg-color">Python</span>
                                 </a>
                             
+                                <a href="/Hexo-Blog/tags/Finance/">
+                                    <span class="chip bg-color">Finance</span>
+                                </a>
+                            
                                 <a href="/Hexo-Blog/tags/SQL/">
                                     <span class="chip bg-color">SQL</span>
                                 </a>
                             
                                 <a href="/Hexo-Blog/tags/FastAPI/">
                                     <span class="chip bg-color">FastAPI</span>
-                                </a>
-                            
-                                <a href="/Hexo-Blog/tags/Finance/">
-                                    <span class="chip bg-color">Finance</span>
                                 </a>
                             
                         </div>
@@ -964,7 +1239,7 @@ templates <span class="token operator">=</span> Jinja2Templates<span class="toke
     disqus_config = function () {
         this.page.url = 'https://penguinwang96825.github.io/Hexo-Blog/2021/03/15/2021-03-15-visualise-crypto-with-sql-and-fastapi/';
         this.page.identifier = '/Hexo-Blog/2021/03/15/2021-03-15-visualise-crypto-with-sql-and-fastapi/';
-        this.page.title = 'Visualise Crypto with SQL and FastAPI';
+        this.page.title = 'Visualise Crypto and Twitter with SQL and FastAPI';
     };
     let disqus_shortname = 'penguinwang';
 
@@ -1000,15 +1275,15 @@ templates <span class="token operator">=</span> Jinja2Templates<span class="toke
                 <a href="/Hexo-Blog/2021/03/15/2021-03-15-visualise-crypto-with-sql-and-fastapi/">
                     <div class="card-image">
                         
-                        <img src="https://github.com/penguinwang96825/Hexo-Blog/blob/master/2021/03/15/2021-03-15-visualise-crypto-with-sql-and-fastapi/wallhaven-q6jvjl.jpg?raw=true" class="responsive-img" alt="Visualise Crypto with SQL and FastAPI">
+                        <img src="https://github.com/penguinwang96825/Hexo-Blog/blob/master/2021/03/15/2021-03-15-visualise-crypto-with-sql-and-fastapi/wallhaven-q6jvjl.jpg?raw=true" class="responsive-img" alt="Visualise Crypto and Twitter with SQL and FastAPI">
                         
-                        <span class="card-title">Visualise Crypto with SQL and FastAPI</span>
+                        <span class="card-title">Visualise Crypto and Twitter with SQL and FastAPI</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            In this article, first, I'll populate crypto database using Python and SQL. I retrieve the list of crypto coin assets, verify the data, and tackle any errors I encounter along the way. Second, I'll talk about how to keep the database up to date with the latest prices, and retrieve daily data from the yahoo finance API. Finally, I'll set up to build a web UI usin FastAPI.
+                            In this article, first, I'll populate crypto database using Python and SQL. I retrieve the list of crypto coin assets, verify the data, and tackle any errors I encounter along the way. Second, I'll talk about how to keep the database up to date with the latest prices, and retrieve daily data from the yahoo finance API. Third, a database for twitter data will be built as well. Finally, I'll set up to build a web UI using FastAPI.
                         
                     </div>
                     <div class="publish-info">
@@ -1035,16 +1310,16 @@ templates <span class="token operator">=</span> Jinja2Templates<span class="toke
                         <span class="chip bg-color">Python</span>
                     </a>
                     
+                    <a href="/Hexo-Blog/tags/Finance/">
+                        <span class="chip bg-color">Finance</span>
+                    </a>
+                    
                     <a href="/Hexo-Blog/tags/SQL/">
                         <span class="chip bg-color">SQL</span>
                     </a>
                     
                     <a href="/Hexo-Blog/tags/FastAPI/">
                         <span class="chip bg-color">FastAPI</span>
-                    </a>
-                    
-                    <a href="/Hexo-Blog/tags/Finance/">
-                        <span class="chip bg-color">Finance</span>
                     </a>
                     
                 </div>
@@ -1345,7 +1620,7 @@ templates <span class="token operator">=</span> Jinja2Templates<span class="toke
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total site word count:&nbsp;<span
-                class="white-color">49k</span>&nbsp;words
+                class="white-color">50.3k</span>&nbsp;words
             
             
             
