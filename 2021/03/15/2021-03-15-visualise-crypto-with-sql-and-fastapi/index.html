@@ -481,14 +481,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    3k
+                    3.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    18 Min
+                    19 Min
                 </div>
                 
 
@@ -512,7 +512,32 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>In this article, first, I’ll populate crypto database using Python and SQL. I retrieve the list of crypto coin assets, verify the data, and tackle any errors I encounter along the way. Second, I’ll talk about how to keep the database up to date with the latest prices, and retrieve daily data from the yahoo finance API. Third, a database for twitter data will be built as well. Finally, I’ll set up to build a web UI using FastAPI.</p>
-<h1 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h1><h2 id="Initialise-Database"><a href="#Initialise-Database" class="headerlink" title="Initialise Database"></a>Initialise Database</h2><p>At the very begining, I create a database file called “crypto.db”, by typing <code>touch crypto.db</code> in the command line. I want to crawl the crypto coin data on a daily basis, so I create a list which contains the crypto coin I want to keep up to date.</p>
+<h1 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h1><p>What is cryptocurrency? Cryptocurrency is a form of payment that can be exchanged online for goods and services. Many companies have issued their own currencies, often called tokens, and these can be traded specifically for the good or service that the company provides. Think of them as you would arcade tokens or casino chips. You’ll need to exchange real currency for the cryptocurrency to access the good or service.</p>
+<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><p>Before we jump into building a database for something, we need to clarify some general types of database activities in the basic SQL commands for them.</p>
+<ul>
+<li>Data Definition Language (DDL)<ul>
+<li>CREATE: define a new table</li>
+<li>ALTER: change the types of records for a table</li>
+<li>DROP: remove a table</li>
+</ul>
+</li>
+<li>Data Manipulation Language (DML)<ul>
+<li>INSERT: add records to tables</li>
+<li>UPDATE: change part of a record</li>
+<li>DELETE: remove records from a table</li>
+</ul>
+</li>
+<li>Data Query Language (DQL)<ul>
+<li>SELECT: retrieve data</li>
+</ul>
+</li>
+<li>Data Control Language (DCL)<ul>
+<li>GRANT: give database privileges</li>
+<li>REVOKE: take away privileges</li>
+</ul>
+</li>
+</ul>
+<h2 id="Initialise-Database"><a href="#Initialise-Database" class="headerlink" title="Initialise Database"></a>Initialise Database</h2><p>At the very begining, I create a database file called “crypto.db”, by typing <code>touch crypto.db</code> in the command line. I want to crawl the crypto coin data on a daily basis, so I create a list which contains the crypto coin I want to keep up to date.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">symbols <span class="token operator">=</span> <span class="token punctuation">[</span>
 	<span class="token string">'BTC-USD'</span><span class="token punctuation">,</span> <span class="token string">'ETH-USD'</span><span class="token punctuation">,</span> <span class="token string">'BNB-USD'</span><span class="token punctuation">,</span> <span class="token string">'DOGE-USD'</span><span class="token punctuation">,</span> <span class="token string">'USDT-USD'</span><span class="token punctuation">,</span> 
 	<span class="token string">'LTC-USD'</span><span class="token punctuation">,</span> <span class="token string">'LINK-USD'</span><span class="token punctuation">,</span> <span class="token string">'USDC-USD'</span><span class="token punctuation">,</span> <span class="token string">'THETA-USD'</span><span class="token punctuation">,</span> <span class="token string">'XMR-USD'</span>
@@ -1611,7 +1636,7 @@ templates <span class="token operator">=</span> Jinja2Templates<span class="toke
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total site word count:&nbsp;<span
-                class="white-color">51.7k</span>&nbsp;words
+                class="white-color">54.1k</span>&nbsp;words
             
             
             
