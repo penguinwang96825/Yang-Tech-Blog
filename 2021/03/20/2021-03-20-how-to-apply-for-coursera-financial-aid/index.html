@@ -311,6 +311,19 @@
 </header>
 
     
+<script src="/Hexo-Blog/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = 'wangwang';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('Please enter the password to access this article!')).toString(CryptoJS.enc.Hex)) {
+                alert('Wrong password, will return to the home page!');
+                location.href = '/Hexo-Blog/';
+            }
+        }
+    })();
+</script>
+
 
 
 
