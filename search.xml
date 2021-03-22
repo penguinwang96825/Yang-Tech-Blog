@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Text Representation for Unstructured Data</title>
+      <link href="/Hexo-Blog/2021/03/22/2021-03-22-text-representation-for-unstructured-data/"/>
+      <url>/Hexo-Blog/2021/03/22/2021-03-22-text-representation-for-unstructured-data/</url>
+      
+        <content type="html"><![CDATA[<p>Text is a very important unstructured data, and how to represent text data has been an important research direction in the field of machine learning. In this article, I will only discuss the very basic methods, such as Bag of Words, TF-IDF (Term Frequency Inverse Document Frequency), Topic Model, and Word Embedding.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> NLP </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Data Science </tag>
+            
+            <tag> NLP </tag>
+            
+            <tag> Text </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Notes on Basic Feature Engineering</title>
       <link href="/Hexo-Blog/2021/03/22/2021-03-22-notes-on-feature-engineering/"/>
       <url>/Hexo-Blog/2021/03/22/2021-03-22-notes-on-feature-engineering/</url>
