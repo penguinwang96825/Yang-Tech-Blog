@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Eigenvectors from Eigenvalues, Yang&#39;s Blog">
+    <meta name="keywords" content="Notes on Feature Engineering, Yang&#39;s Blog">
     <meta name="description" content="CS Student / NLP Enthusiast / Tireless Coder">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Eigenvectors from Eigenvalues | Yang&#39;s Blog</title>
+    <title>Notes on Feature Engineering | Yang&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/Hexo-Blog/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/Hexo-Blog/libs/awesome/css/all.css">
@@ -327,12 +327,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://github.com/penguinwang96825/Hexo-Blog/blob/master/2021/03/15/2021-03-15-eigenvectors-from-eigenvalues/wallhaven-9mxz8k.jpg?raw=true')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://github.com/penguinwang96825/Hexo-Blog/blob/master/2021/03/20/2021-03-20-what-is-technical-indicators/wallhaven-k9vm2d.jpg?raw=true')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Eigenvectors from Eigenvalues</h1>
+                    <h1 class="description center-align post-title">Notes on Feature Engineering</h1>
                 </div>
             </div>
         </div>
@@ -448,16 +448,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/Hexo-Blog/tags/Python/">
-                                <span class="chip bg-color">Python</span>
+                            <a href="/Hexo-Blog/tags/Statistics/">
+                                <span class="chip bg-color">Statistics</span>
                             </a>
                         
-                            <a href="/Hexo-Blog/tags/R/">
-                                <span class="chip bg-color">R</span>
-                            </a>
-                        
-                            <a href="/Hexo-Blog/tags/Linear-Algebra/">
-                                <span class="chip bg-color">Linear Algebra</span>
+                            <a href="/Hexo-Blog/tags/Data-Science/">
+                                <span class="chip bg-color">Data Science</span>
                             </a>
                         
                     </div>
@@ -468,8 +464,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/Hexo-Blog/categories/Math-Programming/" class="post-category">
-                                Math Programming
+                            <a href="/Hexo-Blog/categories/Data-Science/" class="post-category">
+                                Data Science
                             </a>
                         
                     </div>
@@ -481,7 +477,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-03-15
+                    2021-03-22
                 </div>
                 
 
@@ -490,7 +486,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    641
+                    718
                 </div>
                 
 
@@ -520,114 +516,44 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>This article is about implementing “Eigenvectors from eigenvalues” of Terence Tao’s paper using Python and R. It’s a amazing work and mathematics contribution from Terence Tao. It is an elegant non-evident result, which makes me so excited about it!</p>
-<h1 id="Eigenvector-eigenvalue-Identity"><a href="#Eigenvector-eigenvalue-Identity" class="headerlink" title="Eigenvector-eigenvalue Identity"></a>Eigenvector-eigenvalue Identity</h1><p>According to Eigenvector-eigenvalue Identity Theorem, We have </p>
+                <p>Without sufficient data and suitable features, the most powerful model structure cannot get satisfactory output. As a classic saying goes, “Garbage in, garbage out.” For a machine learning problem, the data and features often determine the upper limit of the results, while the selection of models, algorithms and optimization are gradually approaching this upper limit.</p>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Feature engineering, as the name implies, is a series of engineering processes on raw data to distill it into features that can be used as input for algorithms and models. In essence, feature engineering is a process of representing the data.</p>
+<p>Typically, there are two types of data:</p>
+<ol>
+<li>Structured Data: The structured data type can be viewed as a table in a relational database, with each column is clearly defined and contains two basic types: numeric and categorical; each row of data represents a sample. Each row of data represents a sample of information.</li>
+<li>Unstructured Data: Unstructured data mainly includes text, image, audio and video data. The information it contains cannot be represented by a simple numerical value, and there is no clear definition of categories, and each piece of data. The size of each piece of data varies.</li>
+</ol>
+<h1 id="Feature-Normalisation"><a href="#Feature-Normalisation" class="headerlink" title="Feature Normalisation"></a>Feature Normalisation</h1><p>Normalization is a scaling technique in which values are shifted and rescaled so that they end up ranging between an interval. Feature normalisation will make different indicators comparable. For example, to analyze the impact of a person’s height and weight on health, if using meters (m) and kilograms (kg) as units, then the height characteristics would be in the range of values from 1.6 to 1.8m, and weight characteristics would be in the range of 50 to 100 kg, and the results of the analysis would clearly favor the weight characteristics with a greater numerical difference.</p>
+<p>The two main methods most commonly used are as follows.</p>
+<ol>
+<li>Min-Max Scaling</li>
+</ol>
 <div style="display: flex;justify-content: center;">
-    <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -3.112ex" xmlns="http://www.w3.org/2000/svg" width="51.042ex" height="7.005ex" role="img" focusable="false" viewBox="0 -1720.9 22560.6 3096.2" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-7-TEX-N-2016" d="M133 736Q138 750 153 750Q164 750 170 739Q172 735 172 250T170 -239Q164 -250 152 -250Q144 -250 138 -244L137 -243Q133 -241 133 -179T132 250Q132 731 133 736ZM329 739Q334 750 346 750Q353 750 361 744L362 743Q366 741 366 679T367 250T367 -178T362 -243L361 -244Q355 -250 347 -250Q335 -250 329 -239Q327 -235 327 250T329 739Z"></path><path id="MJX-7-TEX-I-1D463" d="M173 380Q173 405 154 405Q130 405 104 376T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Q21 294 29 316T53 368T97 419T160 441Q202 441 225 417T249 361Q249 344 246 335Q246 329 231 291T200 202T182 113Q182 86 187 69Q200 26 250 26Q287 26 319 60T369 139T398 222T409 277Q409 300 401 317T383 343T365 361T357 383Q357 405 376 424T417 443Q436 443 451 425T467 367Q467 340 455 284T418 159T347 40T241 -11Q177 -11 139 22Q102 54 102 117Q102 148 110 181T151 298Q173 362 173 380Z"></path><path id="MJX-7-TEX-I-1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path id="MJX-7-TEX-N-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path id="MJX-7-TEX-I-1D457" d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z"></path><path id="MJX-7-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-7-TEX-LO-220F" d="M220 812Q220 813 218 819T214 829T208 840T199 853T185 866T166 878T140 887T107 893T66 896H56V950H1221V896H1211Q1080 896 1058 812V-311Q1076 -396 1211 -396H1221V-450H725V-396H735Q864 -396 888 -314Q889 -312 889 -311V896H388V292L389 -311Q405 -396 542 -396H552V-450H56V-396H66Q195 -396 219 -314Q220 -312 220 -311V812Z"></path><path id="MJX-7-TEX-I-1D458" d="M121 647Q121 657 125 670T137 683Q138 683 209 688T282 694Q294 694 294 686Q294 679 244 477Q194 279 194 272Q213 282 223 291Q247 309 292 354T362 415Q402 442 438 442Q468 442 485 423T503 369Q503 344 496 327T477 302T456 291T438 288Q418 288 406 299T394 328Q394 353 410 369T442 390L458 393Q446 405 434 405H430Q398 402 367 380T294 316T228 255Q230 254 243 252T267 246T293 238T320 224T342 206T359 180T365 147Q365 130 360 106T354 66Q354 26 381 26Q429 26 459 145Q461 153 479 153H483Q499 153 499 144Q499 139 496 130Q455 -11 378 -11Q333 -11 305 15T277 90Q277 108 280 121T283 145Q283 167 269 183T234 206T200 217T182 220H180Q168 178 159 139T145 81T136 44T129 20T122 7T111 -2Q98 -11 83 -11Q66 -11 57 -1T48 16Q48 26 85 176T158 471L195 616Q196 629 188 632T149 637H144Q134 637 131 637T124 640T121 647Z"></path><path id="MJX-7-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-7-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-7-TEX-N-3B" d="M78 370Q78 394 95 412T138 430Q162 430 180 414T199 371Q199 346 182 328T139 310T96 327T78 370ZM78 60Q78 85 94 103T137 121Q202 121 202 8Q202 -44 183 -94T144 -169T118 -194Q115 -194 106 -186T95 -174Q94 -171 107 -155T137 -107T160 -38Q161 -32 162 -22T165 -4T165 4Q165 5 161 4T142 0Q110 0 94 18T78 60Z"></path><path id="MJX-7-TEX-N-2260" d="M166 -215T159 -215T147 -212T141 -204T139 -197Q139 -190 144 -183L306 133H70Q56 140 56 153Q56 168 72 173H327L406 327H72Q56 332 56 347Q56 360 70 367H426Q597 702 602 707Q605 716 618 716Q625 716 630 712T636 703T638 696Q638 692 471 367H707Q722 359 722 347Q722 336 708 328L451 327L371 173H708Q722 163 722 153Q722 140 707 133H351Q175 -210 170 -212Q166 -215 159 -215Z"></path><path id="MJX-7-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-7-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-7-TEX-I-1D706" d="M166 673Q166 685 183 694H202Q292 691 316 644Q322 629 373 486T474 207T524 67Q531 47 537 34T546 15T551 6T555 2T556 -2T550 -11H482Q457 3 450 18T399 152L354 277L340 262Q327 246 293 207T236 141Q211 112 174 69Q123 9 111 -1T83 -12Q47 -12 47 20Q47 37 61 52T199 187Q229 216 266 252T321 306L338 322Q338 323 288 462T234 612Q214 657 183 657Q166 657 166 673Z"></path><path id="MJX-7-TEX-I-1D434" d="M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z"></path><path id="MJX-7-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-7-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-7-TEX-I-1D440" d="M289 629Q289 635 232 637Q208 637 201 638T194 648Q194 649 196 659Q197 662 198 666T199 671T201 676T203 679T207 681T212 683T220 683T232 684Q238 684 262 684T307 683Q386 683 398 683T414 678Q415 674 451 396L487 117L510 154Q534 190 574 254T662 394Q837 673 839 675Q840 676 842 678T846 681L852 683H948Q965 683 988 683T1017 684Q1051 684 1051 673Q1051 668 1048 656T1045 643Q1041 637 1008 637Q968 636 957 634T939 623Q936 618 867 340T797 59Q797 55 798 54T805 50T822 48T855 46H886Q892 37 892 35Q892 19 885 5Q880 0 869 0Q864 0 828 1T736 2Q675 2 644 2T609 1Q592 1 592 11Q592 13 594 25Q598 41 602 43T625 46Q652 46 685 49Q699 52 704 61Q706 65 742 207T813 490T848 631L654 322Q458 10 453 5Q451 4 449 3Q444 0 433 0Q418 0 415 7Q413 11 374 317L335 624L267 354Q200 88 200 79Q206 46 272 46H282Q288 41 289 37T286 19Q282 3 278 1Q274 0 267 0Q265 0 255 0T221 1T157 2Q127 2 95 1T58 0Q43 0 39 2T35 11Q35 13 38 25T43 40Q45 46 65 46Q135 46 154 86Q158 92 223 354T289 629Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mo"><use xlink:href="#MJX-7-TEX-N-2016"></use></g><g data-mml-node="msub" transform="translate(500, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-7-TEX-I-1D463"></use></g><g data-mml-node="TeXAtom" transform="translate(485, -150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-7-TEX-I-1D456"></use></g><g data-mml-node="mo" transform="translate(345, 0)"><use xlink:href="#MJX-7-TEX-N-2C"></use></g><g data-mml-node="mi" transform="translate(623, 0)"><use xlink:href="#MJX-7-TEX-I-1D457"></use></g></g></g><g data-mml-node="msup" transform="translate(1766.9, 0)"><g data-mml-node="mo"><use xlink:href="#MJX-7-TEX-N-2016"></use></g><g data-mml-node="mn" transform="translate(500, 363) scale(0.707)"><use xlink:href="#MJX-7-TEX-N-32"></use></g></g><g data-mml-node="mstyle" transform="translate(2837.1, 0)"><g data-mml-node="munderover"><g data-mml-node="mo" transform="translate(676.6, 0)"><use xlink:href="#MJX-7-TEX-LO-220F"></use></g><g data-mml-node="TeXAtom" transform="translate(0, -1123.3) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-7-TEX-I-1D458"></use></g><g data-mml-node="mo" transform="translate(521, 0)"><use xlink:href="#MJX-7-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(1299, 0)"><use xlink:href="#MJX-7-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(1799, 0)"><use xlink:href="#MJX-7-TEX-N-3B"></use></g><g data-mml-node="mi" transform="translate(2077, 0)"><use xlink:href="#MJX-7-TEX-I-1D458"></use></g><g data-mml-node="mo" transform="translate(2598, 0)"><use xlink:href="#MJX-7-TEX-N-2260"></use></g><g data-mml-node="mi" transform="translate(3376, 0)"><use xlink:href="#MJX-7-TEX-I-1D456"></use></g></g><g data-mml-node="TeXAtom" transform="translate(1103.4, 1150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-7-TEX-I-1D45B"></use></g></g></g><g data-mml-node="mo" transform="translate(2631.1, 0)"><use xlink:href="#MJX-7-TEX-N-28"></use></g><g data-mml-node="msub" transform="translate(3020.1, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-7-TEX-I-1D706"></use></g><g data-mml-node="TeXAtom" transform="translate(583, -150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-7-TEX-I-1D456"></use></g></g></g><g data-mml-node="mo" transform="translate(3897.1, 0)"><use xlink:href="#MJX-7-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(4286.1, 0)"><use xlink:href="#MJX-7-TEX-I-1D434"></use></g><g data-mml-node="mo" transform="translate(5036.1, 0)"><use xlink:href="#MJX-7-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(5647.3, 0)"><use xlink:href="#MJX-7-TEX-N-2212"></use></g><g data-mml-node="msub" transform="translate(6647.5, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-7-TEX-I-1D706"></use></g><g data-mml-node="TeXAtom" transform="translate(583, -150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-7-TEX-I-1D458"></use></g></g></g><g data-mml-node="mo" transform="translate(7648.9, 0)"><use xlink:href="#MJX-7-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(8037.9, 0)"><use xlink:href="#MJX-7-TEX-I-1D434"></use></g><g data-mml-node="mo" transform="translate(8787.9, 0)"><use xlink:href="#MJX-7-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(9176.9, 0)"><use xlink:href="#MJX-7-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(9843.7, 0)"><use xlink:href="#MJX-7-TEX-N-3D"></use></g><g data-mml-node="munderover" transform="translate(10899.5, 0)"><g data-mml-node="mo" transform="translate(25, 0)"><use xlink:href="#MJX-7-TEX-LO-220F"></use></g><g data-mml-node="TeXAtom" transform="translate(27.9, -1107.7) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-7-TEX-I-1D458"></use></g><g data-mml-node="mo" transform="translate(521, 0)"><use xlink:href="#MJX-7-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(1299, 0)"><use xlink:href="#MJX-7-TEX-N-31"></use></g></g><g data-mml-node="TeXAtom" transform="translate(0, 1150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-7-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(600, 0)"><use xlink:href="#MJX-7-TEX-N-2212"></use></g><g data-mml-node="mn" transform="translate(1378, 0)"><use xlink:href="#MJX-7-TEX-N-31"></use></g></g></g><g data-mml-node="mo" transform="translate(12227.4, 0)"><use xlink:href="#MJX-7-TEX-N-28"></use></g><g data-mml-node="msub" transform="translate(12616.4, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-7-TEX-I-1D706"></use></g><g data-mml-node="TeXAtom" transform="translate(583, -150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-7-TEX-I-1D456"></use></g></g></g><g data-mml-node="mo" transform="translate(13493.4, 0)"><use xlink:href="#MJX-7-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(13882.4, 0)"><use xlink:href="#MJX-7-TEX-I-1D434"></use></g><g data-mml-node="mo" transform="translate(14632.4, 0)"><use xlink:href="#MJX-7-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(15243.6, 0)"><use xlink:href="#MJX-7-TEX-N-2212"></use></g><g data-mml-node="msub" transform="translate(16243.8, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-7-TEX-I-1D706"></use></g><g data-mml-node="TeXAtom" transform="translate(583, -150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-7-TEX-I-1D458"></use></g></g></g><g data-mml-node="mo" transform="translate(17245.2, 0)"><use xlink:href="#MJX-7-TEX-N-28"></use></g><g data-mml-node="msub" transform="translate(17634.2, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-7-TEX-I-1D440"></use></g><g data-mml-node="TeXAtom" transform="translate(970, -150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-7-TEX-I-1D457"></use></g></g></g><g data-mml-node="mo" transform="translate(18945.6, 0)"><use xlink:href="#MJX-7-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(19334.6, 0)"><use xlink:href="#MJX-7-TEX-N-29"></use></g></g></g></g></svg></mjx-container>
+    <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -1.033ex" xmlns="http://www.w3.org/2000/svg" width="18.216ex" height="3.147ex" role="img" focusable="false" viewBox="0 -934.5 8051.3 1391.1" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-11-TEX-I-1D44B" d="M42 0H40Q26 0 26 11Q26 15 29 27Q33 41 36 43T55 46Q141 49 190 98Q200 108 306 224T411 342Q302 620 297 625Q288 636 234 637H206Q200 643 200 645T202 664Q206 677 212 683H226Q260 681 347 681Q380 681 408 681T453 682T473 682Q490 682 490 671Q490 670 488 658Q484 643 481 640T465 637Q434 634 411 620L488 426L541 485Q646 598 646 610Q646 628 622 635Q617 635 609 637Q594 637 594 648Q594 650 596 664Q600 677 606 683H618Q619 683 643 683T697 681T738 680Q828 680 837 683H845Q852 676 852 672Q850 647 840 637H824Q790 636 763 628T722 611T698 593L687 584Q687 585 592 480L505 384Q505 383 536 304T601 142T638 56Q648 47 699 46Q734 46 734 37Q734 35 732 23Q728 7 725 4T711 1Q708 1 678 1T589 2Q528 2 496 2T461 1Q444 1 444 10Q444 11 446 25Q448 35 450 39T455 44T464 46T480 47T506 54Q523 62 523 64Q522 64 476 181L429 299Q241 95 236 84Q232 76 232 72Q232 53 261 47Q262 47 267 47T273 46Q276 46 277 46T280 45T283 42T284 35Q284 26 282 19Q279 6 276 4T261 1Q258 1 243 1T201 2T142 2Q64 2 42 0Z"></path><path id="MJX-11-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-11-TEX-I-1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path><path id="MJX-11-TEX-I-1D45F" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-11-TEX-I-1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-11-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-11-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-11-TEX-I-1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path id="MJX-11-TEX-I-1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path id="MJX-11-TEX-I-1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use xlink:href="#MJX-11-TEX-I-1D44B"></use></g><g data-mml-node="TeXAtom" transform="translate(828, -150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-11-TEX-I-1D45B"></use></g><g data-mml-node="mi" transform="translate(600, 0)"><use xlink:href="#MJX-11-TEX-I-1D45C"></use></g><g data-mml-node="mi" transform="translate(1085, 0)"><use xlink:href="#MJX-11-TEX-I-1D45F"></use></g><g data-mml-node="mi" transform="translate(1536, 0)"><use xlink:href="#MJX-11-TEX-I-1D45A"></use></g></g></g><g data-mml-node="mo" transform="translate(2862.7, 0)"><use xlink:href="#MJX-11-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(3918.5, 0)"><g data-mml-node="mrow" transform="translate(723.9, 451.6) scale(0.707)"><g data-mml-node="mi"><use xlink:href="#MJX-11-TEX-I-1D44B"></use></g><g data-mml-node="mo" transform="translate(852, 0)"><use xlink:href="#MJX-11-TEX-N-2212"></use></g><g data-mml-node="msub" transform="translate(1630, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-11-TEX-I-1D44B"></use></g><g data-mml-node="TeXAtom" transform="translate(828, -150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-11-TEX-I-1D45A"></use></g><g data-mml-node="mi" transform="translate(878, 0)"><use xlink:href="#MJX-11-TEX-I-1D456"></use></g><g data-mml-node="mi" transform="translate(1223, 0)"><use xlink:href="#MJX-11-TEX-I-1D45B"></use></g></g></g></g><g data-mml-node="mrow" transform="translate(220, -345) scale(0.707)"><g data-mml-node="msub"><g data-mml-node="mi"><use xlink:href="#MJX-11-TEX-I-1D44B"></use></g><g data-mml-node="TeXAtom" transform="translate(828, -150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-11-TEX-I-1D45A"></use></g><g data-mml-node="mi" transform="translate(878, 0)"><use xlink:href="#MJX-11-TEX-I-1D44E"></use></g><g data-mml-node="mi" transform="translate(1407, 0)"><use xlink:href="#MJX-11-TEX-I-1D465"></use></g></g></g><g data-mml-node="mo" transform="translate(2277.4, 0)"><use xlink:href="#MJX-11-TEX-N-2212"></use></g><g data-mml-node="msub" transform="translate(3055.4, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-11-TEX-I-1D44B"></use></g><g data-mml-node="TeXAtom" transform="translate(828, -150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-11-TEX-I-1D45A"></use></g><g data-mml-node="mi" transform="translate(878, 0)"><use xlink:href="#MJX-11-TEX-I-1D456"></use></g><g data-mml-node="mi" transform="translate(1223, 0)"><use xlink:href="#MJX-11-TEX-I-1D45B"></use></g></g></g></g><rect width="3892.8" height="60" x="120" y="220"></rect></g></g></g></svg></mjx-container>
 </div>
 
-<h2 id="Python-Implementation"><a href="#Python-Implementation" class="headerlink" title="Python Implementation"></a>Python Implementation</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">eigenvectors_from_eigenvalues</span><span class="token punctuation">(</span>A<span class="token punctuation">,</span> eig_val_A<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token triple-quoted-string string">"""
-    Implementation of Eigenvector-eigenvalue Identity Theorem
-    Reference from https://dearxxj.github.io/post/7/
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>preprocessing <span class="token keyword">import</span> MinMaxScaler
 
-    Parameters:
-        A: (n, n) Hermitian matrix (array-like)
-        eig_val_A: (n, ) vector (float ndarray)
-    Return: 
-        eig_vec_A: Eigenvectors of matrix A
-    """</span>
-    n <span class="token operator">=</span> A<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-    <span class="token comment"># Produce eig_val_A by scipy.linalg.eigh() function</span>
-    <span class="token keyword">if</span> eig_val_A <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
-        eig_val_A<span class="token punctuation">,</span> _ <span class="token operator">=</span> eigh<span class="token punctuation">(</span>A<span class="token punctuation">)</span>
-    eig_vec_A <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    start <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token comment"># Remove the k-th row</span>
-        M <span class="token operator">=</span> np<span class="token punctuation">.</span>delete<span class="token punctuation">(</span>A<span class="token punctuation">,</span> k<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
-        <span class="token comment"># Remove the k-th column</span>
-        M <span class="token operator">=</span> np<span class="token punctuation">.</span>delete<span class="token punctuation">(</span>M<span class="token punctuation">,</span> k<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
-        <span class="token comment"># Produce eig_val_M by scipy.linalg.eigh() function</span>
-        eig_val_M<span class="token punctuation">,</span> _ <span class="token operator">=</span> eigh<span class="token punctuation">(</span>M<span class="token punctuation">)</span>
+scaler <span class="token operator">=</span> MinMaxScaler<span class="token punctuation">(</span><span class="token punctuation">)</span>
+scaled_data <span class="token operator">=</span> scaler<span class="token punctuation">.</span>fit_transform<span class="token punctuation">(</span>data<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-        nominator <span class="token operator">=</span> <span class="token punctuation">[</span>np<span class="token punctuation">.</span>prod<span class="token punctuation">(</span>eig_val_A<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> eig_val_M<span class="token punctuation">)</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">]</span>
-        denominator <span class="token operator">=</span> <span class="token punctuation">[</span>np<span class="token punctuation">.</span>prod<span class="token punctuation">(</span>np<span class="token punctuation">.</span>delete<span class="token punctuation">(</span>eig_val_A<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> eig_val_A<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">]</span>
-
-        eig_vec_A<span class="token punctuation">[</span>k<span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>nominator<span class="token punctuation">)</span> <span class="token operator">/</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>denominator<span class="token punctuation">)</span>
-    elapse_time <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> start
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"It takes &#123;:.8f&#125;s to compute eigenvectors using Eigenvector-eigenvalue Identity."</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>elapse_time<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> eig_vec_A<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>Test <code>eigenvectors_from_eigenvalues()</code> on matrix A.</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">A <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-eig_vec_A <span class="token operator">=</span> eigenvectors_from_eigenvalues<span class="token punctuation">(</span>A<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>eig_vec_A<span class="token punctuation">)</span>
-
-start <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
-eig_val_A<span class="token punctuation">,</span> eig_vec_A <span class="token operator">=</span> eigh<span class="token punctuation">(</span>A<span class="token punctuation">)</span><span class="token punctuation">;</span> eig_vec_A
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"\nIt takes &#123;:.8f&#125;s to compute eigenvectors using scipy.linalg.eigh() function."</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span>start<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>eig_vec_A<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<hr>
-<pre class="line-numbers language-console" data-language="console"><code class="language-console">It takes 0.00070190s to compute eigenvectors using Eigenvector-eigenvalue Identity.
-[[0.66666667 0.33333333 0.        ]
- [0.16666667 0.33333333 0.5       ]
- [0.16666667 0.33333333 0.5       ]]
-
-It takes 0.00016832s to compute eigenvectors using scipy.linalg.eigh() function.
-[[ 0.81649658 -0.57735027  0.        ]
- [-0.40824829 -0.57735027  0.70710678]
- [ 0.40824829  0.57735027  0.70710678]]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="R-Implementation"><a href="#R-Implementation" class="headerlink" title="R Implementation"></a>R Implementation</h2><pre class="line-numbers language-R" data-language="R"><code class="language-R">A &#x3D; matrix(c(1, 1, -1, 1, 3, 1, -1, 1, 3), 3, 3)
-
-vec_from_val &#x3D; function(A)&#123;
-  # A should be Hermitian matrix
-  n &#x3D; sqrt(length(A))
-  Aeig &#x3D; eigen(A)$values
-  # V is eigenvecters matrix
-  V &#x3D; matrix(ncol&#x3D;n, nrow&#x3D;n)
-  
-  for (i in 1:n)&#123;
-    AM &#x3D; Aeig[-i]
-    for (j in 1:n)&#123;
-      # Minors matrix B
-      B &#x3D; A[-j, ]
-      B &#x3D; B[, -j]
-      Beig &#x3D; eigen(B)$values
-
-      down &#x3D; 1; up &#x3D; 1
-      # n_0 is the dimension of B
-      n_0 &#x3D; n - 1
-      
-      for (k in 1:n_0)&#123;
-        down &#x3D; down * (Aeig[i] - AM[k])
-        up &#x3D; up * (Aeig[i] - Beig[k])
-      &#125;
-      
-      V[i, j] &#x3D; up &#x2F; down
-    &#125;
-  &#125;
-  
-  return(t(V))
-&#125;
-
-vec_from_val(A)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><ol>
-<li>The eigenvector-eigenvalue identity only yields information about the magnitude of the components of a given eigenvector, but does not directly reveal the phase of these components. Otherwise, the eigenvector-eigenvalue identity may be more computationally feasible only if one has an application that requires only the component magnitudes.</li>
-<li>It would be a computationally intensive task in general to compute all n-1 eigenvalues of each of the n minors matrices.</li>
-<li>An additional method would then be needed to calculate the signs of these components of eigenvectors.</li>
-<li>It has not been seen that the eigenvector-eigenvalue identity has better speed at computing eigenvectors compared to <code>scipy.linalg.eigh()</code> function.</li>
+<ol start="2">
+<li>Z-Score Normalisation</li>
 </ol>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
-<li>[<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1908.03795.pdf">link</a>] Terence Tao, Eigenvectors from eigenvalues: a survey of a basic identity in linear algebra.</li>
-<li>[<a target="_blank" rel="noopener" href="https://www.ias.ac.in/article/fulltext/jcsc/101/06/0499-0517">link</a>] Asok K. Mukherjee and Kali Kinkar Datta. Two new graph-theoretical methods for generation of eigenvectors of chemical graphs</li>
-<li>[<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1907.02534.pdf">link</a>] Peter B Denton, Stephen J Parke, and Xining Zhang. Eigenvalues: the Rosetta Stone for Neutrino Oscillations in Matter</li>
-<li><a target="_blank" rel="noopener" href="https://math.stackexchange.com/questions/3436475/how-to-get-eigenvectors-from-eigenvalues">https://math.stackexchange.com/questions/3436475/how-to-get-eigenvectors-from-eigenvalues</a></li>
-<li><a target="_blank" rel="noopener" href="https://terrytao.wordpress.com/2019/08/13/eigenvectors-from-eigenvalues/">https://terrytao.wordpress.com/2019/08/13/eigenvectors-from-eigenvalues/</a></li>
-</ol>
+<div style="display: flex;justify-content: center;">
+    <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.798ex" xmlns="http://www.w3.org/2000/svg" width="8.773ex" height="2.846ex" role="img" focusable="false" viewBox="0 -905 3877.5 1257.8" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-10-TEX-I-1D44D" d="M58 8Q58 23 64 35Q64 36 329 334T596 635L586 637Q575 637 512 637H500H476Q442 637 420 635T365 624T311 598T266 548T228 469Q227 466 226 463T224 458T223 453T222 450L221 448Q218 443 202 443Q185 443 182 453L214 561Q228 606 241 651Q249 679 253 681Q256 683 487 683H718Q723 678 723 675Q723 673 717 649Q189 54 188 52L185 49H274Q369 50 377 51Q452 60 500 100T579 247Q587 272 590 277T603 282H607Q628 282 628 271Q547 5 541 2Q538 0 300 0H124Q58 0 58 8Z"></path><path id="MJX-10-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-10-TEX-I-1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path id="MJX-10-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-10-TEX-I-1D707" d="M58 -216Q44 -216 34 -208T23 -186Q23 -176 96 116T173 414Q186 442 219 442Q231 441 239 435T249 423T251 413Q251 401 220 279T187 142Q185 131 185 107V99Q185 26 252 26Q261 26 270 27T287 31T302 38T315 45T327 55T338 65T348 77T356 88T365 100L372 110L408 253Q444 395 448 404Q461 431 491 431Q504 431 512 424T523 412T525 402L449 84Q448 79 448 68Q448 43 455 35T476 26Q485 27 496 35Q517 55 537 131Q543 151 547 152Q549 153 557 153H561Q580 153 580 144Q580 138 575 117T555 63T523 13Q510 0 491 -8Q483 -10 467 -10Q446 -10 429 -4T402 11T385 29T376 44T374 51L368 45Q362 39 350 30T324 12T288 -4T246 -11Q199 -11 153 12L129 -85Q108 -167 104 -180T92 -202Q76 -216 58 -216Z"></path><path id="MJX-10-TEX-I-1D70E" d="M184 -11Q116 -11 74 34T31 147Q31 247 104 333T274 430Q275 431 414 431H552Q553 430 555 429T559 427T562 425T565 422T567 420T569 416T570 412T571 407T572 401Q572 357 507 357Q500 357 490 357T476 358H416L421 348Q439 310 439 263Q439 153 359 71T184 -11ZM361 278Q361 358 276 358Q152 358 115 184Q114 180 114 178Q106 141 106 117Q106 67 131 47T188 26Q242 26 287 73Q316 103 334 153T356 233T361 278Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-10-TEX-I-1D44D"></use></g><g data-mml-node="mo" transform="translate(1000.8, 0)"><use xlink:href="#MJX-10-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(2056.6, 0)"><g data-mml-node="mrow" transform="translate(220, 492.7) scale(0.707)"><g data-mml-node="mi"><use xlink:href="#MJX-10-TEX-I-1D465"></use></g><g data-mml-node="mo" transform="translate(572, 0)"><use xlink:href="#MJX-10-TEX-N-2212"></use></g><g data-mml-node="mi" transform="translate(1350, 0)"><use xlink:href="#MJX-10-TEX-I-1D707"></use></g></g><g data-mml-node="mi" transform="translate(708.6, -345) scale(0.707)"><use xlink:href="#MJX-10-TEX-I-1D70E"></use></g><rect width="1581" height="60" x="120" y="220"></rect></g></g></g></svg></mjx-container>
+</div>
+
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>preprocessing <span class="token keyword">import</span> StandardScaler
+
+scaler <span class="token operator">=</span> StandardScaler<span class="token punctuation">(</span><span class="token punctuation">)</span>
+scaled_data <span class="token operator">=</span> scaler<span class="token punctuation">.</span>fit_transform<span class="token punctuation">(</span>data<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>Normalisation technique heavily depends on an algorithm being used. Indeed many estimators are designed with the assumption that each feature takes values close to zero or more importantly that all features vary on comparable scales. In particular, metric-based and gradient-based estimators (linear regression, logistic regression, support vector machine, neural network) often assume approximately standardized data (centered features with unit variances). A notable exception are decision tree-based estimators (random forest, gradient boosting tree) that are robust to arbitrary scaling of the data.</p>
+<h1 id="Categorical-Feature"><a href="#Categorical-Feature" class="headerlink" title="Categorical Feature"></a>Categorical Feature</h1><p>Mainly, categorical feature indicates the gender (male or female), blood type (A, B,<br>AB, O), and other characteristics that only take values within a limited number of options. The most commonly used encoding methods are: ordinal encoding, one-hot encoding, binary encoding, etc.</p>
+<h2 id="Ordinal-Encoding"><a href="#Ordinal-Encoding" class="headerlink" title="Ordinal Encoding"></a>Ordinal Encoding</h2><p>Ordinal encoding is usually used to handle data with size relationships between categories. For example, grades can be divided into low, medium and high, and there is a “high &gt; medium &gt; low” ranking relationship. Ordinal encoding will assign a numerical ID to category-type features with a numeric ID, e.g., 3 for high, 2 for medium, and 1 for low, which still retains the size relationship after conversion. </p>
+<h2 id="One-hot-Encoding"><a href="#One-hot-Encoding" class="headerlink" title="One-hot Encoding"></a>One-hot Encoding</h2><p>One-hot encoding is usually used to deal with features that do not have size relationships between categories. In the “color” variable example, there are 3 categories and therefore 3 binary variables are needed. A “1” value is placed in the binary variable for the color and “0” values for the other colors. Such as (1, 0, 0) for red, (0, 1, 0) fo green, and (0, 0, 1) for blue.</p>
+<h2 id="Binary-Encoding"><a href="#Binary-Encoding" class="headerlink" title="Binary Encoding"></a>Binary Encoding</h2><p>Binary encoding is divided into two main steps, first assigning a category ID to each category using the ordinal encoding, and then the binary code corresponding to the category ID is used as the result. Take color for instance, the ID for red is 1, so the binary representation is 001; the ID for green is 2, so the binary representation is 010; the ID for blue is 3, so the binary representation is 011. It can be seen that binary encoding is essentially a hash mapping of IDs using binary representation, which eventually yields a 0/1 feature vector with fewer dimensions than the one-hot encoding, it will save storage space.</p>
 
                 
             </div>
@@ -654,7 +580,7 @@ vec_from_val(A)<span aria-hidden="true" class="line-numbers-rows"><span></span><
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://penguinwang96825.github.io/Hexo-Blog/Hexo-Blog/2021/03/15/2021-03-15-eigenvectors-from-eigenvalues/">https://penguinwang96825.github.io/Hexo-Blog/Hexo-Blog/2021/03/15/2021-03-15-eigenvectors-from-eigenvalues/</a>
+                    <a href="https://penguinwang96825.github.io/Hexo-Blog/Hexo-Blog/2021/03/22/2021-03-22-notes-on-basic-feature-engineering/">https://penguinwang96825.github.io/Hexo-Blog/Hexo-Blog/2021/03/22/2021-03-22-notes-on-basic-feature-engineering/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -692,16 +618,12 @@ vec_from_val(A)<span aria-hidden="true" class="line-numbers-rows"><span></span><
                     
                         <div class="article-tag">
                             
-                                <a href="/Hexo-Blog/tags/Python/">
-                                    <span class="chip bg-color">Python</span>
+                                <a href="/Hexo-Blog/tags/Statistics/">
+                                    <span class="chip bg-color">Statistics</span>
                                 </a>
                             
-                                <a href="/Hexo-Blog/tags/R/">
-                                    <span class="chip bg-color">R</span>
-                                </a>
-                            
-                                <a href="/Hexo-Blog/tags/Linear-Algebra/">
-                                    <span class="chip bg-color">Linear Algebra</span>
+                                <a href="/Hexo-Blog/tags/Data-Science/">
+                                    <span class="chip bg-color">Data Science</span>
                                 </a>
                             
                         </div>
@@ -741,9 +663,9 @@ vec_from_val(A)<span aria-hidden="true" class="line-numbers-rows"><span></span><
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'https://penguinwang96825.github.io/Hexo-Blog/2021/03/15/2021-03-15-eigenvectors-from-eigenvalues/';
-        this.page.identifier = '/Hexo-Blog/2021/03/15/2021-03-15-eigenvectors-from-eigenvalues/';
-        this.page.title = 'Eigenvectors from Eigenvalues';
+        this.page.url = 'https://penguinwang96825.github.io/Hexo-Blog/2021/03/22/2021-03-22-notes-on-basic-feature-engineering/';
+        this.page.identifier = '/Hexo-Blog/2021/03/22/2021-03-22-notes-on-basic-feature-engineering/';
+        this.page.title = 'Notes on Feature Engineering';
     };
     let disqus_shortname = 'penguinwang';
 
@@ -771,53 +693,51 @@ vec_from_val(A)<span aria-hidden="true" class="line-numbers-rows"><span></span><
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/Hexo-Blog/2021/03/15/2021-03-15-triple-barrier-method-for-ml/">
+                <a href="/Hexo-Blog/2021/03/22/2021-03-22-notes-on-basic-feature-engineering/">
                     <div class="card-image">
                         
-                        <img src="https://github.com/penguinwang96825/Hexo-Blog/blob/master/2021/03/15/2021-03-15-triple-barrier-method-for-ml/wallhaven-g83m3d.jpg?raw=true" class="responsive-img" alt="Triple Barrier Method for ML">
+                        <img src="https://github.com/penguinwang96825/Hexo-Blog/blob/master/2021/03/20/2021-03-20-what-is-technical-indicators/wallhaven-k9vm2d.jpg?raw=true" class="responsive-img" alt="Notes on Feature Engineering">
                         
-                        <span class="card-title">Triple Barrier Method for ML</span>
+                        <span class="card-title">Notes on Feature Engineering</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Time series prediction has been widely applied to the finance industry in applications such as stock market price and commodity price forecasting. Machine learning methods have been widely used in financial time series prediction in recent years. How to label financial time series data to determine the prediction accuracy of machine learning models and subsequently determine final investment returns is a hot topic.
+                            Without sufficient data and suitable features, the most powerful model structure cannot get satisfactory output. As a classic saying goes, "Garbage in, garbage out." For a machine learning problem, the data and features often determine the upper limit of the results, while the selection of models, algorithms and optimization are gradually approaching this upper limit.
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/Hexo-Blog/categories/Finance/" class="post-category">
-                                    Finance
+                            <a href="/Hexo-Blog/categories/Data-Science/" class="post-category">
+                                    Data Science
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/Hexo-Blog/tags/Python/">
-                        <span class="chip bg-color">Python</span>
+                    <a href="/Hexo-Blog/tags/Statistics/">
+                        <span class="chip bg-color">Statistics</span>
                     </a>
                     
-                    <a href="/Hexo-Blog/tags/Finance/">
-                        <span class="chip bg-color">Finance</span>
-                    </a>
-                    
-                    <a href="/Hexo-Blog/tags/ML/">
-                        <span class="chip bg-color">ML</span>
+                    <a href="/Hexo-Blog/tags/Data-Science/">
+                        <span class="chip bg-color">Data Science</span>
                     </a>
                     
                 </div>
@@ -831,30 +751,30 @@ vec_from_val(A)<span aria-hidden="true" class="line-numbers-rows"><span></span><
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/Hexo-Blog/2021/03/14/2021-03-14-estimate-pi-on-pi-day/">
+                <a href="/Hexo-Blog/2021/03/22/2021-03-22-notes-on-feature-engineering/">
                     <div class="card-image">
                         
-                        <img src="https://github.com/penguinwang96825/Hexo-Blog/blob/master/2021/03/14/2021-03-14-estimate-pi-on-pi-day/wallhaven-yjk6ml.jpg?raw=true" class="responsive-img" alt="Estimate π on π Day">
+                        <img src="https://github.com/penguinwang96825/Hexo-Blog/blob/master/2021/03/22/2021-03-22-notes-on-basic-feature-engineering/wallhaven-4gj65l.jpg?raw=true" class="responsive-img" alt="Notes on Basic Feature Engineering">
                         
-                        <span class="card-title">Estimate π on π Day</span>
+                        <span class="card-title">Notes on Basic Feature Engineering</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Happy π Day 2021! In this article I'll estimate the digits of π with random numbers and the probability of two integers being co-prime. What is the probability of two random integers being coprime? Euclidean Algorithm can be used to estimate π!
+                            Without sufficient data and suitable features, the most powerful model structure cannot get satisfactory output. As a classic saying goes, "Garbage in, garbage out." For a machine learning problem, the data and features often determine the upper limit of the results, while the selection of models, algorithms and optimization are gradually approaching this upper limit.
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-22
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/Hexo-Blog/categories/Math-Programming/" class="post-category">
-                                    Math Programming
+                            <a href="/Hexo-Blog/categories/Data-Science/" class="post-category">
+                                    Data Science
                                 </a>
                             
                             
@@ -868,12 +788,12 @@ vec_from_val(A)<span aria-hidden="true" class="line-numbers-rows"><span></span><
                         <span class="chip bg-color">Python</span>
                     </a>
                     
-                    <a href="/Hexo-Blog/tags/Linear-Algebra/">
-                        <span class="chip bg-color">Linear Algebra</span>
+                    <a href="/Hexo-Blog/tags/Statistics/">
+                        <span class="chip bg-color">Statistics</span>
                     </a>
                     
-                    <a href="/Hexo-Blog/tags/Probability/">
-                        <span class="chip bg-color">Probability</span>
+                    <a href="/Hexo-Blog/tags/Data-Science/">
+                        <span class="chip bg-color">Data Science</span>
                     </a>
                     
                 </div>
