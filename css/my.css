@@ -9,6 +9,18 @@ button {
 	width: 100%;
 }
 
+@media screen and (min-width: 500px) {
+	.playground {
+		width: 400px;
+	}
+}
+
+@media screen and (min-width: 1000px) {
+	.playground {
+		width: 900px;
+	}
+}
+
 .sudoku-b {
 	color: #fff !important;
 	text-transform: uppercase;
