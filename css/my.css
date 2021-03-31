@@ -5,6 +5,10 @@ button {
 	text-align: center;
 }
 
+.playground {
+	width: 100%;
+}
+
 .sudoku-b {
 	color: #fff !important;
 	text-transform: uppercase;
