@@ -9,8 +9,8 @@
 
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/04/01/2021-04-01-develop-strategy-for-tic-tac-toe/</loc>
-        <lastmod>2021-04-01T14:03:29.746Z</lastmod>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/04/17/2021-04-17-viterbi-algorithm-for-hmm-decoding/</loc>
+        <lastmod>2021-04-18T01:19:03.447Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -18,7 +18,15 @@
 
     <url>
         <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/03/31/2021-03-31-dissertation-paraphraser/</loc>
-        <lastmod>2021-03-31T23:10:41.015Z</lastmod>
+        <lastmod>2021-04-17T22:09:59.137Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/04/01/2021-04-01-develop-strategy-for-tic-tac-toe/</loc>
+        <lastmod>2021-04-01T14:03:29.746Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
