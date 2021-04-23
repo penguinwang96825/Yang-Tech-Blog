@@ -9,8 +9,8 @@
 
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/04/18/2021-04-18-softmax-and-cross-entropy/</loc>
-        <lastmod>2021-04-18T16:55:54.294Z</lastmod>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/04/23/2021-04-23-sentiment-analysis-for-japanese-customer-reviews/</loc>
+        <lastmod>2021-04-23T11:44:39.050Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -18,7 +18,15 @@
 
     <url>
         <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/04/17/2021-04-17-viterbi-algorithm-for-hmm-decoding/</loc>
-        <lastmod>2021-04-18T15:06:58.015Z</lastmod>
+        <lastmod>2021-04-20T12:34:49.305Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/04/18/2021-04-18-softmax-and-cross-entropy/</loc>
+        <lastmod>2021-04-18T16:55:54.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
