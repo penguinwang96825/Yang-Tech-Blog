@@ -490,14 +490,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    4.8k
+                    5.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    29 Min
+                    32 Min
                 </div>
                 
 
@@ -1515,6 +1515,139 @@ results <span class="token operator">=</span> <span class="token punctuation">[<
 <td align="center">0.915172</td>
 </tr>
 </tbody></table>
+<h2 id="Concatenate-with-Word-Embedding-and-POS-Embedding"><a href="#Concatenate-with-Word-Embedding-and-POS-Embedding" class="headerlink" title="Concatenate with Word Embedding and POS Embedding"></a>Concatenate with Word Embedding and POS Embedding</h2><p>In the last section, I built the model with adding up word embedding vectors and POS embedding vector. I was wondering if concatenating these two vectors would work as well.</p>
+<p>Basically, we need to change two part of the code only.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">TextPOSConcatClassifier</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    
+    <span class="token comment">#define all the layers used in model</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> 
+                 vocab_size<span class="token punctuation">,</span> 
+                 embedding_dim<span class="token punctuation">,</span> 
+                 pos_size<span class="token punctuation">,</span> 
+                 pos_embedding_dim<span class="token punctuation">,</span> 
+                 output_dim<span class="token punctuation">,</span> 
+                 dropout<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>device <span class="token operator">=</span> device
+        self<span class="token punctuation">.</span>embedding <span class="token operator">=</span> nn<span class="token punctuation">.</span>EmbeddingBag<span class="token punctuation">(</span>vocab_size<span class="token punctuation">,</span> embedding_dim<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>pos_embedding <span class="token operator">=</span> nn<span class="token punctuation">.</span>EmbeddingBag<span class="token punctuation">(</span>pos_size<span class="token punctuation">,</span> pos_embedding_dim<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>drop <span class="token operator">=</span> nn<span class="token punctuation">.</span>Dropout<span class="token punctuation">(</span>dropout<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>fc <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>embedding_dim<span class="token operator">+</span>pos_embedding_dim<span class="token punctuation">,</span> output_dim<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>output <span class="token operator">=</span> nn<span class="token punctuation">.</span>Sigmoid<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> text<span class="token punctuation">,</span> tag<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        text_embedded <span class="token operator">=</span> self<span class="token punctuation">.</span>embedding<span class="token punctuation">(</span>text<span class="token punctuation">)</span>
+        pos_embedded <span class="token operator">=</span> self<span class="token punctuation">.</span>pos_embedding<span class="token punctuation">(</span>tag<span class="token punctuation">)</span>
+        embedded <span class="token operator">=</span> torch<span class="token punctuation">.</span>cat<span class="token punctuation">(</span><span class="token punctuation">(</span>text_embedded<span class="token punctuation">,</span> pos_embedded<span class="token punctuation">)</span><span class="token punctuation">,</span> dim<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+        dense_outputs <span class="token operator">=</span> self<span class="token punctuation">.</span>fc<span class="token punctuation">(</span>self<span class="token punctuation">.</span>drop<span class="token punctuation">(</span>embedded<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        outputs <span class="token operator">=</span> self<span class="token punctuation">.</span>output<span class="token punctuation">(</span>dense_outputs<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> outputs<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Train-without-Regularisation-1"><a href="#Train-without-Regularisation-1" class="headerlink" title="Train without Regularisation"></a>Train without Regularisation</h3><img src="/Hexo-Blog/2021/04/23/2021-04-23-sentiment-analysis-for-japanese-customer-reviews/model5.png" class="">
+
+<pre class="line-numbers language-none"><code class="language-none">              precision    recall  f1-score   support
+
+           0       0.92      0.94      0.93      1000
+           1       0.94      0.92      0.93      1000
+
+    accuracy                           0.93      2000
+   macro avg       0.93      0.93      0.93      2000
+weighted avg       0.93      0.93      0.93      2000
+
+Accuracy:  0.9310
+Precision:  0.9407
+Recall:  0.9200
+F1-Score:  0.9302<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Train-with-Regularisation-Dropout-1"><a href="#Train-with-Regularisation-Dropout-1" class="headerlink" title="Train with Regularisation (Dropout)"></a>Train with Regularisation (Dropout)</h3><img src="/Hexo-Blog/2021/04/23/2021-04-23-sentiment-analysis-for-japanese-customer-reviews/model6.png" class="">
+
+<pre class="line-numbers language-none"><code class="language-none">              precision    recall  f1-score   support
+
+           0       0.91      0.95      0.93      1000
+           1       0.95      0.91      0.93      1000
+
+    accuracy                           0.93      2000
+   macro avg       0.93      0.93      0.93      2000
+weighted avg       0.93      0.93      0.93      2000
+
+Accuracy:  0.9295
+Precision:  0.9507
+Recall:  0.9060
+F1-Score:  0.9278<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Train-with-Regularisation-L2-1"><a href="#Train-with-Regularisation-L2-1" class="headerlink" title="Train with Regularisation (L2)"></a>Train with Regularisation (L2)</h3><img src="/Hexo-Blog/2021/04/23/2021-04-23-sentiment-analysis-for-japanese-customer-reviews/model7.png" class="">
+
+<pre class="line-numbers language-none"><code class="language-none">              precision    recall  f1-score   support
+
+           0       0.88      0.92      0.90      1000
+           1       0.91      0.88      0.90      1000
+
+    accuracy                           0.90      2000
+   macro avg       0.90      0.90      0.90      2000
+weighted avg       0.90      0.90      0.90      2000
+
+Accuracy:  0.8975
+Precision:  0.9128
+Recall:  0.8790
+F1-Score:  0.8956<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Train-with-Regularisation-Dropout-L2-1"><a href="#Train-with-Regularisation-Dropout-L2-1" class="headerlink" title="Train with Regularisation (Dropout + L2)"></a>Train with Regularisation (Dropout + L2)</h3><img src="/Hexo-Blog/2021/04/23/2021-04-23-sentiment-analysis-for-japanese-customer-reviews/model8.png" class="">
+
+<pre class="line-numbers language-none"><code class="language-none">              precision    recall  f1-score   support
+
+           0       0.89      0.92      0.90      1000
+           1       0.92      0.88      0.90      1000
+
+    accuracy                           0.90      2000
+   macro avg       0.90      0.90      0.90      2000
+weighted avg       0.90      0.90      0.90      2000
+
+Accuracy:  0.9020
+Precision:  0.9196
+Recall:  0.8810
+F1-Score:  0.8999<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Performance-1"><a href="#Performance-1" class="headerlink" title="Performance"></a>Performance</h3><table>
+<thead>
+<tr>
+<th align="center">Model</th>
+<th align="center">Accuracy</th>
+<th align="center">Precision</th>
+<th align="center">Recall</th>
+<th align="center">F1-Score</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Without Reg</td>
+<td align="center">0.9310</td>
+<td align="center">0.9407</td>
+<td align="center">0.9200</td>
+<td align="center">0.9302</td>
+</tr>
+<tr>
+<td align="center">With Dropout</td>
+<td align="center">0.9295</td>
+<td align="center">0.9507</td>
+<td align="center">0.9060</td>
+<td align="center">0.9278</td>
+</tr>
+<tr>
+<td align="center">With L2</td>
+<td align="center">0.8975</td>
+<td align="center">0.9128</td>
+<td align="center">0.8790</td>
+<td align="center">0.8956</td>
+</tr>
+<tr>
+<td align="center">With Dropout &amp; L2</td>
+<td align="center">0.9020</td>
+<td align="center">0.9196</td>
+<td align="center">0.8810</td>
+<td align="center">0.8999</td>
+</tr>
+</tbody></table>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>In this work, I presented preliminary works on different sentiment classifiers for Japanese language using neural network. The idea mostly come from the paper “Japanese Sentiment Classification Using Bidirectional Long Short-Term Memory Recurrent Neural Network”, adding part-of-speech tagging feature that can be easily obtained resulted in more robust performance. There are still lots things can be done on this topic. Future works will have a look at adding sentiment feature using sentiment dictionary or polarity dictionary, and add attention mechanism model to the original architecture.</p>
 <h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ol>
 <li><a target="_blank" rel="noopener" href="https://www.52nlp.cn/%E6%97%A5%E6%96%87%E5%88%86%E8%AF%8D%E5%99%A8-mecab-%E6%96%87%E6%A1%A3">https://www.52nlp.cn/%E6%97%A5%E6%96%87%E5%88%86%E8%AF%8D%E5%99%A8-mecab-%E6%96%87%E6%A1%A3</a></li>
 <li><a target="_blank" rel="noopener" href="https://spacy.io/usage/models">https://spacy.io/usage/models</a></li>
@@ -2014,7 +2147,7 @@ results <span class="token operator">=</span> <span class="token punctuation">[<
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total site word count:&nbsp;<span
-                class="white-color">71.9k</span>&nbsp;words
+                class="white-color">72.4k</span>&nbsp;words
             
             
             
