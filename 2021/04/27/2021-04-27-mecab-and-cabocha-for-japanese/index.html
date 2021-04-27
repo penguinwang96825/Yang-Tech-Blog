@@ -327,7 +327,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://github.com/penguinwang96825/penguinwang96825.github.io/blob/master/2021/04/27/2021-04-27-mecab-and-cabocha-for-japanese/wallhaven-j3xm5w.jpg?raw=true')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://github.com/penguinwang96825/penguinwang96825.github.io/blob/master/2021/04/27/2021-04-27-mecab-and-cabocha-for-japanese/wallhaven-j3xm5w.png?raw=true')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -490,7 +490,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    1.4k
+                    1.5k
                 </div>
                 
 
@@ -671,12 +671,17 @@ analyser<span class="token punctuation">.</span>analyse<span class="token punctu
 	results<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>word<span class="token punctuation">,</span>wclass<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>wclass<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>wclass<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span>wclass<span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>The content was in the form of (surface form, parts of speech, part-of-speech subdivision 1, part-of-speech subdivision 2, original form). If you need other data, please change the wclass[] part accordingly.</p>
-<h1 id="CaboCha"><a href="#CaboCha" class="headerlink" title="CaboCha"></a>CaboCha</h1><p>Check the version of CaboCha:</p>
+<h1 id="CaboCha"><a href="#CaboCha" class="headerlink" title="CaboCha"></a>CaboCha</h1><p><a target="_blank" rel="noopener" href="http://taku910.github.io/cabocha/">CaboCha</a> is another Japanese Dependency Structure Analyser. It is a Japanese Kanji analyzer based on Support Vector Machines.</p>
+<h2 id="Installation-1"><a href="#Installation-1" class="headerlink" title="Installation"></a>Installation</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">%%bash
+<span class="token function">git</span> clone https://github.com/kenkov/cabocha
+pip <span class="token function">install</span> cabocha/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>Check the version of CaboCha:</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token operator">%</span><span class="token operator">%</span>bash
 cabocha <span class="token operator">-</span>v <span class="token operator">&amp;</span><span class="token operator">&amp;</span> echo
 pip show cabocha<span class="token operator">-</span>python <span class="token operator">|</span> grep <span class="token operator">-</span>e Name <span class="token operator">-</span>e Version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<p>Simple example:</p>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><p>Simple example:</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> CaboCha
 cp <span class="token operator">=</span> CaboCha<span class="token punctuation">.</span>Parser<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>cp<span class="token punctuation">.</span>parseToString<span class="token punctuation">(</span><span class="token string">"隣の客はよく柿食う客だ"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -690,6 +695,18 @@ cp <span class="token operator">=</span> CaboCha<span class="token punctuation">
           客だ
 EOS<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<p>Or you can use it this way.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> cabocha<span class="token punctuation">.</span>analyzer <span class="token keyword">import</span> CaboChaAnalyzer
+analyzer <span class="token operator">=</span> CaboChaAnalyzer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+tree <span class="token operator">=</span> analyzer<span class="token punctuation">.</span>parse<span class="token punctuation">(</span><span class="token string">"日本語の形態素解析はすごいです。"</span><span class="token punctuation">)</span>
+tokens <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> chunk <span class="token keyword">in</span> tree<span class="token punctuation">:</span>
+	<span class="token keyword">for</span> token <span class="token keyword">in</span> chunk<span class="token punctuation">:</span>
+		tokens<span class="token punctuation">.</span>append<span class="token punctuation">(</span>token<span class="token punctuation">.</span>surface<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<pre class="line-numbers language-none"><code class="language-none">[&#39;日本語&#39;, &#39;の&#39;, &#39;形態素&#39;, &#39;解析&#39;, &#39;は&#39;, &#39;すごい&#39;, &#39;です&#39;, &#39;。&#39;]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>By using MeCab, I can always create the application for the task regarding to Japanese tasks. It’s not quite ready for practical use, but it’s still a lot of work to get it up and running. The only thing left to do is to grow the application with imagination and effort.</p>
 <h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ol>
 <li><a target="_blank" rel="noopener" href="https://snyk.io/advisor/python/mecab">https://snyk.io/advisor/python/mecab</a></li>
@@ -697,6 +714,9 @@ EOS<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
 <li><a target="_blank" rel="noopener" href="https://gist.github.com/tomowarkar/021580fa52781ed0b0d913f46c8bb7e5">https://gist.github.com/tomowarkar/021580fa52781ed0b0d913f46c8bb7e5</a></li>
 <li><a target="_blank" rel="noopener" href="https://qiita.com/menon/items/2b5ad487a98882289567">https://qiita.com/menon/items/2b5ad487a98882289567</a></li>
 <li><a target="_blank" rel="noopener" href="https://qiita.com/ryo--kato/items/f39dc084e0f2cec1cc0d">https://qiita.com/ryo--kato/items/f39dc084e0f2cec1cc0d</a></li>
+<li><a target="_blank" rel="noopener" href="https://rstudio-pubs-static.s3.amazonaws.com/462850_98582068058d4191a70b7246d2ceee29.html">https://rstudio-pubs-static.s3.amazonaws.com/462850_98582068058d4191a70b7246d2ceee29.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/taku910/cabocha">https://github.com/taku910/cabocha</a></li>
+<li><a target="_blank" rel="noopener" href="https://taku910.github.io/cabocha/">https://taku910.github.io/cabocha/</a></li>
 </ol>
 
                 
@@ -849,7 +869,7 @@ EOS<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
                 <a href="/Hexo-Blog/2021/04/27/2021-04-27-mecab-and-cabocha-for-japanese/">
                     <div class="card-image">
                         
-                        <img src="https://github.com/penguinwang96825/penguinwang96825.github.io/blob/master/2021/04/27/2021-04-27-mecab-and-cabocha-for-japanese/wallhaven-j3xm5w.jpg?raw=true" class="responsive-img" alt="MeCab and CaboCha for Japanese">
+                        <img src="https://github.com/penguinwang96825/penguinwang96825.github.io/blob/master/2021/04/27/2021-04-27-mecab-and-cabocha-for-japanese/wallhaven-j3xm5w.png?raw=true" class="responsive-img" alt="MeCab and CaboCha for Japanese">
                         
                         <span class="card-title">MeCab and CaboCha for Japanese</span>
                     </div>
@@ -1190,7 +1210,7 @@ EOS<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total site word count:&nbsp;<span
-                class="white-color">73.8k</span>&nbsp;words
+                class="white-color">73.9k</span>&nbsp;words
             
             
             
