@@ -1067,7 +1067,7 @@ templates <span class="token operator">=</span> Jinja2Templates<span class="toke
 	connection<span class="token punctuation">.</span>commit<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="Build-Font-end-Page"><a href="#Build-Font-end-Page" class="headerlink" title="Build Font-end Page"></a>Build Font-end Page</h2><p>Do the thing which we did in previous. Build the html page for twitter data related to each user account, and put these html file in <code>templates</code> folder.</p>
-<p>First, create a html file called <code>twitter_index</code>.</p>
+<p>First, create a html file called <code>twitter_index.html</code>.</p>
 <pre class="line-numbers language-html" data-language="html"><code class="language-html">&#123;% extends "layout.html" %&#125;
 
 &#123;% block content %&#125;
@@ -1086,10 +1086,9 @@ templates <span class="token operator">=</span> Jinja2Templates<span class="toke
 	    &#123;% endfor %&#125;
 	  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tbody</span><span class="token punctuation">></span></span>
 	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span>
-&#123;% endblock %&#125;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&#123;% endblock %&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>Next, create a html file called <code>twitter_detail</code>.</p>
+<p>Next, create a html file called <code>twitter_detail.html</code>.</p>
 <pre class="line-numbers language-html" data-language="html"><code class="language-html">&#123;% extends "layout.html" %&#125;
 
 &#123;% block content %&#125;
