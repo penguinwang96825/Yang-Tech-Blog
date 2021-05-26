@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/05/26/2021-05-26-introduction-to-ordinary-least-squares/</loc>
+        <lastmod>2021-05-26T21:28:27.045Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/05/26/2021-05-26-tensorflow-speech-recognition-challenge/</loc>
+        <lastmod>2021-05-26T20:33:36.326Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/05/26/2021-05-26-skewness-and-kurtosis/</loc>
         <lastmod>2021-05-26T20:23:07.013Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -67,14 +83,6 @@
     <url>
         <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/03/19/2021-03-19-python-sudoku-solver/</loc>
         <lastmod>2021-05-26T19:39:35.202Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/05/26/2021-05-26-tensorflow-speech-recognition-challenge/</loc>
-        <lastmod>2021-05-26T18:48:21.373Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
