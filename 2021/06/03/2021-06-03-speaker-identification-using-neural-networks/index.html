@@ -634,14 +634,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    2.3k
+                    2.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    14 Min
+                    15 Min
                 </div>
                 
 
@@ -781,7 +781,7 @@ torch<span class="token punctuation">.</span>manual_seed<span class="token punct
 torch<span class="token punctuation">.</span>backends<span class="token punctuation">.</span>cudnn<span class="token punctuation">.</span>deterministic <span class="token operator">=</span> <span class="token boolean">True</span>
 torch<span class="token punctuation">.</span>backends<span class="token punctuation">.</span>cudnn<span class="token punctuation">.</span>benchmark <span class="token operator">=</span> <span class="token boolean">False</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="Load-Data"><a href="#Load-Data" class="headerlink" title="Load Data"></a>Load Data</h2><p><code>Datasets</code> is a lightweight library providing one-line dataloaders for many public datasets built by HuggingFace.</p>
+<h2 id="Load-Data"><a href="#Load-Data" class="headerlink" title="Load Data"></a>Load Data</h2><p><code>Datasets</code> is a lightweight library providing one-line dataloaders for many public datasets built by HuggingFace. There are 3780 utterances in the training set, 1260 utterances in the validation set, and 1260 utterances in the test set.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">timit <span class="token operator">=</span> load_dataset<span class="token punctuation">(</span><span class="token string">'timit_asr'</span><span class="token punctuation">)</span>
 timit_train_df <span class="token operator">=</span> timit<span class="token punctuation">[</span><span class="token string">"train"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>to_pandas<span class="token punctuation">(</span><span class="token punctuation">)</span>
 timit_test_df <span class="token operator">=</span> timit<span class="token punctuation">[</span><span class="token string">"test"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>to_pandas<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -798,8 +798,7 @@ timit_train_df <span class="token operator">=</span> timit_train_df<span class="
 timit_test_df <span class="token operator">=</span> timit_test_df<span class="token punctuation">.</span>sort_values<span class="token punctuation">(</span><span class="token string">"speaker_id"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>reset_index<span class="token punctuation">(</span>drop<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="Helper-Functions"><a href="#Helper-Functions" class="headerlink" title="Helper Functions"></a>Helper Functions</h2><p>The data are unequal in length, so the training data are randomly intercepted due to the fixed input size of neural network. If the training data is only taken for the first 1 second, there is too much data loss and the result is definitely poor. Theoretically, the training data should be intercepted more often, without data loss.</p>
-<p>Let’s say we train the dataset and have 1000 unequal lengths of data. Each time we randomly intercept, pick a random piece of data and intercept a random 1 second in this data. Repeat this operation many times, say 100 times, so that we get 100 1-second data to train.</p>
-<p>When testing, we divide a data sample into many 1-second data, for example, we use sliding window to divide a certain data sample into 10 1-second data, the final test will get 10 softmax results. Average these 10 softmax results into one vector and get the result.</p>
+<p>Let’s say we train the dataset and have 1000 unequal lengths of data. Each time we randomly intercept, pick a random piece of data and intercept a random 1 second in this data. Repeat this operation many times, say 100 times, so that we get 100 1-second data to train. <code>generate_segments()</code> function is to produce <code>num_samples</code> fixed-size contiguous subarrays. Some of the array length is less than 16000, so <code>padding()</code> function is used to pad the sequence to a longer length in order to generate subarray. </p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">generate_segments</span><span class="token punctuation">(</span>sample<span class="token punctuation">,</span> windows<span class="token punctuation">,</span> num_samples<span class="token punctuation">)</span><span class="token punctuation">:</span>
     lst <span class="token operator">=</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>sample<span class="token punctuation">)</span><span class="token punctuation">)</span>
     list_size <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>lst<span class="token punctuation">)</span>
@@ -813,7 +812,8 @@ timit_test_df <span class="token operator">=</span> timit_test_df<span class="to
     padding<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token builtin">len</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> arr
     <span class="token keyword">return</span> padding<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="Creating-Training-Data"><a href="#Creating-Training-Data" class="headerlink" title="Creating Training Data"></a>Creating Training Data</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">sample_rate <span class="token operator">=</span> <span class="token number">16000</span>
+<h2 id="Creating-Training-Data"><a href="#Creating-Training-Data" class="headerlink" title="Creating Training Data"></a>Creating Training Data</h2><p>In TIMIT data, most of the audio file is about 3 seconds, and we will only use one second data as our input. If the sampling rate is 16kHz, then we have 48000 sample points in the sequence. First step is to randomly select several 16000 contiguous subsequences from the original, this can be done using <code>generate_segments()</code> function. If the original sequence is shorter than length of 16000, then <code>padding()</code> function is used to pad the sequence to a larger length.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">sample_rate <span class="token operator">=</span> <span class="token number">16000</span>
 segments <span class="token operator">=</span> <span class="token number">100</span>
 
 all_wave<span class="token punctuation">,</span> all_label <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -833,7 +833,8 @@ le <span class="token operator">=</span> LabelEncoder<span class="token punctuat
 y <span class="token operator">=</span> le<span class="token punctuation">.</span>fit_transform<span class="token punctuation">(</span>all_label<span class="token punctuation">)</span>
 classes <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>le<span class="token punctuation">.</span>classes_<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="Compute-MFCC"><a href="#Compute-MFCC" class="headerlink" title="Compute MFCC"></a>Compute MFCC</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">compute_mfcc</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> n_mfcc<span class="token punctuation">,</span> sr<span class="token operator">=</span><span class="token number">16000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<h3 id="Compute-MFCC"><a href="#Compute-MFCC" class="headerlink" title="Compute MFCC"></a>Compute MFCC</h3><p>The 20 dimensional MFCC features are used.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">compute_mfcc</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> n_mfcc<span class="token punctuation">,</span> sr<span class="token operator">=</span><span class="token number">16000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Compute MFCC, n_mfcc='</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>n_mfcc<span class="token punctuation">)</span><span class="token punctuation">,</span> flush<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
     all_mfcc <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
     <span class="token keyword">for</span> wav <span class="token keyword">in</span> tqdm<span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -846,7 +847,8 @@ classes <span class="token operator">=</span> <span class="token builtin">list</
 
 all_mfcc <span class="token operator">=</span> compute_mfcc<span class="token punctuation">(</span>all_wave<span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="Creating-Test-Data"><a href="#Creating-Test-Data" class="headerlink" title="Creating Test Data"></a>Creating Test Data</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">sample_rate <span class="token operator">=</span> <span class="token number">16000</span>
+<h2 id="Creating-Test-Data"><a href="#Creating-Test-Data" class="headerlink" title="Creating Test Data"></a>Creating Test Data</h2><p>When testing, we divide a data sample into many 1-second data, for example, we use sliding window to divide a certain data sample into 10 1-second data, the final test will get 10 softmax results. Average these 10 softmax results into one vector and get the result.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">sample_rate <span class="token operator">=</span> <span class="token number">16000</span>
 segments <span class="token operator">=</span> <span class="token number">10</span>
 
 all_wave_test<span class="token punctuation">,</span> all_label_test <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -1188,68 +1190,102 @@ trainer <span class="token operator">=</span> pl<span class="token punctuation">
                      fast_dev_run<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
 trainer<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>xvectors<span class="token punctuation">,</span> train_dataloader<span class="token punctuation">,</span> valid_dataloader<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="Performance"><a href="#Performance" class="headerlink" title="Performance"></a>Performance</h1><table>
+<h2 id="Evaluate-Test-Set"><a href="#Evaluate-Test-Set" class="headerlink" title="Evaluate Test Set"></a>Evaluate Test Set</h2><ol>
+<li>Use sliding window to divide a certain data sample into 10 1-second data, the final test will get 10 softmax results.</li>
+<li>Average these 10 softmax results into one vector and get the argmax result.</li>
+</ol>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">y_test_proba <span class="token operator">=</span> xvectors<span class="token punctuation">.</span>predict_proba<span class="token punctuation">(</span>test_dataloader<span class="token punctuation">)</span>
+
+y_test_proba_final <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>y_test_proba<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">//</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    batch <span class="token operator">=</span> y_test_proba<span class="token punctuation">[</span><span class="token number">10</span><span class="token operator">*</span>i<span class="token punctuation">:</span><span class="token number">10</span><span class="token operator">*</span>i<span class="token operator">+</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span>
+    batch_mean <span class="token operator">=</span> np<span class="token punctuation">.</span>mean<span class="token punctuation">(</span>batch<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+    y_test_proba_final<span class="token punctuation">.</span>append<span class="token punctuation">(</span>batch_mean<span class="token punctuation">)</span>
+
+y_test_proba_final <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>y_test_proba_final<span class="token punctuation">)</span>
+y_test_pred <span class="token operator">=</span> np<span class="token punctuation">.</span>argmax<span class="token punctuation">(</span>y_test_proba_final<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+y_test_ground_truth <span class="token operator">=</span> le<span class="token punctuation">.</span>transform<span class="token punctuation">(</span>timit_test_df<span class="token punctuation">.</span>speaker_id<span class="token punctuation">)</span>
+metrics<span class="token punctuation">.</span>top_k_accuracy_score<span class="token punctuation">(</span>y_test_ground_truth<span class="token punctuation">,</span> y_test_proba_final<span class="token punctuation">,</span> k<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>Loss curve</p>
+<img src="/Hexo-Blog/2021/06/03/2021-06-03-speaker-identification-using-neural-networks/loss.png" class="">
+
+<p>Accuracy curve</p>
+<img src="/Hexo-Blog/2021/06/03/2021-06-03-speaker-identification-using-neural-networks/acc.png" class="">
+
+<h1 id="Performance"><a href="#Performance" class="headerlink" title="Performance"></a>Performance</h1><p>10-Segment</p>
+<table>
 <thead>
 <tr>
 <th align="center">Model</th>
-<th align="center">Segment</th>
 <th align="center">Size</th>
 <th align="center">Accuracy</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">XVectors</td>
-<td align="center">10</td>
-<td align="center">(37800, 12600, 1260)</td>
-<td align="center">97.5397%</td>
-</tr>
-<tr>
 <td align="center">LSTM-DVectors</td>
-<td align="center">10</td>
 <td align="center">(37800, 12600, 1260)</td>
 <td align="center">63.3334%</td>
 </tr>
 <tr>
 <td align="center">Attn-LSTM-DVectors</td>
-<td align="center">10</td>
 <td align="center">(37800, 12600, 1260)</td>
 <td align="center">79.5238%</td>
 </tr>
 <tr>
 <td align="center">XVectors</td>
-<td align="center">20</td>
-<td align="center">(75600, 25200, 1260)</td>
-<td align="center">96.0317%</td>
+<td align="center">(37800, 12600, 1260)</td>
+<td align="center">98.4127%</td>
 </tr>
+</tbody></table>
+<p>20-Segment</p>
+<table>
+<thead>
 <tr>
+<th align="center">Model</th>
+<th align="center">Size</th>
+<th align="center">Accuracy</th>
+</tr>
+</thead>
+<tbody><tr>
 <td align="center">LSTM-DVectors</td>
-<td align="center">20</td>
 <td align="center">(75600, 25200, 1260)</td>
 <td align="center">76.2698%</td>
 </tr>
 <tr>
 <td align="center">Attn-LSTM-DVectors</td>
-<td align="center">20</td>
 <td align="center">(75600, 25200, 1260)</td>
 <td align="center">83.0159%</td>
 </tr>
 <tr>
 <td align="center">XVectors</td>
-<td align="center">100</td>
-<td align="center">(378000, 126000, 1260)</td>
-<td align="center">97.6984%</td>
+<td align="center">(75600, 25200, 1260)</td>
+<td align="center">96.0317%</td>
 </tr>
+</tbody></table>
+<p>100-Segment</p>
+<table>
+<thead>
 <tr>
+<th align="center">Model</th>
+<th align="center">Size</th>
+<th align="center">Accuracy</th>
+</tr>
+</thead>
+<tbody><tr>
 <td align="center">LSTM-DVectors</td>
-<td align="center">100</td>
 <td align="center">(378000, 126000, 1260)</td>
 <td align="center">86.2698%</td>
 </tr>
 <tr>
 <td align="center">Attn-LSTM-DVectors</td>
-<td align="center">100</td>
 <td align="center">(378000, 126000, 1260)</td>
 <td align="center">92.1428%</td>
+</tr>
+<tr>
+<td align="center">XVectors</td>
+<td align="center">(378000, 126000, 1260)</td>
+<td align="center">97.6984%</td>
 </tr>
 </tbody></table>
 <h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ol>
@@ -1748,7 +1784,7 @@ trainer<span class="token punctuation">.</span>fit<span class="token punctuation
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total site word count:&nbsp;<span
-                class="white-color">95.8k</span>&nbsp;words
+                class="white-color">96k</span>&nbsp;words
             
             
             
