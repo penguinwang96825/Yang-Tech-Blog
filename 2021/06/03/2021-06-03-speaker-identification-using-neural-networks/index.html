@@ -1,0 +1,2012 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Speaker Identification using Neural Networks, Yang&#39;s Blog">
+    <meta name="description" content="CS Student / NLP Enthusiast / Tireless Coder">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Speaker Identification using Neural Networks | Yang&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/Hexo-Blog/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/Hexo-Blog/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/Hexo-Blog/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/Hexo-Blog/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/Hexo-Blog/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/Hexo-Blog/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/Hexo-Blog/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/Hexo-Blog/css/my.css">
+    
+    <script src="/Hexo-Blog/libs/jquery/jquery.min.js"></script>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+
+<body>
+    
+        <!--  加载动画，强制加载0.5s  -->
+        <style type="text/css">
+    #loading-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-height: 100vh;
+    width: 100vw;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #FFF;
+    text-align: center;
+    /* loader页面消失采用渐隐的方式*/
+    -webkit-transition: opacity 1s ease;
+    -moz-transition: opacity 1s ease;
+    -o-transition: opacity 1s ease;
+    transition: opacity 1s ease;
+}
+.loading-image{
+    width: 120px;
+    height: 50px;
+    transform: translate(-50%);
+}
+
+.loading-image div:nth-child(2) {
+    -webkit-animation: pacman-balls 1s linear 0s infinite;
+    animation: pacman-balls 1s linear 0s infinite
+}
+
+.loading-image div:nth-child(3) {
+    -webkit-animation: pacman-balls 1s linear .33s infinite;
+    animation: pacman-balls 1s linear .33s infinite
+}
+
+.loading-image div:nth-child(4) {
+    -webkit-animation: pacman-balls 1s linear .66s infinite;
+    animation: pacman-balls 1s linear .66s infinite
+}
+
+.loading-image div:nth-child(5) {
+    -webkit-animation: pacman-balls 1s linear .99s infinite;
+    animation: pacman-balls 1s linear .99s infinite
+}
+
+.loading-image div:first-of-type {
+    width: 0;
+    height: 0;
+    border: 25px solid #49b1f5;
+    border-right-color: transparent;
+    border-radius: 25px;
+    -webkit-animation: rotate_pacman_half_up .5s 0s infinite;
+    animation: rotate_pacman_half_up .5s 0s infinite;
+}
+.loading-image div:nth-child(2) {
+    width: 0;
+    height: 0;
+    border: 25px solid #49b1f5;
+    border-right-color: transparent;
+    border-radius: 25px;
+    -webkit-animation: rotate_pacman_half_down .5s 0s infinite;
+    animation: rotate_pacman_half_down .5s 0s infinite;
+    margin-top: -50px;
+}
+@-webkit-keyframes rotate_pacman_half_up {0% {transform: rotate(270deg)}50% {transform: rotate(1turn)}to {transform: rotate(270deg)}}
+
+@keyframes rotate_pacman_half_up {0% {transform: rotate(270deg)}50% {transform: rotate(1turn)}to {transform: rotate(270deg)}}
+
+@-webkit-keyframes rotate_pacman_half_down {0% {transform: rotate(90deg)}50% {transform: rotate(0deg)}to {transform: rotate(90deg)}}
+
+@keyframes rotate_pacman_half_down {0% {transform: rotate(90deg)}50% {transform: rotate(0deg)}to {transform: rotate(90deg)}}
+
+@-webkit-keyframes pacman-balls {75% {opacity: .7}to {transform: translate(-100px, -6.25px)}}
+
+@keyframes pacman-balls {75% {opacity: .7}to {transform: translate(-100px, -6.25px)}}
+
+
+.loading-image div:nth-child(3),
+.loading-image div:nth-child(4),
+.loading-image div:nth-child(5),
+.loading-image div:nth-child(6){
+    background-color: #49b1f5;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    margin: 2px;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    transform: translateY(-6.25px);
+    top: 25px;
+    left: 100px;
+}
+.loading-text{
+    margin-bottom: 20vh;
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2rem;
+    box-sizing: border-box;
+    padding: 0 10px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+@media only screen and (max-width: 500px) {
+    .loading-text{
+        font-size: 1.5rem;
+    }
+}
+.fadeout {
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+/* logo出现动画 */
+@-webkit-keyframes fadeInDown{0%{opacity:0;-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}100%{opacity:1;-webkit-transform:none;transform:none}}
+@keyframes fadeInDown{0%{opacity:0;-webkit-transform:translate3d(0,-100%,0);}}
+</style>
+<div id="loading-container">
+    <p class="loading-text">Shhh ~ stealing pages from the server ... </p>
+    <div class="loading-image">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<script>
+    (function () {
+        const loaded = function () {
+            setTimeout(function () {
+                const loader = document.getElementById("loading-container");
+                loader.className = "fadeout";
+                setTimeout(function () {
+                    loader.style.display = "none";
+                }, 500);
+            }, 500);
+        };
+        loaded();
+    })();
+</script>
+    
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/Hexo-Blog/" class="waves-effect waves-light">
+                    
+                    <img src="/Hexo-Blog/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Yang&#39;s Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/Hexo-Blog/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/Hexo-Blog/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/Hexo-Blog/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/Hexo-Blog/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>Archives</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/Hexo-Blog/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>About</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/Hexo-Blog/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>Contact</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/Hexo-Blog/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>Friends</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/Hexo-Blog/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Yang&#39;s Blog</div>
+        <div class="logo-desc">
+            
+            CS Student / NLP Enthusiast / Tireless Coder
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/Hexo-Blog/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/Hexo-Blog/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/Hexo-Blog/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/Hexo-Blog/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			Archives
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/Hexo-Blog/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			About
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/Hexo-Blog/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			Contact
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/Hexo-Blog/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			Friends
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/penguinwang96825" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/penguinwang96825" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/Hexo-Blog/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('Please enter the password to access this article!')).toString(CryptoJS.enc.Hex)) {
+                alert('Wrong password, will return to the home page!');
+                location.href = '/Hexo-Blog/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://github.com/penguinwang96825/penguinwang96825.github.io/blob/master/2021/06/03/2021-06-03-speaker-identification-using-neural-networks/wallhaven-x8z9yo.jpg?raw=true')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Speaker Identification using Neural Networks</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/Hexo-Blog/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/Hexo-Blog/tags/PyTorch/">
+                                <span class="chip bg-color">PyTorch</span>
+                            </a>
+                        
+                            <a href="/Hexo-Blog/tags/Speech/">
+                                <span class="chip bg-color">Speech</span>
+                            </a>
+                        
+                            <a href="/Hexo-Blog/tags/CNN/">
+                                <span class="chip bg-color">CNN</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/Hexo-Blog/categories/Speech/" class="post-category">
+                                Speech
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2021-06-03
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    2.3k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
+                    14 Min
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/Hexo-Blog/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <link rel="stylesheet" type="text&#x2F;css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.3.1/dist/hexo-tag-hint.min.css"><h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>There are two major applications of speaker recognition technologies and methodologies. The job of detecting which speaker made a given speech is similar to that of multiclass classification when performed for a closed group of speakers. On the other hand, speaker verification includes assessing whether a particular speech and a target model match.</p>
+<h1 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h1><p>In this article, TIMIT dataset is used. The TIMIT speech corpus is intended to offer speech data for acoustic-phonetic studies as well as the creation and testing of automatic speech recognition systems. TIMIT features broadband recordings of 630 speakers reading ten phonetically rich sentences in eight major dialects of American English.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Conditions</th>
+<th align="center">Free</th>
+<th align="center">POI</th>
+<th align="center">Utterances</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ELSDSR</td>
+<td align="center">Clean Speech</td>
+<td align="center">YES</td>
+<td align="center">22</td>
+<td align="center">198</td>
+</tr>
+<tr>
+<td align="center">MIT Mobile</td>
+<td align="center">Mobile Devices</td>
+<td align="center">-</td>
+<td align="center">88</td>
+<td align="center">7884</td>
+</tr>
+<tr>
+<td align="center">SWB</td>
+<td align="center">Telephony</td>
+<td align="center">-</td>
+<td align="center">3114</td>
+<td align="center">33039</td>
+</tr>
+<tr>
+<td align="center">POLYCOST</td>
+<td align="center">Telephony</td>
+<td align="center">-</td>
+<td align="center">133</td>
+<td align="center">1285</td>
+</tr>
+<tr>
+<td align="center">ICSI Meeting Corpus</td>
+<td align="center">Meetings</td>
+<td align="center">-</td>
+<td align="center">53</td>
+<td align="center">922</td>
+</tr>
+<tr>
+<td align="center">Fprensic Comparison</td>
+<td align="center">Telephony</td>
+<td align="center">YES</td>
+<td align="center">552</td>
+<td align="center">1264</td>
+</tr>
+<tr>
+<td align="center">ANDOSL</td>
+<td align="center">Clean Speech</td>
+<td align="center">-</td>
+<td align="center">204</td>
+<td align="center">33900</td>
+</tr>
+<tr>
+<td align="center">TIMIT</td>
+<td align="center">Clean Speech</td>
+<td align="center">-</td>
+<td align="center">630</td>
+<td align="center">6300</td>
+</tr>
+<tr>
+<td align="center">SITW</td>
+<td align="center">Multi-media</td>
+<td align="center">YES</td>
+<td align="center">299</td>
+<td align="center">2800</td>
+</tr>
+<tr>
+<td align="center">NIST SRE</td>
+<td align="center">Clean Speech</td>
+<td align="center">-</td>
+<td align="center">2000+</td>
+<td align="center">*</td>
+</tr>
+<tr>
+<td align="center">VoxCeleb</td>
+<td align="center">Multi-media</td>
+<td align="center">YES</td>
+<td align="center">1251</td>
+<td align="center">153516</td>
+</tr>
+</tbody></table>
+<p>The output of the last layer is input into a 630-way softmax to obtain a distribution over the 630 different speakers, as identification is handled as a simple classification task.</p>
+<h2 id="Import-Libraries"><a href="#Import-Libraries" class="headerlink" title="Import Libraries"></a>Import Libraries</h2><p>In this work, Librosa is used for audio analysis and PyTorch is used to construct the models.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> math
+<span class="token keyword">import</span> random
+<span class="token keyword">import</span> librosa
+<span class="token keyword">import</span> librosa<span class="token punctuation">.</span>display
+<span class="token keyword">import</span> python_speech_features
+<span class="token keyword">import</span> torch
+<span class="token keyword">import</span> torch<span class="token punctuation">.</span>nn <span class="token keyword">as</span> nn
+<span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<span class="token keyword">import</span> pytorch_lightning <span class="token keyword">as</span> pl
+<span class="token keyword">import</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>functional <span class="token keyword">as</span> F
+<span class="token keyword">from</span> scipy<span class="token punctuation">.</span>special <span class="token keyword">import</span> softmax
+<span class="token keyword">from</span> scipy<span class="token punctuation">.</span>io <span class="token keyword">import</span> wavfile
+<span class="token keyword">from</span> tqdm<span class="token punctuation">.</span>auto <span class="token keyword">import</span> tqdm
+<span class="token keyword">from</span> sklearn <span class="token keyword">import</span> metrics
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>model_selection <span class="token keyword">import</span> train_test_split
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>preprocessing <span class="token keyword">import</span> LabelEncoder
+<span class="token keyword">from</span> collections <span class="token keyword">import</span> OrderedDict
+<span class="token keyword">from</span> datasets <span class="token keyword">import</span> load_dataset
+
+torch<span class="token punctuation">.</span>manual_seed<span class="token punctuation">(</span><span class="token number">914</span><span class="token punctuation">)</span>
+torch<span class="token punctuation">.</span>backends<span class="token punctuation">.</span>cudnn<span class="token punctuation">.</span>deterministic <span class="token operator">=</span> <span class="token boolean">True</span>
+torch<span class="token punctuation">.</span>backends<span class="token punctuation">.</span>cudnn<span class="token punctuation">.</span>benchmark <span class="token operator">=</span> <span class="token boolean">False</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Load-Data"><a href="#Load-Data" class="headerlink" title="Load Data"></a>Load Data</h2><p><code>Datasets</code> is a lightweight library providing one-line dataloaders for many public datasets built by HuggingFace.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">timit <span class="token operator">=</span> load_dataset<span class="token punctuation">(</span><span class="token string">'timit_asr'</span><span class="token punctuation">)</span>
+timit_train_df <span class="token operator">=</span> timit<span class="token punctuation">[</span><span class="token string">"train"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>to_pandas<span class="token punctuation">(</span><span class="token punctuation">)</span>
+timit_test_df <span class="token operator">=</span> timit<span class="token punctuation">[</span><span class="token string">"test"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>to_pandas<span class="token punctuation">(</span><span class="token punctuation">)</span>
+timit_df <span class="token operator">=</span> pd<span class="token punctuation">.</span>concat<span class="token punctuation">(</span><span class="token punctuation">[</span>timit_train_df<span class="token punctuation">,</span> timit_test_df<span class="token punctuation">]</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span>reset_index<span class="token punctuation">(</span>drop<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+timit_train_df<span class="token punctuation">,</span> timit_test_df <span class="token operator">=</span> train_test_split<span class="token punctuation">(</span>
+	timit_df<span class="token punctuation">,</span> 
+	test_size<span class="token operator">=</span><span class="token number">0.2</span><span class="token punctuation">,</span> 
+	random_state<span class="token operator">=</span><span class="token number">914</span><span class="token punctuation">,</span> 
+	stratify<span class="token operator">=</span>timit_df<span class="token punctuation">.</span>speaker_id
+<span class="token punctuation">)</span>
+timit_train_df <span class="token operator">=</span> timit_train_df<span class="token punctuation">.</span>reset_index<span class="token punctuation">(</span>drop<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+timit_test_df <span class="token operator">=</span> timit_test_df<span class="token punctuation">.</span>reset_index<span class="token punctuation">(</span>drop<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+timit_train_df <span class="token operator">=</span> timit_train_df<span class="token punctuation">.</span>sort_values<span class="token punctuation">(</span><span class="token string">"speaker_id"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>reset_index<span class="token punctuation">(</span>drop<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+timit_test_df <span class="token operator">=</span> timit_test_df<span class="token punctuation">.</span>sort_values<span class="token punctuation">(</span><span class="token string">"speaker_id"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>reset_index<span class="token punctuation">(</span>drop<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Helper-Functions"><a href="#Helper-Functions" class="headerlink" title="Helper Functions"></a>Helper Functions</h2><p>The data are unequal in length, so the training data are randomly intercepted due to the fixed input size of neural network. If the training data is only taken for the first 1 second, there is too much data loss and the result is definitely poor. Theoretically, the training data should be intercepted more often, without data loss.</p>
+<p>Let’s say we train the dataset and have 1000 unequal lengths of data. Each time we randomly intercept, pick a random piece of data and intercept a random 1 second in this data. Repeat this operation many times, say 100 times, so that we get 100 1-second data to train.</p>
+<p>When testing, we divide a data sample into many 1-second data, for example, we use sliding window to divide a certain data sample into 10 1-second data, the final test will get 10 softmax results. Average these 10 softmax results into one vector and get the result.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">generate_segments</span><span class="token punctuation">(</span>sample<span class="token punctuation">,</span> windows<span class="token punctuation">,</span> num_samples<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    lst <span class="token operator">=</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>sample<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    list_size <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>lst<span class="token punctuation">)</span>
+    indexes <span class="token operator">=</span> <span class="token punctuation">[</span>lst<span class="token punctuation">[</span>i<span class="token punctuation">:</span>i<span class="token operator">+</span>windows<span class="token punctuation">]</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>list_size<span class="token operator">-</span>windows<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    indexes <span class="token operator">=</span> random<span class="token punctuation">.</span>choices<span class="token punctuation">(</span>indexes<span class="token punctuation">,</span> k<span class="token operator">=</span>num_samples<span class="token punctuation">)</span>
+    sub_lst <span class="token operator">=</span> <span class="token punctuation">[</span>sample<span class="token punctuation">[</span><span class="token builtin">min</span><span class="token punctuation">(</span>idx<span class="token punctuation">)</span><span class="token punctuation">:</span><span class="token builtin">max</span><span class="token punctuation">(</span>idx<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token keyword">for</span> idx <span class="token keyword">in</span> indexes<span class="token punctuation">]</span>
+    <span class="token keyword">return</span> sub_lst
+
+<span class="token keyword">def</span> <span class="token function">padding</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> max_length<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    padding <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span>max_length<span class="token punctuation">)</span>
+    padding<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token builtin">len</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> arr
+    <span class="token keyword">return</span> padding<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Creating-Training-Data"><a href="#Creating-Training-Data" class="headerlink" title="Creating Training Data"></a>Creating Training Data</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">sample_rate <span class="token operator">=</span> <span class="token number">16000</span>
+segments <span class="token operator">=</span> <span class="token number">100</span>
+
+all_wave<span class="token punctuation">,</span> all_label <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> idx <span class="token keyword">in</span> tqdm<span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>timit_train_df<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    samples<span class="token punctuation">,</span> sample_rate <span class="token operator">=</span> librosa<span class="token punctuation">.</span>load<span class="token punctuation">(</span>timit_train_df<span class="token punctuation">.</span><span class="token builtin">file</span><span class="token punctuation">[</span>idx<span class="token punctuation">]</span><span class="token punctuation">,</span> sr<span class="token operator">=</span>sample_rate<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>samples<span class="token punctuation">)</span> <span class="token operator">&lt;</span> sample_rate<span class="token punctuation">:</span>
+        samples <span class="token operator">=</span> padding<span class="token punctuation">(</span>samples<span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">(</span>sample_rate<span class="token operator">*</span><span class="token number">1.5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    samples_segments <span class="token operator">=</span> generate_segments<span class="token punctuation">(</span>samples<span class="token punctuation">,</span> windows<span class="token operator">=</span>sample_rate<span class="token punctuation">,</span> num_samples<span class="token operator">=</span>segments<span class="token punctuation">)</span>
+    label <span class="token operator">=</span> timit_train_df<span class="token punctuation">.</span>speaker_id<span class="token punctuation">[</span>idx<span class="token punctuation">]</span>
+    all_wave<span class="token punctuation">.</span>extend<span class="token punctuation">(</span>samples_segments<span class="token punctuation">)</span>
+    all_label<span class="token punctuation">.</span>extend<span class="token punctuation">(</span><span class="token punctuation">[</span>label<span class="token punctuation">]</span><span class="token operator">*</span>segments<span class="token punctuation">)</span>
+
+all_wave <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>all_wave<span class="token punctuation">)</span>
+all_label <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>all_label<span class="token punctuation">)</span>
+
+le <span class="token operator">=</span> LabelEncoder<span class="token punctuation">(</span><span class="token punctuation">)</span>
+y <span class="token operator">=</span> le<span class="token punctuation">.</span>fit_transform<span class="token punctuation">(</span>all_label<span class="token punctuation">)</span>
+classes <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>le<span class="token punctuation">.</span>classes_<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Compute-MFCC"><a href="#Compute-MFCC" class="headerlink" title="Compute MFCC"></a>Compute MFCC</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">compute_mfcc</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> n_mfcc<span class="token punctuation">,</span> sr<span class="token operator">=</span><span class="token number">16000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Compute MFCC, n_mfcc='</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>n_mfcc<span class="token punctuation">)</span><span class="token punctuation">,</span> flush<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    all_mfcc <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> wav <span class="token keyword">in</span> tqdm<span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        feature <span class="token operator">=</span> python_speech_features<span class="token punctuation">.</span>mfcc<span class="token punctuation">(</span>wav<span class="token punctuation">,</span> 
+                                              samplerate<span class="token operator">=</span>sr<span class="token punctuation">,</span> 
+                                              numcep<span class="token operator">=</span>n_mfcc<span class="token punctuation">,</span> 
+                                              nfft<span class="token operator">=</span><span class="token builtin">int</span><span class="token punctuation">(</span>sr<span class="token operator">*</span><span class="token number">0.025</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        all_mfcc<span class="token punctuation">.</span>append<span class="token punctuation">(</span>feature<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>all_mfcc<span class="token punctuation">)</span>
+
+all_mfcc <span class="token operator">=</span> compute_mfcc<span class="token punctuation">(</span>all_wave<span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Creating-Test-Data"><a href="#Creating-Test-Data" class="headerlink" title="Creating Test Data"></a>Creating Test Data</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">sample_rate <span class="token operator">=</span> <span class="token number">16000</span>
+segments <span class="token operator">=</span> <span class="token number">10</span>
+
+all_wave_test<span class="token punctuation">,</span> all_label_test <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> idx <span class="token keyword">in</span> tqdm<span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>timit_test_df<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    samples<span class="token punctuation">,</span> sample_rate <span class="token operator">=</span> librosa<span class="token punctuation">.</span>load<span class="token punctuation">(</span>timit_test_df<span class="token punctuation">.</span><span class="token builtin">file</span><span class="token punctuation">[</span>idx<span class="token punctuation">]</span><span class="token punctuation">,</span> sr<span class="token operator">=</span>sample_rate<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>samples<span class="token punctuation">)</span> <span class="token operator">&lt;</span> sample_rate<span class="token punctuation">:</span>
+        samples <span class="token operator">=</span> padding<span class="token punctuation">(</span>samples<span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">(</span>sample_rate<span class="token operator">*</span><span class="token number">1.5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    samples_segments <span class="token operator">=</span> generate_segments<span class="token punctuation">(</span>samples<span class="token punctuation">,</span> windows<span class="token operator">=</span>sample_rate<span class="token punctuation">,</span> num_samples<span class="token operator">=</span>segments<span class="token punctuation">)</span>
+    label <span class="token operator">=</span> timit_test_df<span class="token punctuation">.</span>speaker_id<span class="token punctuation">[</span>idx<span class="token punctuation">]</span>
+    all_wave_test<span class="token punctuation">.</span>extend<span class="token punctuation">(</span>samples_segments<span class="token punctuation">)</span>
+    all_label_test<span class="token punctuation">.</span>extend<span class="token punctuation">(</span><span class="token punctuation">[</span>label<span class="token punctuation">]</span><span class="token operator">*</span>segments<span class="token punctuation">)</span>
+
+all_wave_test <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>all_wave_test<span class="token punctuation">)</span>
+all_label_test <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>all_label_test<span class="token punctuation">)</span>
+all_mfcc_test <span class="token operator">=</span> compute_mfcc<span class="token punctuation">(</span>all_wave_test<span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span>
+X_test <span class="token operator">=</span> all_mfcc_test
+y_test <span class="token operator">=</span> le<span class="token punctuation">.</span>transform<span class="token punctuation">(</span>all_label_test<span class="token punctuation">)</span>    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Split-Data-into-Training-and-Validation"><a href="#Split-Data-into-Training-and-Validation" class="headerlink" title="Split Data into Training and Validation"></a>Split Data into Training and Validation</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">X_train<span class="token punctuation">,</span> X_valid<span class="token punctuation">,</span> y_train<span class="token punctuation">,</span> y_valid <span class="token operator">=</span> train_test_split<span class="token punctuation">(</span>
+	all_mfcc<span class="token punctuation">,</span> 
+	y<span class="token punctuation">,</span> 
+	test_size<span class="token operator">=</span><span class="token number">0.25</span><span class="token punctuation">,</span> 
+	random_state<span class="token operator">=</span><span class="token number">914</span><span class="token punctuation">,</span> 
+	stratify<span class="token operator">=</span>y
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Normalisation"><a href="#Normalisation" class="headerlink" title="Normalisation"></a>Normalisation</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">mean_ <span class="token operator">=</span> np<span class="token punctuation">.</span>mean<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+std_ <span class="token operator">=</span> np<span class="token punctuation">.</span>std<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+X_train <span class="token operator">=</span> <span class="token punctuation">(</span>X_train <span class="token operator">-</span> mean_<span class="token punctuation">)</span> <span class="token operator">/</span> std_
+X_valid <span class="token operator">=</span> <span class="token punctuation">(</span>X_valid <span class="token operator">-</span> mean_<span class="token punctuation">)</span> <span class="token operator">/</span> std_
+X_test <span class="token operator">=</span> <span class="token punctuation">(</span>X_test <span class="token operator">-</span> mean_<span class="token punctuation">)</span> <span class="token operator">/</span> std_<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Construct-Dataset-and-Dataloader"><a href="#Construct-Dataset-and-Dataloader" class="headerlink" title="Construct Dataset and Dataloader"></a>Construct Dataset and Dataloader</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">SpeechDataset</span><span class="token punctuation">(</span>torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>data<span class="token punctuation">.</span>Dataset<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> X<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>X <span class="token operator">=</span> X
+        self<span class="token punctuation">.</span>y <span class="token operator">=</span> y
+
+    <span class="token keyword">def</span> <span class="token function">__len__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>y<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f"&lt;Dataset(N=</span><span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">&#125;</span></span><span class="token string">)>"</span></span>
+
+    <span class="token keyword">def</span> <span class="token function">__getitem__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> index<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        X <span class="token operator">=</span> self<span class="token punctuation">.</span>X<span class="token punctuation">[</span>index<span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span>
+        y <span class="token operator">=</span> self<span class="token punctuation">.</span>y<span class="token punctuation">[</span>index<span class="token punctuation">]</span>
+        X <span class="token operator">=</span> torch<span class="token punctuation">.</span>tensor<span class="token punctuation">(</span>X<span class="token punctuation">,</span> dtype<span class="token operator">=</span>torch<span class="token punctuation">.</span>float32<span class="token punctuation">)</span>
+        y <span class="token operator">=</span> torch<span class="token punctuation">.</span>tensor<span class="token punctuation">(</span>y<span class="token punctuation">,</span> dtype<span class="token operator">=</span>torch<span class="token punctuation">.</span><span class="token builtin">long</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span>X<span class="token punctuation">,</span> y<span class="token punctuation">]</span>
+
+    <span class="token keyword">def</span> <span class="token function">create_dataloader</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> batch_size<span class="token punctuation">,</span> shuffle<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> drop_last<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>data<span class="token punctuation">.</span>DataLoader<span class="token punctuation">(</span>
+            dataset<span class="token operator">=</span>self<span class="token punctuation">,</span>
+            batch_size<span class="token operator">=</span>batch_size<span class="token punctuation">,</span>
+            shuffle<span class="token operator">=</span>shuffle<span class="token punctuation">,</span>
+            drop_last<span class="token operator">=</span>drop_last<span class="token punctuation">,</span>
+            pin_memory<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">batch_size <span class="token operator">=</span> <span class="token number">128</span>
+
+train_dataset <span class="token operator">=</span> SpeechDataset<span class="token punctuation">(</span>X<span class="token operator">=</span>X_train<span class="token punctuation">,</span> y<span class="token operator">=</span>y_train<span class="token punctuation">)</span>
+valid_dataset <span class="token operator">=</span> SpeechDataset<span class="token punctuation">(</span>X<span class="token operator">=</span>X_valid<span class="token punctuation">,</span> y<span class="token operator">=</span>y_valid<span class="token punctuation">)</span>
+test_dataset <span class="token operator">=</span> SpeechDataset<span class="token punctuation">(</span>X<span class="token operator">=</span>X_test<span class="token punctuation">,</span> y<span class="token operator">=</span>y_test<span class="token punctuation">)</span>
+
+train_dataloader <span class="token operator">=</span> train_dataset<span class="token punctuation">.</span>create_dataloader<span class="token punctuation">(</span>batch_size<span class="token operator">=</span>batch_size<span class="token punctuation">,</span> shuffle<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+valid_dataloader <span class="token operator">=</span> valid_dataset<span class="token punctuation">.</span>create_dataloader<span class="token punctuation">(</span>batch_size<span class="token operator">=</span>batch_size<span class="token punctuation">,</span> shuffle<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+test_dataloader <span class="token operator">=</span> test_dataset<span class="token punctuation">.</span>create_dataloader<span class="token punctuation">(</span>batch_size<span class="token operator">=</span>batch_size<span class="token punctuation">,</span> shuffle<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+
+batch_X<span class="token punctuation">,</span> batch_y <span class="token operator">=</span> <span class="token builtin">next</span><span class="token punctuation">(</span><span class="token builtin">iter</span><span class="token punctuation">(</span>train_dataloader<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">"Sample batch:\n"</span>
+    <span class="token string-interpolation"><span class="token string">f"  X: </span><span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token builtin">list</span><span class="token punctuation">(</span>batch_X<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span></span><span class="token string">\n"</span></span>
+    <span class="token string-interpolation"><span class="token string">f"  y: </span><span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token builtin">list</span><span class="token punctuation">(</span>batch_y<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="Modelling"><a href="#Modelling" class="headerlink" title="Modelling"></a>Modelling</h1><h2 id="Building-LightningModule"><a href="#Building-LightningModule" class="headerlink" title="Building LightningModule"></a>Building LightningModule</h2><p><code>LightningModule</code> is a subclass of <code>torch.nn.Module</code>, and it is used for both inference and training.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">LightningMultiClass</span><span class="token punctuation">(</span>pl<span class="token punctuation">.</span>LightningModule<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    Multi-class Classification Engine
+    """</span>
+    
+    learning_rate <span class="token operator">=</span> <span class="token number">1e</span><span class="token operator">-</span><span class="token number">3</span>
+    
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>train_losses <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        self<span class="token punctuation">.</span>valid_losses <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        self<span class="token punctuation">.</span>train_accuracies <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        self<span class="token punctuation">.</span>valid_accuracies <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> inputs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">raise</span> NotImplementedError
+    
+    <span class="token keyword">def</span> <span class="token function">configure_optimizers</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        optimizer <span class="token operator">=</span> torch<span class="token punctuation">.</span>optim<span class="token punctuation">.</span>Adam<span class="token punctuation">(</span>self<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> lr<span class="token operator">=</span>self<span class="token punctuation">.</span>learning_rate<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> optimizer
+    
+    <span class="token keyword">def</span> <span class="token function">training_step</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> batch<span class="token punctuation">,</span> batch_idx<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        batch<span class="token punctuation">,</span> y <span class="token operator">=</span> batch
+        y_hat <span class="token operator">=</span> self<span class="token punctuation">(</span>batch<span class="token punctuation">)</span>
+        labels_hat <span class="token operator">=</span> torch<span class="token punctuation">.</span>argmax<span class="token punctuation">(</span>y_hat<span class="token punctuation">,</span> dim<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+        n_correct_pred <span class="token operator">=</span> torch<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>y <span class="token operator">==</span> labels_hat<span class="token punctuation">)</span><span class="token punctuation">.</span>item<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        loss <span class="token operator">=</span> F<span class="token punctuation">.</span>cross_entropy<span class="token punctuation">(</span>y_hat<span class="token punctuation">,</span> y<span class="token punctuation">.</span><span class="token builtin">long</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>log<span class="token punctuation">(</span><span class="token string">"train_loss"</span><span class="token punctuation">,</span> loss<span class="token punctuation">,</span> on_step<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> on_epoch<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> logger<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token punctuation">&#123;</span><span class="token string">'loss'</span><span class="token punctuation">:</span> loss<span class="token punctuation">,</span> <span class="token string">"n_correct_pred"</span><span class="token punctuation">:</span> n_correct_pred<span class="token punctuation">,</span> <span class="token string">"n_pred"</span><span class="token punctuation">:</span> <span class="token builtin">len</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">def</span> <span class="token function">training_epoch_end</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> outputs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        avg_loss <span class="token operator">=</span> torch<span class="token punctuation">.</span>stack<span class="token punctuation">(</span><span class="token punctuation">[</span>x<span class="token punctuation">[</span><span class="token string">'loss'</span><span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> outputs<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        train_acc <span class="token operator">=</span> <span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token punctuation">[</span>x<span class="token punctuation">[</span><span class="token string">'n_correct_pred'</span><span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> outputs<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token builtin">sum</span><span class="token punctuation">(</span>x<span class="token punctuation">[</span><span class="token string">'n_pred'</span><span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> outputs<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>train_losses<span class="token punctuation">.</span>append<span class="token punctuation">(</span>avg_loss<span class="token punctuation">.</span>detach<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>cpu<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>item<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>train_accuracies<span class="token punctuation">.</span>append<span class="token punctuation">(</span>train_acc<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">validation_step</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> batch<span class="token punctuation">,</span> batch_idx<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        batch<span class="token punctuation">,</span> y <span class="token operator">=</span> batch
+        y_hat <span class="token operator">=</span> self<span class="token punctuation">(</span>batch<span class="token punctuation">)</span>
+        loss <span class="token operator">=</span> F<span class="token punctuation">.</span>cross_entropy<span class="token punctuation">(</span>y_hat<span class="token punctuation">,</span> y<span class="token punctuation">.</span><span class="token builtin">long</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        labels_hat <span class="token operator">=</span> torch<span class="token punctuation">.</span>argmax<span class="token punctuation">(</span>y_hat<span class="token punctuation">,</span> dim<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+        n_correct_pred <span class="token operator">=</span> torch<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>y <span class="token operator">==</span> labels_hat<span class="token punctuation">)</span><span class="token punctuation">.</span>item<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>log<span class="token punctuation">(</span><span class="token string">"valid_loss"</span><span class="token punctuation">,</span> loss<span class="token punctuation">,</span> on_step<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> on_epoch<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> logger<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token punctuation">&#123;</span><span class="token string">'val_loss'</span><span class="token punctuation">:</span> loss<span class="token punctuation">,</span> <span class="token string">"n_correct_pred"</span><span class="token punctuation">:</span> n_correct_pred<span class="token punctuation">,</span> <span class="token string">"n_pred"</span><span class="token punctuation">:</span> <span class="token builtin">len</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">def</span> <span class="token function">validation_epoch_end</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> outputs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        avg_loss <span class="token operator">=</span> torch<span class="token punctuation">.</span>stack<span class="token punctuation">(</span><span class="token punctuation">[</span>x<span class="token punctuation">[</span><span class="token string">'val_loss'</span><span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> outputs<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        val_acc <span class="token operator">=</span> <span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token punctuation">[</span>x<span class="token punctuation">[</span><span class="token string">'n_correct_pred'</span><span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> outputs<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token builtin">sum</span><span class="token punctuation">(</span>x<span class="token punctuation">[</span><span class="token string">'n_pred'</span><span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> outputs<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>valid_losses<span class="token punctuation">.</span>append<span class="token punctuation">(</span>avg_loss<span class="token punctuation">.</span>detach<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>cpu<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>item<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>valid_accuracies<span class="token punctuation">.</span>append<span class="token punctuation">(</span>val_acc<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">test_step</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> batch<span class="token punctuation">,</span> batch_idx<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        batch<span class="token punctuation">,</span> y <span class="token operator">=</span> batch
+        y_hat <span class="token operator">=</span> self<span class="token punctuation">(</span>batch<span class="token punctuation">)</span>
+        loss <span class="token operator">=</span> F<span class="token punctuation">.</span>cross_entropy<span class="token punctuation">(</span>y_hat<span class="token punctuation">,</span> y<span class="token punctuation">.</span><span class="token builtin">long</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        labels_hat <span class="token operator">=</span> torch<span class="token punctuation">.</span>argmax<span class="token punctuation">(</span>y_hat<span class="token punctuation">,</span> dim<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+        n_correct_pred <span class="token operator">=</span> torch<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>y <span class="token operator">==</span> labels_hat<span class="token punctuation">)</span><span class="token punctuation">.</span>item<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">return</span> <span class="token punctuation">&#123;</span><span class="token string">'test_loss'</span><span class="token punctuation">:</span> loss<span class="token punctuation">,</span> <span class="token string">"n_correct_pred"</span><span class="token punctuation">:</span> n_correct_pred<span class="token punctuation">,</span> <span class="token string">"n_pred"</span><span class="token punctuation">:</span> <span class="token builtin">len</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">def</span> <span class="token function">test_epoch_end</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> outputs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        avg_loss <span class="token operator">=</span> torch<span class="token punctuation">.</span>stack<span class="token punctuation">(</span><span class="token punctuation">[</span>x<span class="token punctuation">[</span><span class="token string">'test_loss'</span><span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> outputs<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        test_acc <span class="token operator">=</span> <span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token punctuation">[</span>x<span class="token punctuation">[</span><span class="token string">'n_correct_pred'</span><span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> outputs<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token builtin">sum</span><span class="token punctuation">(</span>x<span class="token punctuation">[</span><span class="token string">'n_pred'</span><span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> outputs<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">predict_proba</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> test_dataloader<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># Set model to eval mode</span>
+        self<span class="token punctuation">.</span><span class="token builtin">eval</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        y_probs <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+        <span class="token comment"># Iterate over val batches</span>
+        <span class="token keyword">with</span> torch<span class="token punctuation">.</span>no_grad<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">for</span> i<span class="token punctuation">,</span> batch <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>tqdm<span class="token punctuation">(</span>test_dataloader<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                x<span class="token punctuation">,</span> y <span class="token operator">=</span> batch
+                x<span class="token punctuation">,</span> y <span class="token operator">=</span> x<span class="token punctuation">.</span>to<span class="token punctuation">(</span>self<span class="token punctuation">.</span>device<span class="token punctuation">)</span><span class="token punctuation">,</span> y<span class="token punctuation">.</span>to<span class="token punctuation">(</span>self<span class="token punctuation">.</span>device<span class="token punctuation">)</span>
+                <span class="token comment"># Forward pass with inputs</span>
+                y_prob <span class="token operator">=</span> self<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+                <span class="token comment"># Store outputs</span>
+                y_probs<span class="token punctuation">.</span>extend<span class="token punctuation">(</span>y_prob<span class="token punctuation">.</span>cpu<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                
+        <span class="token keyword">return</span> softmax<span class="token punctuation">(</span>np<span class="token punctuation">.</span>vstack<span class="token punctuation">(</span>y_probs<span class="token punctuation">)</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Baseline"><a href="#Baseline" class="headerlink" title="Baseline"></a>Baseline</h2><p>In recent years, increased emphasis has been placed on using neural networks for speaker verification, with end-to-end training being used by the most successful systems. The neural network output vectors are commonly referred to as embedding vectors, also known as d-vectors, in such systems.</p>
+<p>In this work, LSTM-based d-vector and LSTM-based d-vector with Attentive Pooling are used for constructing baseline (Li et al., 2020).</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">LSTMDvector</span><span class="token punctuation">(</span>LightningMultiClass<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    LSTM-based d-vector
+    """</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>
+        self<span class="token punctuation">,</span>
+        num_layers<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span>
+        dim_input<span class="token operator">=</span><span class="token number">40</span><span class="token punctuation">,</span>
+        dim_cell<span class="token operator">=</span><span class="token number">256</span><span class="token punctuation">,</span>
+        dim_emb<span class="token operator">=</span><span class="token number">256</span><span class="token punctuation">,</span>
+        seg_len<span class="token operator">=</span><span class="token number">160</span><span class="token punctuation">,</span>
+        dropout_p<span class="token operator">=</span><span class="token number">0.1</span><span class="token punctuation">,</span> 
+        num_classes<span class="token operator">=</span><span class="token number">30</span>
+    <span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>lstm <span class="token operator">=</span> nn<span class="token punctuation">.</span>LSTM<span class="token punctuation">(</span>dim_input<span class="token punctuation">,</span> dim_cell<span class="token punctuation">,</span> num_layers<span class="token punctuation">,</span> batch_first<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>embedding <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>dim_cell<span class="token punctuation">,</span> dim_emb<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>seg_len <span class="token operator">=</span> seg_len
+        self<span class="token punctuation">.</span>classifier <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>dim_emb<span class="token punctuation">,</span> num_classes<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> inputs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        lstm_outs<span class="token punctuation">,</span> _ <span class="token operator">=</span> self<span class="token punctuation">.</span>lstm<span class="token punctuation">(</span>inputs<span class="token punctuation">)</span>
+        embeds <span class="token operator">=</span> self<span class="token punctuation">.</span>embedding<span class="token punctuation">(</span>lstm_outs<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        x <span class="token operator">=</span> embeds<span class="token punctuation">.</span>div<span class="token punctuation">(</span>embeds<span class="token punctuation">.</span>norm<span class="token punctuation">(</span>p<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> dim<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> keepdim<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>classifier<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">AttentivePooledLSTMDvector</span><span class="token punctuation">(</span>LightningMultiClass<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    LSTM-based d-vector with Attentive Pooling
+    """</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>
+        self<span class="token punctuation">,</span>
+        num_layers<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span>
+        dim_input<span class="token operator">=</span><span class="token number">40</span><span class="token punctuation">,</span>
+        dim_cell<span class="token operator">=</span><span class="token number">256</span><span class="token punctuation">,</span>
+        dim_emb<span class="token operator">=</span><span class="token number">256</span><span class="token punctuation">,</span>
+        seg_len<span class="token operator">=</span><span class="token number">160</span><span class="token punctuation">,</span>
+        num_classes<span class="token operator">=</span><span class="token number">30</span>
+    <span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>lstm <span class="token operator">=</span> nn<span class="token punctuation">.</span>LSTM<span class="token punctuation">(</span>dim_input<span class="token punctuation">,</span> dim_cell<span class="token punctuation">,</span> num_layers<span class="token punctuation">,</span> batch_first<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>embedding <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>dim_cell<span class="token punctuation">,</span> dim_emb<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>linear <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>dim_emb<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>seg_len <span class="token operator">=</span> seg_len
+        self<span class="token punctuation">.</span>classifier <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>dim_emb<span class="token punctuation">,</span> num_classes<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> inputs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        lstm_outs<span class="token punctuation">,</span> _ <span class="token operator">=</span> self<span class="token punctuation">.</span>lstm<span class="token punctuation">(</span>inputs<span class="token punctuation">)</span>
+        embeds <span class="token operator">=</span> torch<span class="token punctuation">.</span>tanh<span class="token punctuation">(</span>self<span class="token punctuation">.</span>embedding<span class="token punctuation">(</span>lstm_outs<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        attn_weights <span class="token operator">=</span> F<span class="token punctuation">.</span>softmax<span class="token punctuation">(</span>self<span class="token punctuation">.</span>linear<span class="token punctuation">(</span>embeds<span class="token punctuation">)</span><span class="token punctuation">,</span> dim<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+        embeds <span class="token operator">=</span> torch<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>embeds <span class="token operator">*</span> attn_weights<span class="token punctuation">,</span> dim<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+        embeds <span class="token operator">=</span> embeds<span class="token punctuation">.</span>div<span class="token punctuation">(</span>embeds<span class="token punctuation">.</span>norm<span class="token punctuation">(</span>p<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> dim<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> keepdim<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>classifier<span class="token punctuation">(</span>embeds<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="XVectors"><a href="#XVectors" class="headerlink" title="XVectors"></a>XVectors</h2><p>x-vector system is based on the DNN embeddings in  Snyder et al. paper “Deep neural network embeddings for text-independent speaker verification” in 2017. The features are 20 dimensional mfcc with a frame-length of 25ms, mean-normalized over a sliding window of up to 1 seconds.</p>
+<p>There are three parts within the architecture of Speaker Embedding Model: frame-level feature extractor, statistics pooling and segment-level feature extractor. In frame-level feature extractor, the network consists of TDNN layers and residual TDNN blocks (Hossein et al., 2019). Statistics pooling operation is then used, the output is feed into the segment-level feature extractor. There are two fully-connected layers in segment-level feature extractor.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">XVectors</span><span class="token punctuation">(</span>LightningMultiClass<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>
+        self<span class="token punctuation">,</span>
+        dropout_p<span class="token operator">=</span><span class="token number">0.0</span><span class="token punctuation">,</span> 
+        n_classes<span class="token operator">=</span><span class="token number">30</span>
+    <span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span>XVectors<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>tdnn1 <span class="token operator">=</span> TDNN<span class="token punctuation">(</span>input_dim<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">,</span> context_size<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span> padding<span class="token operator">=</span>math<span class="token punctuation">.</span>floor<span class="token punctuation">(</span><span class="token number">5</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>tdnn2 <span class="token operator">=</span> TDNN<span class="token punctuation">(</span>input_dim<span class="token operator">=</span><span class="token number">512</span><span class="token punctuation">,</span> context_size<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span> padding<span class="token operator">=</span>math<span class="token punctuation">.</span>floor<span class="token punctuation">(</span><span class="token number">5</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>tdnn3 <span class="token operator">=</span> TDNN<span class="token punctuation">(</span>input_dim<span class="token operator">=</span><span class="token number">512</span><span class="token punctuation">,</span> output_dim<span class="token operator">=</span><span class="token number">1500</span><span class="token punctuation">,</span> context_size<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> padding<span class="token operator">=</span>math<span class="token punctuation">.</span>floor<span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>tdnnres1 <span class="token operator">=</span> TDNN<span class="token punctuation">(</span>input_dim<span class="token operator">=</span><span class="token number">512</span><span class="token punctuation">,</span> context_size<span class="token operator">=</span><span class="token number">7</span><span class="token punctuation">,</span> padding<span class="token operator">=</span>math<span class="token punctuation">.</span>floor<span class="token punctuation">(</span><span class="token number">7</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>tdnnres2 <span class="token operator">=</span> TDNN<span class="token punctuation">(</span>input_dim<span class="token operator">=</span><span class="token number">512</span><span class="token punctuation">,</span> context_size<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> padding<span class="token operator">=</span>math<span class="token punctuation">.</span>floor<span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>tdnnres3 <span class="token operator">=</span> TDNN<span class="token punctuation">(</span>input_dim<span class="token operator">=</span><span class="token number">512</span><span class="token punctuation">,</span> context_size<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> padding<span class="token operator">=</span>math<span class="token punctuation">.</span>floor<span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>pool <span class="token operator">=</span> StatsPool<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>linear1 <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">,</span> <span class="token number">512</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>linear2 <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">512</span><span class="token punctuation">,</span> <span class="token number">512</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>bn1 <span class="token operator">=</span> nn<span class="token punctuation">.</span>BatchNorm1d<span class="token punctuation">(</span><span class="token number">512</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>bn2 <span class="token operator">=</span> nn<span class="token punctuation">.</span>BatchNorm1d<span class="token punctuation">(</span><span class="token number">512</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>dropout1 <span class="token operator">=</span> nn<span class="token punctuation">.</span>Dropout<span class="token punctuation">(</span>p<span class="token operator">=</span>dropout_p<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>dropout2 <span class="token operator">=</span> nn<span class="token punctuation">.</span>Dropout<span class="token punctuation">(</span>p<span class="token operator">=</span>dropout_p<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>nonlinearity <span class="token operator">=</span> nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>classifier <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">512</span><span class="token punctuation">,</span> n_classes<span class="token punctuation">)</span>
+        
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># Residual TDNN based Frame-level Feature Extractor</span>
+        x <span class="token operator">=</span> self<span class="token punctuation">.</span>tdnn1<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+        x <span class="token operator">=</span> self<span class="token punctuation">.</span>tdnn2<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+        x <span class="token operator">=</span> self<span class="token punctuation">.</span>tdnnres1<span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">+</span> x
+        x <span class="token operator">=</span> self<span class="token punctuation">.</span>tdnnres2<span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">+</span> x
+        x <span class="token operator">=</span> self<span class="token punctuation">.</span>tdnnres3<span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">+</span> x
+        x <span class="token operator">=</span> self<span class="token punctuation">.</span>tdnn3<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+        
+        <span class="token comment"># Statistics Pooling</span>
+        x <span class="token operator">=</span> self<span class="token punctuation">.</span>pool<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+        
+        <span class="token comment"># DNN based Segment level Feature Extractor</span>
+        x <span class="token operator">=</span> self<span class="token punctuation">.</span>linear1<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+        x <span class="token operator">=</span> self<span class="token punctuation">.</span>nonlinearity<span class="token punctuation">(</span>self<span class="token punctuation">.</span>dropout1<span class="token punctuation">(</span>self<span class="token punctuation">.</span>bn1<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        x <span class="token operator">=</span> self<span class="token punctuation">.</span>linear2<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+        x <span class="token operator">=</span> self<span class="token punctuation">.</span>nonlinearity<span class="token punctuation">(</span>self<span class="token punctuation">.</span>dropout2<span class="token punctuation">(</span>self<span class="token punctuation">.</span>bn2<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        
+        <span class="token comment"># Classifier</span>
+        x <span class="token operator">=</span> self<span class="token punctuation">.</span>classifier<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+        
+        <span class="token keyword">return</span> x
+
+<span class="token keyword">class</span> <span class="token class-name">StatsPool</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> floor<span class="token operator">=</span><span class="token number">1e</span><span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">,</span> bessel<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span>StatsPool<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>floor <span class="token operator">=</span> floor
+        self<span class="token punctuation">.</span>bessel <span class="token operator">=</span> bessel
+
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        means <span class="token operator">=</span> torch<span class="token punctuation">.</span>mean<span class="token punctuation">(</span>x<span class="token punctuation">,</span> dim<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+        _<span class="token punctuation">,</span> t<span class="token punctuation">,</span> _ <span class="token operator">=</span> x<span class="token punctuation">.</span>shape
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>bessel<span class="token punctuation">:</span>
+            t <span class="token operator">=</span> t <span class="token operator">-</span> <span class="token number">1</span>
+        residuals <span class="token operator">=</span> x <span class="token operator">-</span> means<span class="token punctuation">.</span>unsqueeze<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+        numerator <span class="token operator">=</span> torch<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>residuals<span class="token operator">**</span><span class="token number">2</span><span class="token punctuation">,</span> dim<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+        stds <span class="token operator">=</span> torch<span class="token punctuation">.</span>sqrt<span class="token punctuation">(</span>torch<span class="token punctuation">.</span>clamp<span class="token punctuation">(</span>numerator<span class="token punctuation">,</span> <span class="token builtin">min</span><span class="token operator">=</span>self<span class="token punctuation">.</span>floor<span class="token punctuation">)</span><span class="token operator">/</span>t<span class="token punctuation">)</span>
+        x <span class="token operator">=</span> torch<span class="token punctuation">.</span>cat<span class="token punctuation">(</span><span class="token punctuation">[</span>means<span class="token punctuation">,</span> stds<span class="token punctuation">]</span><span class="token punctuation">,</span> dim<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> x
+
+
+<span class="token keyword">class</span> <span class="token class-name">TDNN</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>
+        self<span class="token punctuation">,</span>
+        input_dim<span class="token operator">=</span><span class="token number">23</span><span class="token punctuation">,</span>
+        output_dim<span class="token operator">=</span><span class="token number">512</span><span class="token punctuation">,</span>
+        context_size<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span>
+        stride<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>
+        dilation<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>
+        batch_norm<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+        dropout_p<span class="token operator">=</span><span class="token number">0.0</span><span class="token punctuation">,</span>
+        padding<span class="token operator">=</span><span class="token number">0</span>
+    <span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span>TDNN<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>context_size <span class="token operator">=</span> context_size
+        self<span class="token punctuation">.</span>stride <span class="token operator">=</span> stride
+        self<span class="token punctuation">.</span>input_dim <span class="token operator">=</span> input_dim
+        self<span class="token punctuation">.</span>output_dim <span class="token operator">=</span> output_dim
+        self<span class="token punctuation">.</span>dilation <span class="token operator">=</span> dilation
+        self<span class="token punctuation">.</span>dropout_p <span class="token operator">=</span> dropout_p
+        self<span class="token punctuation">.</span>padding <span class="token operator">=</span> padding
+
+        self<span class="token punctuation">.</span>kernel <span class="token operator">=</span> nn<span class="token punctuation">.</span>Conv1d<span class="token punctuation">(</span>self<span class="token punctuation">.</span>input_dim<span class="token punctuation">,</span>
+                                self<span class="token punctuation">.</span>output_dim<span class="token punctuation">,</span>
+                                self<span class="token punctuation">.</span>context_size<span class="token punctuation">,</span>
+                                stride<span class="token operator">=</span>self<span class="token punctuation">.</span>stride<span class="token punctuation">,</span>
+                                padding<span class="token operator">=</span>self<span class="token punctuation">.</span>padding<span class="token punctuation">,</span>
+                                dilation<span class="token operator">=</span>self<span class="token punctuation">.</span>dilation<span class="token punctuation">)</span>
+
+        self<span class="token punctuation">.</span>nonlinearity <span class="token operator">=</span> nn<span class="token punctuation">.</span>ReLU<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>batch_norm <span class="token operator">=</span> batch_norm
+        <span class="token keyword">if</span> batch_norm<span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>bn <span class="token operator">=</span> nn<span class="token punctuation">.</span>BatchNorm1d<span class="token punctuation">(</span>output_dim<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>drop <span class="token operator">=</span> nn<span class="token punctuation">.</span>Dropout<span class="token punctuation">(</span>p<span class="token operator">=</span>self<span class="token punctuation">.</span>dropout_p<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">'''
+        input: size (batch, seq_len, input_features)
+        outpu: size (batch, new_seq_len, output_features)
+        '''</span>
+        _<span class="token punctuation">,</span> _<span class="token punctuation">,</span> d <span class="token operator">=</span> x<span class="token punctuation">.</span>shape
+
+        x <span class="token operator">=</span> self<span class="token punctuation">.</span>kernel<span class="token punctuation">(</span>x<span class="token punctuation">.</span>transpose<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        x <span class="token operator">=</span> self<span class="token punctuation">.</span>nonlinearity<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+        x <span class="token operator">=</span> self<span class="token punctuation">.</span>drop<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>batch_norm<span class="token punctuation">:</span>
+            x <span class="token operator">=</span> self<span class="token punctuation">.</span>bn<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> x<span class="token punctuation">.</span>transpose<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Start-Training"><a href="#Start-Training" class="headerlink" title="Start Training"></a>Start Training</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">xvectors <span class="token operator">=</span> XVectors<span class="token punctuation">(</span>n_classes<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>classes<span class="token punctuation">)</span><span class="token punctuation">)</span>
+trainer <span class="token operator">=</span> pl<span class="token punctuation">.</span>Trainer<span class="token punctuation">(</span>gpus<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> 
+                     deterministic<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span> 
+                     max_epochs<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">,</span> 
+                     precision<span class="token operator">=</span><span class="token number">16</span><span class="token punctuation">,</span> 
+                     num_sanity_val_steps<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> 
+                     fast_dev_run<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+trainer<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>xvectors<span class="token punctuation">,</span> train_dataloader<span class="token punctuation">,</span> valid_dataloader<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Visualisation"><a href="#Visualisation" class="headerlink" title="Visualisation"></a>Visualisation</h2><p>Loss curve for training and validation data.</p>
+<p>Accuracy curve for training and validation data.</p>
+<h1 id="Performance"><a href="#Performance" class="headerlink" title="Performance"></a>Performance</h1><table>
+<thead>
+<tr>
+<th align="center">Model</th>
+<th align="center">Segment</th>
+<th align="center">Size</th>
+<th align="center">Accuracy</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">XVectors</td>
+<td align="center">10</td>
+<td align="center">(37800, 12600, 1260)</td>
+<td align="center">97.5397%</td>
+</tr>
+<tr>
+<td align="center">LSTM-DVectors</td>
+<td align="center">10</td>
+<td align="center">(37800, 12600, 1260)</td>
+<td align="center">63.3334%</td>
+</tr>
+<tr>
+<td align="center">Attn-LSTM-DVectors</td>
+<td align="center">10</td>
+<td align="center">(37800, 12600, 1260)</td>
+<td align="center">79.5238%</td>
+</tr>
+<tr>
+<td align="center">XVectors</td>
+<td align="center">20</td>
+<td align="center">(75600, 25200, 1260)</td>
+<td align="center">96.0317%</td>
+</tr>
+<tr>
+<td align="center">LSTM-DVectors</td>
+<td align="center">20</td>
+<td align="center">(75600, 25200, 1260)</td>
+<td align="center">76.2698%</td>
+</tr>
+<tr>
+<td align="center">Attn-LSTM-DVectors</td>
+<td align="center">20</td>
+<td align="center">(75600, 25200, 1260)</td>
+<td align="center">83.0159%</td>
+</tr>
+<tr>
+<td align="center">XVectors</td>
+<td align="center">100</td>
+<td align="center">(378000, 126000, 1260)</td>
+<td align="center">97.6190%</td>
+</tr>
+<tr>
+<td align="center">LSTM-DVectors</td>
+<td align="center">100</td>
+<td align="center">(378000, 126000, 1260)</td>
+<td align="center">86.2698%</td>
+</tr>
+<tr>
+<td align="center">Attn-LSTM-DVectors</td>
+<td align="center">100</td>
+<td align="center">(378000, 126000, 1260)</td>
+<td align="center">79.5238%</td>
+</tr>
+</tbody></table>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ol>
+<li><a target="_blank" rel="noopener" href="https://catalog.ldc.upenn.edu/LDC93S1">https://catalog.ldc.upenn.edu/LDC93S1</a></li>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1710.10467.pdf">https://arxiv.org/pdf/1710.10467.pdf</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/yistLin/dvector">https://github.com/yistLin/dvector</a></li>
+<li><a target="_blank" rel="noopener" href="https://sci-hub.se/10.1109/ICASSP.2018.8461375">https://sci-hub.se/10.1109/ICASSP.2018.8461375</a></li>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1910.12592.pdf">https://arxiv.org/pdf/1910.12592.pdf</a></li>
+</ol>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/Hexo-Blog/about" rel="external nofollow noreferrer">Yang Wang</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://penguinwang96825.github.io/Hexo-Blog/Hexo-Blog/2021/06/03/2021-06-03-speaker-identification-using-neural-networks/">https://penguinwang96825.github.io/Hexo-Blog/Hexo-Blog/2021/06/03/2021-06-03-speaker-identification-using-neural-networks/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint polocy. If reproduced, please indicate source
+                    <a href="/Hexo-Blog/about" target="_blank">Yang Wang</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/Hexo-Blog/tags/PyTorch/">
+                                    <span class="chip bg-color">PyTorch</span>
+                                </a>
+                            
+                                <a href="/Hexo-Blog/tags/Speech/">
+                                    <span class="chip bg-color">Speech</span>
+                                </a>
+                            
+                                <a href="/Hexo-Blog/tags/CNN/">
+                                    <span class="chip bg-color">CNN</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/Hexo-Blog/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>WeChat swipe to share！</p>"></div>
+    <script src="/Hexo-Blog/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+        <div class="disqus-card card" data-aos="fade-up">
+    <div id="disqus_thread" class="card-content">
+        <noscript>Please enable JavaScript to view the
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+    </div>
+</div>
+
+<script type="text/javascript">
+    disqus_config = function () {
+        this.page.url = 'https://penguinwang96825.github.io/Hexo-Blog/2021/06/03/2021-06-03-speaker-identification-using-neural-networks/';
+        this.page.identifier = '/Hexo-Blog/2021/06/03/2021-06-03-speaker-identification-using-neural-networks/';
+        this.page.title = 'Speaker Identification using Neural Networks';
+    };
+    let disqus_shortname = 'penguinwang';
+
+    (function () { // DON'T EDIT BELOW THIS LINE
+        let d = document, s = d.createElement('script');
+        // 如：s.src = 'https://blinkfox.disqus.com/embed.js';
+        s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/Hexo-Blog/2021/06/09/2021-06-09-simpson-rule-for-definite-integrals/">
+                    <div class="card-image">
+                        
+                        <img src="https://github.com/penguinwang96825/penguinwang96825.github.io/blob/master/2021/06/09/2021-06-09-simpson-rule-for-definite-integrals/wallhaven-g7jg63.jpg?raw=true" class="responsive-img" alt="Simpson Rule for Definite Integrals">
+                        
+                        <span class="card-title">Simpson Rule for Definite Integrals</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Simpson's rules are numerous approximations for definite integrals in numerical analysis, named after English mathematician Thomas Simpson (1710−1761). In calculus, basically, there are two ways to approximate the value of an integral, Reimann sums and Trapezoidal sums. However, calculating the value of an integral, we need to compute the areas of a zillion rectangles or more to get a better result. Therefore, we use Simpson's Rule, which is a way to approximate integrals without having to deal with lots of narrow rectangles.
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-09
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/Hexo-Blog/categories/Mathematics/" class="post-category">
+                                    Mathematics
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/Hexo-Blog/tags/Numerical-Analysis/">
+                        <span class="chip bg-color">Numerical Analysis</span>
+                    </a>
+                    
+                    <a href="/Hexo-Blog/tags/Integrals/">
+                        <span class="chip bg-color">Integrals</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/Hexo-Blog/2021/05/30/2021-05-30-bert-for-text-classification/">
+                    <div class="card-image">
+                        
+                        <img src="https://github.com/penguinwang96825/penguinwang96825.github.io/blob/master/2021/05/30/2021-05-30-bert-for-text-classification/wallhaven-3zqggd.jpg?raw=true" class="responsive-img" alt="BERT for Text Classification">
+                        
+                        <span class="card-title">BERT for Text Classification</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Deep learning has improved the performance of neural network architectures such as recurrent neural networks (RNN and LSTM) and convolutional neural networks (CNN) in tackling a variety of Natural Language Processing (NLP) problems such as text categorisation, language modelling, machine translation, and so on. Transfer learning is a method of using a deep learning model that has been trained on a big dataset to perform similar tasks on a new dataset. A deep learning model like this is referred to as a pre-trained model. As a result, the demand for NLP transfer learning was at an all-time high. In the paper "Attention is All You Need," published in 2018, Google unveiled the transformer, which proved to be a watershed moment in NLP.
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-30
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/Hexo-Blog/categories/NLP/" class="post-category">
+                                    NLP
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/Hexo-Blog/tags/Python/">
+                        <span class="chip bg-color">Python</span>
+                    </a>
+                    
+                    <a href="/Hexo-Blog/tags/PyTorch/">
+                        <span class="chip bg-color">PyTorch</span>
+                    </a>
+                    
+                    <a href="/Hexo-Blog/tags/BERT/">
+                        <span class="chip bg-color">BERT</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + 'From: Yang&#39;s Blog<br />'
+            + 'Author: Yang Wang<br />'
+            + 'Link: <a href="' + url + '">' + url + '</a><br />'
+            + 'The copyright of this article belongs to the author, please indicate the source of any form of reproduction.';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/Hexo-Blog/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/Hexo-Blog/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/Hexo-Blog/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/Hexo-Blog/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/Hexo-Blog/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+    <!-- footer -->
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/Hexo-Blog/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.3'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/Hexo-Blog/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2021</span>
+            
+            <span id="year">2018</span>
+            <a href="/Hexo-Blog/about" target="_blank">Yang Wang</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total site word count:&nbsp;<span
+                class="white-color">95.8k</span>&nbsp;words
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;Total number of visits:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;times
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;Total number of visitors:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;people
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">Loading runtime...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "12";
+                    var startDate = "3";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "This site has been safely operated " + diffDays + " days " + diffHours +
+                            " hours " + diffMinutes + " minutes " + diffSeconds + " seconds";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "This site has been safely operated " + diffYears + " years " + diffDays +
+                            " days " + diffHours + " hours " + diffMinutes + " minutes " + diffSeconds + " seconds";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/penguinwang96825" class="tooltipped" target="_blank" data-tooltip="Visit my GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:penguinwang@smail.nchu.edu.tw" class="tooltipped" target="_blank" data-tooltip="Contact me by mail" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/Hexo-Blog/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/Hexo-Blog/libs/materialize/materialize.min.js"></script>
+    <script src="/Hexo-Blog/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/Hexo-Blog/libs/aos/aos.js"></script>
+    <script src="/Hexo-Blog/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/Hexo-Blog/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/Hexo-Blog/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/Hexo-Blog/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/Hexo-Blog/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="/Hexo-Blog/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/Hexo-Blog/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
