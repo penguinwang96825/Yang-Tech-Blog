@@ -634,14 +634,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    4.4k
+                    5.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    27 Min
+                    35 Min
                 </div>
                 
 
@@ -1010,7 +1010,7 @@ rsi<span class="token punctuation">.</span>plot<span class="token punctuation">(
                                             show<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 mlbp_rsi<span class="token punctuation">.</span>plot_risk<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/rsi2.png" class="">
+<h3 id="TextCNN-and-RSI"><a href="#TextCNN-and-RSI" class="headerlink" title="TextCNN and RSI"></a>TextCNN and RSI</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/rsi2.png" class="">
 
 <img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/rsi3.png" class="">
 
@@ -1040,6 +1040,36 @@ Sharpe Ratio                                1.160131
 Sortino Ratio                               1.730172
 Calmar Ratio                                0.963688<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h3 id="BERT-and-RSI"><a href="#BERT-and-RSI" class="headerlink" title="BERT and RSI"></a>BERT and RSI</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/rsi4.png" class="">
+
+<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/rsi5.png" class="">
+
+<pre class="line-numbers language-none"><code class="language-none">Start                           2018-01-01 00:00:00
+End                             2020-12-10 00:00:00
+Duration                          653 days 00:00:00
+Init. Cash                                   1000.0
+Total Profit                            1372.905056
+Total Return [%]                         137.290506
+Benchmark Return [%]                      31.469924
+Position Coverage [%]                     25.267994
+Max. Drawdown [%]                         21.791524
+Avg. Drawdown [%]                          6.460679
+Max. Drawdown Duration            164 days 00:00:00
+Avg. Drawdown Duration             32 days 01:20:00
+Num. Trades                                      69
+Win Rate [%]                              56.521739
+Best Trade [%]                            27.551075
+Worst Trade [%]                            -9.51275
+Avg. Trade [%]                             1.430394
+Max. Trade Duration                12 days 00:00:00
+Avg. Trade Duration       2 days 09:02:36.521739130
+Expectancy                                19.897175
+SQN                                         1.63859
+Gross Exposure                              0.25268
+Sharpe Ratio                               1.309545
+Sortino Ratio                              2.280386
+Calmar Ratio                               2.849444<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="Williams-R-WILLR"><a href="#Williams-R-WILLR" class="headerlink" title="Williams %R (WILLR)"></a>Williams %R (WILLR)</h2><p>The Williams %R, often known as the Williams Percent Range, is a sort of momentum indicator that monitors overbought and oversold conditions and travels between 0 and -100. The Williams %R can be used to determine market entrance and exit points. A reading of -20 indicates that the market is overbought. A value of -80 indicates that the market is oversold.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">high <span class="token operator">=</span> price_test<span class="token punctuation">.</span>high
 low <span class="token operator">=</span> price_test<span class="token punctuation">.</span>low
@@ -1055,7 +1085,7 @@ willr<span class="token punctuation">.</span>plot<span class="token punctuation"
                                               show<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 mlbp_willr<span class="token punctuation">.</span>plot_risk<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/willr2.png" class="">
+<h3 id="TextCNN-and-WILLR"><a href="#TextCNN-and-WILLR" class="headerlink" title="TextCNN and WILLR"></a>TextCNN and WILLR</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/willr2.png" class="">
 
 <img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/willr3.png" class="">
 
@@ -1085,6 +1115,36 @@ Sharpe Ratio                                1.038628
 Sortino Ratio                               1.546713
 Calmar Ratio                                0.838452<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h3 id="BERT-and-WILLR"><a href="#BERT-and-WILLR" class="headerlink" title="BERT and WILLR"></a>BERT and WILLR</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/willr4.png" class="">
+
+<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/willr5.png" class="">
+
+<pre class="line-numbers language-none"><code class="language-none">Start                            2018-01-01 00:00:00
+End                              2020-12-10 00:00:00
+Duration                           653 days 00:00:00
+Init. Cash                                    1000.0
+Total Profit                             3817.273877
+Total Return [%]                          381.727388
+Benchmark Return [%]                       31.469924
+Position Coverage [%]                      21.898928
+Max. Drawdown [%]                          13.930189
+Avg. Drawdown [%]                           4.238248
+Max. Drawdown Duration             138 days 00:00:00
+Avg. Drawdown Duration    21 days 10:54:32.727272727
+Num. Trades                                       60
+Win Rate [%]                                    70.0
+Best Trade [%]                             27.551075
+Worst Trade [%]                            -7.566861
+Avg. Trade [%]                              2.823779
+Max. Trade Duration                 12 days 00:00:00
+Avg. Trade Duration                  2 days 09:12:00
+Expectancy                                 63.621231
+SQN                                         3.163193
+Gross Exposure                              0.218989
+Sharpe Ratio                                2.360838
+Sortino Ratio                               4.953118
+Calmar Ratio                               10.107593<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="Aroon-Oscillator-AROONOSC"><a href="#Aroon-Oscillator-AROONOSC" class="headerlink" title="Aroon Oscillator (AROONOSC)"></a>Aroon Oscillator (AROONOSC)</h2><p>The Aroon indicator is a technical indicator that may be used to detect price trend changes as well as the strength of that trend. In essence, the indicator calculates the time between highs and lows over a given period of time. The notion is that strong uptrends will see new highs on a frequent basis, whereas strong downtrends would see new lows on a frequent basis.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">high <span class="token operator">=</span> price_test<span class="token punctuation">.</span>high
 low <span class="token operator">=</span> price_test<span class="token punctuation">.</span>low
@@ -1099,7 +1159,7 @@ aroonosc<span class="token punctuation">.</span>plot<span class="token punctuati
                                                  show<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 mlbp_aroonosc<span class="token punctuation">.</span>plot_risk<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/aroonosc2.png" class="">
+<h3 id="TextCNN-and-AROONOSC"><a href="#TextCNN-and-AROONOSC" class="headerlink" title="TextCNN and AROONOSC"></a>TextCNN and AROONOSC</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/aroonosc2.png" class="">
 
 <img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/aroonosc3.png" class="">
 
@@ -1129,6 +1189,36 @@ Sharpe Ratio                         0.301499
 Sortino Ratio                        0.397515
 Calmar Ratio                         0.053622<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h3 id="BERT-and-AROONOSC"><a href="#BERT-and-AROONOSC" class="headerlink" title="BERT and AROONOSC"></a>BERT and AROONOSC</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/aroonosc4.png" class="">
+
+<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/aroonosc5.png" class="">
+
+<pre class="line-numbers language-none"><code class="language-none">Start                            2018-01-01 00:00:00
+End                              2020-12-10 00:00:00
+Duration                           653 days 00:00:00
+Init. Cash                                    1000.0
+Total Profit                             1411.933816
+Total Return [%]                          141.193382
+Benchmark Return [%]                       31.469924
+Position Coverage [%]                      22.205207
+Max. Drawdown [%]                          23.302887
+Avg. Drawdown [%]                           6.746358
+Max. Drawdown Duration             164 days 00:00:00
+Avg. Drawdown Duration    30 days 07:34:44.210526315
+Num. Trades                                       70
+Win Rate [%]                               57.142857
+Best Trade [%]                             27.551075
+Worst Trade [%]                             -9.51275
+Avg. Trade [%]                              1.430573
+Max. Trade Duration                 12 days 00:00:00
+Avg. Trade Duration        2 days 01:22:17.142857142
+Expectancy                                 20.170483
+SQN                                          1.70467
+Gross Exposure                              0.222052
+Sharpe Ratio                                1.403516
+Sortino Ratio                               2.525902
+Calmar Ratio                                2.728357<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="Balance-Of-Power-BOP"><a href="#Balance-Of-Power-BOP" class="headerlink" title="Balance Of Power (BOP)"></a>Balance Of Power (BOP)</h2><p>Balance of Power (BOP) is an oscillator that measures the strength of buying and selling pressure. Introduced by Igor Levshin in the August 2001 issue of Technical Analysis of Stocks &amp; Commodities magazine, this indicator compares the power of buyers to push prices to higher extremes with the power of sellers to move prices to lower extremes. When the indicator is in positive territory, the bulls are in charge; and sellers dominate when the indicator is negative. A reading near the zero line indicates a balance between the two and can mean a trend reversal.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">open_ <span class="token operator">=</span> price_test<span class="token punctuation">.</span><span class="token builtin">open</span>
 high <span class="token operator">=</span> price_test<span class="token punctuation">.</span>high
@@ -1145,7 +1235,7 @@ bop<span class="token punctuation">.</span>plot<span class="token punctuation">(
                                             show<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 mlbp_bop<span class="token punctuation">.</span>plot_risk<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bop2.png" class="">
+<h3 id="TextCNN-and-BOP"><a href="#TextCNN-and-BOP" class="headerlink" title="TextCNN and BOP"></a>TextCNN and BOP</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bop2.png" class="">
 
 <img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bop3.png" class="">
 
@@ -1175,6 +1265,36 @@ Sharpe Ratio                        -0.546112
 Sortino Ratio                       -0.662911
 Calmar Ratio                        -0.411706<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h3 id="BERT-and-BOP"><a href="#BERT-and-BOP" class="headerlink" title="BERT and BOP"></a>BERT and BOP</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bop4.png" class="">
+
+<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bop5.png" class="">
+
+<pre class="line-numbers language-none"><code class="language-none">Start                           2018-01-01 00:00:00
+End                             2020-12-10 00:00:00
+Duration                          653 days 00:00:00
+Init. Cash                                   1000.0
+Total Profit                             852.560933
+Total Return [%]                          85.256093
+Benchmark Return [%]                      31.469924
+Position Coverage [%]                      3.675345
+Max. Drawdown [%]                         13.856424
+Avg. Drawdown [%]                          7.633348
+Max. Drawdown Duration            139 days 00:00:00
+Avg. Drawdown Duration             82 days 00:00:00
+Num. Trades                                      11
+Win Rate [%]                              90.909091
+Best Trade [%]                            21.832492
+Worst Trade [%]                           -7.165814
+Avg. Trade [%]                             5.996617
+Max. Trade Duration                 5 days 00:00:00
+Avg. Trade Duration       2 days 04:21:49.090909090
+Expectancy                                77.505539
+SQN                                        3.051468
+Gross Exposure                             0.036753
+Sharpe Ratio                               1.699568
+Sortino Ratio                              3.867465
+Calmar Ratio                               2.969575<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="Market-Meanness-Index-MMI"><a href="#Market-Meanness-Index-MMI" class="headerlink" title="Market Meanness Index (MMI)"></a>Market Meanness Index (MMI)</h2><p>The <a target="_blank" rel="noopener" href="https://financial-hacker.com/the-market-meanness-index/">Market Meanness Index</a> tells whether the market is currently moving in or out of a ‘trending’ regime. It can this way prevent losses by false signals of trend indicators. It is a purely statisticalalgorithm and not based on volatility, trends, or cycles of the price curve.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">mmi_days <span class="token operator">=</span> <span class="token number">20</span>
 close <span class="token operator">=</span> price_test<span class="token punctuation">.</span>close
@@ -1192,7 +1312,7 @@ mmi<span class="token punctuation">.</span>plot<span class="token punctuation">(
                                             show<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 mlbp_mmi<span class="token punctuation">.</span>plot_risk<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mmi2.png" class="">
+<h3 id="TextCNN-and-MMI"><a href="#TextCNN-and-MMI" class="headerlink" title="TextCNN and MMI"></a>TextCNN and MMI</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mmi2.png" class="">
 
 <img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mmi3.png" class="">
 
@@ -1222,6 +1342,36 @@ Sharpe Ratio                                0.445331
 Sortino Ratio                               0.622654
 Calmar Ratio                                0.154401<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h3 id="BERT-and-MMI"><a href="#BERT-and-MMI" class="headerlink" title="BERT and MMI"></a>BERT and MMI</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mmi4.png" class="">
+
+<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mmi5.png" class="">
+
+<pre class="line-numbers language-none"><code class="language-none">Start                     2018-01-01 00:00:00
+End                       2020-12-10 00:00:00
+Duration                    653 days 00:00:00
+Init. Cash                             1000.0
+Total Profit                        -61.14569
+Total Return [%]                    -6.114569
+Benchmark Return [%]                31.469924
+Position Coverage [%]               24.808576
+Max. Drawdown [%]                   47.765242
+Avg. Drawdown [%]                   13.595813
+Max. Drawdown Duration      299 days 00:00:00
+Avg. Drawdown Duration       74 days 12:00:00
+Num. Trades                                69
+Win Rate [%]                        42.028986
+Best Trade [%]                      27.551075
+Worst Trade [%]                    -12.259609
+Avg. Trade [%]                        0.08213
+Max. Trade Duration          12 days 00:00:00
+Avg. Trade Duration           2 days 08:00:00
+Expectancy                          -0.886169
+SQN                                 -0.113694
+Gross Exposure                       0.248086
+Sharpe Ratio                         0.125302
+Sortino Ratio                        0.199014
+Calmar Ratio                        -0.072548<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="Commodity-Channel-Index-CCI"><a href="#Commodity-Channel-Index-CCI" class="headerlink" title="Commodity Channel Index (CCI)"></a>Commodity Channel Index (CCI)</h2><p>The Commodity Channel Index (CCI) is a momentum-based oscillator used to help determine when an investment vehicle is reaching a condition of being overbought or oversold. When the CCI is above zero, it indicates the price is above the historic average. Conversely, when the CCI is below zero, the price is below the historic average.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">high <span class="token operator">=</span> price_test<span class="token punctuation">.</span>high
 low <span class="token operator">=</span> price_test<span class="token punctuation">.</span>low
@@ -1237,7 +1387,7 @@ cci<span class="token punctuation">.</span>plot<span class="token punctuation">(
                                             show<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 mlbp_cci<span class="token punctuation">.</span>plot_risk<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/cci2.png" class="">
+<h3 id="TextCNN-and-CCI"><a href="#TextCNN-and-CCI" class="headerlink" title="TextCNN and CCI"></a>TextCNN and CCI</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/cci2.png" class="">
 
 <img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/cci3.png" class="">
 
@@ -1267,6 +1417,36 @@ Sharpe Ratio                                1.022194
 Sortino Ratio                               1.522095
 Calmar Ratio                                0.815354<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h3 id="BERT-and-CCI"><a href="#BERT-and-CCI" class="headerlink" title="BERT and CCI"></a>BERT and CCI</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/cci4.png" class="">
+
+<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/cci5.png" class="">
+
+<pre class="line-numbers language-none"><code class="language-none">Start                           2018-01-01 00:00:00
+End                             2020-12-10 00:00:00
+Duration                          653 days 00:00:00
+Init. Cash                                   1000.0
+Total Profit                            3357.754498
+Total Return [%]                          335.77545
+Benchmark Return [%]                      31.469924
+Position Coverage [%]                     26.799387
+Max. Drawdown [%]                         18.274166
+Avg. Drawdown [%]                          4.626804
+Max. Drawdown Duration            110 days 00:00:00
+Avg. Drawdown Duration             21 days 21:07:12
+Num. Trades                                      73
+Win Rate [%]                              64.383562
+Best Trade [%]                            27.551075
+Worst Trade [%]                            -9.51275
+Avg. Trade [%]                             2.201906
+Max. Trade Duration                12 days 00:00:00
+Avg. Trade Duration       2 days 09:32:03.287671232
+Expectancy                                45.996637
+SQN                                        2.703271
+Gross Exposure                             0.267994
+Sharpe Ratio                               2.123362
+Sortino Ratio                               4.15713
+Calmar Ratio                               6.986814<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="Moving-Average-Convergence-Divergence-MACD"><a href="#Moving-Average-Convergence-Divergence-MACD" class="headerlink" title="Moving Average Convergence/Divergence (MACD)"></a>Moving Average Convergence/Divergence (MACD)</h2><p>Moving average convergence divergence (MACD) is a trend-following momentum indicator that shows the relationship between two moving averages of a security’s price. The MACD is calculated by subtracting the 26-period exponential moving average (EMA) from the 12-period EMA.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">close <span class="token operator">=</span> price_test<span class="token punctuation">.</span>close
 macd<span class="token punctuation">,</span> macdsignal<span class="token punctuation">,</span> macdhist <span class="token operator">=</span> talib<span class="token punctuation">.</span>MACD<span class="token punctuation">(</span>close<span class="token punctuation">,</span> fastperiod<span class="token operator">=</span><span class="token number">12</span><span class="token punctuation">,</span> slowperiod<span class="token operator">=</span><span class="token number">26</span><span class="token punctuation">,</span> signalperiod<span class="token operator">=</span><span class="token number">9</span><span class="token punctuation">)</span>
@@ -1280,7 +1460,7 @@ macd<span class="token punctuation">.</span>plot<span class="token punctuation">
                                              show<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 mlbp_macd<span class="token punctuation">.</span>plot_risk<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/macd2.png" class="">
+<h3 id="TextCNN-and-MACD"><a href="#TextCNN-and-MACD" class="headerlink" title="TextCNN and MACD"></a>TextCNN and MACD</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/macd2.png" class="">
 
 <img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/macd3.png" class="">
 
@@ -1310,6 +1490,36 @@ Sharpe Ratio                         0.969612
 Sortino Ratio                        1.428536
 Calmar Ratio                         0.725122<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h3 id="BERT-and-MACD"><a href="#BERT-and-MACD" class="headerlink" title="BERT and MACD"></a>BERT and MACD</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/macd4.png" class="">
+
+<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/macd5.png" class="">
+
+<pre class="line-numbers language-none"><code class="language-none">Start                     2018-01-01 00:00:00
+End                       2020-12-10 00:00:00
+Duration                    653 days 00:00:00
+Init. Cash                             1000.0
+Total Profit                       501.301519
+Total Return [%]                    50.130152
+Benchmark Return [%]                31.469924
+Position Coverage [%]               21.133231
+Max. Drawdown [%]                   35.199714
+Avg. Drawdown [%]                    8.540103
+Max. Drawdown Duration      266 days 00:00:00
+Avg. Drawdown Duration       44 days 18:00:00
+Num. Trades                                64
+Win Rate [%]                             50.0
+Best Trade [%]                      27.551075
+Worst Trade [%]                      -9.51275
+Avg. Trade [%]                       0.792115
+Max. Trade Duration          12 days 00:00:00
+Avg. Trade Duration           2 days 03:22:30
+Expectancy                           7.832836
+SQN                                  0.779408
+Gross Exposure                       0.211332
+Sharpe Ratio                         0.756469
+Sortino Ratio                        1.262302
+Calmar Ratio                         0.724393<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="Money-Flow-Index-MFI"><a href="#Money-Flow-Index-MFI" class="headerlink" title="Money Flow Index (MFI)"></a>Money Flow Index (MFI)</h2><p>The Money Flow Index (MFI) is a technical oscillator that uses price and volume data for identifying overbought or oversold signals in an asset. It can also be used to spot divergences which warn of a trend change in price. The oscillator moves between 0 and 100. Unlike conventional oscillators such as the Relative Strength Index (RSI), the Money Flow Index incorporates both price and volume data, as opposed to just price. For this reason, some analysts call MFI the volume-weighted RSI.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">high <span class="token operator">=</span> price_test<span class="token punctuation">.</span>high
 low <span class="token operator">=</span> price_test<span class="token punctuation">.</span>low
@@ -1326,7 +1536,7 @@ mfi<span class="token punctuation">.</span>plot<span class="token punctuation">(
                                             show<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 mlbp_mfi<span class="token punctuation">.</span>plot_risk<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mfi2.png" class="">
+<h3 id="TextCNN-and-MFI"><a href="#TextCNN-and-MFI" class="headerlink" title="TextCNN and MFI"></a>TextCNN and MFI</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mfi2.png" class="">
 
 <img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mfi3.png" class="">
 
@@ -1356,6 +1566,36 @@ Sharpe Ratio                                0.710413
 Sortino Ratio                               1.016296
 Calmar Ratio                                0.418163<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h3 id="BERT-and-MFI"><a href="#BERT-and-MFI" class="headerlink" title="BERT and MFI"></a>BERT and MFI</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mfi4.png" class="">
+
+<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mfi5.png" class="">
+
+<pre class="line-numbers language-none"><code class="language-none">Start                            2018-01-01 00:00:00
+End                              2020-12-10 00:00:00
+Duration                           653 days 00:00:00
+Init. Cash                                    1000.0
+Total Profit                              755.505657
+Total Return [%]                           75.550566
+Benchmark Return [%]                       31.469924
+Position Coverage [%]                      28.024502
+Max. Drawdown [%]                          21.682457
+Avg. Drawdown [%]                           8.642257
+Max. Drawdown Duration             164 days 00:00:00
+Avg. Drawdown Duration    43 days 06:51:25.714285714
+Num. Trades                                       81
+Win Rate [%]                                53.08642
+Best Trade [%]                             27.551075
+Worst Trade [%]                             -9.51275
+Avg. Trade [%]                               0.84668
+Max. Trade Duration                 12 days 00:00:00
+Avg. Trade Duration        2 days 06:13:19.999999999
+Expectancy                                   9.32723
+SQN                                         1.140512
+Gross Exposure                              0.280245
+Sharpe Ratio                                0.943201
+Sortino Ratio                               1.598255
+Calmar Ratio                                1.704851<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="Momentum-MOM"><a href="#Momentum-MOM" class="headerlink" title="Momentum (MOM)"></a>Momentum (MOM)</h2><p>The Momentum Indicator (MOM) is a leading indicator measuring a security’s rate-of-change. It compares the current price with the previous price from a number of periods ago.The ongoing plot forms an oscillator that moves above and below 0. It is a fully unbounded oscillator and has no lower or upper limit. Bullish and bearish interpretations are found by looking for divergences, centerline crossovers and extreme readings. The indicator is often used in combination with other signals.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">close <span class="token operator">=</span> price_test<span class="token punctuation">.</span>close
 mom <span class="token operator">=</span> talib<span class="token punctuation">.</span>MOM<span class="token punctuation">(</span>close<span class="token punctuation">,</span> timeperiod<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">)</span>
@@ -1369,7 +1609,7 @@ mom<span class="token punctuation">.</span>plot<span class="token punctuation">(
                                             show<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 mlbp_mom<span class="token punctuation">.</span>plot_risk<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mom2.png" class="">
+<h3 id="TextCNN-and-MOM"><a href="#TextCNN-and-MOM" class="headerlink" title="TextCNN and MOM"></a>TextCNN and MOM</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mom2.png" class="">
 
 <img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mom3.png" class="">
 
@@ -1399,6 +1639,36 @@ Sharpe Ratio                                0.891946
 Sortino Ratio                               1.312906
 Calmar Ratio                                0.651662<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h3 id="BERT-and-MOM"><a href="#BERT-and-MOM" class="headerlink" title="BERT and MOM"></a>BERT and MOM</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mom4.png" class="">
+
+<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mom5.png" class="">
+
+<pre class="line-numbers language-none"><code class="language-none">Start                     2018-01-01 00:00:00
+End                       2020-12-10 00:00:00
+Duration                    653 days 00:00:00
+Init. Cash                             1000.0
+Total Profit                       1759.54364
+Total Return [%]                   175.954364
+Benchmark Return [%]                31.469924
+Position Coverage [%]               28.177642
+Max. Drawdown [%]                   20.780414
+Avg. Drawdown [%]                    7.379898
+Max. Drawdown Duration      116 days 00:00:00
+Avg. Drawdown Duration       29 days 12:00:00
+Num. Trades                                75
+Win Rate [%]                        57.333333
+Best Trade [%]                      27.551075
+Worst Trade [%]                    -12.763619
+Avg. Trade [%]                       1.539368
+Max. Trade Duration          12 days 00:00:00
+Avg. Trade Duration           2 days 10:33:36
+Expectancy                          23.460582
+SQN                                  2.002748
+Gross Exposure                       0.281776
+Sharpe Ratio                         1.466978
+Sortino Ratio                         2.55946
+Calmar Ratio                         3.674804<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="Ultimate-Oscillator-ULTOSC"><a href="#Ultimate-Oscillator-ULTOSC" class="headerlink" title="Ultimate Oscillator (ULTOSC)"></a>Ultimate Oscillator (ULTOSC)</h2><p>The Ultimate Oscillator is a technical indicator that was developed by Larry Williams in 1976 to measure the price momentum of an asset across multiple timeframes. By using the weighted average of three different timeframes the indicator has less volatility and fewer trade signals compared to other oscillators that rely on a single timeframe. Buy and sell signals are generated following divergences. The Ultimately Oscillator generates fewer divergence signals than other oscillators due to its multi-timeframe construction. Buy signals occur when there is bullish divergence, the divergence low is below 30 on the indicator, and the oscillator then rises above the divergence high. A sell signal occurs when there is bearish divergence, the divergence high is above 70, and the oscillator then falls below the divergence low.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">high <span class="token operator">=</span> price_test<span class="token punctuation">.</span>high
 low <span class="token operator">=</span> price_test<span class="token punctuation">.</span>low
@@ -1414,7 +1684,7 @@ ultosc<span class="token punctuation">.</span>plot<span class="token punctuation
                                                show<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 mlbp_ultosc<span class="token punctuation">.</span>plot_risk<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/ultosc2.png" class="">
+<h3 id="TextCNN-and-ULTOSC"><a href="#TextCNN-and-ULTOSC" class="headerlink" title="TextCNN and ULTOSC"></a>TextCNN and ULTOSC</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/ultosc2.png" class="">
 
 <img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/ultosc3.png" class="">
 
@@ -1443,6 +1713,36 @@ Gross Exposure                              0.584992
 Sharpe Ratio                                1.341326
 Sortino Ratio                               2.085091
 Calmar Ratio                                1.434422<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="BERT-and-ULTOSC"><a href="#BERT-and-ULTOSC" class="headerlink" title="BERT and ULTOSC"></a>BERT and ULTOSC</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/ultosc4.png" class="">
+
+<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/ultosc5.png" class="">
+
+<pre class="line-numbers language-none"><code class="language-none">Start                            2018-01-01 00:00:00
+End                              2020-12-10 00:00:00
+Duration                           653 days 00:00:00
+Init. Cash                                    1000.0
+Total Profit                             1885.787803
+Total Return [%]                           188.57878
+Benchmark Return [%]                       31.469924
+Position Coverage [%]                      28.177642
+Max. Drawdown [%]                          17.968363
+Avg. Drawdown [%]                           6.135872
+Max. Drawdown Duration             145 days 00:00:00
+Avg. Drawdown Duration    26 days 21:42:51.428571428
+Num. Trades                                       77
+Win Rate [%]                               57.142857
+Best Trade [%]                             27.551075
+Worst Trade [%]                             -9.51275
+Avg. Trade [%]                              1.541911
+Max. Trade Duration                 12 days 00:00:00
+Avg. Trade Duration        2 days 09:02:20.259740259
+Expectancy                                 24.490751
+SQN                                          2.06409
+Gross Exposure                              0.281776
+Sharpe Ratio                                1.544248
+Sortino Ratio                               2.746532
+Calmar Ratio                                4.498422<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h1 id="Performance-1"><a href="#Performance-1" class="headerlink" title="Performance"></a>Performance</h1><p>The total return is -27.1728% if only the TextCNN model is used to produce buy-and-sell signals. After using various technical indicators to filter out false negative signals, all average drawdowns are smaller than when using TextCNN alone. </p>
 <p>Ten different technical indicators are deployed as filters in this project. Only BOP produces a worse Sharpe Ratio when utilising technical indicators as filters than when using TextCNN alone; on the other hand, the other 9 technical indicators produce a higher Sharpe Ratio score. However, the maximum drawdown is higher when utilising technical indicators as filters than when using TextCNN alone for all technical indicators.</p>
@@ -2115,7 +2415,7 @@ Calmar Ratio                                1.434422<span aria-hidden="true" cla
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total site word count:&nbsp;<span
-                class="white-color">100.4k</span>&nbsp;words
+                class="white-color">101.6k</span>&nbsp;words
             
             
             
