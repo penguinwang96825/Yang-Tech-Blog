@@ -634,14 +634,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    4.1k
+                    4.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    25 Min
+                    27 Min
                 </div>
                 
 
@@ -1444,7 +1444,9 @@ Sharpe Ratio                                1.341326
 Sortino Ratio                               2.085091
 Calmar Ratio                                1.434422<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="Performance-1"><a href="#Performance-1" class="headerlink" title="Performance"></a>Performance</h1><table>
+<h1 id="Performance-1"><a href="#Performance-1" class="headerlink" title="Performance"></a>Performance</h1><p>The total return is -27.1728% if only the TextCNN model is used to produce buy-and-sell signals. After using various technical indicators to filter out false negative signals, all average drawdowns are smaller than when using TextCNN alone. </p>
+<p>Ten different technical indicators are deployed as filters in this project. Only BOP produces a worse Sharpe Ratio when utilising technical indicators as filters than when using TextCNN alone; on the other hand, the other 9 technical indicators produce a higher Sharpe Ratio score. However, the maximum drawdown is higher when utilising technical indicators as filters than when using TextCNN alone for all technical indicators.</p>
+<table>
 <thead>
 <tr>
 <th align="center">Technical Indicator</th>
@@ -1530,6 +1532,95 @@ Calmar Ratio                                1.434422<span aria-hidden="true" cla
 <td align="center">69.3233</td>
 <td align="center">10.7611</td>
 <td align="center">1.3413</td>
+</tr>
+</tbody></table>
+<p>BERT appears to produce a better outcome than TextCNN. Except for MMI, all of the indicators that integrate with BERT can have a total return of more than 50%. Despite having a negative total return of -6.1145, BERT + MMI has a positive Sharpe Ratio of 0.1253. When combining BERT and technical indicators, the maximum and average drawdowns are smaller than when using the language model alone, and the Sharpe Ratio are all positive. WILLR and CCI can even triple the total return compared to the original.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Technical Indicator</th>
+<th align="center">Total Return [%]</th>
+<th align="center">Max. Drawdown [%]</th>
+<th align="center">Avg. Drawdown [%]</th>
+<th align="center">Sharpe Ratio</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">BERT</td>
+<td align="center">54.6370</td>
+<td align="center">48.2507</td>
+<td align="center">14.7777</td>
+<td align="center">0.6990</td>
+</tr>
+<tr>
+<td align="center">BERT + RSI</td>
+<td align="center">137.2905</td>
+<td align="center">21.7915</td>
+<td align="center">6.4606</td>
+<td align="center">1.3095</td>
+</tr>
+<tr>
+<td align="center">BERT + WILLR</td>
+<td align="center">381.7274</td>
+<td align="center">13.9302</td>
+<td align="center">4.2382</td>
+<td align="center">2.3608</td>
+</tr>
+<tr>
+<td align="center">BERT + AROONOSC</td>
+<td align="center">141.1933</td>
+<td align="center">23.3028</td>
+<td align="center">6.7464</td>
+<td align="center">1.4035</td>
+</tr>
+<tr>
+<td align="center">BERT + BOP</td>
+<td align="center">85.2560</td>
+<td align="center">13.8564</td>
+<td align="center">7.6333</td>
+<td align="center">1.6996</td>
+</tr>
+<tr>
+<td align="center">BERT + MMI</td>
+<td align="center">-6.1145</td>
+<td align="center">47.7652</td>
+<td align="center">13.5958</td>
+<td align="center">0.1253</td>
+</tr>
+<tr>
+<td align="center">BERT + CCI</td>
+<td align="center">335.7754</td>
+<td align="center">18.2741</td>
+<td align="center">4.6268</td>
+<td align="center">2.1233</td>
+</tr>
+<tr>
+<td align="center">BERT + MACD</td>
+<td align="center">50.1301</td>
+<td align="center">35.1997</td>
+<td align="center">8.5401</td>
+<td align="center">0.7564</td>
+</tr>
+<tr>
+<td align="center">BERT + MFI</td>
+<td align="center">75.5505</td>
+<td align="center">21.6824</td>
+<td align="center">8.6422</td>
+<td align="center">0.9432</td>
+</tr>
+<tr>
+<td align="center">BERT + MOM</td>
+<td align="center">175.9543</td>
+<td align="center">20.7804</td>
+<td align="center">7.3798</td>
+<td align="center">1.4669</td>
+</tr>
+<tr>
+<td align="center">BERT + ULTOSC</td>
+<td align="center">188.5787</td>
+<td align="center">17.9683</td>
+<td align="center">6.1358</td>
+<td align="center">1.5442</td>
 </tr>
 </tbody></table>
 <h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>When employing numerous criteria to make trading decisions, especially when combining NLP-based indicators with technical indicators, the profit and sharpe ratio can be greatly increased, and drawdown can be significantly decreased.</p>
@@ -2024,7 +2115,7 @@ Calmar Ratio                                1.434422<span aria-hidden="true" cla
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total site word count:&nbsp;<span
-                class="white-color">100.1k</span>&nbsp;words
+                class="white-color">100.4k</span>&nbsp;words
             
             
             
