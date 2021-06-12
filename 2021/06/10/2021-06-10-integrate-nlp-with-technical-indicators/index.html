@@ -634,14 +634,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    5.6k
+                    6.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    35 Min
+                    39 Min
                 </div>
                 
 
@@ -697,7 +697,8 @@ Config <span class="token operator">=</span> DictObj<span class="token punctuati
     <span class="token string">"DROPOUT_RATE"</span><span class="token punctuation">:</span> <span class="token number">0.1</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="Load-Data"><a href="#Load-Data" class="headerlink" title="Load Data"></a>Load Data</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python">text_df <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">r"C:\Users\Yang\Desktop\Dissertation\data\processed\news\bloomberg\BloombergV2.csv"</span><span class="token punctuation">)</span>
+<h1 id="Load-Data"><a href="#Load-Data" class="headerlink" title="Load Data"></a>Load Data</h1><p>The news is sourced from Bloomberg and spans the years 2014-09-23 to 2020-12-10. The row with the words “bitcoin,” “blockchain,” and “crypto” will be preserved. In terms of auto labelling, I used the Triple Barrier Method in this project because it provides the greatest results.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">text_df <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">r"C:\Users\Yang\Desktop\Dissertation\data\processed\news\bloomberg\BloombergV2.csv"</span><span class="token punctuation">)</span>
 text_df <span class="token operator">=</span> text_df<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"date"</span><span class="token punctuation">,</span> <span class="token string">"title"</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
 text_df<span class="token punctuation">.</span>columns <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"date"</span><span class="token punctuation">,</span> <span class="token string">"text"</span><span class="token punctuation">]</span>
 preprocess_func <span class="token operator">=</span> <span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -711,7 +712,8 @@ price_processed_df <span class="token operator">=</span> price_pipeline<span cla
 text_price_pipeline <span class="token operator">=</span> TextPricePipeline<span class="token punctuation">(</span>text_processed_df<span class="token punctuation">,</span> price_processed_df<span class="token punctuation">,</span> lagging<span class="token operator">=</span>Config<span class="token punctuation">.</span>LAGGING<span class="token punctuation">)</span>
 text_price_df <span class="token operator">=</span> text_price_pipeline<span class="token punctuation">.</span>get_dataframe<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="Text-Preprocessing"><a href="#Text-Preprocessing" class="headerlink" title="Text Preprocessing"></a>Text Preprocessing</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">clean_text</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<h2 id="Text-Preprocessing"><a href="#Text-Preprocessing" class="headerlink" title="Text Preprocessing"></a>Text Preprocessing</h2><p>Text processing is an automated method of evaluating and categorising unstructured text input in order to extract useful information.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">clean_text</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">:</span>
     REPLACE_BY_SPACE_RE <span class="token operator">=</span> re<span class="token punctuation">.</span><span class="token builtin">compile</span><span class="token punctuation">(</span><span class="token string">'[/()&#123;&#125;\[\]\|@,;]'</span><span class="token punctuation">)</span>
     BAD_SYMBOLS_RE <span class="token operator">=</span> re<span class="token punctuation">.</span><span class="token builtin">compile</span><span class="token punctuation">(</span><span class="token string">'[^0-9a-z #+_]'</span><span class="token punctuation">)</span>
     text <span class="token operator">=</span> text<span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -723,7 +725,8 @@ text_price_df <span class="token operator">=</span> text_price_pipeline<span cla
 text_price_df<span class="token punctuation">[</span><span class="token string">"text"</span><span class="token punctuation">]</span> <span class="token operator">=</span> text_price_df<span class="token punctuation">[</span><span class="token string">"text"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">map</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">)</span>
 text_price_df<span class="token punctuation">[</span><span class="token string">"text"</span><span class="token punctuation">]</span> <span class="token operator">=</span> text_price_df<span class="token punctuation">[</span><span class="token string">"text"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span>clean_text<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="Tokenisation-for-Train-Validation-Test-Sets"><a href="#Tokenisation-for-Train-Validation-Test-Sets" class="headerlink" title="Tokenisation for Train/Validation/Test Sets"></a>Tokenisation for Train/Validation/Test Sets</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">tokenizer <span class="token operator">=</span> AutoTokenizer<span class="token punctuation">.</span>from_pretrained<span class="token punctuation">(</span><span class="token string">"bert-base-uncased"</span><span class="token punctuation">)</span>
+<h2 id="Tokenisation-for-Train-Validation-Test-Sets"><a href="#Tokenisation-for-Train-Validation-Test-Sets" class="headerlink" title="Tokenisation for Train/Validation/Test Sets"></a>Tokenisation for Train/Validation/Test Sets</h2><p>Tokenisation is the process of breaking down a phrase, sentence, paragraph, or even an entire text document into smaller components like individual words or phrases.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">tokenizer <span class="token operator">=</span> AutoTokenizer<span class="token punctuation">.</span>from_pretrained<span class="token punctuation">(</span><span class="token string">"bert-base-uncased"</span><span class="token punctuation">)</span>
 
 train_df <span class="token operator">=</span> text_price_df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token string">"2016-12-31"</span><span class="token punctuation">]</span>
 valid_df <span class="token operator">=</span> text_price_df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token string">"2017-01-01"</span><span class="token punctuation">:</span><span class="token string">"2017-12-31"</span><span class="token punctuation">]</span>
@@ -762,7 +765,8 @@ input_ids <span class="token operator">=</span> tokenizer<span class="token punc
 X_test <span class="token operator">=</span> input_ids<span class="token punctuation">[</span><span class="token string">"input_ids"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>numpy<span class="token punctuation">(</span><span class="token punctuation">)</span>
 y_test <span class="token operator">=</span> test_df<span class="token punctuation">.</span>label<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="Construct-Dataset-and-Dataloader"><a href="#Construct-Dataset-and-Dataloader" class="headerlink" title="Construct Dataset and Dataloader"></a>Construct Dataset and Dataloader</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">TextDataset</span><span class="token punctuation">(</span>torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>data<span class="token punctuation">.</span>Dataset<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<h2 id="Construct-Dataset-and-Dataloader"><a href="#Construct-Dataset-and-Dataloader" class="headerlink" title="Construct Dataset and Dataloader"></a>Construct Dataset and Dataloader</h2><p>Dataset that allow you to use pre-loaded datasets as well as your own data. Dataset stores the samples and their corresponding labels, and DataLoader wraps an iterable around the Dataset to enable easy access to the samples.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">TextDataset</span><span class="token punctuation">(</span>torch<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>data<span class="token punctuation">.</span>Dataset<span class="token punctuation">)</span><span class="token punctuation">:</span>
     
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> input_ids<span class="token punctuation">,</span> labels<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>X <span class="token operator">=</span> input_ids
@@ -798,7 +802,9 @@ train_dataloader <span class="token operator">=</span> train_dataset<span class=
 valid_dataloader <span class="token operator">=</span> valid_dataset<span class="token punctuation">.</span>create_dataloader<span class="token punctuation">(</span>batch_size<span class="token operator">=</span>Config<span class="token punctuation">.</span>VALID_BATCH_SIZE<span class="token punctuation">)</span>
 test_dataloader <span class="token operator">=</span> test_dataset<span class="token punctuation">.</span>create_dataloader<span class="token punctuation">(</span>batch_size<span class="token operator">=</span>Config<span class="token punctuation">.</span>TEST_BATCH_SIZE<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="Modelling"><a href="#Modelling" class="headerlink" title="Modelling"></a>Modelling</h1><h2 id="Pytorch-Lightning-Module"><a href="#Pytorch-Lightning-Module" class="headerlink" title="Pytorch Lightning Module"></a>Pytorch Lightning Module</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">LightningMultiClassModule</span><span class="token punctuation">(</span>pl<span class="token punctuation">.</span>LightningModule<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<h1 id="Modelling"><a href="#Modelling" class="headerlink" title="Modelling"></a>Modelling</h1><p>Building representations of things in the ‘real world’ and allowing concepts to be probed is what modelling is all about.</p>
+<h2 id="Pytorch-Lightning-Module"><a href="#Pytorch-Lightning-Module" class="headerlink" title="Pytorch Lightning Module"></a>Pytorch Lightning Module</h2><p>Pytorch Lightning structures PyTorch code so it can abstract the details of training.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">LightningMultiClassModule</span><span class="token punctuation">(</span>pl<span class="token punctuation">.</span>LightningModule<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token triple-quoted-string string">"""
     Multi-class Classification Engine
     """</span>
@@ -880,7 +886,8 @@ test_dataloader <span class="token operator">=</span> test_dataset<span class="t
                 
         <span class="token keyword">return</span> softmax<span class="token punctuation">(</span>np<span class="token punctuation">.</span>vstack<span class="token punctuation">(</span>y_probs<span class="token punctuation">)</span><span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="TextCNN"><a href="#TextCNN" class="headerlink" title="TextCNN"></a>TextCNN</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">TextCNN</span><span class="token punctuation">(</span>LightningMultiClassModule<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<h2 id="TextCNN"><a href="#TextCNN" class="headerlink" title="TextCNN"></a>TextCNN</h2><p>The convolutional neural network for text, or TextCNN, is a helpful deep learning technique for tasks including sentiment analysis and question classification.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">TextCNN</span><span class="token punctuation">(</span>LightningMultiClassModule<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token triple-quoted-string string">"""
     https://finisky.github.io/2020/07/03/textcnnmvp/
     """</span>
@@ -917,7 +924,8 @@ test_dataloader <span class="token operator">=</span> test_dataset<span class="t
         torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>init<span class="token punctuation">.</span>xavier_uniform<span class="token punctuation">(</span>m<span class="token punctuation">.</span>weight<span class="token punctuation">)</span>
         m<span class="token punctuation">.</span>bias<span class="token punctuation">.</span>data<span class="token punctuation">.</span>fill_<span class="token punctuation">(</span><span class="token number">0.01</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="Start-Training-Process"><a href="#Start-Training-Process" class="headerlink" title="Start Training Process"></a>Start Training Process</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">textcnn <span class="token operator">=</span> TextCNN<span class="token punctuation">(</span>embed_num<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>tokenizer<span class="token punctuation">.</span>vocab<span class="token punctuation">)</span><span class="token punctuation">,</span> 
+<h2 id="Start-Training-Process"><a href="#Start-Training-Process" class="headerlink" title="Start Training Process"></a>Start Training Process</h2><p>The process of training an ML model entails sending training data to an ML algorithm (that is, the learning algorithm).</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">textcnn <span class="token operator">=</span> TextCNN<span class="token punctuation">(</span>embed_num<span class="token operator">=</span><span class="token builtin">len</span><span class="token punctuation">(</span>tokenizer<span class="token punctuation">.</span>vocab<span class="token punctuation">)</span><span class="token punctuation">,</span> 
                   embed_dim<span class="token operator">=</span>Config<span class="token punctuation">.</span>EMBEDDING_SIZE<span class="token punctuation">,</span> 
                   class_num<span class="token operator">=</span>Config<span class="token punctuation">.</span>NUM_CLASSES<span class="token punctuation">,</span> 
                   kernel_num<span class="token operator">=</span>Config<span class="token punctuation">.</span>NUM_KERNELS<span class="token punctuation">,</span> 
@@ -942,7 +950,8 @@ metrics<span class="token punctuation">.</span>f1_score<span class="token punctu
 <p>Confusion matrix is as follow.</p>
 <img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/textcnn-cm.png" class="">
 
-<h2 id="Backtest"><a href="#Backtest" class="headerlink" title="Backtest"></a>Backtest</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">trends <span class="token operator">=</span> np<span class="token punctuation">.</span>argmax<span class="token punctuation">(</span>test_probs<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+<h2 id="Backtest"><a href="#Backtest" class="headerlink" title="Backtest"></a>Backtest</h2><p>Backtesting is a way for determining how well a strategy or model would have performed in the absence of the strategy or model. Backtesting is a method of determining the viability of a trading strategy by examining how it would perform in the real world using previous data. If backtesting proves to be effective, traders and analysts may be more willing to use it in the future.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">trends <span class="token operator">=</span> np<span class="token punctuation">.</span>argmax<span class="token punctuation">(</span>test_probs<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
 entries<span class="token punctuation">,</span> exits <span class="token operator">=</span> trend_to_signal<span class="token punctuation">(</span>pd<span class="token punctuation">.</span>Series<span class="token punctuation">(</span>trends<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 price_test <span class="token operator">=</span> text_price_df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token operator">-</span>X_test<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
@@ -981,6 +990,106 @@ Gross Exposure                             0.124043
 Sharpe Ratio                              -0.418759
 Sortino Ratio                             -0.581125
 Calmar Ratio                              -0.307222<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="BERT"><a href="#BERT" class="headerlink" title="BERT"></a>BERT</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> transformers <span class="token keyword">import</span> BertModel<span class="token punctuation">,</span> AdamW
+
+<span class="token keyword">class</span> <span class="token class-name">BERTBaseUncased</span><span class="token punctuation">(</span>LightningMultiClassModule<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> num_classes<span class="token punctuation">,</span> learning_rate<span class="token operator">=</span><span class="token number">3e</span><span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span>BERTBaseUncased<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>learning_rate <span class="token operator">=</span> learning_rate
+        self<span class="token punctuation">.</span>bert <span class="token operator">=</span> BertModel<span class="token punctuation">.</span>from_pretrained<span class="token punctuation">(</span><span class="token string">"bert-base-uncased"</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>dropout <span class="token operator">=</span> nn<span class="token punctuation">.</span>Dropout<span class="token punctuation">(</span><span class="token number">0.3</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>bn <span class="token operator">=</span> nn<span class="token punctuation">.</span>BatchNorm1d<span class="token punctuation">(</span><span class="token number">768</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>classifier <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">768</span><span class="token punctuation">,</span> num_classes<span class="token punctuation">)</span>
+        
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        outputs <span class="token operator">=</span> self<span class="token punctuation">.</span>bert<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+        b_o <span class="token operator">=</span> self<span class="token punctuation">.</span>dropout<span class="token punctuation">(</span>outputs<span class="token punctuation">.</span>pooler_output<span class="token punctuation">)</span>
+        logits <span class="token operator">=</span> self<span class="token punctuation">.</span>classifier<span class="token punctuation">(</span>self<span class="token punctuation">.</span>bn<span class="token punctuation">(</span>b_o<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> logits
+    
+    <span class="token keyword">def</span> <span class="token function">freeze_bert_encoder</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> param <span class="token keyword">in</span> self<span class="token punctuation">.</span>bert<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            param<span class="token punctuation">.</span>requires_grad <span class="token operator">=</span> <span class="token boolean">False</span>
+
+    <span class="token keyword">def</span> <span class="token function">unfreeze_bert_encoder</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> param <span class="token keyword">in</span> self<span class="token punctuation">.</span>bert<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            param<span class="token punctuation">.</span>requires_grad <span class="token operator">=</span> <span class="token boolean">True</span>
+            
+    <span class="token keyword">def</span> <span class="token function">configure_optimizers</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        optimizer <span class="token operator">=</span> AdamW<span class="token punctuation">(</span>self<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> lr<span class="token operator">=</span>self<span class="token punctuation">.</span>learning_rate<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> optimizer<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Start-Training-Process-1"><a href="#Start-Training-Process-1" class="headerlink" title="Start Training Process"></a>Start Training Process</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">bert <span class="token operator">=</span> BERTBaseUncased<span class="token punctuation">(</span>num_classes<span class="token operator">=</span>Config<span class="token punctuation">.</span>NUM_CLASSES<span class="token punctuation">)</span>
+bert<span class="token punctuation">.</span>unfreeze_bert_encoder<span class="token punctuation">(</span><span class="token punctuation">)</span>
+trainer <span class="token operator">=</span> pl<span class="token punctuation">.</span>Trainer<span class="token punctuation">(</span>gpus<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> 
+                     precision<span class="token operator">=</span><span class="token number">16</span><span class="token punctuation">,</span> 
+                     fast_dev_run<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> 
+                     max_epochs<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span> 
+                     num_sanity_val_steps<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> 
+                     deterministic<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+trainer<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>bert<span class="token punctuation">,</span> train_dataloader<span class="token punctuation">,</span> valid_dataloader<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Performance-1"><a href="#Performance-1" class="headerlink" title="Performance"></a>Performance</h2><p>After training 20 epochs, we can get f1 score of 51.4047% and accuracy of 50.8423%.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">test_probs <span class="token operator">=</span> bert<span class="token punctuation">.</span>predict_proba<span class="token punctuation">(</span>test_dataloader<span class="token punctuation">)</span>
+test_preds <span class="token operator">=</span> np<span class="token punctuation">.</span>argmax<span class="token punctuation">(</span>test_probs<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+metrics<span class="token punctuation">.</span>f1_score<span class="token punctuation">(</span>y_test<span class="token punctuation">,</span> test_preds<span class="token punctuation">,</span> average<span class="token operator">=</span><span class="token string">"weighted"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> metrics<span class="token punctuation">.</span>accuracy_score<span class="token punctuation">(</span>y_test<span class="token punctuation">,</span> test_preds<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>Accuracy curve is as follow.</p>
+<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bert-acc.png" class="">
+
+<p>Loss curve is as follow.</p>
+<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bert-loss.png" class="">
+
+<p>Confusion matrix is as follow.</p>
+<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bert-cm.png" class="">
+
+<h2 id="Backtest-1"><a href="#Backtest-1" class="headerlink" title="Backtest"></a>Backtest</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">trends <span class="token operator">=</span> np<span class="token punctuation">.</span>argmax<span class="token punctuation">(</span>test_probs<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+entries<span class="token punctuation">,</span> exits <span class="token operator">=</span> trend_to_signal<span class="token punctuation">(</span>pd<span class="token punctuation">.</span>Series<span class="token punctuation">(</span>trends<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+price_test <span class="token operator">=</span> text_price_df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token operator">-</span>X_test<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+mlbp_bert <span class="token operator">=</span> MachineLearningBacktestPortfolio<span class="token punctuation">(</span>price_test<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">,</span> 
+                                             entries<span class="token punctuation">,</span> 
+                                             exits<span class="token punctuation">,</span> 
+                                             show<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+mlbp_bert<span class="token punctuation">.</span>plot_risk<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/nlp3.png" class="">
+
+<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/nlp4.png" class="">
+
+<pre class="line-numbers language-none"><code class="language-none">Start                           2018-01-01 00:00:00
+End                             2020-12-10 00:00:00
+Duration                          653 days 00:00:00
+Init. Cash                                   1000.0
+Total Profit                              546.37027
+Total Return [%]                          54.637027
+Benchmark Return [%]                      31.469924
+Position Coverage [%]                     53.598775
+Max. Drawdown [%]                         48.250763
+Avg. Drawdown [%]                         14.777709
+Max. Drawdown Duration            345 days 00:00:00
+Avg. Drawdown Duration             63 days 21:36:00
+Num. Trades                                     154
+Win Rate [%]                                   50.0
+Best Trade [%]                            27.551075
+Worst Trade [%]                          -16.969197
+Avg. Trade [%]                             0.468629
+Max. Trade Duration                12 days 00:00:00
+Avg. Trade Duration       2 days 06:23:22.597402597
+Expectancy                                 3.547859
+SQN                                        0.711113
+Gross Exposure                             0.535988
+Sharpe Ratio                                0.69902
+Sortino Ratio                              1.059683
+Calmar Ratio                               0.571815<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Save-and-Load-Model"><a href="#Save-and-Load-Model" class="headerlink" title="Save and Load Model"></a>Save and Load Model</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">trainer<span class="token punctuation">.</span>save_checkpoint<span class="token punctuation">(</span><span class="token string">"bert.ckpt"</span><span class="token punctuation">)</span>
+bert_reload <span class="token operator">=</span> BERTBaseUncased<span class="token punctuation">.</span>load_from_checkpoint<span class="token punctuation">(</span>
+    <span class="token string">"bert.ckpt"</span><span class="token punctuation">,</span> 
+    num_classes<span class="token operator">=</span>Config<span class="token punctuation">.</span>NUM_CLASSES
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h1 id="NLP-based-Indicators-and-Technical-Indicators"><a href="#NLP-based-Indicators-and-Technical-Indicators" class="headerlink" title="NLP based Indicators and Technical Indicators"></a>NLP based Indicators and Technical Indicators</h1><p>To make a profitable strategy, multiple criteria of entry-and-exit signals are often combined to filter out false positive decisions. In this work, NLP based indicators and technical indicators are combined into one single entry-and-exit signal array with true/false value using logical operators. There are two operators that combine multiple true or false values into a single true/false value.</p>
 <ul>
@@ -1744,7 +1853,7 @@ Sharpe Ratio                                1.544248
 Sortino Ratio                               2.746532
 Calmar Ratio                                4.498422<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="Performance-1"><a href="#Performance-1" class="headerlink" title="Performance"></a>Performance</h1><p>The total return is -27.1728% if only the TextCNN model is used to produce buy-and-sell signals. After using various technical indicators to filter out false negative signals, all average drawdowns are smaller than when using TextCNN alone. </p>
+<h1 id="Performance-2"><a href="#Performance-2" class="headerlink" title="Performance"></a>Performance</h1><p>The total return is -27.1728% if only the TextCNN model is used to produce buy-and-sell signals. After using various technical indicators to filter out false negative signals, all average drawdowns are smaller than when using TextCNN alone. </p>
 <p>Ten different technical indicators are deployed as filters in this project. Only BOP produces a worse Sharpe Ratio when utilising technical indicators as filters than when using TextCNN alone; on the other hand, the other 9 technical indicators produce a higher Sharpe Ratio score. However, the maximum drawdown is higher when utilising technical indicators as filters than when using TextCNN alone for all technical indicators.</p>
 <table>
 <thead>
@@ -2415,7 +2524,7 @@ Calmar Ratio                                4.498422<span aria-hidden="true" cla
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total site word count:&nbsp;<span
-                class="white-color">101.6k</span>&nbsp;words
+                class="white-color">102.3k</span>&nbsp;words
             
             
             
