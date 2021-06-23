@@ -634,14 +634,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    6.3k
+                    6.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    39 Min
+                    40 Min
                 </div>
                 
 
@@ -2033,7 +2033,124 @@ Calmar Ratio                                4.498422<span aria-hidden="true" cla
 <td align="center">1.5442</td>
 </tr>
 </tbody></table>
+<h1 id="CSCV"><a href="#CSCV" class="headerlink" title="CSCV"></a>CSCV</h1><p>I use combinatorially symmetric cross validation (CSCV) in particular to implement Sharpe ratio-based strategy performance testing. The probability of backtest overfit, performance degradation, probability of loss, and stochastic dominance are computed and visualised. The Sharpe ratio was employed as a performance metric by the writers in the <a target="_blank" rel="noopener" href="https://www.davidhbailey.com/dhbpapers/backtest-prob.pdf">reference</a>. Other measurements are appropriate based on the assumptions made in the research.</p>
+<h2 id="RSI"><a href="#RSI" class="headerlink" title="RSI"></a>RSI</h2><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/rsi-cscv.png" class="">
+
+<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/rsi-pp.png" class="">
+
+<h2 id="WILLR"><a href="#WILLR" class="headerlink" title="WILLR"></a>WILLR</h2><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/willr-cscv.png" class="">
+
+<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/willr-pp.png" class="">
+
+<h2 id="AROONOSC"><a href="#AROONOSC" class="headerlink" title="AROONOSC"></a>AROONOSC</h2><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/aroonosc-cscv.png" class="">
+
+<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/aroonosc-pp.png" class="">
+
+<h2 id="BOP"><a href="#BOP" class="headerlink" title="BOP"></a>BOP</h2><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bop-cscv.png" class="">
+
+<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bop-pp.png" class="">
+
+<h2 id="MMI"><a href="#MMI" class="headerlink" title="MMI"></a>MMI</h2><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mmi-cscv.png" class="">
+
+<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mmi-pp.png" class="">
+
+<h2 id="CCI"><a href="#CCI" class="headerlink" title="CCI"></a>CCI</h2><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/cci-cscv.png" class="">
+
+<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/cci-pp.png" class="">
+
+<h2 id="MACD"><a href="#MACD" class="headerlink" title="MACD"></a>MACD</h2><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/macd-cscv.png" class="">
+
+<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/macd-pp.png" class="">
+
+<h2 id="MFI"><a href="#MFI" class="headerlink" title="MFI"></a>MFI</h2><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mfi-cscv.png" class="">
+
+<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mfi-pp.png" class="">
+
+<h2 id="MOM"><a href="#MOM" class="headerlink" title="MOM"></a>MOM</h2><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mom-cscv.png" class="">
+
+<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mom-pp.png" class="">
+
+<h2 id="ULTOSC"><a href="#ULTOSC" class="headerlink" title="ULTOSC"></a>ULTOSC</h2><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/ultosc-cscv.png" class="">
+
+<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/ultosc-pp.png" class="">
+
+<h1 id="PBO-Results"><a href="#PBO-Results" class="headerlink" title="PBO Results"></a>PBO Results</h1><p>PoL indicates Probability of Loss and PBO indicates Probability of Backtest Overfitting. Slope is for the measurement of Performance Degradation.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Technical Indicator</th>
+<th align="center">PBO [%]</th>
+<th align="center">PoL [%]</th>
+<th align="center">Slope</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">BERT + RSI</td>
+<td align="center">12.70</td>
+<td align="center">3.66</td>
+<td align="center">-0.52</td>
+</tr>
+<tr>
+<td align="center">BERT + WILLR</td>
+<td align="center">6.75</td>
+<td align="center">1.98</td>
+<td align="center">-1.71</td>
+</tr>
+<tr>
+<td align="center">BERT + AROONOSC</td>
+<td align="center">13.10</td>
+<td align="center">1.98</td>
+<td align="center">-1.15</td>
+</tr>
+<tr>
+<td align="center">BERT + BOP</td>
+<td align="center">54.76</td>
+<td align="center">0.00</td>
+<td align="center">-0.83</td>
+</tr>
+<tr>
+<td align="center">BERT + MMI</td>
+<td align="center">22.22</td>
+<td align="center">12.05</td>
+<td align="center">-0.76</td>
+</tr>
+<tr>
+<td align="center">BERT + CCI</td>
+<td align="center">3.57</td>
+<td align="center">3.57</td>
+<td align="center">-1.48</td>
+</tr>
+<tr>
+<td align="center">BERT + MACD</td>
+<td align="center">11.51</td>
+<td align="center">8.10</td>
+<td align="center">-0.27</td>
+</tr>
+<tr>
+<td align="center">BERT + MFI</td>
+<td align="center">7.54</td>
+<td align="center">5.56</td>
+<td align="center">-1.41</td>
+</tr>
+<tr>
+<td align="center">BERT + MOM</td>
+<td align="center">22.62</td>
+<td align="center">1.59</td>
+<td align="center">-1.38</td>
+</tr>
+<tr>
+<td align="center">BERT + ULTOSC</td>
+<td align="center">14.29</td>
+<td align="center">0.79</td>
+<td align="center">-1.47</td>
+</tr>
+</tbody></table>
 <h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>When employing numerous criteria to make trading decisions, especially when combining NLP-based indicators with technical indicators, the profit and sharpe ratio can be greatly increased, and drawdown can be significantly decreased.</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/mrbcuda/pbo">https://github.com/mrbcuda/pbo</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.davidhbailey.com/dhbpapers/backtest-prob.pdf">https://www.davidhbailey.com/dhbpapers/backtest-prob.pdf</a></li>
+<li><a target="_blank" rel="noopener" href="https://sites.math.washington.edu/~morrow/336_17/papers17/akshay.pdf">https://sites.math.washington.edu/~morrow/336_17/papers17/akshay.pdf</a></li>
+</ol>
 
                 
             </div>
@@ -2525,7 +2642,7 @@ Calmar Ratio                                4.498422<span aria-hidden="true" cla
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total site word count:&nbsp;<span
-                class="white-color">102.3k</span>&nbsp;words
+                class="white-color">102.5k</span>&nbsp;words
             
             
             
