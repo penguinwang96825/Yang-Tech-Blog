@@ -2,14 +2,14 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/</loc>
         <changefreq>daily</changefreq>
         <priority>1</priority>
     </url>
 
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/09/21/2021-09-21-contract-for-difference/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/09/21/2021-09-21-contract-for-difference/</loc>
         <lastmod>2021-09-21T01:01:32.068Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -17,7 +17,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/09/17/2021-09-17-batch-norm-and-layer-norm/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/09/17/2021-09-17-batch-norm-and-layer-norm/</loc>
         <lastmod>2021-09-19T20:52:16.150Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -25,7 +25,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/09/16/2021-09-16-difference-between-marginal-distribution-and-conditional-distribution/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/09/16/2021-09-16-difference-between-marginal-distribution-and-conditional-distribution/</loc>
         <lastmod>2021-09-16T16:40:41.672Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -33,7 +33,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/08/29/2021-08-29-anova-using-statsmodels/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/08/29/2021-08-29-anova-using-statsmodels/</loc>
         <lastmod>2021-08-29T14:02:11.274Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -41,7 +41,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/08/28/2021-08-28-linear-regression-using-statsmodels/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/08/28/2021-08-28-linear-regression-using-statsmodels/</loc>
         <lastmod>2021-08-29T00:01:40.390Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -49,7 +49,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/</loc>
         <lastmod>2021-06-23T22:25:04.761Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -57,7 +57,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/06/03/2021-06-03-speaker-identification-using-neural-networks/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/06/03/2021-06-03-speaker-identification-using-neural-networks/</loc>
         <lastmod>2021-06-09T11:38:58.637Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -65,7 +65,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/06/09/2021-06-09-simpson-rule-for-definite-integrals/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/06/09/2021-06-09-simpson-rule-for-definite-integrals/</loc>
         <lastmod>2021-06-09T01:11:47.324Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -73,7 +73,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2020/12/31/2020-12-31-conda-environment-setup/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2020/12/31/2020-12-31-conda-environment-setup/</loc>
         <lastmod>2021-05-31T19:43:51.794Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -81,7 +81,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/05/30/2021-05-30-bert-for-text-classification/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/05/30/2021-05-30-bert-for-text-classification/</loc>
         <lastmod>2021-05-30T19:30:59.136Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -89,7 +89,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/05/28/2021-05-28-nlp-meets-pytorch-lightning/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/05/28/2021-05-28-nlp-meets-pytorch-lightning/</loc>
         <lastmod>2021-05-28T10:52:07.287Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -97,7 +97,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2020/10/16/2020-10-16-collect-tweets-using-twint/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2020/10/16/2020-10-16-collect-tweets-using-twint/</loc>
         <lastmod>2021-05-27T21:57:52.319Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -105,7 +105,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/05/26/2021-05-26-basic-investment-models-and-their-statistical-analysis/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/05/26/2021-05-26-basic-investment-models-and-their-statistical-analysis/</loc>
         <lastmod>2021-05-26T22:12:05.670Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -113,7 +113,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2018/12/03/2018-12-03-this-is-how-the-journey-begins/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2018/12/03/2018-12-03-this-is-how-the-journey-begins/</loc>
         <lastmod>2021-05-26T21:51:50.822Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -121,7 +121,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/03/26/2021-03-26-interview-preparation-for-ibm/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/03/26/2021-03-26-interview-preparation-for-ibm/</loc>
         <lastmod>2021-05-26T21:51:35.591Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -129,7 +129,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/03/20/2021-03-20-how-to-apply-for-coursera-financial-aid/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/03/20/2021-03-20-how-to-apply-for-coursera-financial-aid/</loc>
         <lastmod>2021-05-26T21:51:20.506Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -137,7 +137,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/05/26/2021-05-26-jensen-inequality-and-its-role-in-finance/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/05/26/2021-05-26-jensen-inequality-and-its-role-in-finance/</loc>
         <lastmod>2021-05-26T21:49:41.667Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -145,7 +145,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/05/26/2021-05-26-introduction-to-ordinary-least-squares/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/05/26/2021-05-26-introduction-to-ordinary-least-squares/</loc>
         <lastmod>2021-05-26T21:32:16.915Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -153,7 +153,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/05/26/2021-05-26-tensorflow-speech-recognition-challenge/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/05/26/2021-05-26-tensorflow-speech-recognition-challenge/</loc>
         <lastmod>2021-05-26T20:33:36.326Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -161,7 +161,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/05/26/2021-05-26-skewness-and-kurtosis/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/05/26/2021-05-26-skewness-and-kurtosis/</loc>
         <lastmod>2021-05-26T20:23:07.013Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -169,7 +169,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/26/2021-01-26-quality-of-search-engine/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/01/26/2021-01-26-quality-of-search-engine/</loc>
         <lastmod>2021-05-26T19:40:51.350Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -177,7 +177,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/27/2021-01-27-missionaries-and-cannibals-problem/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/01/27/2021-01-27-missionaries-and-cannibals-problem/</loc>
         <lastmod>2021-05-26T19:40:38.818Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -185,7 +185,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/28/2021-01-28-laplace-expansion-and-chio-algorithm/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/01/28/2021-01-28-laplace-expansion-and-chio-algorithm/</loc>
         <lastmod>2021-05-26T19:40:32.289Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -193,7 +193,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/29/2021-01-29-matrix-decomposition/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/01/29/2021-01-29-matrix-decomposition/</loc>
         <lastmod>2021-05-26T19:40:26.881Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -201,7 +201,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/03/14/2021-03-14-estimate-pi-on-pi-day/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/03/14/2021-03-14-estimate-pi-on-pi-day/</loc>
         <lastmod>2021-05-26T19:40:06.308Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -209,7 +209,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/03/15/2021-03-15-eigenvectors-from-eigenvalues/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/03/15/2021-03-15-eigenvectors-from-eigenvalues/</loc>
         <lastmod>2021-05-26T19:39:54.090Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -217,7 +217,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/03/19/2021-03-19-python-sudoku-solver/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/03/19/2021-03-19-python-sudoku-solver/</loc>
         <lastmod>2021-05-26T19:39:35.202Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -225,7 +225,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/05/25/2021-05-25-install-rpm-files-on-ubuntu/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/05/25/2021-05-25-install-rpm-files-on-ubuntu/</loc>
         <lastmod>2021-05-25T20:16:34.336Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -233,7 +233,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/05/23/2021-05-23-busuanzi-unable-to-display-the-number-of-visitors/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/05/23/2021-05-23-busuanzi-unable-to-display-the-number-of-visitors/</loc>
         <lastmod>2021-05-24T10:34:03.207Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -241,7 +241,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/05/22/2021-05-22-detect-covariate-shift/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/05/22/2021-05-22-detect-covariate-shift/</loc>
         <lastmod>2021-05-23T00:00:55.727Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -249,7 +249,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/04/28/2021-04-28-harry-potter-movies-saga-analysis/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/04/28/2021-04-28-harry-potter-movies-saga-analysis/</loc>
         <lastmod>2021-05-22T23:54:03.480Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -257,7 +257,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/03/15/2021-03-15-visualise-crypto-with-sql-and-fastapi/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/03/15/2021-03-15-visualise-crypto-with-sql-and-fastapi/</loc>
         <lastmod>2021-05-15T20:22:55.350Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -265,7 +265,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/05/01/2021-05-01-predicting-stock-trend-using-lstm/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/05/01/2021-05-01-predicting-stock-trend-using-lstm/</loc>
         <lastmod>2021-05-01T20:41:38.458Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -273,7 +273,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/04/23/2021-04-23-sentiment-analysis-for-japanese-customer-reviews/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/04/23/2021-04-23-sentiment-analysis-for-japanese-customer-reviews/</loc>
         <lastmod>2021-04-30T00:45:39.650Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -281,7 +281,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/04/27/2021-04-27-mecab-and-cabocha-for-japanese/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/04/27/2021-04-27-mecab-and-cabocha-for-japanese/</loc>
         <lastmod>2021-04-27T01:01:04.578Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -289,7 +289,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/04/17/2021-04-17-viterbi-algorithm-for-hmm-decoding/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/04/17/2021-04-17-viterbi-algorithm-for-hmm-decoding/</loc>
         <lastmod>2021-04-20T12:34:49.305Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -297,7 +297,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/04/18/2021-04-18-softmax-and-cross-entropy/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/04/18/2021-04-18-softmax-and-cross-entropy/</loc>
         <lastmod>2021-04-18T16:55:54.294Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -305,7 +305,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/03/31/2021-03-31-dissertation-paraphraser/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/03/31/2021-03-31-dissertation-paraphraser/</loc>
         <lastmod>2021-04-17T22:09:59.137Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -313,7 +313,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/04/01/2021-04-01-develop-strategy-for-tic-tac-toe/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/04/01/2021-04-01-develop-strategy-for-tic-tac-toe/</loc>
         <lastmod>2021-04-01T14:03:29.746Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -321,7 +321,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/03/24/2021-03-24-cube-root-of-nine-digit-number-in-your-head/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/03/24/2021-03-24-cube-root-of-nine-digit-number-in-your-head/</loc>
         <lastmod>2021-03-24T01:39:27.776Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -329,7 +329,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/03/23/2021-03-23-tower-of-hanoi-puzzle/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/03/23/2021-03-23-tower-of-hanoi-puzzle/</loc>
         <lastmod>2021-03-23T23:51:56.205Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -337,7 +337,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/03/22/2021-03-22-text-representation-for-unstructured-data/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/03/22/2021-03-22-text-representation-for-unstructured-data/</loc>
         <lastmod>2021-03-22T23:16:37.050Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -345,7 +345,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/03/22/2021-03-22-notes-on-basic-feature-engineering/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/03/22/2021-03-22-notes-on-basic-feature-engineering/</loc>
         <lastmod>2021-03-22T21:09:53.013Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -353,7 +353,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/03/20/2021-03-20-what-is-technical-indicators/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/03/20/2021-03-20-what-is-technical-indicators/</loc>
         <lastmod>2021-03-20T16:08:14.477Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -361,7 +361,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/03/17/2021-03-17-prove-that-e-is-irrational/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/03/17/2021-03-17-prove-that-e-is-irrational/</loc>
         <lastmod>2021-03-17T23:01:24.269Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -369,7 +369,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/03/16/2021-03-16-calculate-singular-value-decomposition/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/03/16/2021-03-16-calculate-singular-value-decomposition/</loc>
         <lastmod>2021-03-17T21:21:46.650Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -377,7 +377,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/</loc>
         <lastmod>2021-03-15T23:31:00.467Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -385,7 +385,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/02/05/2021-02-05-audio-based-song-genre-classification/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/02/05/2021-02-05-audio-based-song-genre-classification/</loc>
         <lastmod>2021-03-15T23:29:36.053Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -393,7 +393,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/03/15/2021-03-15-triple-barrier-method-for-ml/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/03/15/2021-03-15-triple-barrier-method-for-ml/</loc>
         <lastmod>2021-03-15T16:05:00.005Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -401,7 +401,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2020/04/15/2020-04-15-qs-ranking-crawler/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2020/04/15/2020-04-15-qs-ranking-crawler/</loc>
         <lastmod>2021-03-15T15:13:09.796Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -409,7 +409,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/03/13/2021-03-13-principal-component-analysis-derivation/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/03/13/2021-03-13-principal-component-analysis-derivation/</loc>
         <lastmod>2021-03-14T18:31:44.457Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -417,7 +417,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2020/11/27/2020-11-27-exploratory-data-analysis-for-predicting-insurance-claim/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2020/11/27/2020-11-27-exploratory-data-analysis-for-predicting-insurance-claim/</loc>
         <lastmod>2021-03-13T21:55:57.496Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -425,7 +425,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/25/2021-01-25-simplest-way-to-build-web-crawler/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/01/25/2021-01-25-simplest-way-to-build-web-crawler/</loc>
         <lastmod>2021-03-13T21:55:33.274Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -433,7 +433,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/25/2021-01-25-github-page-from-zero-to-hero/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/01/25/2021-01-25-github-page-from-zero-to-hero/</loc>
         <lastmod>2021-03-13T21:53:41.249Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -441,7 +441,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/02/07/2021-02-07-twitter-hate-speech-detection/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/02/07/2021-02-07-twitter-hate-speech-detection/</loc>
         <lastmod>2021-03-13T10:25:30.998Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -449,7 +449,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/25/2021-01-25-weighted-word-embedding/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/01/25/2021-01-25-weighted-word-embedding/</loc>
         <lastmod>2021-03-13T03:20:10.266Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -457,7 +457,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/03/12/2021-03-12-easiest-explanation-for-p-value/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/03/12/2021-03-12-easiest-explanation-for-p-value/</loc>
         <lastmod>2021-03-13T02:50:51.617Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -465,7 +465,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/01/22/2021-01-22-train-word2vec-on-wsl/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/01/22/2021-01-22-train-word2vec-on-wsl/</loc>
         <lastmod>2021-03-13T00:37:33.860Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -473,7 +473,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2020/11/28/2020-11-28-installation-for-tf2/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2020/11/28/2020-11-28-installation-for-tf2/</loc>
         <lastmod>2021-03-13T00:34:13.536Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -481,7 +481,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2019/07/10/2019-07-10-sentiment-analysis-for-kkbox/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2019/07/10/2019-07-10-sentiment-analysis-for-kkbox/</loc>
         <lastmod>2021-03-13T00:30:11.469Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -489,7 +489,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/03/02/2021-03-02-train-word-embedding-vectos-on-custom-corpus/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/03/02/2021-03-02-train-word-embedding-vectos-on-custom-corpus/</loc>
         <lastmod>2021-03-12T23:11:30.963Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -497,7 +497,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/02/06/2021-02-06-ssh-into-google-colab/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/02/06/2021-02-06-ssh-into-google-colab/</loc>
         <lastmod>2021-03-12T23:05:47.204Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -505,7 +505,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2021/02/06/2021-02-06-prevent-colab-from-disconnecting/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/02/06/2021-02-06-prevent-colab-from-disconnecting/</loc>
         <lastmod>2021-03-12T23:04:16.666Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -513,7 +513,7 @@
     </url>
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/2020/12/15/2020-12-15-integrate-atom-with-cmder/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2020/12/15/2020-12-15-integrate-atom-with-cmder/</loc>
         <lastmod>2021-03-12T22:24:55.687Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>

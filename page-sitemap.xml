@@ -2,7 +2,7 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/</loc>
         <changefreq>daily</changefreq>
         <priority>1</priority>
     </url>
@@ -10,7 +10,7 @@
     
     
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/contact/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/contact/</loc>
         <lastmod>2021-09-21T01:33:26.772Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -19,7 +19,7 @@
     
     
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/about/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/about/</loc>
         <lastmod>2021-09-19T12:05:00.872Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -28,7 +28,7 @@
     
     
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/friends/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/friends/</loc>
         <lastmod>2021-03-13T01:53:13.865Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -37,7 +37,7 @@
     
     
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/404/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/404/</loc>
         <lastmod>2021-03-12T18:54:24.740Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -46,7 +46,7 @@
     
     
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/tags/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/tags/</loc>
         <lastmod>2021-03-12T18:53:39.266Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -55,7 +55,7 @@
     
     
     <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/categories/</loc>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/categories/</loc>
         <lastmod>2021-03-12T18:53:22.551Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
