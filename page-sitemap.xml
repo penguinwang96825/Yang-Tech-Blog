@@ -10,6 +10,15 @@
     
     
     <url>
+        <loc>https://penguinwang96825.github.io/Hexo-Blog/about/</loc>
+        <lastmod>2021-09-19T12:05:00.872Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    
+    
+    <url>
         <loc>https://penguinwang96825.github.io/Hexo-Blog/contact/</loc>
         <lastmod>2021-03-14T00:34:23.240Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -30,15 +39,6 @@
     <url>
         <loc>https://penguinwang96825.github.io/Hexo-Blog/404/</loc>
         <lastmod>2021-03-12T18:54:24.740Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    
-    
-    <url>
-        <loc>https://penguinwang96825.github.io/Hexo-Blog/about/</loc>
-        <lastmod>2021-03-12T18:53:55.130Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
