@@ -809,7 +809,7 @@ test_dataloader <span class="token operator">=</span> test_dataset<span class="t
     Multi-class Classification Engine
     """</span>
     
-    learning_rate <span class="token operator">=</span> <span class="token number">1e</span><span class="token operator">-</span><span class="token number">3</span>
+    learning_rate <span class="token operator">=</span> <span class="token number">1e-3</span>
     
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -931,7 +931,7 @@ test_dataloader <span class="token operator">=</span> test_dataset<span class="t
                   kernel_num<span class="token operator">=</span>Config<span class="token punctuation">.</span>NUM_KERNELS<span class="token punctuation">,</span> 
                   kernel_sizes<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">,</span> 
                   dropout<span class="token operator">=</span>Config<span class="token punctuation">.</span>DROPOUT_RATE<span class="token punctuation">)</span>
-textcnn<span class="token punctuation">.</span>learning_rate <span class="token operator">=</span> <span class="token number">3e</span><span class="token operator">-</span><span class="token number">5</span>
+textcnn<span class="token punctuation">.</span>learning_rate <span class="token operator">=</span> <span class="token number">3e-5</span>
 textcnn<span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span>init_weights<span class="token punctuation">)</span>
 trainer <span class="token operator">=</span> pl<span class="token punctuation">.</span>Trainer<span class="token punctuation">(</span>gpus<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> precision<span class="token operator">=</span><span class="token number">16</span><span class="token punctuation">,</span> fast_dev_run<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> max_epochs<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">,</span> num_sanity_val_steps<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
 trainer<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>textcnn<span class="token punctuation">,</span> train_dataloader<span class="token punctuation">,</span> valid_dataloader<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -942,13 +942,13 @@ test_preds <span class="token operator">=</span> np<span class="token punctuatio
 metrics<span class="token punctuation">.</span>f1_score<span class="token punctuation">(</span>y_test<span class="token punctuation">,</span> test_preds<span class="token punctuation">,</span> average<span class="token operator">=</span><span class="token string">"weighted"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> metrics<span class="token punctuation">.</span>accuracy_score<span class="token punctuation">(</span>y_test<span class="token punctuation">,</span> test_preds<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>Accuracy curve is as follow.</p>
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/textcnn-acc.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/textcnn-acc.png" class="">
 
 <p>Loss curve is as follow.</p>
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/textcnn-loss.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/textcnn-loss.png" class="">
 
 <p>Confusion matrix is as follow.</p>
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/textcnn-cm.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/textcnn-cm.png" class="">
 
 <h3 id="Backtest"><a href="#Backtest" class="headerlink" title="Backtest"></a>Backtest</h3><p>Backtesting is a way for determining how well a strategy or model would have performed in the absence of the strategy or model. Backtesting is a method of determining the viability of a trading strategy by examining how it would perform in the real world using previous data. If backtesting proves to be effective, traders and analysts may be more willing to use it in the future.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">trends <span class="token operator">=</span> np<span class="token punctuation">.</span>argmax<span class="token punctuation">(</span>test_probs<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
@@ -961,9 +961,9 @@ mlbp_textcnn <span class="token operator">=</span> MachineLearningBacktestPortfo
                                                 show<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 mlbp_textcnn<span class="token punctuation">.</span>plot_risk<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/nlp1.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/nlp1.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/nlp2.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/nlp2.png" class="">
 
 <pre class="line-numbers language-none"><code class="language-none">Start                           2018-01-01 00:00:00
 End                             2020-12-10 00:00:00
@@ -996,7 +996,7 @@ Calmar Ratio                              -0.307222<span aria-hidden="true" clas
 
 <span class="token keyword">class</span> <span class="token class-name">BERTBaseUncased</span><span class="token punctuation">(</span>LightningMultiClassModule<span class="token punctuation">)</span><span class="token punctuation">:</span>
     
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> num_classes<span class="token punctuation">,</span> learning_rate<span class="token operator">=</span><span class="token number">3e</span><span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> num_classes<span class="token punctuation">,</span> learning_rate<span class="token operator">=</span><span class="token number">3e-5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token builtin">super</span><span class="token punctuation">(</span>BERTBaseUncased<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
         self<span class="token punctuation">.</span>learning_rate <span class="token operator">=</span> learning_rate
         self<span class="token punctuation">.</span>bert <span class="token operator">=</span> BertModel<span class="token punctuation">.</span>from_pretrained<span class="token punctuation">(</span><span class="token string">"bert-base-uncased"</span><span class="token punctuation">)</span>
@@ -1038,13 +1038,13 @@ test_preds <span class="token operator">=</span> np<span class="token punctuatio
 metrics<span class="token punctuation">.</span>f1_score<span class="token punctuation">(</span>y_test<span class="token punctuation">,</span> test_preds<span class="token punctuation">,</span> average<span class="token operator">=</span><span class="token string">"weighted"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> metrics<span class="token punctuation">.</span>accuracy_score<span class="token punctuation">(</span>y_test<span class="token punctuation">,</span> test_preds<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>Accuracy curve is as follow.</p>
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bert-acc.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bert-acc.png" class="">
 
 <p>Loss curve is as follow.</p>
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bert-loss.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bert-loss.png" class="">
 
 <p>Confusion matrix is as follow.</p>
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bert-cm.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bert-cm.png" class="">
 
 <h3 id="Backtest-1"><a href="#Backtest-1" class="headerlink" title="Backtest"></a>Backtest</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python">trends <span class="token operator">=</span> np<span class="token punctuation">.</span>argmax<span class="token punctuation">(</span>test_probs<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
 entries<span class="token punctuation">,</span> exits <span class="token operator">=</span> trend_to_signal<span class="token punctuation">(</span>pd<span class="token punctuation">.</span>Series<span class="token punctuation">(</span>trends<span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -1056,9 +1056,9 @@ mlbp_bert <span class="token operator">=</span> MachineLearningBacktestPortfolio
                                              show<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 mlbp_bert<span class="token punctuation">.</span>plot_risk<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/nlp3.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/nlp3.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/nlp4.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/nlp4.png" class="">
 
 <pre class="line-numbers language-none"><code class="language-none">Start                           2018-01-01 00:00:00
 End                             2020-12-10 00:00:00
@@ -1112,7 +1112,7 @@ close <span class="token operator">=</span> price_test<span class="token punctua
 rsi <span class="token operator">=</span> talib<span class="token punctuation">.</span>RSI<span class="token punctuation">(</span>close<span class="token punctuation">,</span> timeperiod<span class="token operator">=</span><span class="token number">14</span><span class="token punctuation">)</span>
 rsi<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/rsi1.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/rsi1.png" class="">
 
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">mlbp_rsi <span class="token operator">=</span> MachineLearningBacktestPortfolio<span class="token punctuation">(</span>price_test<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">,</span> 
                                             entries<span class="token operator">=</span><span class="token punctuation">(</span>rsi<span class="token operator">>=</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">.</span>values<span class="token operator">&amp;</span>entries<span class="token punctuation">,</span> 
@@ -1120,9 +1120,9 @@ rsi<span class="token punctuation">.</span>plot<span class="token punctuation">(
                                             show<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 mlbp_rsi<span class="token punctuation">.</span>plot_risk<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="TextCNN-and-RSI"><a href="#TextCNN-and-RSI" class="headerlink" title="TextCNN and RSI"></a>TextCNN and RSI</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/rsi2.png" class="">
+<h3 id="TextCNN-and-RSI"><a href="#TextCNN-and-RSI" class="headerlink" title="TextCNN and RSI"></a>TextCNN and RSI</h3><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/rsi2.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/rsi3.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/rsi3.png" class="">
 
 <pre class="line-numbers language-none"><code class="language-none">Start                            2018-01-01 00:00:00
 End                              2020-12-10 00:00:00
@@ -1150,9 +1150,9 @@ Sharpe Ratio                                1.160131
 Sortino Ratio                               1.730172
 Calmar Ratio                                0.963688<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="BERT-and-RSI"><a href="#BERT-and-RSI" class="headerlink" title="BERT and RSI"></a>BERT and RSI</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/rsi4.png" class="">
+<h3 id="BERT-and-RSI"><a href="#BERT-and-RSI" class="headerlink" title="BERT and RSI"></a>BERT and RSI</h3><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/rsi4.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/rsi5.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/rsi5.png" class="">
 
 <pre class="line-numbers language-none"><code class="language-none">Start                           2018-01-01 00:00:00
 End                             2020-12-10 00:00:00
@@ -1187,7 +1187,7 @@ close <span class="token operator">=</span> price_test<span class="token punctua
 willr <span class="token operator">=</span> talib<span class="token punctuation">.</span>WILLR<span class="token punctuation">(</span>high<span class="token punctuation">,</span> low<span class="token punctuation">,</span> close<span class="token punctuation">,</span> timeperiod<span class="token operator">=</span><span class="token number">14</span><span class="token punctuation">)</span>
 willr<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/willr1.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/willr1.png" class="">
 
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">mlbp_willr <span class="token operator">=</span> MachineLearningBacktestPortfolio<span class="token punctuation">(</span>price_test<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">,</span> 
                                               entries<span class="token operator">=</span><span class="token punctuation">(</span>willr<span class="token operator">>=</span><span class="token operator">-</span><span class="token number">40</span><span class="token punctuation">)</span><span class="token punctuation">.</span>values<span class="token operator">&amp;</span>entries<span class="token punctuation">,</span> 
@@ -1195,9 +1195,9 @@ willr<span class="token punctuation">.</span>plot<span class="token punctuation"
                                               show<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 mlbp_willr<span class="token punctuation">.</span>plot_risk<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="TextCNN-and-WILLR"><a href="#TextCNN-and-WILLR" class="headerlink" title="TextCNN and WILLR"></a>TextCNN and WILLR</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/willr2.png" class="">
+<h3 id="TextCNN-and-WILLR"><a href="#TextCNN-and-WILLR" class="headerlink" title="TextCNN and WILLR"></a>TextCNN and WILLR</h3><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/willr2.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/willr3.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/willr3.png" class="">
 
 <pre class="line-numbers language-none"><code class="language-none">Start                            2018-01-01 00:00:00
 End                              2020-12-10 00:00:00
@@ -1225,9 +1225,9 @@ Sharpe Ratio                                1.038628
 Sortino Ratio                               1.546713
 Calmar Ratio                                0.838452<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="BERT-and-WILLR"><a href="#BERT-and-WILLR" class="headerlink" title="BERT and WILLR"></a>BERT and WILLR</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/willr4.png" class="">
+<h3 id="BERT-and-WILLR"><a href="#BERT-and-WILLR" class="headerlink" title="BERT and WILLR"></a>BERT and WILLR</h3><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/willr4.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/willr5.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/willr5.png" class="">
 
 <pre class="line-numbers language-none"><code class="language-none">Start                            2018-01-01 00:00:00
 End                              2020-12-10 00:00:00
@@ -1261,7 +1261,7 @@ low <span class="token operator">=</span> price_test<span class="token punctuati
 aroonosc <span class="token operator">=</span> talib<span class="token punctuation">.</span>AROONOSC<span class="token punctuation">(</span>high<span class="token punctuation">,</span> low<span class="token punctuation">,</span> timeperiod<span class="token operator">=</span><span class="token number">14</span><span class="token punctuation">)</span>
 aroonosc<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/aroonosc1.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/aroonosc1.png" class="">
 
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">mlbp_aroonosc <span class="token operator">=</span> MachineLearningBacktestPortfolio<span class="token punctuation">(</span>price_test<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">,</span> 
                                                  entries<span class="token operator">=</span><span class="token punctuation">(</span>aroonosc<span class="token operator">>=</span><span class="token number">25</span><span class="token punctuation">)</span><span class="token punctuation">.</span>values<span class="token operator">&amp;</span>entries<span class="token punctuation">,</span> 
@@ -1269,9 +1269,9 @@ aroonosc<span class="token punctuation">.</span>plot<span class="token punctuati
                                                  show<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 mlbp_aroonosc<span class="token punctuation">.</span>plot_risk<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="TextCNN-and-AROONOSC"><a href="#TextCNN-and-AROONOSC" class="headerlink" title="TextCNN and AROONOSC"></a>TextCNN and AROONOSC</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/aroonosc2.png" class="">
+<h3 id="TextCNN-and-AROONOSC"><a href="#TextCNN-and-AROONOSC" class="headerlink" title="TextCNN and AROONOSC"></a>TextCNN and AROONOSC</h3><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/aroonosc2.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/aroonosc3.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/aroonosc3.png" class="">
 
 <pre class="line-numbers language-none"><code class="language-none">Start                     2018-01-01 00:00:00
 End                       2020-12-10 00:00:00
@@ -1299,9 +1299,9 @@ Sharpe Ratio                         0.301499
 Sortino Ratio                        0.397515
 Calmar Ratio                         0.053622<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="BERT-and-AROONOSC"><a href="#BERT-and-AROONOSC" class="headerlink" title="BERT and AROONOSC"></a>BERT and AROONOSC</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/aroonosc4.png" class="">
+<h3 id="BERT-and-AROONOSC"><a href="#BERT-and-AROONOSC" class="headerlink" title="BERT and AROONOSC"></a>BERT and AROONOSC</h3><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/aroonosc4.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/aroonosc5.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/aroonosc5.png" class="">
 
 <pre class="line-numbers language-none"><code class="language-none">Start                            2018-01-01 00:00:00
 End                              2020-12-10 00:00:00
@@ -1337,7 +1337,7 @@ close <span class="token operator">=</span> price_test<span class="token punctua
 bop <span class="token operator">=</span> talib<span class="token punctuation">.</span>BOP<span class="token punctuation">(</span>open_<span class="token punctuation">,</span> high<span class="token punctuation">,</span> low<span class="token punctuation">,</span> close<span class="token punctuation">)</span>
 bop<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bop1.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bop1.png" class="">
 
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">mlbp_bop <span class="token operator">=</span> MachineLearningBacktestPortfolio<span class="token punctuation">(</span>price_test<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">,</span> 
                                             entries<span class="token operator">=</span><span class="token punctuation">(</span>bop<span class="token operator">>=</span><span class="token number">0.8</span><span class="token punctuation">)</span><span class="token punctuation">.</span>values<span class="token operator">&amp;</span>entries<span class="token punctuation">,</span> 
@@ -1345,9 +1345,9 @@ bop<span class="token punctuation">.</span>plot<span class="token punctuation">(
                                             show<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 mlbp_bop<span class="token punctuation">.</span>plot_risk<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="TextCNN-and-BOP"><a href="#TextCNN-and-BOP" class="headerlink" title="TextCNN and BOP"></a>TextCNN and BOP</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bop2.png" class="">
+<h3 id="TextCNN-and-BOP"><a href="#TextCNN-and-BOP" class="headerlink" title="TextCNN and BOP"></a>TextCNN and BOP</h3><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bop2.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bop3.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bop3.png" class="">
 
 <pre class="line-numbers language-none"><code class="language-none">Start                     2018-01-01 00:00:00
 End                       2020-12-10 00:00:00
@@ -1375,9 +1375,9 @@ Sharpe Ratio                        -0.546112
 Sortino Ratio                       -0.662911
 Calmar Ratio                        -0.411706<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="BERT-and-BOP"><a href="#BERT-and-BOP" class="headerlink" title="BERT and BOP"></a>BERT and BOP</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bop4.png" class="">
+<h3 id="BERT-and-BOP"><a href="#BERT-and-BOP" class="headerlink" title="BERT and BOP"></a>BERT and BOP</h3><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bop4.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bop5.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bop5.png" class="">
 
 <pre class="line-numbers language-none"><code class="language-none">Start                           2018-01-01 00:00:00
 End                             2020-12-10 00:00:00
@@ -1414,7 +1414,7 @@ p2 <span class="token operator">=</span> close<span class="token punctuation">.<
 mmi <span class="token operator">=</span> <span class="token punctuation">(</span>p1 <span class="token operator">&amp;</span> p2<span class="token punctuation">)</span><span class="token punctuation">.</span>astype<span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">)</span><span class="token punctuation">.</span>rolling<span class="token punctuation">(</span>mmi_days<span class="token punctuation">)</span><span class="token punctuation">.</span>mean<span class="token punctuation">(</span><span class="token punctuation">)</span>
 mmi<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mmi1.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mmi1.png" class="">
 
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">mlbp_mmi <span class="token operator">=</span> MachineLearningBacktestPortfolio<span class="token punctuation">(</span>price_test<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">,</span> 
                                             entries<span class="token operator">=</span><span class="token punctuation">(</span>mmi<span class="token operator">>=</span><span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">.</span>values<span class="token operator">&amp;</span>entries<span class="token punctuation">,</span> 
@@ -1422,9 +1422,9 @@ mmi<span class="token punctuation">.</span>plot<span class="token punctuation">(
                                             show<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 mlbp_mmi<span class="token punctuation">.</span>plot_risk<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="TextCNN-and-MMI"><a href="#TextCNN-and-MMI" class="headerlink" title="TextCNN and MMI"></a>TextCNN and MMI</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mmi2.png" class="">
+<h3 id="TextCNN-and-MMI"><a href="#TextCNN-and-MMI" class="headerlink" title="TextCNN and MMI"></a>TextCNN and MMI</h3><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mmi2.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mmi3.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mmi3.png" class="">
 
 <pre class="line-numbers language-none"><code class="language-none">Start                            2018-01-01 00:00:00
 End                              2020-12-10 00:00:00
@@ -1452,9 +1452,9 @@ Sharpe Ratio                                0.445331
 Sortino Ratio                               0.622654
 Calmar Ratio                                0.154401<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="BERT-and-MMI"><a href="#BERT-and-MMI" class="headerlink" title="BERT and MMI"></a>BERT and MMI</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mmi4.png" class="">
+<h3 id="BERT-and-MMI"><a href="#BERT-and-MMI" class="headerlink" title="BERT and MMI"></a>BERT and MMI</h3><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mmi4.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mmi5.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mmi5.png" class="">
 
 <pre class="line-numbers language-none"><code class="language-none">Start                     2018-01-01 00:00:00
 End                       2020-12-10 00:00:00
@@ -1489,7 +1489,7 @@ close <span class="token operator">=</span> price_test<span class="token punctua
 cci <span class="token operator">=</span> talib<span class="token punctuation">.</span>CCI<span class="token punctuation">(</span>high<span class="token punctuation">,</span> low<span class="token punctuation">,</span> close<span class="token punctuation">,</span> timeperiod<span class="token operator">=</span><span class="token number">14</span><span class="token punctuation">)</span>
 cci<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/cci1.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/cci1.png" class="">
 
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">mlbp_cci <span class="token operator">=</span> MachineLearningBacktestPortfolio<span class="token punctuation">(</span>price_test<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">,</span> 
                                             entries<span class="token operator">=</span><span class="token punctuation">(</span>cci<span class="token operator">>=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span>values<span class="token operator">&amp;</span>entries<span class="token punctuation">,</span> 
@@ -1497,9 +1497,9 @@ cci<span class="token punctuation">.</span>plot<span class="token punctuation">(
                                             show<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 mlbp_cci<span class="token punctuation">.</span>plot_risk<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="TextCNN-and-CCI"><a href="#TextCNN-and-CCI" class="headerlink" title="TextCNN and CCI"></a>TextCNN and CCI</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/cci2.png" class="">
+<h3 id="TextCNN-and-CCI"><a href="#TextCNN-and-CCI" class="headerlink" title="TextCNN and CCI"></a>TextCNN and CCI</h3><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/cci2.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/cci3.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/cci3.png" class="">
 
 <pre class="line-numbers language-none"><code class="language-none">Start                            2018-01-01 00:00:00
 End                              2020-12-10 00:00:00
@@ -1527,9 +1527,9 @@ Sharpe Ratio                                1.022194
 Sortino Ratio                               1.522095
 Calmar Ratio                                0.815354<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="BERT-and-CCI"><a href="#BERT-and-CCI" class="headerlink" title="BERT and CCI"></a>BERT and CCI</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/cci4.png" class="">
+<h3 id="BERT-and-CCI"><a href="#BERT-and-CCI" class="headerlink" title="BERT and CCI"></a>BERT and CCI</h3><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/cci4.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/cci5.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/cci5.png" class="">
 
 <pre class="line-numbers language-none"><code class="language-none">Start                           2018-01-01 00:00:00
 End                             2020-12-10 00:00:00
@@ -1562,7 +1562,7 @@ Calmar Ratio                               6.986814<span aria-hidden="true" clas
 macd<span class="token punctuation">,</span> macdsignal<span class="token punctuation">,</span> macdhist <span class="token operator">=</span> talib<span class="token punctuation">.</span>MACD<span class="token punctuation">(</span>close<span class="token punctuation">,</span> fastperiod<span class="token operator">=</span><span class="token number">12</span><span class="token punctuation">,</span> slowperiod<span class="token operator">=</span><span class="token number">26</span><span class="token punctuation">,</span> signalperiod<span class="token operator">=</span><span class="token number">9</span><span class="token punctuation">)</span>
 macd<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/macd1.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/macd1.png" class="">
 
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">mlbp_macd <span class="token operator">=</span> MachineLearningBacktestPortfolio<span class="token punctuation">(</span>price_test<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">,</span> 
                                              entries<span class="token operator">=</span><span class="token punctuation">(</span>macd<span class="token operator">>=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span>values<span class="token operator">&amp;</span>entries<span class="token punctuation">,</span> 
@@ -1570,9 +1570,9 @@ macd<span class="token punctuation">.</span>plot<span class="token punctuation">
                                              show<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 mlbp_macd<span class="token punctuation">.</span>plot_risk<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="TextCNN-and-MACD"><a href="#TextCNN-and-MACD" class="headerlink" title="TextCNN and MACD"></a>TextCNN and MACD</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/macd2.png" class="">
+<h3 id="TextCNN-and-MACD"><a href="#TextCNN-and-MACD" class="headerlink" title="TextCNN and MACD"></a>TextCNN and MACD</h3><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/macd2.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/macd3.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/macd3.png" class="">
 
 <pre class="line-numbers language-none"><code class="language-none">Start                     2018-01-01 00:00:00
 End                       2020-12-10 00:00:00
@@ -1600,9 +1600,9 @@ Sharpe Ratio                         0.969612
 Sortino Ratio                        1.428536
 Calmar Ratio                         0.725122<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="BERT-and-MACD"><a href="#BERT-and-MACD" class="headerlink" title="BERT and MACD"></a>BERT and MACD</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/macd4.png" class="">
+<h3 id="BERT-and-MACD"><a href="#BERT-and-MACD" class="headerlink" title="BERT and MACD"></a>BERT and MACD</h3><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/macd4.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/macd5.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/macd5.png" class="">
 
 <pre class="line-numbers language-none"><code class="language-none">Start                     2018-01-01 00:00:00
 End                       2020-12-10 00:00:00
@@ -1638,7 +1638,7 @@ volume <span class="token operator">=</span> price_test<span class="token punctu
 mfi <span class="token operator">=</span> talib<span class="token punctuation">.</span>MFI<span class="token punctuation">(</span>high<span class="token punctuation">,</span> low<span class="token punctuation">,</span> close<span class="token punctuation">,</span> volume<span class="token punctuation">,</span> timeperiod<span class="token operator">=</span><span class="token number">14</span><span class="token punctuation">)</span>
 mfi<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mfi1.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mfi1.png" class="">
 
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">mlbp_mfi <span class="token operator">=</span> MachineLearningBacktestPortfolio<span class="token punctuation">(</span>price_test<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">,</span> 
                                             entries<span class="token operator">=</span><span class="token punctuation">(</span>mfi<span class="token operator">>=</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">.</span>values<span class="token operator">&amp;</span>entries<span class="token punctuation">,</span> 
@@ -1646,9 +1646,9 @@ mfi<span class="token punctuation">.</span>plot<span class="token punctuation">(
                                             show<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 mlbp_mfi<span class="token punctuation">.</span>plot_risk<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="TextCNN-and-MFI"><a href="#TextCNN-and-MFI" class="headerlink" title="TextCNN and MFI"></a>TextCNN and MFI</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mfi2.png" class="">
+<h3 id="TextCNN-and-MFI"><a href="#TextCNN-and-MFI" class="headerlink" title="TextCNN and MFI"></a>TextCNN and MFI</h3><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mfi2.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mfi3.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mfi3.png" class="">
 
 <pre class="line-numbers language-none"><code class="language-none">Start                            2018-01-01 00:00:00
 End                              2020-12-10 00:00:00
@@ -1676,9 +1676,9 @@ Sharpe Ratio                                0.710413
 Sortino Ratio                               1.016296
 Calmar Ratio                                0.418163<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="BERT-and-MFI"><a href="#BERT-and-MFI" class="headerlink" title="BERT and MFI"></a>BERT and MFI</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mfi4.png" class="">
+<h3 id="BERT-and-MFI"><a href="#BERT-and-MFI" class="headerlink" title="BERT and MFI"></a>BERT and MFI</h3><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mfi4.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mfi5.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mfi5.png" class="">
 
 <pre class="line-numbers language-none"><code class="language-none">Start                            2018-01-01 00:00:00
 End                              2020-12-10 00:00:00
@@ -1711,7 +1711,7 @@ Calmar Ratio                                1.704851<span aria-hidden="true" cla
 mom <span class="token operator">=</span> talib<span class="token punctuation">.</span>MOM<span class="token punctuation">(</span>close<span class="token punctuation">,</span> timeperiod<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">)</span>
 mom<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mom1.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mom1.png" class="">
 
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">mlbp_mom <span class="token operator">=</span> MachineLearningBacktestPortfolio<span class="token punctuation">(</span>price_test<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">,</span> 
                                             entries<span class="token operator">=</span><span class="token punctuation">(</span>mom<span class="token operator">>=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span>values<span class="token operator">&amp;</span>entries<span class="token punctuation">,</span> 
@@ -1719,9 +1719,9 @@ mom<span class="token punctuation">.</span>plot<span class="token punctuation">(
                                             show<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 mlbp_mom<span class="token punctuation">.</span>plot_risk<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="TextCNN-and-MOM"><a href="#TextCNN-and-MOM" class="headerlink" title="TextCNN and MOM"></a>TextCNN and MOM</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mom2.png" class="">
+<h3 id="TextCNN-and-MOM"><a href="#TextCNN-and-MOM" class="headerlink" title="TextCNN and MOM"></a>TextCNN and MOM</h3><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mom2.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mom3.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mom3.png" class="">
 
 <pre class="line-numbers language-none"><code class="language-none">Start                            2018-01-01 00:00:00
 End                              2020-12-10 00:00:00
@@ -1749,9 +1749,9 @@ Sharpe Ratio                                0.891946
 Sortino Ratio                               1.312906
 Calmar Ratio                                0.651662<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="BERT-and-MOM"><a href="#BERT-and-MOM" class="headerlink" title="BERT and MOM"></a>BERT and MOM</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mom4.png" class="">
+<h3 id="BERT-and-MOM"><a href="#BERT-and-MOM" class="headerlink" title="BERT and MOM"></a>BERT and MOM</h3><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mom4.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mom5.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mom5.png" class="">
 
 <pre class="line-numbers language-none"><code class="language-none">Start                     2018-01-01 00:00:00
 End                       2020-12-10 00:00:00
@@ -1786,7 +1786,7 @@ close <span class="token operator">=</span> price_test<span class="token punctua
 ultosc <span class="token operator">=</span> talib<span class="token punctuation">.</span>ULTOSC<span class="token punctuation">(</span>high<span class="token punctuation">,</span> low<span class="token punctuation">,</span> close<span class="token punctuation">,</span> timeperiod1<span class="token operator">=</span><span class="token number">7</span><span class="token punctuation">,</span> timeperiod2<span class="token operator">=</span><span class="token number">14</span><span class="token punctuation">,</span> timeperiod3<span class="token operator">=</span><span class="token number">28</span><span class="token punctuation">)</span>
 ultosc<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/ultosc1.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/ultosc1.png" class="">
 
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">mlbp_ultosc <span class="token operator">=</span> MachineLearningBacktestPortfolio<span class="token punctuation">(</span>price_test<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">,</span> 
                                                entries<span class="token operator">=</span><span class="token punctuation">(</span>ultosc<span class="token operator">>=</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">.</span>values<span class="token operator">&amp;</span>entries<span class="token punctuation">,</span> 
@@ -1794,9 +1794,9 @@ ultosc<span class="token punctuation">.</span>plot<span class="token punctuation
                                                show<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 mlbp_ultosc<span class="token punctuation">.</span>plot_risk<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="TextCNN-and-ULTOSC"><a href="#TextCNN-and-ULTOSC" class="headerlink" title="TextCNN and ULTOSC"></a>TextCNN and ULTOSC</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/ultosc2.png" class="">
+<h3 id="TextCNN-and-ULTOSC"><a href="#TextCNN-and-ULTOSC" class="headerlink" title="TextCNN and ULTOSC"></a>TextCNN and ULTOSC</h3><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/ultosc2.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/ultosc3.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/ultosc3.png" class="">
 
 <pre class="line-numbers language-none"><code class="language-none">Start                            2018-01-01 00:00:00
 End                              2020-12-10 00:00:00
@@ -1824,9 +1824,9 @@ Sharpe Ratio                                1.341326
 Sortino Ratio                               2.085091
 Calmar Ratio                                1.434422<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="BERT-and-ULTOSC"><a href="#BERT-and-ULTOSC" class="headerlink" title="BERT and ULTOSC"></a>BERT and ULTOSC</h3><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/ultosc4.png" class="">
+<h3 id="BERT-and-ULTOSC"><a href="#BERT-and-ULTOSC" class="headerlink" title="BERT and ULTOSC"></a>BERT and ULTOSC</h3><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/ultosc4.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/ultosc5.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/ultosc5.png" class="">
 
 <pre class="line-numbers language-none"><code class="language-none">Start                            2018-01-01 00:00:00
 End                              2020-12-10 00:00:00
@@ -2034,45 +2034,45 @@ Calmar Ratio                                4.498422<span aria-hidden="true" cla
 </tr>
 </tbody></table>
 <h1 id="CSCV"><a href="#CSCV" class="headerlink" title="CSCV"></a>CSCV</h1><p>I use combinatorially symmetric cross validation (CSCV) in particular to implement Sharpe ratio-based strategy performance testing. The probability of backtest overfit, performance degradation, probability of loss, and stochastic dominance are computed and visualised. The Sharpe ratio was employed as a performance metric by the writers in the <a target="_blank" rel="noopener" href="https://www.davidhbailey.com/dhbpapers/backtest-prob.pdf">reference</a>. Other measurements are appropriate based on the assumptions made in the research.</p>
-<h2 id="RSI"><a href="#RSI" class="headerlink" title="RSI"></a>RSI</h2><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/rsi-cscv.png" class="">
+<h2 id="RSI"><a href="#RSI" class="headerlink" title="RSI"></a>RSI</h2><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/rsi-cscv.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/rsi-pp.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/rsi-pp.png" class="">
 
-<h2 id="WILLR"><a href="#WILLR" class="headerlink" title="WILLR"></a>WILLR</h2><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/willr-cscv.png" class="">
+<h2 id="WILLR"><a href="#WILLR" class="headerlink" title="WILLR"></a>WILLR</h2><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/willr-cscv.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/willr-pp.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/willr-pp.png" class="">
 
-<h2 id="AROONOSC"><a href="#AROONOSC" class="headerlink" title="AROONOSC"></a>AROONOSC</h2><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/aroonosc-cscv.png" class="">
+<h2 id="AROONOSC"><a href="#AROONOSC" class="headerlink" title="AROONOSC"></a>AROONOSC</h2><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/aroonosc-cscv.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/aroonosc-pp.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/aroonosc-pp.png" class="">
 
-<h2 id="BOP"><a href="#BOP" class="headerlink" title="BOP"></a>BOP</h2><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bop-cscv.png" class="">
+<h2 id="BOP"><a href="#BOP" class="headerlink" title="BOP"></a>BOP</h2><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bop-cscv.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bop-pp.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/bop-pp.png" class="">
 
-<h2 id="MMI"><a href="#MMI" class="headerlink" title="MMI"></a>MMI</h2><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mmi-cscv.png" class="">
+<h2 id="MMI"><a href="#MMI" class="headerlink" title="MMI"></a>MMI</h2><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mmi-cscv.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mmi-pp.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mmi-pp.png" class="">
 
-<h2 id="CCI"><a href="#CCI" class="headerlink" title="CCI"></a>CCI</h2><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/cci-cscv.png" class="">
+<h2 id="CCI"><a href="#CCI" class="headerlink" title="CCI"></a>CCI</h2><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/cci-cscv.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/cci-pp.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/cci-pp.png" class="">
 
-<h2 id="MACD"><a href="#MACD" class="headerlink" title="MACD"></a>MACD</h2><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/macd-cscv.png" class="">
+<h2 id="MACD"><a href="#MACD" class="headerlink" title="MACD"></a>MACD</h2><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/macd-cscv.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/macd-pp.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/macd-pp.png" class="">
 
-<h2 id="MFI"><a href="#MFI" class="headerlink" title="MFI"></a>MFI</h2><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mfi-cscv.png" class="">
+<h2 id="MFI"><a href="#MFI" class="headerlink" title="MFI"></a>MFI</h2><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mfi-cscv.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mfi-pp.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mfi-pp.png" class="">
 
-<h2 id="MOM"><a href="#MOM" class="headerlink" title="MOM"></a>MOM</h2><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mom-cscv.png" class="">
+<h2 id="MOM"><a href="#MOM" class="headerlink" title="MOM"></a>MOM</h2><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mom-cscv.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mom-pp.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/mom-pp.png" class="">
 
-<h2 id="ULTOSC"><a href="#ULTOSC" class="headerlink" title="ULTOSC"></a>ULTOSC</h2><img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/ultosc-cscv.png" class="">
+<h2 id="ULTOSC"><a href="#ULTOSC" class="headerlink" title="ULTOSC"></a>ULTOSC</h2><img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/ultosc-cscv.png" class="">
 
-<img src="/Hexo-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/ultosc-pp.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/10/2021-06-10-integrate-nlp-with-technical-indicators/ultosc-pp.png" class="">
 
 <h1 id="PBO-Results"><a href="#PBO-Results" class="headerlink" title="PBO Results"></a>PBO Results</h1><p>PoL indicates Probability of Loss and PBO indicates Probability of Backtest Overfitting. Slope is for the measurement of Performance Degradation.</p>
 <table>

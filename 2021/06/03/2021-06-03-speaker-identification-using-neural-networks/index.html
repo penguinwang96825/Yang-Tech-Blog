@@ -931,7 +931,7 @@ batch_X<span class="token punctuation">,</span> batch_y <span class="token opera
     Multi-class Classification Engine
     """</span>
     
-    learning_rate <span class="token operator">=</span> <span class="token number">1e</span><span class="token operator">-</span><span class="token number">3</span>
+    learning_rate <span class="token operator">=</span> <span class="token number">1e-3</span>
     
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -1114,7 +1114,7 @@ batch_X<span class="token punctuation">,</span> batch_y <span class="token opera
 
 <span class="token keyword">class</span> <span class="token class-name">StatsPool</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> floor<span class="token operator">=</span><span class="token number">1e</span><span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">,</span> bessel<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> floor<span class="token operator">=</span><span class="token number">1e-10</span><span class="token punctuation">,</span> bessel<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token builtin">super</span><span class="token punctuation">(</span>StatsPool<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
         self<span class="token punctuation">.</span>floor <span class="token operator">=</span> floor
         self<span class="token punctuation">.</span>bessel <span class="token operator">=</span> bessel
@@ -1208,10 +1208,10 @@ y_test_ground_truth <span class="token operator">=</span> le<span class="token p
 metrics<span class="token punctuation">.</span>top_k_accuracy_score<span class="token punctuation">(</span>y_test_ground_truth<span class="token punctuation">,</span> y_test_proba_final<span class="token punctuation">,</span> k<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Loss curve</p>
-<img src="/Hexo-Blog/2021/06/03/2021-06-03-speaker-identification-using-neural-networks/loss.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/03/2021-06-03-speaker-identification-using-neural-networks/loss.png" class="">
 
 <p>Accuracy curve</p>
-<img src="/Hexo-Blog/2021/06/03/2021-06-03-speaker-identification-using-neural-networks/acc.png" class="">
+<img src="/Yang-Tech-Blog/2021/06/03/2021-06-03-speaker-identification-using-neural-networks/acc.png" class="">
 
 <h1 id="Performance"><a href="#Performance" class="headerlink" title="Performance"></a>Performance</h1><p>10-Segment</p>
 <table>

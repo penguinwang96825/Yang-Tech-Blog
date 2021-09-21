@@ -666,7 +666,7 @@
             <div id="articleContent">
                 <link rel="stylesheet" type="text&#x2F;css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.3.1/dist/hexo-tag-hint.min.css"><h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Tic-tac-toe is a paper-and-pencil game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a diagonal, horizontal, or vertical row is the winner. It is a solved game with a forced draw assuming best play from both players. In this article, I want to discuss whether there’s a must-win strategy for this game.</p>
 <h1 id="Gameplay"><a href="#Gameplay" class="headerlink" title="Gameplay"></a>Gameplay</h1><p>In order to win the game, a player must place three of their marks in a horizontal, vertical, or diagonal row. The following example game is won by the first player, X:</p>
-<img src="/Hexo-Blog/2021/04/01/2021-04-01-develop-strategy-for-tic-tac-toe/game.png" class="">
+<img src="/Yang-Tech-Blog/2021/04/01/2021-04-01-develop-strategy-for-tic-tac-toe/game.png" class="">
 
 <h2 id="Play-it-Yourself"><a href="#Play-it-Yourself" class="headerlink" title="Play it Yourself"></a>Play it Yourself</h2><p>Entertain yourself!</p>
 <SCRIPT>
@@ -1380,22 +1380,22 @@ function resetter()
 </ul>
 <p>We will look through this in detail. Let’s assume you are O.</p>
 <h3 id="Center-First"><a href="#Center-First" class="headerlink" title="Center First"></a>Center First</h3><p>Center first, edge next, resulting in winning.</p>
-<img src="/Hexo-Blog/2021/04/01/2021-04-01-develop-strategy-for-tic-tac-toe/h6xDyxQh.jpg" class="">
+<img src="/Yang-Tech-Blog/2021/04/01/2021-04-01-develop-strategy-for-tic-tac-toe/h6xDyxQh.jpg" class="">
 
 <p>Center first, edge next, resulting in draw.</p>
-<img src="/Hexo-Blog/2021/04/01/2021-04-01-develop-strategy-for-tic-tac-toe/vUJqV3qh.jpg" class="">
+<img src="/Yang-Tech-Blog/2021/04/01/2021-04-01-develop-strategy-for-tic-tac-toe/vUJqV3qh.jpg" class="">
 
 <h3 id="Corner-First"><a href="#Corner-First" class="headerlink" title="Corner First"></a>Corner First</h3><p>Corner first, center next, resulting in draw.</p>
-<img src="/Hexo-Blog/2021/04/01/2021-04-01-develop-strategy-for-tic-tac-toe/WaX026kh.jpg" class="">
+<img src="/Yang-Tech-Blog/2021/04/01/2021-04-01-develop-strategy-for-tic-tac-toe/WaX026kh.jpg" class="">
 
 <p>Corner first, no matter what’s next, resulting in winning.</p>
-<img src="/Hexo-Blog/2021/04/01/2021-04-01-develop-strategy-for-tic-tac-toe/f9XVS3Oh.jpg" class="">
+<img src="/Yang-Tech-Blog/2021/04/01/2021-04-01-develop-strategy-for-tic-tac-toe/f9XVS3Oh.jpg" class="">
 
 <h3 id="Edge-First"><a href="#Edge-First" class="headerlink" title="Edge First"></a>Edge First</h3><p>Edge first, edge beside it next, resulting in winning.</p>
-<img src="/Hexo-Blog/2021/04/01/2021-04-01-develop-strategy-for-tic-tac-toe/wkJ0Noeh.jpg" class="">
+<img src="/Yang-Tech-Blog/2021/04/01/2021-04-01-develop-strategy-for-tic-tac-toe/wkJ0Noeh.jpg" class="">
 
 <p>Edge first, center next, resulting in draw.</p>
-<img src="/Hexo-Blog/2021/04/01/2021-04-01-develop-strategy-for-tic-tac-toe/hQeBFgBh.jpg" class="">
+<img src="/Yang-Tech-Blog/2021/04/01/2021-04-01-develop-strategy-for-tic-tac-toe/hQeBFgBh.jpg" class="">
 
 <h2 id="Discover"><a href="#Discover" class="headerlink" title="Discover"></a>Discover</h2><p>From here you can see the tic-tac-toe, for the backhand, it is a very disadvantageous situation.</p>
 <ol>

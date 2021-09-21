@@ -693,7 +693,7 @@ ax1<span class="token punctuation">.</span>set_xlabel<span class="token punctuat
 ax1<span class="token punctuation">.</span>set_ylabel<span class="token punctuation">(</span><span class="token string">'Amplitude'</span><span class="token punctuation">)</span>
 ax1<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>np<span class="token punctuation">.</span>linspace<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> sample_rate<span class="token operator">/</span><span class="token builtin">len</span><span class="token punctuation">(</span>samples<span class="token punctuation">)</span><span class="token punctuation">,</span> sample_rate<span class="token punctuation">)</span><span class="token punctuation">,</span> samples<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/05/26/2021-05-26-tensorflow-speech-recognition-challenge/sample.png" class="">
+<img src="/Yang-Tech-Blog/2021/05/26/2021-05-26-tensorflow-speech-recognition-challenge/sample.png" class="">
 
 <p>Number of recordings for each command.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">labels <span class="token operator">=</span> os<span class="token punctuation">.</span>listdir<span class="token punctuation">(</span>train_audio_path<span class="token punctuation">)</span>
@@ -710,7 +710,7 @@ plt<span class="token punctuation">.</span>xticks<span class="token punctuation"
 plt<span class="token punctuation">.</span>title<span class="token punctuation">(</span><span class="token string">'No. of recordings for each command'</span><span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/05/26/2021-05-26-tensorflow-speech-recognition-challenge/command.png" class="">
+<img src="/Yang-Tech-Blog/2021/05/26/2021-05-26-tensorflow-speech-recognition-challenge/command.png" class="">
 
 <p>Load all the audio files in every sub-folder.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">load_waves_and_labels</span><span class="token punctuation">(</span>filepath<span class="token punctuation">,</span> labels<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -849,7 +849,7 @@ test_dataloader <span class="token operator">=</span> test_dataset<span class="t
 <h2 id="Statistics-Pooling"><a href="#Statistics-Pooling" class="headerlink" title="Statistics Pooling"></a>Statistics Pooling</h2><p>The statistics pooling layer calculates the mean and standard deviation of the DNN’s frame-level output vectors. The DNN uses this pooling approach to create fixed-length representations from variable-length speech segments.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">StatsPool</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> floor<span class="token operator">=</span><span class="token number">1e</span><span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">,</span> bessel<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> floor<span class="token operator">=</span><span class="token number">1e-10</span><span class="token punctuation">,</span> bessel<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token builtin">super</span><span class="token punctuation">(</span>StatsPool<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
         self<span class="token punctuation">.</span>floor <span class="token operator">=</span> floor
         self<span class="token punctuation">.</span>bessel <span class="token operator">=</span> bessel
@@ -1081,7 +1081,7 @@ model <span class="token operator">=</span> model<span class="token punctuation"
 )&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="Start-Training"><a href="#Start-Training" class="headerlink" title="Start Training"></a>Start Training</h2><p>Set up loss function, optimiser, and scheduler.</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">lr <span class="token operator">=</span> <span class="token number">2e</span><span class="token operator">-</span><span class="token number">4</span>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">lr <span class="token operator">=</span> <span class="token number">2e-4</span>
 num_epochs <span class="token operator">=</span> <span class="token number">40</span>
 patience <span class="token operator">=</span> <span class="token number">10</span>
 
@@ -1108,7 +1108,7 @@ plt<span class="token punctuation">.</span>legend<span class="token punctuation"
 plt<span class="token punctuation">.</span>grid<span class="token punctuation">(</span><span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/05/26/2021-05-26-tensorflow-speech-recognition-challenge/performance.png" class="">
+<img src="/Yang-Tech-Blog/2021/05/26/2021-05-26-tensorflow-speech-recognition-challenge/performance.png" class="">
 
 <p>The f1 score in test set is <em>0.9435</em>.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">test_probs <span class="token operator">=</span> trainer<span class="token punctuation">.</span>predict_step<span class="token punctuation">(</span>test_dataloader<span class="token punctuation">)</span>

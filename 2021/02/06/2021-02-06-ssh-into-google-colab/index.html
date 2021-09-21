@@ -690,7 +690,7 @@ print<span class="token punctuation">(</span><span class="token string">"Copy au
 authtoken <span class="token operator">=</span> getpass.getpass<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token comment">#Create tunnel</span>
-get_ipython<span class="token punctuation">(</span><span class="token punctuation">)</span>.system_raw<span class="token punctuation">(</span><span class="token string">'./ngrok authtoken <span class="token variable">$authtoken</span> &amp;&amp; ./ngrok tcp 22 &amp;'</span><span class="token punctuation">)</span>
+get_ipython<span class="token punctuation">(</span><span class="token punctuation">)</span>.system_raw<span class="token punctuation">(</span><span class="token string">'./ngrok authtoken $authtoken &amp;&amp; ./ngrok tcp 22 &amp;'</span><span class="token punctuation">)</span>
 <span class="token comment">#Print root password</span>
 print<span class="token punctuation">(</span><span class="token string">"Root password: &#123;&#125;"</span>.format<span class="token punctuation">(</span>password<span class="token punctuation">))</span>
 <span class="token comment">#Get public address</span>
@@ -706,7 +706,7 @@ tcp://4.tcp.ngrok.io:17523<span aria-hidden="true" class="line-numbers-rows"><sp
 <p><strong>Step 4</strong> Type into your local machine, and type in the password.</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ssh</span> root@4.tcp.ngrok.io -p <span class="token number">17523</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/02/06/2021-02-06-ssh-into-google-colab/cmd.jpg" class="">
+<img src="/Yang-Tech-Blog/2021/02/06/2021-02-06-ssh-into-google-colab/cmd.jpg" class="">
 
 <p><strong>Step 5</strong> Run Visual Studio code server. First, mount our Google Drive.</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Mount Google Drive and make some folders for vscode</span>
@@ -721,7 +721,7 @@ drive.mount<span class="token punctuation">(</span><span class="token string">'/
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">!</span> <span class="token function">curl</span> -fsSL https://code-server.dev/install.sh <span class="token operator">|</span> <span class="token function">sh</span> <span class="token operator">></span> /dev/null
 <span class="token operator">!</span> code-server --bind-addr <span class="token number">127.0</span>.0.1:9999 --auth none <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/02/06/2021-02-06-ssh-into-google-colab/vs.png" class="">
+<img src="/Yang-Tech-Blog/2021/02/06/2021-02-06-ssh-into-google-colab/vs.png" class="">
 
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://towardsdatascience.com/colab-free-gpu-ssh-visual-studio-code-server-36fe1d3c5243">https://towardsdatascience.com/colab-free-gpu-ssh-visual-studio-code-server-36fe1d3c5243</a></li>

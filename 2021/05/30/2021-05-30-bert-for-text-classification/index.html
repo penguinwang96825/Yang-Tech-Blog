@@ -776,7 +776,7 @@ test_dataloader <span class="token operator">=</span> test_dataset<span class="t
     <span class="token triple-quoted-string string">"""
     Multi-class Classification
     """</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> learning_rate<span class="token operator">=</span><span class="token number">1e</span><span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> learning_rate<span class="token operator">=</span><span class="token number">1e-3</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
         
         <span class="token comment"># Set our learning rate</span>
@@ -919,7 +919,7 @@ plt<span class="token punctuation">.</span>legend<span class="token punctuation"
 plt<span class="token punctuation">.</span>grid<span class="token punctuation">(</span><span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/05/30/2021-05-30-bert-for-text-classification/textcnn-acc.png" class="">
+<img src="/Yang-Tech-Blog/2021/05/30/2021-05-30-bert-for-text-classification/textcnn-acc.png" class="">
 
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>textcnn<span class="token punctuation">.</span>train_losses<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> textcnn<span class="token punctuation">.</span>train_losses<span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">"train"</span><span class="token punctuation">)</span>
@@ -928,15 +928,15 @@ plt<span class="token punctuation">.</span>legend<span class="token punctuation"
 plt<span class="token punctuation">.</span>grid<span class="token punctuation">(</span><span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/05/30/2021-05-30-bert-for-text-classification/textcnn-loss.png" class="">
+<img src="/Yang-Tech-Blog/2021/05/30/2021-05-30-bert-for-text-classification/textcnn-loss.png" class="">
 
 <p>Confusion matrix.</p>
-<img src="/Hexo-Blog/2021/05/30/2021-05-30-bert-for-text-classification/textcnn-cm.png" class="">
+<img src="/Yang-Tech-Blog/2021/05/30/2021-05-30-bert-for-text-classification/textcnn-cm.png" class="">
 
 <h2 id="XVectors"><a href="#XVectors" class="headerlink" title="XVectors"></a>XVectors</h2><p>Variable-length utterances are mapped to fixed-dimensional embeddings called x-vectors by the DNN, which has been trained to discriminate between speakers. In this article, I tried using it to classify text.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">StatsPool</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> floor<span class="token operator">=</span><span class="token number">1e</span><span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">,</span> bessel<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> floor<span class="token operator">=</span><span class="token number">1e-10</span><span class="token punctuation">,</span> bessel<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token builtin">super</span><span class="token punctuation">(</span>StatsPool<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
         self<span class="token punctuation">.</span>floor <span class="token operator">=</span> floor
         self<span class="token punctuation">.</span>bessel <span class="token operator">=</span> bessel
@@ -1071,7 +1071,7 @@ plt<span class="token punctuation">.</span>legend<span class="token punctuation"
 plt<span class="token punctuation">.</span>grid<span class="token punctuation">(</span><span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/05/30/2021-05-30-bert-for-text-classification/xvectors-acc.png" class="">
+<img src="/Yang-Tech-Blog/2021/05/30/2021-05-30-bert-for-text-classification/xvectors-acc.png" class="">
 
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>xvectors<span class="token punctuation">.</span>train_losses<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> xvectors<span class="token punctuation">.</span>train_losses<span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">"train"</span><span class="token punctuation">)</span>
@@ -1080,10 +1080,10 @@ plt<span class="token punctuation">.</span>legend<span class="token punctuation"
 plt<span class="token punctuation">.</span>grid<span class="token punctuation">(</span><span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/05/30/2021-05-30-bert-for-text-classification/xvectors-loss.png" class="">
+<img src="/Yang-Tech-Blog/2021/05/30/2021-05-30-bert-for-text-classification/xvectors-loss.png" class="">
 
 <p>Confusion matrix.</p>
-<img src="/Hexo-Blog/2021/05/30/2021-05-30-bert-for-text-classification/xvectors-cm.png" class="">
+<img src="/Yang-Tech-Blog/2021/05/30/2021-05-30-bert-for-text-classification/xvectors-cm.png" class="">
 
 <h2 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h2><p>Just like RNN, LSTM has a sequential model. The difference between RNN and LSTM is that it has additional signal information that is given from one time step to the next time step which is commonly called “cell memory.” LSTM is designed to overcome the problem of vanishing gradient, using the gate mechanism.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">SimpleLSTM</span><span class="token punctuation">(</span>MultiClass<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -1116,7 +1116,7 @@ plt<span class="token punctuation">.</span>legend<span class="token punctuation"
 plt<span class="token punctuation">.</span>grid<span class="token punctuation">(</span><span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/05/30/2021-05-30-bert-for-text-classification/lstm-acc.png" class="">
+<img src="/Yang-Tech-Blog/2021/05/30/2021-05-30-bert-for-text-classification/lstm-acc.png" class="">
 
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>lstm<span class="token punctuation">.</span>train_losses<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> lstm<span class="token punctuation">.</span>train_losses<span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">"train"</span><span class="token punctuation">)</span>
@@ -1125,15 +1125,15 @@ plt<span class="token punctuation">.</span>legend<span class="token punctuation"
 plt<span class="token punctuation">.</span>grid<span class="token punctuation">(</span><span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/05/30/2021-05-30-bert-for-text-classification/lstm-loss.png" class="">
+<img src="/Yang-Tech-Blog/2021/05/30/2021-05-30-bert-for-text-classification/lstm-loss.png" class="">
 
 <p>Confusion matrix.</p>
-<img src="/Hexo-Blog/2021/05/30/2021-05-30-bert-for-text-classification/lstm-cm.png" class="">
+<img src="/Yang-Tech-Blog/2021/05/30/2021-05-30-bert-for-text-classification/lstm-cm.png" class="">
 
 <h2 id="BERT"><a href="#BERT" class="headerlink" title="BERT"></a>BERT</h2><p>BERT and other Transformer encoder architectures have proven to be quite effective in a range of NLP tasks (natural language processing). They create natural language vector-space representations that can be used in deep learning models. The Transformer encoder architecture is used by the BERT family of models to process each token of input text in the context of all tokens before and after it, hence the name: Bidirectional Encoder Representations from Transformers. Typically, BERT models are trained on a huge corpus of text before being fine-tuned for specific tasks.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">BERTBaseUncased</span><span class="token punctuation">(</span>MultiClass<span class="token punctuation">)</span><span class="token punctuation">:</span>
     
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> num_classes<span class="token punctuation">,</span> learning_rate<span class="token operator">=</span><span class="token number">3e</span><span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> num_classes<span class="token punctuation">,</span> learning_rate<span class="token operator">=</span><span class="token number">3e-5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token builtin">super</span><span class="token punctuation">(</span>BERTBaseUncased<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
         self<span class="token punctuation">.</span>learning_rate <span class="token operator">=</span> learning_rate
         self<span class="token punctuation">.</span>bert <span class="token operator">=</span> BertModel<span class="token punctuation">.</span>from_pretrained<span class="token punctuation">(</span><span class="token string">"bert-base-uncased"</span><span class="token punctuation">)</span>
@@ -1174,7 +1174,7 @@ plt<span class="token punctuation">.</span>legend<span class="token punctuation"
 plt<span class="token punctuation">.</span>grid<span class="token punctuation">(</span><span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/05/30/2021-05-30-bert-for-text-classification/bert-acc.png" class="">
+<img src="/Yang-Tech-Blog/2021/05/30/2021-05-30-bert-for-text-classification/bert-acc.png" class="">
 
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">plt<span class="token punctuation">.</span>figure<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>bert<span class="token punctuation">.</span>train_losses<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> bert<span class="token punctuation">.</span>train_losses<span class="token punctuation">,</span> label<span class="token operator">=</span><span class="token string">"train"</span><span class="token punctuation">)</span>
@@ -1183,10 +1183,10 @@ plt<span class="token punctuation">.</span>legend<span class="token punctuation"
 plt<span class="token punctuation">.</span>grid<span class="token punctuation">(</span><span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/05/30/2021-05-30-bert-for-text-classification/bert-loss.png" class="">
+<img src="/Yang-Tech-Blog/2021/05/30/2021-05-30-bert-for-text-classification/bert-loss.png" class="">
 
 <p>Confusion matrix.</p>
-<img src="/Hexo-Blog/2021/05/30/2021-05-30-bert-for-text-classification/bert-cm.png" class="">
+<img src="/Yang-Tech-Blog/2021/05/30/2021-05-30-bert-for-text-classification/bert-cm.png" class="">
 
 <h1 id="Performance"><a href="#Performance" class="headerlink" title="Performance"></a>Performance</h1><table>
 <thead>

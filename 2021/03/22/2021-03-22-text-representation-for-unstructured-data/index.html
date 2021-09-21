@@ -680,7 +680,7 @@
 <h1 id="Topic-Model"><a href="#Topic-Model" class="headerlink" title="Topic Model"></a>Topic Model</h1><p>In machine learning and natural language processing, a topic model is a type of statistical model for discovering the abstract “topics” that occur in a collection of documents. There are some famous algorithms, such as Latent Semantic Analysis and Latent Dirichlet Allocation, I will discuss those stuff in the future. Just bear in mind, topic modeling is a frequently used text-mining tool for discovery of hidden semantic structures in a text body.</p>
 <h1 id="Word-Embedding"><a href="#Word-Embedding" class="headerlink" title="Word Embedding"></a>Word Embedding</h1><p>Word embedding is a general term for some kind of models that vectorise words, and the core idea behind this is that each word is mapped into a dense vector on a low-dimensional space (usually 50 to 300 dimensions) as a dense vector. Each of the K-dimensional space dimension can also be considered as an implicit topic, but not as intuitive as the topic in the topic model.</p>
 <p>Word2Vec, proposed by Google in 2013, is one of the most commonly used word embedding models today. Word2Vec actually is a shallow neural network model which has two network structures, CBOW (Continues Bag of Words) and Skip-gram. CBOW is trained to predict a single word from a fixed window size of context words, whereas Skip-gram does the opposite, and tries to predict several context words from a single input word.</p>
-<img src="/Hexo-Blog/2021/03/22/2021-03-22-text-representation-for-unstructured-data/word2vec.png" class="">
+<img src="/Yang-Tech-Blog/2021/03/22/2021-03-22-text-representation-for-unstructured-data/word2vec.png" class="">
 
 <p>where w(t) is the word of current interest, w(t-2), w(t-1), w(t+1), w(t+2) are the contextual occurrences of the words. Here the sliding window size is set to 2 for both front and back. Both CBOW and Skip-gram can be represented as a neural network consisting of an input layer, a projection layer, and an output layer. Each word in the input layer is represented by one-hot encoding, i.e., all words are represented as an N-dimensional vector, where N is the total number of words in the vocabulary. In the vector, each word has its corresponding dimension set to 1 and the rest values are set to 0. In the projection layer (also known as the hidden layer), the values of the K hidden units can be obtained from the N-dimensional input vector and the N × K dimensional weight matrix connecting the input and the hidden units. In CBOW, it is also necessary to sum the computed hidden units for each input word. Similarly, the value of the output layer vector can be obtained from the projection layer vector (K dimensions), and the K × N dimensional weight matrix connecting the projection layer and the output layer. The output layer is also an N-dimensional vector, and each dimension corresponds to a word in the vocabulary. Finally, applying the Softmax activation function to the output layer vector, it can calculate the probability of each single word’s generation probability. The Softmax activation function is defined as</p>
 <div style="display: flex;justify-content: center;">
@@ -926,12 +926,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/Yang-Tech-Blog/tags/Data-Science/">
-                        <span class="chip bg-color">Data Science</span>
-                    </a>
-                    
                     <a href="/Yang-Tech-Blog/tags/Statistics/">
                         <span class="chip bg-color">Statistics</span>
+                    </a>
+                    
+                    <a href="/Yang-Tech-Blog/tags/Data-Science/">
+                        <span class="chip bg-color">Data Science</span>
                     </a>
                     
                 </div>

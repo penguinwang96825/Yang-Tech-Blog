@@ -668,7 +668,7 @@
 <p>In this article, I’m going to build my own pre-trained word embedding on WSL, which stands for Windows Subsystem for Linux, and it is a compatibility layer for running Linux binary executables (in ELF format) natively on Windows 10.. The reason why I train the model on Linux instead of Windows is that it’s not user-freiendly to run C++ and some other packages on Windows.</p>
 <h1 id="Windows-Subsystem-for-Linux"><a href="#Windows-Subsystem-for-Linux" class="headerlink" title="Windows-Subsystem-for-Linux"></a>Windows-Subsystem-for-Linux</h1><h2 id="Pre-steps"><a href="#Pre-steps" class="headerlink" title="Pre-steps"></a>Pre-steps</h2><ol>
 <li>Download PowerShell from <a target="_blank" rel="noopener" href="https://github.com/PowerShell/PowerShell/releases">here</a>.</li>
-<li>Install Ubuntu from microsoft shop.<img src="/Hexo-Blog/2021/01/22/2021-01-22-train-word2vec-on-wsl/ubuntu.jpg" class=""></li>
+<li>Install Ubuntu from microsoft shop.<img src="/Yang-Tech-Blog/2021/01/22/2021-01-22-train-word2vec-on-wsl/ubuntu.jpg" class=""></li>
 <li>Open PowerShell and type command below.<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 Once you done the 3 steps above, you can visit your linux homepage through <code>C:\Users\&lt;username&gt;\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\LocalState\rootfs\home\</code></li>
 </ol>
@@ -695,11 +695,11 @@ The key's randomart image is:
 <span class="token operator">|</span>    .oo  E. <span class="token builtin class-name">.</span> <span class="token punctuation">..</span> <span class="token operator">|</span>
 +----<span class="token punctuation">[</span>SHA256<span class="token punctuation">]</span>-----+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 <li>Now, you can find your public key as follows: <code>cat ~/.ssh/id_rsa.pub</code></li>
-<li>Open your <a target="_blank" rel="noopener" href="https://github.com/">GitHub</a> and go to the <code>Settings</code> section.<img src="/Hexo-Blog/2021/01/22/2021-01-22-train-word2vec-on-wsl/settings.png" class=""></li>
+<li>Open your <a target="_blank" rel="noopener" href="https://github.com/">GitHub</a> and go to the <code>Settings</code> section.<img src="/Yang-Tech-Blog/2021/01/22/2021-01-22-train-word2vec-on-wsl/settings.png" class=""></li>
 <li>Go to <code>SSH and GPG keys</code> and click the <code>New SSH key</code> button.</li>
-<li>Copy your public key to <code>Key</code> text field and press <code>Add SSH key</code>.<img src="/Hexo-Blog/2021/01/22/2021-01-22-train-word2vec-on-wsl/ssh.png" class=""></li>
+<li>Copy your public key to <code>Key</code> text field and press <code>Add SSH key</code>.<img src="/Yang-Tech-Blog/2021/01/22/2021-01-22-train-word2vec-on-wsl/ssh.png" class=""></li>
 </ol>
-<h2 id="Ananconda-for-Python-Optional"><a href="#Ananconda-for-Python-Optional" class="headerlink" title="Ananconda for Python (Optional)"></a>Ananconda for Python (Optional)</h2><p>I wrote a <a href="/Hexo-Blog/2020/12/31/2020-12-31-conda-environment-setup/" title="blog">blog</a> discussing about why we should use anaconda for python. Please take a look first.</p>
+<h2 id="Ananconda-for-Python-Optional"><a href="#Ananconda-for-Python-Optional" class="headerlink" title="Ananconda for Python (Optional)"></a>Ananconda for Python (Optional)</h2><p>I wrote a <a href="/Yang-Tech-Blog/2020/12/31/2020-12-31-conda-environment-setup/" title="blog">blog</a> discussing about why we should use anaconda for python. Please take a look first.</p>
 <h3 id="Install-Packages"><a href="#Install-Packages" class="headerlink" title="Install Packages"></a>Install Packages</h3><pre class="line-numbers language-console" data-language="console"><code class="language-console">sudo apt-get update
 sudo apt-get install python-pip<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
@@ -762,7 +762,7 @@ the 0.476841 -0.620207 -0.002157 0.359706 -0.591816 [295 more numbers...]
 and 0.223408  0.231993 -0.231131 -0.900311 -0.225111 [295 more numbers..]
 [19998 more lines...]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>Finally, you can do interesting stuff in other NLP tasks, such as this <a href="/Hexo-Blog/2021/01/25/2021-01-25-weighted-word-embedding/" title="article">article</a> I wrote before.</p>
+<p>Finally, you can do interesting stuff in other NLP tasks, such as this <a href="/Yang-Tech-Blog/2021/01/25/2021-01-25-weighted-word-embedding/" title="article">article</a> I wrote before.</p>
 <h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>It is really helpful to make some pre-computed word embedding vectors from scratch, rather than having pre-trained vectors from other websites! Stay Hungry! Stay Foolish! See you next time!</p>
 
                 

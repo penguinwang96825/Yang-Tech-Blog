@@ -697,9 +697,9 @@ warnings<span class="token punctuation">.</span>filterwarnings<span class="token
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">data <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">"./lyrics.csv"</span><span class="token punctuation">,</span> delimiter<span class="token operator">=</span><span class="token string">","</span><span class="token punctuation">)</span>
 data<span class="token punctuation">.</span>head<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/data.png" class="">
+<img src="/Yang-Tech-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/data.png" class="">
 
-<h2 id="Data-Processing"><a href="#Data-Processing" class="headerlink" title="Data Processing"></a>Data Processing</h2><p>There are lots of techniques for NLP data processing, such as noise removal (remove stopwords), lexicon normalisation (stemming, lemmatisation), object standardisation (acronyms, hash tags, colloquial slangs), etc. However, these are out of the scope in this article, instead, I will only do tokenisation. I wrote an <a href="/Hexo-Blog/2020/11/27/2020-11-27-exploratory-data-analysis-for-predicting-insurance-claim/" title="[article]">[article]</a> that teachs you how to do a proper EDA on your data.</p>
+<h2 id="Data-Processing"><a href="#Data-Processing" class="headerlink" title="Data Processing"></a>Data Processing</h2><p>There are lots of techniques for NLP data processing, such as noise removal (remove stopwords), lexicon normalisation (stemming, lemmatisation), object standardisation (acronyms, hash tags, colloquial slangs), etc. However, these are out of the scope in this article, instead, I will only do tokenisation. I wrote an <a href="/Yang-Tech-Blog/2020/11/27/2020-11-27-exploratory-data-analysis-for-predicting-insurance-claim/" title="[article]">[article]</a> that teachs you how to do a proper EDA on your data.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">tokenization</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">:</span>
     text <span class="token operator">=</span> re<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'\W+'</span><span class="token punctuation">,</span> text<span class="token punctuation">)</span>
     <span class="token keyword">return</span> text
@@ -716,7 +716,7 @@ X_valid<span class="token punctuation">,</span> X_test<span class="token punctua
     X_test<span class="token punctuation">,</span> y_test<span class="token punctuation">,</span> test_size<span class="token operator">=</span><span class="token number">0.5</span><span class="token punctuation">,</span> random_state<span class="token operator">=</span><span class="token number">914</span><span class="token punctuation">,</span> stratify<span class="token operator">=</span>y_test<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>There are 217342, 72447, 72447 samples of training, validation, and testing dataset, respectively.</p>
-<h1 id="Word-Embedding"><a href="#Word-Embedding" class="headerlink" title="Word Embedding"></a>Word Embedding</h1><p>I utilised three word embedding vectorisers <code>MeanEmbeddingVectorizer()</code>, <code>TfidfEmbeddingVectorizer()</code>, and <code>SifEmbeddingVectorizer()</code> from one of my <a href="/Hexo-Blog/2021/01/25/2021-01-25-weighted-word-embedding/" title="[post]">[post]</a>.</p>
+<h1 id="Word-Embedding"><a href="#Word-Embedding" class="headerlink" title="Word Embedding"></a>Word Embedding</h1><p>I utilised three word embedding vectorisers <code>MeanEmbeddingVectorizer()</code>, <code>TfidfEmbeddingVectorizer()</code>, and <code>SifEmbeddingVectorizer()</code> from one of my <a href="/Yang-Tech-Blog/2021/01/25/2021-01-25-weighted-word-embedding/" title="[post]">[post]</a>.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Word2Vec</span>
 vectoriser_w2v_mean <span class="token operator">=</span> MeanEmbeddingVectorizer<span class="token punctuation">(</span>word2vec<span class="token operator">=</span>w2v_model<span class="token punctuation">)</span>
 feature_train_w2v_mean <span class="token operator">=</span> vectoriser_w2v_mean<span class="token punctuation">.</span>fit_transform<span class="token punctuation">(</span>X_train<span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">)</span>
@@ -744,7 +744,7 @@ feature_train_ft_sif <span class="token operator">=</span> vectoriser_ft_sif<spa
 <p>After a long period of time, finally got the embedding vectors! Let’s put them into dictionaries <code>vectorisers_dcit</code> and <code>features_train_dict</code> for later use.</p>
 <h1 id="Modelling"><a href="#Modelling" class="headerlink" title="Modelling"></a>Modelling</h1><h2 id="Introduction-1"><a href="#Introduction-1" class="headerlink" title="Introduction"></a>Introduction</h2><p>This is a supervised text classification problem, and our goal is to investigate which supervised machine learning methods are best suited to solve it. Given a new lyrics comes in, we want to assign it to one of the twelve categories. This is a multi-class text classification task. </p>
 <h2 id="Imbalanced-Classes"><a href="#Imbalanced-Classes" class="headerlink" title="Imbalanced Classes"></a>Imbalanced Classes</h2><p>Let’s take a look at the distribution of label in training dataset.</p>
-<img src="/Hexo-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/distribution.png" class="">
+<img src="/Yang-Tech-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/distribution.png" class="">
 
 <p>We can see that the number of genres per song is imbalanced. Genres of the songs are more biased towards “Rock” music. When we encounter such problems, we are bound to have difficulties solving them with standard algorithms, Conventional algorithms are often biased towards the majority classes, not taking the data distribution into account. In the worst case, minority classes are considered as outliers or being ignored. For some cases, such as fraud detection or cancer prediction, we would need to carefully configure our model or artificially balance the dataset, for instance, using resampling technique (under-sampling, over-sampling), Tomek Links, SMOTE (Synthetic Minority Oversampling Technique), class weights in the models, or changing your evaluation metrics.</p>
 <p>Various other methods might work depending on your use case and the problem you are trying to solve. </p>
@@ -763,15 +763,15 @@ feature_train_ft_sif <span class="token operator">=</span> vectoriser_ft_sif<spa
 </ul>
 <p>I also built same models for 9 different weighted embedding method: word2vec-mean, word2vec-tfidf, word2vec-sif, glove-mean, glove-tfidf, glove-sif, fasttext-mean, fasttext-tfidf, and fasttext-sif.</p>
 <p>After calculating for all the cv dataframe, you will get something like the following:</p>
-<img src="/Hexo-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/cvtable.png" class="">
+<img src="/Yang-Tech-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/cvtable.png" class="">
 
 <p>Give this some plots: (if you want to visulise them by yourself to capture some interesting point, I’ll put the csv file over <a href="https://penguinwang96825.github.io/Hexo-Blog/download/song-genre-classification-performace.csv">here</a>)</p>
-<img src="/Hexo-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/perf1.png" class="">
-<img src="/Hexo-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/perf2.png" class="">
-<img src="/Hexo-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/perf3.png" class="">
-<img src="/Hexo-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/perf4.png" class="">
-<img src="/Hexo-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/perf-embedding.png" class="">
-<img src="/Hexo-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/perf-weight.png" class="">
+<img src="/Yang-Tech-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/perf1.png" class="">
+<img src="/Yang-Tech-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/perf2.png" class="">
+<img src="/Yang-Tech-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/perf3.png" class="">
+<img src="/Yang-Tech-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/perf4.png" class="">
+<img src="/Yang-Tech-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/perf-embedding.png" class="">
+<img src="/Yang-Tech-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/perf-weight.png" class="">
 
 <p>The figures tell us some intriguing points:</p>
 <ol>
@@ -931,7 +931,7 @@ feature_train_ft_sif <span class="token operator">=</span> vectoriser_ft_sif<spa
 <li>Padding: pad all lists to the same size.</li>
 <li>Masking: ignore (mask) the padding we’ve added when it’s processing its input.</li>
 </ol>
-<img src="/Hexo-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/tokenisation.png" class="">
+<img src="/Yang-Tech-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/tokenisation.png" class="">
 
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">DistilbertDataset</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> text<span class="token punctuation">,</span> target<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -978,7 +978,7 @@ feature_train_ft_sif <span class="token operator">=</span> vectoriser_ft_sif<spa
 </ol>
 <h4 id="BERT"><a href="#BERT" class="headerlink" title="BERT"></a>BERT</h4><p>BERT is a new language representation model, which stands for Bidirectional Encoder from Transformer, published by researchers at Google AL Language. In this work, I will talk about DistilBERT, which is a smaller, faster, cheaper and lighter version of BERT. DistilBERT uses a technique called <code>distillation</code>, which approximates the BERT, the larger neural network by a smaller one. The idea is that once a large neural network has been trained, its full output distributions can be approximated using a smaller network. However, the basic structure of DistilBERT almost remain the same as BERT, and it retains 95% performance but using only half the number of parameters.</p>
 <p>The <code>forward()</code> function runs our lyrics through DistilBERT. The results of the processing will be returned into <code>last_hidden_states</code>. Let’s slice only the part of the output that we need. That is the output corresponding the first token of each sentence. The way BERT does sentence classification, is that it adds a token called [CLS] at the beginning of every sentence. The output corresponding to that token can be thought of as an embedding for the entire sentence. The shape of <code>last_hidden_states[0]</code> sequentially contains <code>lyrics</code>, <code>position of every tokens</code>, <code>hidden unit outputs</code>. We’ll then save those in the features variable, as they’ll serve as the features to our fully connection layer.</p>
-<img src="/Hexo-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/distilbert.png" class="">
+<img src="/Yang-Tech-Blog/2019/06/11/2019-06-11-categorising-song-genre-by-analysing-lyrics/distilbert.png" class="">
 
 <p>Let’s define the network <code>SongGenreDistilbertClassifier()</code> using pertrained model from <code>HuggingFace</code>:</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">SongGenreDistilbertClassifier</span><span class="token punctuation">(</span>tez<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -1013,7 +1013,7 @@ feature_train_ft_sif <span class="token operator">=</span> vectoriser_ft_sif<spa
                 <span class="token string">"weight_decay"</span><span class="token punctuation">:</span> <span class="token number">0.0</span><span class="token punctuation">,</span>
             <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
         <span class="token punctuation">]</span>
-        opt <span class="token operator">=</span> AdamW<span class="token punctuation">(</span>optimizer_parameters<span class="token punctuation">,</span> lr<span class="token operator">=</span><span class="token number">3e</span><span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">)</span>
+        opt <span class="token operator">=</span> AdamW<span class="token punctuation">(</span>optimizer_parameters<span class="token punctuation">,</span> lr<span class="token operator">=</span><span class="token number">3e-5</span><span class="token punctuation">)</span>
         <span class="token keyword">return</span> opt
 
     <span class="token keyword">def</span> <span class="token function">fetch_scheduler</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>

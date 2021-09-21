@@ -706,7 +706,7 @@ cryptocurrencies <span class="token operator">=</span> <span class="token punctu
 <span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="Create-Table"><a href="#Create-Table" class="headerlink" title="Create Table"></a>Create Table</h3><p>Next, I will create two tables, one for symbol mapping to name of cryptocurrency, another for prices information.</p>
-<img src="/Hexo-Blog/2021/03/15/2021-03-15-visualise-crypto-with-sql-and-fastapi/database.png" class="">
+<img src="/Yang-Tech-Blog/2021/03/15/2021-03-15-visualise-crypto-with-sql-and-fastapi/database.png" class="">
 
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> sqlite3
 
@@ -807,7 +807,7 @@ insert_into_table<span class="token punctuation">(</span><span class="token punc
 	connection<span class="token punctuation">.</span>commit<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>You can use DB Browser to check whether prices data is stored correctly.</p>
-<img src="/Hexo-Blog/2021/03/15/2021-03-15-visualise-crypto-with-sql-and-fastapi/db-browser.jpg" class="">
+<img src="/Yang-Tech-Blog/2021/03/15/2021-03-15-visualise-crypto-with-sql-and-fastapi/db-browser.jpg" class="">
 
 <p>Or input <code>sqlite3 crypto.db</code> in command line , and check it through some SQL command.</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> crypto_price<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -944,10 +944,10 @@ templates <span class="token operator">=</span> Jinja2Templates<span class="toke
 &#123;% endblock %&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Type in <code>uvicorn app:app --reload</code>, and open your browser at <code>http://127.0.0.1:8000</code>, then you can see the nice looking web UI.</p>
-<img src="/Hexo-Blog/2021/03/15/2021-03-15-visualise-crypto-with-sql-and-fastapi/ui.jpg" class="">
+<img src="/Yang-Tech-Blog/2021/03/15/2021-03-15-visualise-crypto-with-sql-and-fastapi/ui.jpg" class="">
 
 <p>If you click on any symbol under the ‘Coin’ column, you can get to its detailed page.</p>
-<img src="/Hexo-Blog/2021/03/15/2021-03-15-visualise-crypto-with-sql-and-fastapi/detail.jpg" class="">
+<img src="/Yang-Tech-Blog/2021/03/15/2021-03-15-visualise-crypto-with-sql-and-fastapi/detail.jpg" class="">
 
 <h3 id="Add-Tradingview-Chart"><a href="#Add-Tradingview-Chart" class="headerlink" title="Add Tradingview Chart"></a>Add Tradingview Chart</h3><p>TradingView Advanced Chart Widget is a free and powerful charting solution that easily embeds into any website. Simply adjust the settings and click Apply to see a preview, then copy the embed code and paste it into your site code. You can personalize the chart by modifying the default symbol, watchlist, adding tools for technical analysis and a lot more. You can even add hotlists or an economic calendar to make the widget into an entire analytics platform.</p>
 <p>You can get the embedding code over <a target="_blank" rel="noopener" href="https://www.tradingview.com/widget/advanced-chart/">here</a>. Next, put this into <code>crypto_detail.html</code>.</p>
@@ -1016,7 +1016,7 @@ templates <span class="token operator">=</span> Jinja2Templates<span class="toke
 
 &#123;% endblock %&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<img src="/Hexo-Blog/2021/03/15/2021-03-15-visualise-crypto-with-sql-and-fastapi/tv.jpg" class="">
+<img src="/Yang-Tech-Blog/2021/03/15/2021-03-15-visualise-crypto-with-sql-and-fastapi/tv.jpg" class="">
 
 <h1 id="Twitter"><a href="#Twitter" class="headerlink" title="Twitter"></a>Twitter</h1><p>Twitter is many things. It is a special place to vent and share ideas in the form of memes and tweetstorms, diatribes and inquisitions. It contains a section to catch up on sports, worldwide events, breaking news — everything. So, I determine to scrape the data from the people to follow on crypto information on Twitter. Some user account I follow on is from this <a target="_blank" rel="noopener" href="https://consensys.net/blog/trending/i-read-crypto-twitter-for-hours-daily-here-are-the-40-accounts-that-really-matter/">website</a>.</p>
 <h2 id="Build-the-Index-Page"><a href="#Build-the-Index-Page" class="headerlink" title="Build the Index Page"></a>Build the Index Page</h2><p>There’ll be somewhere different in the home page, let’s change it a little bit in <code>layout.html</code>.</p>
