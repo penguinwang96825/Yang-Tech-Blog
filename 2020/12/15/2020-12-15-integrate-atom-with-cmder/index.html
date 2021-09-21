@@ -29,6 +29,22 @@
     
     <script src="/Yang-Tech-Blog/libs/jquery/jquery.min.js"></script>
 
+    <script src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default'>
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true,
+                processEnvironments: true,
+            }
+        });
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js">
+    </script>
+
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
@@ -158,7 +174,7 @@
 @keyframes fadeInDown{0%{opacity:0;-webkit-transform:translate3d(0,-100%,0);}}
 </style>
 <div id="loading-container">
-    <p class="loading-text">Shhh ~ stealing pages from the server ... </p>
+    <p class="loading-text">Stealing pages from the server... </p>
     <div class="loading-image">
         <div></div>
         <div></div>
@@ -1197,7 +1213,7 @@ SET <span class="token assign-left variable">CMDER_ROOT</span><span class="token
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total site word count:&nbsp;<span
-                class="white-color">106.8k</span>&nbsp;words
+                class="white-color">110.3k</span>&nbsp;words
             
             
             
@@ -1455,5 +1471,9 @@ $(function () {
     
 
 </body>
+
+<script>
+    pseudocode.renderElement(document.getElementById("pseudocode"));
+</script>
 
 </html>

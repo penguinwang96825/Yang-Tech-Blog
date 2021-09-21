@@ -29,6 +29,22 @@
     
     <script src="/Yang-Tech-Blog/libs/jquery/jquery.min.js"></script>
 
+    <script src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default'>
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$','$'], ['\\(','\\)']],
+                displayMath: [['$$','$$'], ['\\[','\\]']],
+                processEscapes: true,
+                processEnvironments: true,
+            }
+        });
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js">
+    </script>
+
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
@@ -158,7 +174,7 @@
 @keyframes fadeInDown{0%{opacity:0;-webkit-transform:translate3d(0,-100%,0);}}
 </style>
 <div id="loading-container">
-    <p class="loading-text">Shhh ~ stealing pages from the server ... </p>
+    <p class="loading-text">Stealing pages from the server... </p>
     <div class="loading-image">
         <div></div>
         <div></div>
@@ -522,7 +538,7 @@
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
 <div class="statis">
-    <span class="count"><a href="/Yang-Tech-Blog/">64</a></span>
+    <span class="count"><a href="/Yang-Tech-Blog/">66</a></span>
     <span class="name">Posts</span>
 </div>
 
@@ -536,7 +552,7 @@
 
 
 <div class="statis">
-    <span class="count"><a href="/Yang-Tech-Blog/tags">83</a></span>
+    <span class="count"><a href="/Yang-Tech-Blog/tags">85</a></span>
     <span class="name">Tags</span>
 </div>
 
@@ -552,7 +568,7 @@
                                 <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
                                     
 <div class="statis">
-    <span class="count"><a href="/Yang-Tech-Blog/">64</a></span>
+    <span class="count"><a href="/Yang-Tech-Blog/">66</a></span>
     <span class="name">Posts</span>
 </div>
 
@@ -566,7 +582,7 @@
 
 
 <div class="statis">
-    <span class="count"><a href="/Yang-Tech-Blog/tags">83</a></span>
+    <span class="count"><a href="/Yang-Tech-Blog/tags">85</a></span>
     <span class="name">Tags</span>
 </div>
 
@@ -694,7 +710,7 @@
                 name: 'Number of posts',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,1,2,2,8,4,18,6,11,3,0,2,3],
+                data: [0,1,2,2,8,4,18,6,11,3,0,2,5],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -736,7 +752,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"Growth","value":3},{"name":"Data Science","value":9},{"name":"Installation","value":9},{"name":"NLP","value":15},{"name":"Mathematics","value":12},{"name":"Statistics","value":8},{"name":"Finance","value":4},{"name":"Deep Learning","value":1},{"name":"Speech","value":3}],
+                data: [{"name":"Growth","value":3},{"name":"Data Science","value":9},{"name":"Installation","value":10},{"name":"NLP","value":15},{"name":"Mathematics","value":12},{"name":"Statistics","value":8},{"name":"Finance","value":4},{"name":"Deep Learning","value":2},{"name":"Speech","value":3}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -773,7 +789,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [34,8,8,8,6,5,4,4,3,3],
+                data: [35,8,8,8,6,5,4,4,3,3],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -1428,6 +1444,18 @@
             </a>
             
             
+            
+            <a href="/Yang-Tech-Blog/tags/Hexo/">
+                <span class="chip center-align waves-effect waves-light chip-default">Hexo</span>
+            </a>
+            
+            
+            
+            <a href="/Yang-Tech-Blog/tags/Pseudocode/">
+                <span class="chip center-align waves-effect waves-light chip-default">Pseudocode</span>
+            </a>
+            
+            
         </div>
     </div>
     
@@ -1514,7 +1542,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total site word count:&nbsp;<span
-                class="white-color">106.8k</span>&nbsp;words
+                class="white-color">110.3k</span>&nbsp;words
             
             
             
@@ -1772,5 +1800,9 @@ $(function () {
     
 
 </body>
+
+<script>
+    pseudocode.renderElement(document.getElementById("pseudocode"));
+</script>
 
 </html>
