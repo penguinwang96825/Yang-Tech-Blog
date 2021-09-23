@@ -9,8 +9,8 @@
 
 
     <url>
-        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/09/21/2021-09-21-convolution-from-mathematical-analysis/</loc>
-        <lastmod>2021-09-21T21:01:05.687Z</lastmod>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/09/21/2021-09-21-self-attention-for-nlp/</loc>
+        <lastmod>2021-09-23T08:43:17.962Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -18,7 +18,15 @@
 
     <url>
         <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/09/21/2021-09-21-render-pseudocode-in-hexo-blog/</loc>
-        <lastmod>2021-09-21T15:56:52.168Z</lastmod>
+        <lastmod>2021-09-21T22:44:36.487Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/09/21/2021-09-21-convolution-from-mathematical-analysis/</loc>
+        <lastmod>2021-09-21T21:01:05.687Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
