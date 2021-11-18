@@ -9,8 +9,16 @@
 
 
     <url>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/04/17/2021-04-17-viterbi-algorithm-for-hmm-decoding/</loc>
+        <lastmod>2021-11-18T00:18:45.252Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/11/18/2021-11-18-alumni-profiles-on-sheffield-website/</loc>
-        <lastmod>2021-11-18T00:13:53.200Z</lastmod>
+        <lastmod>2021-11-18T00:18:19.836Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -18,7 +26,7 @@
 
     <url>
         <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/03/13/2021-03-13-principal-component-analysis-derivation/</loc>
-        <lastmod>2021-11-18T00:02:03.702Z</lastmod>
+        <lastmod>2021-11-18T00:15:28.541Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -331,14 +339,6 @@
     <url>
         <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/04/27/2021-04-27-mecab-and-cabocha-for-japanese/</loc>
         <lastmod>2021-04-27T01:01:04.578Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/04/17/2021-04-17-viterbi-algorithm-for-hmm-decoding/</loc>
-        <lastmod>2021-04-20T12:34:49.305Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
