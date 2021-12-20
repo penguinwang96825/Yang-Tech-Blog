@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Prevent Colab from Disconnecting, Yang&#39;s Blog">
+    <meta name="keywords" content="Use subl Command in Windows, Yang&#39;s Blog">
     <meta name="description" content="CS Major / NLP Researcher / Tireless Coder">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Prevent Colab from Disconnecting | Yang&#39;s Blog</title>
+    <title>Use subl Command in Windows | Yang&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/Yang-Tech-Blog/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/Yang-Tech-Blog/libs/awesome/css/all.css">
@@ -487,12 +487,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://github.com/penguinwang96825/penguinwang96825.github.io/blob/master/2021/02/06/2021-02-06-prevent-colab-from-disconnecting/kai-wenzel.jpg?raw=true')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://github.com/penguinwang96825/penguinwang96825.github.io/blob/master/2021/12/20/2021-12-20-use-subl-command-in-windows/wallhaven-1kgvxg.png?raw=true')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Prevent Colab from Disconnecting</h1>
+                    <h1 class="description center-align post-title">Use subl Command in Windows</h1>
                 </div>
             </div>
         </div>
@@ -606,29 +606,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/Yang-Tech-Blog/tags/Colab/">
-                                <span class="chip bg-color">Colab</span>
-                            </a>
-                        
-                            <a href="/Yang-Tech-Blog/tags/JavaScript/">
-                                <span class="chip bg-color">JavaScript</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/Yang-Tech-Blog/categories/Installation/" class="post-category">
-                                Installation
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -637,7 +620,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-02-06
+                    2021-12-20
                 </div>
                 
 
@@ -646,7 +629,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    183
+                    173
                 </div>
                 
 
@@ -676,23 +659,16 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <link rel="stylesheet" type="text&#x2F;css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.3.1/dist/hexo-tag-hint.min.css"><p>Google Colab notebooks have an idle timeout of 90 minutes and absolute timeout of 12 hours. This means, if user does not interact with his Google Colab notebook for more than 90 minutes, its instance is automatically terminated. Also, maximum lifetime of a Colab instance is 12 hours.</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>It is wonderful that Google colab can use GPU, TPU, and other computing resources for artificial intelligence calculation for free, but the calculation page will be automatically dropped after a period of no operation, and the previous training data will be lost, which is disappointing.</p>
-<p>Finally found a way to keep it from going offline automatically, with a JavaScript program that automatically clicks the connect button.</p>
-<p><strong>Step 1</strong>: Press the shortcut keys <code>CTRL + SHIFT + I</code> and select <code>Console</code>.</p>
-<p><strong>Step 2</strong>: Copy and paste the below code, and hit <code>ENTER</code>, the program will be ready to run.</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">ClickConnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Working"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-  document
-    <span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#top-toolbar > colab-connect-button"</span><span class="token punctuation">)</span>
-    <span class="token punctuation">.</span>shadowRoot
-    <span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#connect"</span><span class="token punctuation">)</span>
-    <span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span>
- 
-<span class="token function">setInterval</span><span class="token punctuation">(</span>ClickConnect<span class="token punctuation">,</span> <span class="token number">5</span><span class="token operator">*</span><span class="token number">60000</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>If you still have problems running it or want to get more methods, you can refer <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/57113226/how-to-prevent-google-colab-from-disconnecting">here</a>.</p>
+                <link rel="stylesheet" type="text&#x2F;css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.3.1/dist/hexo-tag-hint.min.css"><h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>It’s sometimes easier to edit a file from terminal by using Sublime Text, and yet it is not the default in Windows. This tutorial will show you how to use the command line to open files with Sublime Text in Windows.</p>
+<h1 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h1><ol>
+<li><p>Download the latest Sublime Text from <a target="_blank" rel="noopener" href="https://www.sublimetext.com/3">here</a>.</p>
+</li>
+<li><p>Append <code>subl.exe</code> to the system <code>PATH</code> environment. In my case, the path is at <code>C:\Program Files\Sublime Text 3</code>. Therefore, open the terminal and type in <code>set PATH=%PATH%;&quot;C:\Program Files\Sublime Text 3&quot;</code>. <code>set</code> is a command that changes cmd’s environment variables only for the current cmd session. The <code>%PATH%</code> part expands to the current value of <code>PATH</code>, and the path afterwards is then concatenated to it.</p>
+</li>
+<li><p>Use in your terminal/console <code>subl</code> as a command to open whatever file. For example to open <code>README.md</code>, just type in <code>subl README.md</code>.</p>
+</li>
+</ol>
+<h1 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h1><p>Sublime Text is a powerful text editor that is popular among programmers. To boost their productivity, all programmers should be aware of these tips.</p>
 
                 
             </div>
@@ -719,7 +695,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://penguinwang96825.github.io/Yang-Tech-Blog/Yang-Tech-Blog/2021/02/06/2021-02-06-prevent-colab-from-disconnecting/">https://penguinwang96825.github.io/Yang-Tech-Blog/Yang-Tech-Blog/2021/02/06/2021-02-06-prevent-colab-from-disconnecting/</a>
+                    <a href="https://penguinwang96825.github.io/Yang-Tech-Blog/Yang-Tech-Blog/2021/12/20/2021-12-20-use-subl-command-in-windows/">https://penguinwang96825.github.io/Yang-Tech-Blog/Yang-Tech-Blog/2021/12/20/2021-12-20-use-subl-command-in-windows/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -756,15 +732,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/Yang-Tech-Blog/tags/Colab/">
-                                    <span class="chip bg-color">Colab</span>
-                                </a>
-                            
-                                <a href="/Yang-Tech-Blog/tags/JavaScript/">
-                                    <span class="chip bg-color">JavaScript</span>
-                                </a>
-                            
+                            <span class="chip bg-color">No tag</span>
                         </div>
                     
                 </div>
@@ -802,9 +770,9 @@
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'https://penguinwang96825.github.io/Yang-Tech-Blog/2021/02/06/2021-02-06-prevent-colab-from-disconnecting/';
-        this.page.identifier = '/Yang-Tech-Blog/2021/02/06/2021-02-06-prevent-colab-from-disconnecting/';
-        this.page.title = 'Prevent Colab from Disconnecting';
+        this.page.url = 'https://penguinwang96825.github.io/Yang-Tech-Blog/2021/12/20/2021-12-20-use-subl-command-in-windows/';
+        this.page.identifier = '/Yang-Tech-Blog/2021/12/20/2021-12-20-use-subl-command-in-windows/';
+        this.page.title = 'Use subl Command in Windows';
     };
     let disqus_shortname = 'penguinwang';
 
@@ -832,52 +800,38 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/Yang-Tech-Blog/2021/02/07/2021-02-07-twitter-hate-speech-detection/">
+                <a href="/Yang-Tech-Blog/2021/12/20/2021-12-20-use-subl-command-in-windows/">
                     <div class="card-image">
                         
-                        <img src="https://github.com/penguinwang96825/penguinwang96825.github.io/blob/master/2021/02/07/2021-02-07-twitter-hate-speech-detection/alexander-shatov.jpg?raw=true" class="responsive-img" alt="Twitter Hate Speech Detection">
+                        <img src="https://github.com/penguinwang96825/penguinwang96825.github.io/blob/master/2021/12/20/2021-12-20-use-subl-command-in-windows/wallhaven-1kgvxg.png?raw=true" class="responsive-img" alt="Use subl Command in Windows">
                         
-                        <span class="card-title">Twitter Hate Speech Detection</span>
+                        <span class="card-title">Use subl Command in Windows</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            The objective of this task is to detect hate speech in tweets. For the sake of simplicity, let's say a tweet contains hate speech if it has a racist or sexist sentiment associated with it. So, the task is to classify racist or sexist tweets from other tweets.
+                            
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-07
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-20
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/Yang-Tech-Blog/categories/NLP/" class="post-category">
-                                    NLP
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Yang Wang
                             
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/Yang-Tech-Blog/tags/Python/">
-                        <span class="chip bg-color">Python</span>
-                    </a>
-                    
-                    <a href="/Yang-Tech-Blog/tags/PyTorch/">
-                        <span class="chip bg-color">PyTorch</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>
@@ -888,23 +842,23 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/Yang-Tech-Blog/2021/02/06/2021-02-06-ssh-into-google-colab/">
+                <a href="/Yang-Tech-Blog/2021/12/15/2021-12-15-why-we-need-pep8/">
                     <div class="card-image">
                         
-                        <img src="https://github.com/penguinwang96825/penguinwang96825.github.io/blob/master/2021/02/06/2021-02-06-ssh-into-google-colab/michael-dziedzic.jpg?raw=true" class="responsive-img" alt="SSH into Google Colab">
+                        <img src="https://github.com/penguinwang96825/penguinwang96825.github.io/blob/master/2021/12/15/2021-12-15-why-we-need-pep8/wallhaven-1kgvxg.png?raw=true" class="responsive-img" alt="Why We Need PEP">
                         
-                        <span class="card-title">SSH into Google Colab</span>
+                        <span class="card-title">Why We Need PEP</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Sometimes the code I write may not work in my local machine, however, it works in Google Colab. So, I wanna connect to Google Colab terminal using SSH.
+                            PEP8 was designed to make Python code more readable. If you're new to Python, remembering what a piece of code does a few days or weeks after you created it can be challenging. If you follow PEP8, you may be able to assure that your variables have been properly named.
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-15
                             </span>
                         <span class="publish-author">
                             
@@ -921,12 +875,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/Yang-Tech-Blog/tags/Colab/">
-                        <span class="chip bg-color">Colab</span>
+                    <a href="/Yang-Tech-Blog/tags/Python/">
+                        <span class="chip bg-color">Python</span>
                     </a>
                     
-                    <a href="/Yang-Tech-Blog/tags/SSH/">
-                        <span class="chip bg-color">SSH</span>
+                    <a href="/Yang-Tech-Blog/tags/PEP8/">
+                        <span class="chip bg-color">PEP8</span>
                     </a>
                     
                 </div>
@@ -1094,6 +1048,13 @@
 
 </main>
 
+
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
