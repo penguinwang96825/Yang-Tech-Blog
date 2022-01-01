@@ -772,6 +772,7 @@ y_test <span class="token operator">=</span> torch<span class="token punctuation
 <li>The number of neurons in each layer is the size of <code>unit_num</code>.</li>
 <li>The output vector h(t) and state vector c(t) length of each cell is also the size of <code>unit_num</code>.</li>
 </ol>
+<p>You can also look at this <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/55385906/whats-the-input-of-each-lstm-layer-in-a-stacked-lstm-network">website</a> to see a similar explanation.</p>
 <h1 id="Build-Model"><a href="#Build-Model" class="headerlink" title="Build Model"></a>Build Model</h1><p>We’ll excapsulate the complexity of our model into a class that extends from <code>torch.nn.Module</code>.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">StockPredictor</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>
     
@@ -1417,7 +1418,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2018-2021</span>
+                <span id="year">2018-2022</span>
             
             <span id="year">2018</span>
             <a href="/Yang-Tech-Blog/about" target="_blank">Yang Wang</a>
