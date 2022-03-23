@@ -49,7 +49,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.1"></head>
 
 
 
@@ -1040,17 +1040,18 @@ object-assign
       /*ON_LOAD_SCRIPT_INJECT*/
         Object.assign(options, eval('(' + "{\"dataProviderName\": \"none\", \"experiment\": {\"parameters_definition\": {}, \"colormap\": \"interpolateTurbo\", \"colorby\": null, \"display_data\": {}, \"datapoints\": [{\"uid\": \"0\", \"values\": {\"word embedding\": \"word2vec_google_model\", \"weighting method\": \"mean\", \"rocauc\": 0.707722146708395}, \"from_uid\": null}, {\"uid\": \"1\", \"values\": {\"word embedding\": \"word2vec_google_model\", \"weighting method\": \"tfidf\", \"rocauc\": 0.7340966896093192}, \"from_uid\": null}, {\"uid\": \"2\", \"values\": {\"word embedding\": \"word2vec_google_model\", \"weighting method\": \"sif\", \"rocauc\": 0.6340158428228315}, \"from_uid\": null}, {\"uid\": \"3\", \"values\": {\"word embedding\": \"glove_25_model\", \"weighting method\": \"mean\", \"rocauc\": 0.6597589546176104}, \"from_uid\": null}, {\"uid\": \"4\", \"values\": {\"word embedding\": \"glove_25_model\", \"weighting method\": \"tfidf\", \"rocauc\": 0.7030267384517939}, \"from_uid\": null}, {\"uid\": \"5\", \"values\": {\"word embedding\": \"glove_25_model\", \"weighting method\": \"sif\", \"rocauc\": 0.6485466265645623}, \"from_uid\": null}, {\"uid\": \"6\", \"values\": {\"word embedding\": \"glove_50_model\", \"weighting method\": \"mean\", \"rocauc\": 0.712201176704323}, \"from_uid\": null}, {\"uid\": \"7\", \"values\": {\"word embedding\": \"glove_50_model\", \"weighting method\": \"tfidf\", \"rocauc\": 0.7272768402479302}, \"from_uid\": null}, {\"uid\": \"8\", \"values\": {\"word embedding\": \"glove_50_model\", \"weighting method\": \"sif\", \"rocauc\": 0.6879294370821194}, \"from_uid\": null}, {\"uid\": \"9\", \"values\": {\"word embedding\": \"glove_100_model\", \"weighting method\": \"mean\", \"rocauc\": 0.7248376671276179}, \"from_uid\": null}, {\"uid\": \"10\", \"values\": {\"word embedding\": \"glove_100_model\", \"weighting method\": \"tfidf\", \"rocauc\": 0.7312975417462514}, \"from_uid\": null}, {\"uid\": \"11\", \"values\": {\"word embedding\": \"glove_100_model\", \"weighting method\": \"sif\", \"rocauc\": 0.6851460258198278}, \"from_uid\": null}, {\"uid\": \"12\", \"values\": {\"word embedding\": \"glove_200_model\", \"weighting method\": \"mean\", \"rocauc\": 0.7587579101007338}, \"from_uid\": null}, {\"uid\": \"13\", \"values\": {\"word embedding\": \"glove_200_model\", \"weighting method\": \"tfidf\", \"rocauc\": 0.7323951696503918}, \"from_uid\": null}, {\"uid\": \"14\", \"values\": {\"word embedding\": \"glove_200_model\", \"weighting method\": \"sif\", \"rocauc\": 0.6633744386459441}, \"from_uid\": null}, {\"uid\": \"15\", \"values\": {\"word embedding\": \"glove_300_model\", \"weighting method\": \"mean\", \"rocauc\": 0.7771087536808892}, \"from_uid\": null}, {\"uid\": \"16\", \"values\": {\"word embedding\": \"glove_300_model\", \"weighting method\": \"tfidf\", \"rocauc\": 0.7516292299491117}, \"from_uid\": null}, {\"uid\": \"17\", \"values\": {\"word embedding\": \"glove_300_model\", \"weighting method\": \"sif\", \"rocauc\": 0.6736169986761584}, \"from_uid\": null}, {\"uid\": \"18\", \"values\": {\"word embedding\": \"fasttext_model\", \"weighting method\": \"mean\", \"rocauc\": 0.7361896575125548}, \"from_uid\": null}, {\"uid\": \"19\", \"values\": {\"word embedding\": \"fasttext_model\", \"weighting method\": \"tfidf\", \"rocauc\": 0.7318778288998739}, \"from_uid\": null}, {\"uid\": \"20\", \"values\": {\"word embedding\": \"fasttext_model\", \"weighting method\": \"sif\", \"rocauc\": 0.6671551569824281}, \"from_uid\": null}]}}" + ')'));
         
-      var hiplot_instance = hiplot.render(document.getElementById("hiplot_ebe66b15100e400ab1bc5526dae16cbd"), options);
-      Object.assign(window, {'hiplot_last_instance': hiplot_instance});  // For debugging
-      /*AFTER_SETUP_SCRIPT_INJECT*/
-    }
-    if (document.readyState == "complete") {
-      _hiplot_setup();
-    }
-    else {
-      document.addEventListener("DOMContentLoaded", _hiplot_setup);
-    }
-    </script>
+<pre><code>  var hiplot_instance = hiplot.render(document.getElementById(&quot;hiplot_ebe66b15100e400ab1bc5526dae16cbd&quot;), options);
+  Object.assign(window, &#123;&#39;hiplot_last_instance&#39;: hiplot_instance&#125;);  // For debugging
+  /*AFTER_SETUP_SCRIPT_INJECT*/
+&#125;
+if (document.readyState == &quot;complete&quot;) &#123;
+  _hiplot_setup();
+&#125;
+else &#123;
+  document.addEventListener(&quot;DOMContentLoaded&quot;, _hiplot_setup);
+&#125;
+&lt;/script&gt;
+</code></pre>
 </body>
 </html>
 
@@ -1565,7 +1566,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total site word count:&nbsp;<span
-                class="white-color">113.3k</span>&nbsp;words
+                class="white-color">113.6k</span>&nbsp;words
             
             
             

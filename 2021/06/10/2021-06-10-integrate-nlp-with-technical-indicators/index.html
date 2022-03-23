@@ -49,7 +49,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.1"></head>
 
 
 
@@ -741,7 +741,7 @@ text_price_df <span class="token operator">=</span> text_price_pipeline<span cla
 text_price_df<span class="token punctuation">[</span><span class="token string">"text"</span><span class="token punctuation">]</span> <span class="token operator">=</span> text_price_df<span class="token punctuation">[</span><span class="token string">"text"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">map</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">)</span>
 text_price_df<span class="token punctuation">[</span><span class="token string">"text"</span><span class="token punctuation">]</span> <span class="token operator">=</span> text_price_df<span class="token punctuation">[</span><span class="token string">"text"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token builtin">apply</span><span class="token punctuation">(</span>clean_text<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="Tokenisation-for-Train-Validation-Test-Sets"><a href="#Tokenisation-for-Train-Validation-Test-Sets" class="headerlink" title="Tokenisation for Train/Validation/Test Sets"></a>Tokenisation for Train/Validation/Test Sets</h2><p>Tokenisation is the process of breaking down a phrase, sentence, paragraph, or even an entire text document into smaller components like individual words or phrases.</p>
+<h2 id="Tokenisation-for-Train-x2F-Validation-x2F-Test-Sets"><a href="#Tokenisation-for-Train-x2F-Validation-x2F-Test-Sets" class="headerlink" title="Tokenisation for Train&#x2F;Validation&#x2F;Test Sets"></a>Tokenisation for Train&#x2F;Validation&#x2F;Test Sets</h2><p>Tokenisation is the process of breaking down a phrase, sentence, paragraph, or even an entire text document into smaller components like individual words or phrases.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">tokenizer <span class="token operator">=</span> AutoTokenizer<span class="token punctuation">.</span>from_pretrained<span class="token punctuation">(</span><span class="token string">"bert-base-uncased"</span><span class="token punctuation">)</span>
 
 train_df <span class="token operator">=</span> text_price_df<span class="token punctuation">.</span>loc<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token string">"2016-12-31"</span><span class="token punctuation">]</span>
@@ -1108,7 +1108,7 @@ bert_reload <span class="token operator">=</span> BERTBaseUncased<span class="to
     num_classes<span class="token operator">=</span>Config<span class="token punctuation">.</span>NUM_CLASSES
 <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="NLP-based-Indicators-and-Technical-Indicators"><a href="#NLP-based-Indicators-and-Technical-Indicators" class="headerlink" title="NLP based Indicators and Technical Indicators"></a>NLP based Indicators and Technical Indicators</h1><p>To make a profitable strategy, multiple criteria of entry-and-exit signals are often combined to filter out false positive decisions. In this work, NLP based indicators and technical indicators are combined into one single entry-and-exit signal array with true/false value using logical operators. There are two operators that combine multiple true or false values into a single true/false value.</p>
+<h1 id="NLP-based-Indicators-and-Technical-Indicators"><a href="#NLP-based-Indicators-and-Technical-Indicators" class="headerlink" title="NLP based Indicators and Technical Indicators"></a>NLP based Indicators and Technical Indicators</h1><p>To make a profitable strategy, multiple criteria of entry-and-exit signals are often combined to filter out false positive decisions. In this work, NLP based indicators and technical indicators are combined into one single entry-and-exit signal array with true&#x2F;false value using logical operators. There are two operators that combine multiple true or false values into a single true&#x2F;false value.</p>
 <ul>
 <li><code>AND</code> operator: returns true only if both values are true.</li>
 <li><code>OR</code> operator: returns true when one of the values is true.</li>
@@ -1573,7 +1573,7 @@ Sharpe Ratio                               2.123362
 Sortino Ratio                               4.15713
 Calmar Ratio                               6.986814<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="Moving-Average-Convergence-Divergence-MACD"><a href="#Moving-Average-Convergence-Divergence-MACD" class="headerlink" title="Moving Average Convergence/Divergence (MACD)"></a>Moving Average Convergence/Divergence (MACD)</h2><p>Moving average convergence divergence (MACD) is a trend-following momentum indicator that shows the relationship between two moving averages of a security’s price. The MACD is calculated by subtracting the 26-period exponential moving average (EMA) from the 12-period EMA.</p>
+<h2 id="Moving-Average-Convergence-x2F-Divergence-MACD"><a href="#Moving-Average-Convergence-x2F-Divergence-MACD" class="headerlink" title="Moving Average Convergence&#x2F;Divergence (MACD)"></a>Moving Average Convergence&#x2F;Divergence (MACD)</h2><p>Moving average convergence divergence (MACD) is a trend-following momentum indicator that shows the relationship between two moving averages of a security’s price. The MACD is calculated by subtracting the 26-period exponential moving average (EMA) from the 12-period EMA.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">close <span class="token operator">=</span> price_test<span class="token punctuation">.</span>close
 macd<span class="token punctuation">,</span> macdsignal<span class="token punctuation">,</span> macdhist <span class="token operator">=</span> talib<span class="token punctuation">.</span>MACD<span class="token punctuation">(</span>close<span class="token punctuation">,</span> fastperiod<span class="token operator">=</span><span class="token number">12</span><span class="token punctuation">,</span> slowperiod<span class="token operator">=</span><span class="token number">26</span><span class="token punctuation">,</span> signalperiod<span class="token operator">=</span><span class="token number">9</span><span class="token punctuation">)</span>
 macd<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -2674,7 +2674,7 @@ Calmar Ratio                                4.498422<span aria-hidden="true" cla
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total site word count:&nbsp;<span
-                class="white-color">113.3k</span>&nbsp;words
+                class="white-color">113.6k</span>&nbsp;words
             
             
             
