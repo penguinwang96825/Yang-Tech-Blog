@@ -646,7 +646,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    309
+                    317
                 </div>
                 
 
@@ -738,6 +738,7 @@ Server: Docker Engine - Community
 <li><a target="_blank" rel="noopener" href="https://poweruser.blog/docker-on-windows-10-without-hyper-v-a529897ed1cc">https://poweruser.blog/docker-on-windows-10-without-hyper-v-a529897ed1cc</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/264353707">https://www.zhihu.com/question/264353707</a></li>
 <li><a target="_blank" rel="noopener" href="https://mumu.163.com/help/20210511/35041_946700.html?fqbanner">https://mumu.163.com/help/20210511/35041_946700.html?fqbanner</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/docker/for-win/issues/2192">https://github.com/docker/for-win/issues/2192</a></li>
 </ol>
 
                 
@@ -984,43 +985,6 @@ Server: Docker Engine - Community
 </div>
 
 
-<script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
-            return;
-        }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + 'From: Yang&#39;s Blog<br />'
-            + 'Author: Yang Wang<br />'
-            + 'Link: <a href="' + url + '">' + url + '</a><br />'
-            + 'The copyright of this article belongs to the author, please indicate the source of any form of reproduction.';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
-</script>
-
 
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/Yang-Tech-Blog/libs/codeBlock/codeBlockFuction.js"></script>
@@ -1189,7 +1153,7 @@ Server: Docker Engine - Community
                    type="playlist"
                    id="503838841"
                    fixed='true'
-                   autoplay='false'
+                   autoplay='true'
                    theme='#42b983'
                    loop='all'
                    order='random'
