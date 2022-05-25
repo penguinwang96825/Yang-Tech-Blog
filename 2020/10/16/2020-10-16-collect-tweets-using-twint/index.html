@@ -283,12 +283,26 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/Yang-Tech-Blog/friends" class="waves-effect waves-light">
+    <a href="" class="waves-effect waves-light">
+
       
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
       
-      <span>Friends</span>
+      <span>Medias</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
     </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/Yang-Tech-Blog/papers">
+          
+          <i class="fas fa-book" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Papers</span>
+        </a>
+      </li>
+      
+    </ul>
     
   </li>
   
@@ -386,12 +400,26 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/Yang-Tech-Blog/friends" class="waves-effect waves-light">
+		<a href="javascript:;">
 			
-			    <i class="fa-fw fas fa-address-book"></i>
+				<i class="fa-fw fas fa-list"></i>
 			
-			Friends
+			Medias
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
 		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/Yang-Tech-Blog/papers " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-book" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Papers</span>
+                  </a>
+                </li>
+              
+            </ul>
           
         </li>
         
@@ -650,7 +678,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    686
+                    714
                 </div>
                 
 
@@ -698,6 +726,9 @@
 		word <span class="token operator">=</span> word <span class="token operator">+</span> i
 <span class="token keyword">print</span><span class="token punctuation">(</span>word<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">,</span> <span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
+<ol start="4">
+<li>Uncomment line 92 (remove the ‘#’) in the url.py file for the issue that <code>c.Until</code> and <code>c.Since</code> doesn’t work.<pre class="line-numbers language-none"><code class="language-none">(&#39;query_source&#39;, &#39;typed_query&#39;), <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ol>
 <h1 id="Easy-Example"><a href="#Easy-Example" class="headerlink" title="Easy Example"></a>Easy Example</h1><p>Twint now allows custom formatting and can be used as a module. More information can be found over <a target="_blank" rel="noopener" href="https://github.com/twintproject/twint/wiki">here</a>.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> twint
 
@@ -1198,7 +1229,7 @@ twint<span class="token punctuation">.</span>run<span class="token punctuation">
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total site word count:&nbsp;<span
-                class="white-color">114.6k</span>&nbsp;words
+                class="white-color">114.8k</span>&nbsp;words
             
             
             
