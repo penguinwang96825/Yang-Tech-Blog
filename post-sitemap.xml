@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2022/07/06/2022-07-06-install-torch-old-version/</loc>
+        <lastmod>2022-07-06T11:45:09.667Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2022/05/25/2022-05-25-import-own-modules-in-jupyter/</loc>
         <lastmod>2022-05-25T15:41:18.155Z</lastmod>
         <changefreq>weekly</changefreq>
