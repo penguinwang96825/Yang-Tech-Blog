@@ -678,14 +678,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    714
+                    420
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    4 Min
+                    2 Min
                 </div>
                 
 
@@ -709,66 +709,63 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <link rel="stylesheet" type="text&#x2F;css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.3.1/dist/hexo-tag-hint.min.css"><h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p><a target="_blank" rel="noopener" href="https://github.com/twintproject/twint">Twint</a> is a Python-based advanced Twitter scraping app that allows you to scrape Tweets from Twitter profiles without having to use Twitter’s API. Twint makes use of Twitter’s search operators to allow you to scrape Tweets from specific individuals, scrape Tweets referring to specific themes, hashtags, and trends, and sort out sensitive information like e-mail and phone numbers from Tweets. This is something I find quite handy, and you can get fairly creative with it as well.</p>
-<h1 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h1><p>You could find it difficult to install Twint for some reason, therefore I’ll explain you how to do so in the steps below.</p>
+<h1 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h1><p>You could find it difficult to install <code>Twint</code> for some reason, therefore I’ll explain you how to do so in the steps below.</p>
 <ol>
-<li><code>pip install --upgrade aiohttp_socks</code></li>
-<li><code>pip3 install --upgrade -e git+https://github.com/twintproject/twint.git@origin/master#egg=twint</code></li>
+<li>Install <code>Twint</code> from its repository.</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone --depth<span class="token operator">=</span><span class="token number">1</span> https://github.com/twintproject/twint.git
+<span class="token builtin class-name">cd</span> twint
+pip3 <span class="token function">install</span> <span class="token builtin class-name">.</span> -r requirements.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ol start="2">
+<li>Install a proxy connector package.</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> --upgrade aiohttp_socks<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="3">
 <li>In orser to solve <code>OSError: [WinError 87] The parameter is incorrect.</code> please open <code>output.py</code> in <code>./src/twint/twint</code> first. Make the following changes to fixes this issue:</li>
 </ol>
 <ul>
-<li><p>Add (line#9):</p>
+<li>Add the following to line #9:</li>
+</ul>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> string<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>Replace (line#123):</p>
+
+<ul>
+<li>Replace <code>print(output.replace(&#39;\n&#39;, &#39; &#39;))</code> in line #123 by the following:</li>
+</ul>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">word <span class="token operator">=</span> <span class="token string">''</span>
 <span class="token keyword">for</span> i <span class="token keyword">in</span> output<span class="token punctuation">:</span>
 	<span class="token keyword">if</span> i <span class="token keyword">in</span> string<span class="token punctuation">.</span>printable<span class="token punctuation">:</span>
 		word <span class="token operator">=</span> word <span class="token operator">+</span> i
-<span class="token keyword">print</span><span class="token punctuation">(</span>word<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">,</span> <span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ul>
+<span class="token keyword">print</span><span class="token punctuation">(</span>word<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">,</span> <span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ol start="4">
-<li>Uncomment line 92 (remove the ‘#’) in the url.py file for the issue that <code>c.Until</code> and <code>c.Since</code> doesn’t work.<pre class="line-numbers language-none"><code class="language-none">(&#39;query_source&#39;, &#39;typed_query&#39;), <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li>Uncomment line 92 (remove the ‘#’) in the <code>url.py</code> file for the issue that <code>c.Until</code> and <code>c.Since</code> doesn’t work.</li>
 </ol>
+<pre class="line-numbers language-none"><code class="language-none">(&#39;query_source&#39;, &#39;typed_query&#39;), <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h1 id="Easy-Example"><a href="#Easy-Example" class="headerlink" title="Easy Example"></a>Easy Example</h1><p>Twint now allows custom formatting and can be used as a module. More information can be found over <a target="_blank" rel="noopener" href="https://github.com/twintproject/twint/wiki">here</a>.</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> twint
 
-<span class="token comment"># Configure</span>
 c <span class="token operator">=</span> twint<span class="token punctuation">.</span>Config<span class="token punctuation">(</span><span class="token punctuation">)</span>
-c<span class="token punctuation">.</span>Username <span class="token operator">=</span> <span class="token string">"Bitcoin"</span>
-c<span class="token punctuation">.</span>Search <span class="token operator">=</span> <span class="token string">"great"</span>
+c<span class="token punctuation">.</span>Pandas <span class="token operator">=</span> <span class="token boolean">True</span>
+c<span class="token punctuation">.</span>Store_pandas <span class="token operator">=</span> <span class="token boolean">True</span>
+c<span class="token punctuation">.</span>Pandas_clean <span class="token operator">=</span> <span class="token boolean">True</span>
+c<span class="token punctuation">.</span>Username <span class="token operator">=</span> <span class="token string">'Bitcoin'</span>
+c<span class="token punctuation">.</span>Lang <span class="token operator">=</span> <span class="token string">'en'</span>
+c<span class="token punctuation">.</span>Since <span class="token operator">=</span> <span class="token string">'2019-08-25'</span>
+c<span class="token punctuation">.</span>Until <span class="token operator">=</span> <span class="token string">'2020-08-25'</span>
+c<span class="token punctuation">.</span>Popular_tweets <span class="token operator">=</span> <span class="token boolean">True</span>
 
 <span class="token comment"># Run</span>
-twint<span class="token punctuation">.</span>run<span class="token punctuation">.</span>Search<span class="token punctuation">(</span>c<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+twint<span class="token punctuation">.</span>run<span class="token punctuation">.</span>Search<span class="token punctuation">(</span>c<span class="token punctuation">)</span>
+df <span class="token operator">=</span> twint<span class="token punctuation">.</span>storage<span class="token punctuation">.</span>panda<span class="token punctuation">.</span>Tweets_df<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>The other way is to scrape the tweets through command line.</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">twint -u Bitcoin --csv --output tweets.csv --since <span class="token number">2014</span>-01-01 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="CLI-Basic-Examples-and-Combos"><a href="#CLI-Basic-Examples-and-Combos" class="headerlink" title="CLI Basic Examples and Combos"></a>CLI Basic Examples and Combos</h2><p>A few simple examples to help you understand the basics:</p>
-<ul>
-<li><code>twint -u username</code> - Scrape all the Tweets of a <em>user</em> (doesn’t include <strong>retweets</strong> but includes <strong>replies</strong>).</li>
-<li><code>twint -u username -s pineapple</code> - Scrape all Tweets from the <em>user</em>‘s timeline containing <em>pineapple</em>.</li>
-<li><code>twint -s pineapple</code> - Collect every Tweet containing <em>pineapple</em> from everyone’s Tweets.</li>
-<li><code>twint -u username --year 2014</code> - Collect Tweets that were tweeted <strong>before</strong> 2014.</li>
-<li><code>twint -u username --since &quot;2015-12-20 20:30:15&quot;</code> - Collect Tweets that were tweeted since 2015-12-20 20:30:15.</li>
-<li><code>twint -u username --since 2015-12-20</code> - Collect Tweets that were tweeted since 2015-12-20 00:00:00.</li>
-<li><code>twint -u username -o file.txt</code> - Scrape Tweets and save to file.txt.</li>
-<li><code>twint -u username -o file.csv --csv</code> - Scrape Tweets and save as a csv file.</li>
-<li><code>twint -u username --email --phone</code> - Show Tweets that might have phone numbers or email addresses.</li>
-<li><code>twint -s &quot;Donald Trump&quot; --verified</code> - Display Tweets by verified users that Tweeted about Donald Trump.</li>
-<li><code>twint -g=&quot;48.880048,2.385939,1km&quot; -o file.csv --csv</code> - Scrape Tweets from a radius of 1km around a place in Paris and export them to a csv file.</li>
-<li><code>twint -u username -es localhost:9200</code> - Output Tweets to Elasticsearch</li>
-<li><code>twint -u username -o file.json --json</code> - Scrape Tweets and save as a json file.</li>
-<li><code>twint -u username --database tweets.db</code> - Save Tweets to a SQLite database.</li>
-<li><code>twint -u username --followers</code> - Scrape a Twitter user’s followers.</li>
-<li><code>twint -u username --following</code> - Scrape who a Twitter user follows.</li>
-<li><code>twint -u username --favorites</code> - Collect all the Tweets a user has favorited (gathers ~3200 tweet).</li>
-<li><code>twint -u username --following --user-full</code> - Collect full user information a person follows</li>
-<li><code>twint -u username --timeline</code> - Use an effective method to gather Tweets from a user’s profile (Gathers ~3200 Tweets, including <strong>retweets</strong> &amp; <strong>replies</strong>).</li>
-<li><code>twint -u username --retweets</code> - Use a quick method to gather the last 900 Tweets (that includes retweets) from a user’s profile.</li>
-<li><code>twint -u username --resume resume_file.txt</code> - Resume a search starting from the last saved scroll-id.</li>
-</ul>
-<p>More detail about the commands and options are located in the <a target="_blank" rel="noopener" href="https://github.com/twintproject/twint/wiki/Commands">wiki</a></p>
-<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>There are several benefits of using Twint. First, it can fetch all tweets, and Twitter API limits to last 3200 tweets only. Second, it can be used anonymously and without Twitter Developer sign up. Finally, it can be fast initial setup and no rate limitations. There are a lot more search features to play with within Twint, you definitely want to play with it by yourself!</p>
+<h2 id="CLI-Basic-Examples-and-Combos"><a href="#CLI-Basic-Examples-and-Combos" class="headerlink" title="CLI Basic Examples and Combos"></a>CLI Basic Examples and Combos</h2><p>More detail about the commands and options are located in the <a target="_blank" rel="noopener" href="https://github.com/twintproject/twint/wiki/Commands">wiki</a></p>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>There are several benefits of using <code>Twint</code>. First, it can fetch all tweets, and Twitter API limits to last 3200 tweets only. Second, it can be used anonymously and without Twitter Developer sign up. Finally, it can be fast initial setup and no rate limitations. There are a lot more search features to play with within <code>Twint</code>, you definitely want to play with it by yourself!</p>
 <h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ol>
 <li><a target="_blank" rel="noopener" href="https://medium.com/analytics-vidhya/how-to-scrape-tweets-from-twitter-with-python-twint-83b4c70c5536">https://medium.com/analytics-vidhya/how-to-scrape-tweets-from-twitter-with-python-twint-83b4c70c5536</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/twintproject/twint">https://github.com/twintproject/twint</a></li>
@@ -1229,7 +1226,7 @@ twint<span class="token punctuation">.</span>run<span class="token punctuation">
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total site word count:&nbsp;<span
-                class="white-color">116.2k</span>&nbsp;words
+                class="white-color">115.9k</span>&nbsp;words
             
             
             
