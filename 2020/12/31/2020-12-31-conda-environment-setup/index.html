@@ -678,7 +678,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    300
+                    305
                 </div>
                 
 
@@ -715,12 +715,12 @@
 </li>
 <li><p>Install <a target="_blank" rel="noopener" href="https://www.anaconda.com/distribution/#download-section">Anaconda</a> 3 for win10</p>
 </li>
-<li><p>Create a virtual environment and change the name of the environment <code>MY_ENV</code>:</p>
+<li><p>Create a virtual environment and change the name of the environment <code>&lt;ENV&gt;</code>:</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">conda update conda -y
-conda create --name my_env <span class="token assign-left variable">python</span><span class="token operator">=</span><span class="token number">3.7</span>.3
-conda activate MY_ENV
+conda create --name <span class="token operator">&lt;</span>ENV<span class="token operator">></span> <span class="token assign-left variable">python</span><span class="token operator">=</span><span class="token number">3.7</span>.3
+conda activate <span class="token operator">&lt;</span>ENV<span class="token operator">></span>
 conda <span class="token function">install</span> ipykernel ipywidgets -y
-python -m ipykernel <span class="token function">install</span> --user --name MY_ENV --display-name <span class="token string">"MY_ENV"</span>
+python -m ipykernel <span class="token function">install</span> --user --name <span class="token operator">&lt;</span>ENV<span class="token operator">></span> --display-name <span class="token string">"&lt;ENV>"</span>
 pip <span class="token function">install</span> jupyter_contrib_nbextensions <span class="token operator">&amp;&amp;</span> jupyter contrib nbextension <span class="token function">install</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>GPU support software requirements:</p>
@@ -742,7 +742,6 @@ $ <span class="token builtin class-name">export</span> <span class="token assign
 $ <span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span>C:<span class="token punctuation">\</span>tools<span class="token punctuation">\</span>cuda<span class="token punctuation">\</span>bin<span class="token punctuation">;</span>%<span class="token environment constant">PATH</span>%<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
 <li>Add the absolute path to the TensorRTlib directory to the environment variable LD_LIBRARY_PATH</li>
 </ul>
-<p>Enjoy!</p>
 
                 
             </div>
@@ -1192,7 +1191,7 @@ $ <span class="token builtin class-name">export</span> <span class="token assign
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total site word count:&nbsp;<span
-                class="white-color">116.5k</span>&nbsp;words
+                class="white-color">116.9k</span>&nbsp;words
             
             
             

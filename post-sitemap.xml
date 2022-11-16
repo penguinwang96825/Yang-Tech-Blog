@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2022/11/16/2022-11-16-download-voxceleb-dataset/</loc>
+        <lastmod>2022-11-16T14:11:14.869Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2020/12/31/2020-12-31-conda-environment-setup/</loc>
+        <lastmod>2022-11-16T14:02:22.286Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2022/09/19/2022-09-19-run-python-function-faster/</loc>
         <lastmod>2022-09-18T17:07:58.042Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -99,14 +115,6 @@
     <url>
         <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/12/15/2021-12-15-why-we-need-pep8/</loc>
         <lastmod>2022-03-31T18:55:46.677Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2020/12/31/2020-12-31-conda-environment-setup/</loc>
-        <lastmod>2022-03-31T18:55:24.497Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
