@@ -9,6 +9,14 @@
 
 
     <url>
+        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2022/11/16/2022-11-16-download-voxceleb-dataset/</loc>
+        <lastmod>2022-11-17T15:57:02.709Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2021/01/27/2021-01-27-missionaries-and-cannibals-problem/</loc>
         <lastmod>2022-11-16T14:20:06.043Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -19,14 +27,6 @@
     <url>
         <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2020/12/31/2020-12-31-conda-environment-setup/</loc>
         <lastmod>2022-11-16T14:19:39.759Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://penguinwang96825.github.io/Yang-Tech-Blog/2022/11/16/2022-11-16-download-voxceleb-dataset/</loc>
-        <lastmod>2022-11-16T14:18:14.784Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

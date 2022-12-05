@@ -670,14 +670,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    419
+                    509
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    2 Min
+                    3 Min
                 </div>
                 
 
@@ -757,6 +757,40 @@
 
 <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
     main<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>It can also be adapted to a faster way using multi-thread with <code>tqdm</code> library.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">from</span> glob <span class="token keyword">import</span> glob
+<span class="token keyword">from</span> tqdm<span class="token punctuation">.</span>auto <span class="token keyword">import</span> tqdm
+
+
+<span class="token keyword">def</span> <span class="token function">convert</span><span class="token punctuation">(</span>filepath<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    f_in <span class="token operator">=</span> filepath
+    f_out <span class="token operator">=</span> filepath<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'.m4a'</span><span class="token punctuation">,</span> <span class="token string">'.wav'</span><span class="token punctuation">)</span>
+    os<span class="token punctuation">.</span>system<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'ffmpeg -i </span><span class="token interpolation"><span class="token punctuation">&#123;</span>f_in<span class="token punctuation">&#125;</span></span><span class="token string"> </span><span class="token interpolation"><span class="token punctuation">&#123;</span>f_out<span class="token punctuation">&#125;</span></span><span class="token string">'</span></span><span class="token punctuation">)</span>
+    os<span class="token punctuation">.</span>system<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'rm </span><span class="token interpolation"><span class="token punctuation">&#123;</span>f_in<span class="token punctuation">&#125;</span></span><span class="token string">'</span></span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    dev_root <span class="token operator">=</span> <span class="token string">'&lt;VOX2_DEV_ROOT>'</span>
+    process_map<span class="token punctuation">(</span>
+        convert<span class="token punctuation">,</span> 
+        glob<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>dev_root<span class="token punctuation">,</span> <span class="token string">'**/*/*.m4a'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+        max_workers<span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">,</span> 
+        chunksize<span class="token operator">=</span><span class="token number">1024</span>
+    <span class="token punctuation">)</span>
+
+    test_root <span class="token operator">=</span> <span class="token string">'&lt;VOX2_TEST_ROOT>'</span>
+    process_map<span class="token punctuation">(</span>
+        convert<span class="token punctuation">,</span> 
+        glob<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>dev_root<span class="token punctuation">,</span> <span class="token string">'**/*/*.m4a'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+        max_workers<span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">,</span> 
+        chunksize<span class="token operator">=</span><span class="token number">1024</span>
+    <span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="Extra-Datasets"><a href="#Extra-Datasets" class="headerlink" title="Extra Datasets"></a>Extra Datasets</h2><ol>
 <li><a target="_blank" rel="noopener" href="https://figshare.com/ndownloader/files/10256148">TIMIT</a></li>
@@ -1202,7 +1236,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total site word count:&nbsp;<span
-                class="white-color">116.9k</span>&nbsp;words
+                class="white-color">117k</span>&nbsp;words
             
             
             
