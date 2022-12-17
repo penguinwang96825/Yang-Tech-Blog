@@ -1534,6 +1534,15 @@
                     </span>
                 </a>
                 
+                
+                <a href="/Yang-Tech-Blog/tags/Editor/" title="Editor: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="Editor" style="background-color: #F8F9F9;">Editor
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
             </div>
         </div>
     </div>
@@ -1683,7 +1692,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total site word count:&nbsp;<span
-                class="white-color">117k</span>&nbsp;words
+                class="white-color">117.1k</span>&nbsp;words
             
             
             
@@ -1846,6 +1855,108 @@ $(function () {
                         // show search results
                         if (isMatch) {
                             str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/Yang-Tech-Blog/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/Yang-Tech-Blog/libs/materialize/materialize.min.js"></script>
+    <script src="/Yang-Tech-Blog/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/Yang-Tech-Blog/libs/aos/aos.js"></script>
+    <script src="/Yang-Tech-Blog/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/Yang-Tech-Blog/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/Yang-Tech-Blog/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/Yang-Tech-Blog/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/Yang-Tech-Blog/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="/Yang-Tech-Blog/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/Yang-Tech-Blog/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+<script>
+    pseudocode.renderElement(document.getElementById("pseudocode"));
+</script>
+
+</html>
+" + data_url + "' class='search-result-title'>" + data_title + "</a>";
                             var content = data.content.trim().replace(/<[^>]+>/g, "");
                             if (first_occur >= 0) {
                                 // cut out 100 characters
